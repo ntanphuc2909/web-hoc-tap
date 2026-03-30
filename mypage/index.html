@@ -367,21 +367,19 @@ body.dark-mode .sec-info h3{color:#7ececa;}
   right: 0;
   width: 100%;
   height: 100%;
-  pointer-events: none; /* Make sure interactions go through to other elements */
-  z-index: -1; /* Place behind other content */
+  pointer-events: none;
+  z-index: -1;
   overflow: hidden;
 }
 
 #newPhoneBg img {
   position: absolute;
-  /* Positioning based on screenshot estimation for the hero on the right side */
   top: 0;
   right: 0;
   width: 450px;
   height: auto;
-  /* Transform to place it behind text and buttons on the right, as seen in the screenshot */
   transform: translate(15%, -15%) rotate(5deg);
-  opacity: 0.15; /* Subtly integrated, not overpowering, matching the screenshot opacity */
+  opacity: 0.15;
 }
 
 /* RESPONSIVE */
@@ -429,7 +427,7 @@ body.dark-mode .sec-info h3{color:#7ececa;}
         </div>
         <div class="form-group">
           <label data-i18n="pwLbl">Mật khẩu</label>
-          <input type="password" id="loginPassword" autocomplete="current-password">
+          <div class="pw-wrap"><input type="password" id="loginPassword" autocomplete="current-password"><span class="tpw" onclick="togglePw('loginPassword',this)">👁️</span></div>
         </div>
         <div class="form-options">
           <label class="remember-me"><input type="checkbox" id="loginRemember"> <span data-i18n="rememberMe">Ghi nhớ đăng nhập</span></label>
@@ -478,10 +476,13 @@ body.dark-mode .sec-info h3{color:#7ececa;}
         <div class="form-row">
           <div class="form-group">
             <label data-i18n="pwLbl">Mật khẩu *</label>
-            <input type="password" id="regPassword" oninput="checkStrength(this.value,'regStr')" autocomplete="new-password">
+            <div class="pw-wrap"><input type="password" id="regPassword" oninput="checkStrength(this.value,'regStr')"><span class="tpw" onclick="togglePw('regPassword',this)">👁️</span></div>
             <div class="strength-wrap" id="regStr"><div class="strength-bar"><div class="strength-fill"></div></div><div class="strength-txt"></div></div>
           </div>
-          <div class="form-group"><label data-i18n="confirmPwLbl">Xác nhận mật khẩu *</label><input type="password" id="regConfirm" autocomplete="new-password"></div>
+          <div class="form-group">
+            <label data-i18n="confirmPwLbl">Xác nhận mật khẩu *</label>
+            <div class="pw-wrap"><input type="password" id="regConfirm"><span class="tpw" onclick="togglePw('regConfirm',this)">👁️</span></div>
+          </div>
         </div>
         <div class="form-group">
           <label data-i18n="roleLbl">Bạn là</label>
@@ -518,7 +519,7 @@ body.dark-mode .sec-info h3{color:#7ececa;}
         <p data-i18n="fpSub">Đừng lo! Chúng tôi sẽ giúp bạn khôi phục tài khoản</p>
         <div class="fp-steps">
           <div class="fp-step"><div class="fp-step-num">1</div><div class="fp-step-text"><h4 data-i18n="fp1h">Nhập email</h4><p data-i18n="fp1p">Email đã đăng ký</p></div></div>
-          <div class="fp-step"><div class="fp-step-num">2</div><div class="fp-step-text"><h4 data-i18n="fp2h">Nhận mật khẩu mới</h4><p data-i18n="fp2p">Kiểm tra hộp thư email</p></div></div>
+          <div class="fp-step"><div class="fp-step-num">2</div><div class="fp-step-text"><h4 data-i18n="fp2h">Gửi yêu cầu</h4><p data-i18n="fp2p">Kiểm tra hộp thư của bạn</p></div></div>
           <div class="fp-step"><div class="fp-step-num">3</div><div class="fp-step-text"><h4 data-i18n="fp3h">Đăng nhập lại</h4><p data-i18n="fp3p">Dùng mật khẩu mới</p></div></div>
         </div>
         <button class="theme-btn-auth" id="forgotThemeBtn"></button>
@@ -528,7 +529,6 @@ body.dark-mode .sec-info h3{color:#7ececa;}
           <h2 data-i18n="fpH2">Khôi phục mật khẩu</h2>
           <p data-i18n="fpSubRight">Nhập email để nhận link đặt lại mật khẩu</p>
         </div>
-        <div class="info-box">💡 <strong data-i18n="fpNote">Link khôi phục mật khẩu sẽ được gửi vào email của bạn.</strong></div>
         <div id="forgotFormArea">
           <div class="form-group">
             <label data-i18n="emailLbl">Địa chỉ Email</label>
@@ -537,6 +537,28 @@ body.dark-mode .sec-info h3{color:#7ececa;}
           <button class="btn-main" onclick="doForgot()">📨 <span data-i18n="fpBtn">Khôi phục mật khẩu</span></button>
           <div class="link-row" style="margin-top:14px;"><a onclick="showPage('page-login')" data-i18n="fpBackLink">← Quay lại đăng nhập</a></div>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page" id="page-reset-password">
+  <div class="auth-bg">
+    <div class="auth-card" style="max-width:500px; display:block;">
+      <div class="auth-right" style="max-height:none;">
+        <div class="auth-header">
+          <h2>Đặt lại mật khẩu mới</h2>
+          <p>Vui lòng nhập mật khẩu mới cho tài khoản của bạn</p>
+        </div>
+        <div class="form-group">
+          <label>Mật khẩu mới *</label>
+          <div class="pw-wrap">
+            <input type="password" id="resetNewPw" oninput="checkStrength(this.value,'resetStr')">
+            <span class="tpw" onclick="togglePw('resetNewPw',this)">👁️</span>
+          </div>
+          <div class="strength-wrap" id="resetStr"><div class="strength-bar"><div class="strength-fill"></div></div><div class="strength-txt"></div></div>
+        </div>
+        <button class="btn-main" onclick="doConfirmReset()">✅ Cập nhật mật khẩu</button>
       </div>
     </div>
   </div>
@@ -640,7 +662,7 @@ body.dark-mode .sec-info h3{color:#7ececa;}
         <div class="dept-body">
           <div class="dept-badge badge-pr" data-i18n="prBadge">PR</div>
           <h3 data-i18n="prTitle">Public Relations</h3>
-          <p data-i18n="prDesc">Phát triển kỹ năng quan hệ công chúng, xây dựng thương hiệu và quản lý truyền thông. Bài tập thực chiến sẽ được thêm vào sớm.</p>
+          <p data-i18n="prDesc">Phát triển kỹ năng quan hệ công chúng, xây dựng thương hiệu và quản lý truyền thông.</p>
           <button class="dept-btn" onclick="showPage('page-pr-course')" data-i18n="navLearn">Vào Học</button>
         </div>
       </div>
@@ -649,7 +671,7 @@ body.dark-mode .sec-info h3{color:#7ececa;}
         <div class="dept-body">
           <div class="dept-badge badge-mkt" data-i18n="mktBadge">Marketing</div>
           <h3 data-i18n="mktTitle">Marketing</h3>
-          <p data-i18n="mktDesc">Thực hành Digital Marketing, Content Strategy và Brand Management. Bài tập thực chiến sẽ được thêm vào sớm.</p>
+          <p data-i18n="mktDesc">Thực hành Digital Marketing, Content Strategy và Brand Management.</p>
           <button class="dept-btn" onclick="showPage('page-mkt-course')" data-i18n="navLearn">Vào Học</button>
         </div>
       </div>
@@ -1204,6 +1226,23 @@ function doForgot() {
     });
 }
 
+function doConfirmReset() {
+  var newPw = document.getElementById('resetNewPw').value;
+  if(!newPw) return toast('❌ Vui lòng nhập mật khẩu mới!', 'error');
+  if(newPw.length < 8) return toast('❌ Mật khẩu phải từ 8 ký tự!', 'error');
+
+  auth.confirmPasswordReset(window.resetActionCode, newPw)
+    .then(() => {
+      toast('✅ Đổi mật khẩu thành công! Vui lòng đăng nhập.', 'success');
+      // Xóa các tham số trên URL để làm sạch đường dẫn
+      window.history.replaceState({}, document.title, window.location.pathname);
+      showPage('page-login');
+    })
+    .catch((error) => {
+      toast('❌ Link đổi mật khẩu đã hết hạn hoặc không hợp lệ!', 'error');
+    });
+}
+
 /* ═══════════════════════════════
    FIREBASE AUTH LISTENER (KEEP LOGGED IN)
 ═══════════════════════════════ */
@@ -1214,6 +1253,10 @@ auth.onAuthStateChanged((user) => {
   var smReg = document.getElementById('smRegLink');
   var smProf = document.getElementById('smProfileLink');
   var smSet = document.getElementById('smSettingsLink');
+
+  // Kiểm tra xem có đang ở chế độ đổi mật khẩu từ link Email không
+  const urlParams = new URLSearchParams(window.location.search);
+  const isResetting = (urlParams.get('mode') === 'resetPassword');
 
   if (user && user.emailVerified) {
     // Đã đăng nhập và xác thực
@@ -1241,8 +1284,8 @@ auth.onAuthStateChanged((user) => {
       }
     });
 
-    // Tự động chuyển về trang chủ nếu đang ở màn hình Đăng nhập
-    if(document.getElementById('page-login').classList.contains('active') || document.getElementById('page-register').classList.contains('active')){
+    // Tự động chuyển về trang chủ nếu đang ở màn hình Đăng nhập (và không phải đang đổi pass)
+    if(!isResetting && (document.getElementById('page-login').classList.contains('active') || document.getElementById('page-register').classList.contains('active'))){
        showPage('page-home');
     }
 
@@ -1259,7 +1302,7 @@ auth.onAuthStateChanged((user) => {
 
     // Đẩy ra khỏi trang yêu cầu đăng nhập
     let activePage = document.querySelector('.page.active').id;
-    if(['page-profile', 'page-settings', 'page-changepass'].includes(activePage)) {
+    if(!isResetting && ['page-profile', 'page-settings', 'page-changepass'].includes(activePage)) {
         showPage('page-login');
     }
   }
@@ -1467,7 +1510,17 @@ function setLang(lang) {
 
 document.addEventListener('DOMContentLoaded', function() {
   updateThemeBtns();
-  setLang('vi'); // Mặc định tiếng Việt
+  setLang('vi');
+
+  // Bắt link đổi mật khẩu từ Firebase gửi về Email
+  const urlParams = new URLSearchParams(window.location.search);
+  const mode = urlParams.get('mode');
+  const actionCode = urlParams.get('oobCode');
+
+  if (mode === 'resetPassword' && actionCode) {
+    window.resetActionCode = actionCode; // Lưu lại mã code để dùng xác nhận
+    showPage('page-reset-password');
+  }
 });
 </script>
 </body>
