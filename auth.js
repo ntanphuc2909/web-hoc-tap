@@ -1,195 +1,189 @@
 /**
  * CEP Authentication & User Data Storage
- * Lưu toàn bộ dữ liệu người dùng vào localStorage
- * Đặt file này cùng thư mục với các file HTML
+ * Xử lý Đăng ký, Đăng nhập và Lưu dữ liệu người dùng vào Firebase Firestore
  */
 
-var CEP_AUTH = (function () {
-    var USERS_KEY   = 'cep_users';
-    var SESSION_KEY = 'cep_session';
+// 1. Cấu hình Firebase từ dự án của bạn
+const firebaseConfig = {
+  apiKey: "AIzaSyCAb5DJd-xcSn6Mol9Fg2S7jdgr2O4W4PQ",
+  authDomain: "ccep-54f4d.firebaseapp.com",
+  projectId: "ccep-54f4d",
+  storageBucket: "ccep-54f4d.firebasestorage.app",
+  messagingSenderId: "654325866248",
+  appId: "1:654325866248:web:1a5aafe9329ab72f3f96bd",
+  measurementId: "G-3CS7F81C28"
+};
 
-    /* ── Helpers ── */
-    function getUsers() {
-        try {
-            var raw = localStorage.getItem(USERS_KEY);
-            return raw ? JSON.parse(raw) : {};
-        } catch (e) { return {}; }
-    }
+// Khởi tạo Firebase
+if (!firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
+}
+const auth = firebase.auth();
+const db = firebase.firestore();
 
-    function saveUsers(users) {
-        localStorage.setItem(USERS_KEY, JSON.stringify(users));
-    }
+let currentUserData = null;
 
-    function getSession() {
-        try {
-            // Kiểm tra sessionStorage trước (sẽ mất khi đóng tab), sau đó kiểm tra localStorage (nếu có Ghi nhớ đăng nhập)
-            var s = sessionStorage.getItem(SESSION_KEY) || localStorage.getItem(SESSION_KEY);
-            return s ? JSON.parse(s) : null;
-        } catch (e) { return null; }
-    }
+// 2. Hàm Đăng ký và Lưu dữ liệu người dùng
+function doRegister() {
+    var name = document.getElementById('regFullname').value.trim();
+    var email = document.getElementById('regEmail').value.trim();
+    var phone = document.getElementById('regPhone').value.trim();
+    var pwd = document.getElementById('regPassword').value;
+    var conf = document.getElementById('regConfirm').value;
+    var role = document.getElementById('regRole').value;
+    var terms = document.getElementById('regTerms').checked;
 
-    function saveSession(email, remember) {
-        var session = { email: email, loginAt: Date.now() };
-        // Luôn lưu vào sessionStorage
-        sessionStorage.setItem(SESSION_KEY, JSON.stringify(session));
-        // Nếu tick Ghi nhớ đăng nhập thì lưu cả vào localStorage
-        if (remember) {
-            localStorage.setItem(SESSION_KEY, JSON.stringify(session));
-        }
-    }
+    if(!name || !email || !pwd || !conf) return toast('errFill', 'error');
+    if(pwd.length < 8) return toast('errPwdShort', 'error');
+    if(pwd !== conf) return toast('errPwdMatch', 'error');
+    if(!terms) return toast('errTerms', 'error');
 
-    function clearSession() {
-        sessionStorage.removeItem(SESSION_KEY);
-        localStorage.removeItem(SESSION_KEY);
-    }
-
-    function hashPassword(pw) {
-        // Băm mật khẩu cơ bản
-        var hash = 0;
-        var salt = 'CEP_SALT_2024';
-        var str  = pw + salt;
-        for (var i = 0; i < str.length; i++) {
-            var char = str.charCodeAt(i);
-            hash = ((hash << 5) - hash) + char;
-            hash |= 0;
-        }
-        return 'cep_' + Math.abs(hash).toString(36);
-    }
-
-    /* ── Public API ── */
-
-    function isLoggedIn() {
-        return getSession() !== null;
-    }
-
-    function getCurrentUser() {
-        var session = getSession();
-        if (!session) return null;
-        var users = getUsers();
-        return users[session.email] || null;
-    }
-
-    function register(data) {
-        if (!data.fullname || !data.email || !data.password) {
-            return { success: false, message: 'Vui lòng điền đầy đủ thông tin!' };
-        }
-        var users = getUsers();
-        if (users[data.email]) {
-            return { success: false, message: 'Email này đã được đăng ký!' };
-        }
+    // Bước A: Tạo tài khoản xác thực (Firebase Auth)
+    auth.createUserWithEmailAndPassword(email, pwd)
+    .then((userCredential) => {
+        var user = userCredential.user;
         
-        // Khởi tạo các trường dữ liệu mặc định (Bao gồm các trường Profile mới)
-        users[data.email] = {
-            fullname   : data.fullname,
-            email      : data.email,
-            phone      : data.phone      || '',
-            role       : data.role       || 'student',
-            password   : hashPassword(data.password),
-            avatar     : data.avatar     || '',
-            bio        : data.bio        || '',
-            location   : data.location   || '',
-            website    : data.website    || '',
-            occupation : data.occupation || '',
+        // Gửi link xác thực email thật
+        user.sendEmailVerification(); 
+        
+        // Bước B: Lưu toàn bộ cấu trúc dữ liệu hồ sơ vào Firestore
+        return db.collection('users').doc(user.uid).set({
+            fullname   : name,
+            email      : email,
+            phone      : phone      || '',
+            role       : role       || 'student',
+            avatar     : '',
+            bio        : '',
+            location   : '',
+            website    : '',
+            occupation : '',
             dob        : '',
             gender     : 'male',
             facebook   : '',
             education  : '',
             experience : '',
             skills     : '',
-            createdAt  : Date.now(),
-            updatedAt  : Date.now()
-        };
-        saveUsers(users);
-        return { success: true };
-    }
-
-    function login(email, password, remember) {
-        var users = getUsers();
-        var user  = users[email];
-        if (!user) {
-            return { success: false, message: 'Email không tồn tại trong hệ thống!' };
-        }
-        if (user.password !== hashPassword(password)) {
-            return { success: false, message: 'Mật khẩu không đúng!' };
-        }
-        
-        // Gọi hàm saveSession với cờ remember (true/false)
-        saveSession(email, remember);
-        return { success: true, user: user };
-    }
-
-    function logout() {
-        clearSession();
-        window.location.reload(); // Tự động load lại trang khi đăng xuất
-    }
-
-    function updateProfile(data) {
-        var session = getSession();
-        if (!session) return { success: false, message: 'Chưa đăng nhập!' };
-        var users = getUsers();
-        var user  = users[session.email];
-        if (!user) return { success: false, message: 'Người dùng không tồn tại!' };
-
-        // Mảng các trường dữ liệu được phép cập nhật (Không cho phép đổi email ở đây)
-        var allowed = [
-            'fullname','phone','bio','location','website','occupation','avatar','role',
-            'dob','gender','facebook','education','experience','skills'
-        ];
-        
-        allowed.forEach(function (key) {
-            if (data[key] !== undefined) user[key] = data[key];
+            createdAt  : firebase.firestore.FieldValue.serverTimestamp(),
+            updatedAt  : firebase.firestore.FieldValue.serverTimestamp()
         });
-        
-        user.updatedAt = Date.now();
-        saveUsers(users);
-        return { success: true, user: user };
-    }
+    })
+    .then(() => {
+        toast('toastRegOk', 'success');
+        document.getElementById('loginEmail').value = email;
+        // Tạm thoát để bắt người dùng xác nhận Email trước khi dùng web
+        auth.signOut();
+        showPage('page-login');
+    })
+    .catch((error) => {
+        toast('Lỗi đăng ký: ' + error.message, 'error');
+    });
+}
 
-    function changePassword(currentPassword, newPassword) {
-        var session = getSession();
-        if (!session) return { success: false, message: 'Chưa đăng nhập!' };
-        var users = getUsers();
-        var user  = users[session.email];
-        if (!user) return { success: false, message: 'Người dùng không tồn tại!' };
-        if (user.password !== hashPassword(currentPassword)) {
-            return { success: false, message: 'Mật khẩu hiện tại không đúng!' };
+// 3. Hàm Đăng nhập
+function doLogin() {
+    var email = document.getElementById('loginEmail').value.trim();
+    var pwd = document.getElementById('loginPassword').value;
+
+    if(!email || !pwd) return toast('errFill', 'error');
+
+    auth.signInWithEmailAndPassword(email, pwd)
+    .then((userCredential) => {
+        var user = userCredential.user;
+        // Kiểm tra xem email đã xác thực chưa
+        if (!user.emailVerified) {
+            toast('⚠️ Tài khoản chưa kích hoạt! Vui lòng vào Email (thư rác) bấm link xác nhận.', 'error');
+            auth.signOut();
+        } else {
+            toast('toastLoginOk', 'success');
+            showPage('page-home');
         }
-        
-        user.password  = hashPassword(newPassword);
-        user.updatedAt = Date.now();
-        saveUsers(users);
-        
-        // Xoá session để bắt buộc đăng nhập lại bằng mật khẩu mới
-        clearSession(); 
-        return { success: true };
-    }
+    })
+    .catch((error) => {
+        toast('❌ Email hoặc mật khẩu không chính xác!', 'error');
+    });
+}
 
-    function forgotPassword(email) {
-        var users = getUsers();
-        if (!users[email]) {
-            return { success: false, message: 'Email không tồn tại trong hệ thống!' };
-        }
-        return { success: true };
-    }
+// 4. Hàm Lưu chỉnh sửa hồ sơ
+function saveProfile() {
+    if(!auth.currentUser) return;
 
-    function requireAuth() {
-        if (!isLoggedIn()) {
-            window.location.href = 'login.html';
-            return false;
-        }
-        return true;
-    }
-
-    // Export các hàm để gọi từ bên ngoài
-    return {
-        isLoggedIn      : isLoggedIn,
-        getCurrentUser  : getCurrentUser,
-        register        : register,
-        login           : login,
-        logout          : logout,
-        updateProfile   : updateProfile,
-        changePassword  : changePassword,
-        forgotPassword  : forgotPassword,
-        requireAuth     : requireAuth
+    var data = {
+        fullname: document.getElementById('eFn').value.trim(),
+        phone: document.getElementById('ePh').value.trim(),
+        occupation: document.getElementById('eOc').value.trim(),
+        location: document.getElementById('eLc').value.trim(),
+        website: document.getElementById('eWb').value.trim(),
+        bio: document.getElementById('eBi').value.trim(),
+        role: document.getElementById('eRl').value,
+        dob: document.getElementById('eDob').value,
+        gender: document.getElementById('eGen').value,
+        facebook: document.getElementById('eFb').value.trim(),
+        education: document.getElementById('eEdu').value.trim(),
+        experience: document.getElementById('eExp').value.trim(),
+        skills: document.getElementById('eSkills').value.trim(),
+        updatedAt: firebase.firestore.FieldValue.serverTimestamp()
     };
-})();
+    
+    if(!data.fullname) return toast('errNameEmpty', 'error');
+    if(typeof tempAvatar !== 'undefined' && tempAvatar) data.avatar = tempAvatar;
+
+    // Cập nhật dữ liệu lên Firestore
+    db.collection('users').doc(auth.currentUser.uid).update(data).then(() => {
+        toast('toastSaveProfile', 'success');
+        currentUserData = {...currentUserData, ...data};
+        toggleEdit();
+        renderProfile();
+        auth.onAuthStateChanged(auth.currentUser); 
+    }).catch((error) => {
+        toast('Lỗi cập nhật: ' + error.message, 'error');
+    });
+}
+
+// 5. Theo dõi trạng thái đăng nhập để lấy dữ liệu từ Firestore
+auth.onAuthStateChanged((user) => {
+    var authArea = document.getElementById('homeAuthArea');
+    var userBar = document.getElementById('homeUserBar');
+    var smLogin = document.getElementById('smLoginLink');
+    var smReg = document.getElementById('smRegLink');
+    var smProf = document.getElementById('smProfileLink');
+    var smSet = document.getElementById('smSettingsLink');
+
+    if (user && user.emailVerified) {
+        // Lấy dữ liệu hồ sơ từ bộ sưu tập 'users' trên Firestore
+        db.collection('users').doc(user.uid).get().then((doc) => {
+            if(doc.exists) {
+                currentUserData = doc.data();
+                var displayName = currentUserData.fullname.split(' ')[0];
+                
+                if(authArea) authArea.innerHTML = `<button class="btn-hlogin" onclick="showPage('page-profile')">👤 ${displayName}</button>`;
+                if(userBar) userBar.style.display = 'block';
+                
+                if(document.getElementById('hubName')) {
+                    document.getElementById('hubName').innerText = (t('welcomeBack') || 'Chào mừng,') + ' ' + currentUserData.fullname + '!';
+                }
+                
+                if(smLogin) smLogin.style.display = 'none';
+                if(smReg) smReg.style.display = 'none';
+                if(smProf) smProf.style.display = 'flex';
+                if(smSet) smSet.style.display = 'flex';
+                
+                if(document.getElementById('page-profile').classList.contains('active')) {
+                    renderProfile();
+                }
+            }
+        });
+    } else {
+        currentUserData = null;
+        if(authArea) authArea.innerHTML = '<button class="btn-hlogin" onclick="showPage(\'page-login\')">Đăng nhập</button><button class="btn-hreg" onclick="showPage(\'page-register\')">Đăng ký</button>';
+        if(userBar) userBar.style.display = 'none';
+    }
+});
+
+function doLogout() {
+    if(!confirm(t('confirmLogout'))) return;
+    auth.signOut().then(() => {
+        currentUserData = null;
+        toast('🚪 Đã đăng xuất', 'success');
+        showPage('page-login');
+    });
+}
