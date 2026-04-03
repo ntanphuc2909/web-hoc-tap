@@ -53,6 +53,7 @@ body.dark-mode .auth-header h2{color:#7ececa;}
 .form-group input:focus{outline:none;border-color:var(--primary);}
 .btn-main{width:100%;padding:13px;background:var(--gradient);color:#fff;border:none;border-radius:8px;font-size:15px;font-weight:700;cursor:pointer;transition:all .25s;font-family:'DM Sans',sans-serif;margin-bottom:4px;}
 .btn-main:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(45,95,93,.3);}
+.btn-main:active{transform:translateY(0);}
 .divider{text-align:center;margin:20px 0;position:relative;}
 .divider::before{content:'';position:absolute;top:50%;left:0;right:0;height:1px;background:var(--border);}
 .divider span{background:var(--card);padding:0 12px;position:relative;color:var(--text2);font-size:12px; font-weight:600;}
@@ -78,7 +79,7 @@ body.dark-mode .header-nav .nav-active{background:rgba(126,206,202,.12);color:#7
 .nav-logout{background:rgba(231,111,81,.1);color:#E76F51;}
 
 /* ════════════════════════════════════════
-   HOME / LANDING (REARRANGE - CHALLENGE BASED)
+   HOME / LANDING
 ════════════════════════════════════════ */
 .home-big-header{background:#111827;box-shadow:0 2px 20px rgba(0,0,0,.3);position:sticky;top:0;z-index:1000;}
 body.dark-mode .home-big-header{background:#0d1020;}
@@ -96,6 +97,17 @@ body.dark-mode .home-big-header{background:#0d1020;}
 .hero-land h1{font-family:'Playfair Display',serif;font-size:52px;color:#fff;margin-bottom:18px;line-height:1.2;}
 .hero-land p{font-size:18px;color:rgba(255,255,255,.9);max-width:600px;margin-bottom:28px;line-height:1.7;}
 .btn-cta{padding:15px 36px;background:var(--secondary);color:#1A1A2E;border:none;border-radius:50px;font-weight:800;font-size:16px;cursor:pointer;box-shadow:0 8px 24px rgba(244,162,97,.4);font-family:'DM Sans',sans-serif;}
+
+/* ════════════════════════════════════════
+   THỐNG KÊ (REAL DATA) - UPDATED 3 BOXES
+════════════════════════════════════════ */
+.stats-strip{background:var(--card);padding:40px 32px;}
+/* Chỉnh thành 3 cột */
+.stats-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.stat-box{text-align:center;padding:24px;background:var(--bg);border-radius:12px;border:1px solid var(--border);}
+.stat-num{font-family:'Playfair Display',serif;font-size:32px;color:var(--primary);font-weight:700;margin-bottom:4px;}
+body.dark-mode .stat-num{color:#7ececa;}
+.stat-lbl{font-size:13px;color:var(--text2);}
 
 /* Sàn Thử Thách (Briefs) */
 .section{max-width:1200px;margin:0 auto;padding:64px 32px;}
@@ -123,7 +135,6 @@ body.dark-mode .badge-creative{background:rgba(126,206,202,.15);color:#7ececa;}
    MODIFY: MICRO-LEARNING (REELS/TIKTOK UI)
 ════════════════════════════════════════ */
 .reels-container { width: 100%; max-width: 450px; height: 80vh; margin: 0 auto; background: #000; border-radius: 20px; overflow-y: scroll; scroll-snap-type: y mandatory; box-shadow: 0 10px 30px rgba(0,0,0,0.5); position: relative;}
-/* Ẩn thanh cuộn */
 .reels-container::-webkit-scrollbar { display: none; }
 .reels-container { -ms-overflow-style: none; scrollbar-width: none; }
 
@@ -211,6 +222,7 @@ body.dark-mode .pf-score { background: rgba(126,206,202,0.15); color: #7ececa;}
   .sim-feed { border-right: none; border-bottom: 1px solid var(--border); height: 200px; }
   .marketing-workspace { grid-template-columns: 1fr; }
   .reels-container { height: 75vh; border-radius: 12px;}
+  .stats-inner{grid-template-columns: 1fr; gap:16px;}
 }
 </style>
 </head>
@@ -319,6 +331,23 @@ body.dark-mode .pf-score { background: rgba(126,206,202,0.15); color: #7ececa;}
       <p style="margin: 0 auto 30px;">Chào mừng đến với Agency Ảo. Dưới đây là các Brief (Yêu cầu) từ Khách hàng tuần này. Hãy chọn một thử thách để chứng minh năng lực của bạn.</p>
     </div>
   </section>
+
+  <div class="stats-strip">
+    <div class="stats-inner">
+      <div class="stat-box">
+        <div class="stat-num" id="real-depts">2</div>
+        <div class="stat-lbl" data-i18n="statDepts">Ngành học</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" id="real-users">⌛</div>
+        <div class="stat-lbl" data-i18n="statStudents">Học viên</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" id="real-tasks">⌛</div>
+        <div class="stat-lbl" data-i18n="statTasks">Bài tập thực chiến</div>
+      </div>
+    </div>
+  </div>
 
   <div class="section" id="dept-section">
     <div class="sec-title">🔥 Thử Thách Agency Tuần Này</div>
@@ -571,13 +600,26 @@ let currentUserData = null;
 /* ═══════════════════════════════
    2. CORE UI FUNCTIONS
 ═══════════════════════════════ */
-function showPage(pageId) {
+function showPage(pageId, pushToHistory = true) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.getElementById(pageId).classList.add('active');
   window.scrollTo({ top: 0, behavior: 'smooth' });
+  
+  if (pushToHistory) {
+    const newUrl = window.location.pathname + "?page=" + pageId;
+    window.history.pushState({ page: pageId }, "", newUrl);
+  }
 }
 
-function goBack() { showPage('page-home'); }
+function goBack() { 
+  if (window.history.length > 1) { window.history.back(); } 
+  else { showPage('page-home'); }
+}
+
+window.addEventListener('popstate', function(event) {
+  if (event.state && event.state.page) { showPage(event.state.page, false); } 
+  else { showPage(auth.currentUser ? 'page-home' : 'page-login', false); }
+});
 
 function toast(msg, type) {
   var tst = document.getElementById('_toast');
@@ -591,6 +633,23 @@ function togglePw(id, icon) {
   var input = document.getElementById(id);
   if(input.type === 'password') { input.type = 'text'; icon.innerText = '🙈'; }
   else { input.type = 'password'; icon.innerText = '👁️'; }
+}
+
+/* ═══════════════════════════════
+   HÀM LOAD DỮ LIỆU THỰC TẾ (REAL STATS)
+═══════════════════════════════ */
+function loadRealStats() {
+  // 1. Đếm số lượng học viên thực tế từ Firebase
+  db.collection('users').get().then(snap => {
+    document.getElementById('real-users').innerText = snap.size + "+";
+  }).catch(err => {
+    document.getElementById('real-users').innerText = "0";
+    console.error("Lỗi lấy user:", err);
+  });
+
+  // 2. Đếm số lượng Ngành học và Thử thách thực tế đang hiển thị trên web
+  document.getElementById('real-depts').innerText = "2"; // Đang có 2 ngành PR & MKT
+  document.getElementById('real-tasks').innerText = document.querySelectorAll('.brief-card').length + "+";
 }
 
 /* ═══════════════════════════════
@@ -662,7 +721,6 @@ function doLogout() {
 auth.onAuthStateChanged((user) => {
   var authArea = document.getElementById('homeAuthArea');
   
-  // KHÔNG CẦN CHỜ XÁC THỰC EMAIL NỮA (user.emailVerified)
   if (user) {
     db.collection('users').doc(user.uid).get().then((doc) => {
       if(doc.exists) {
@@ -670,7 +728,6 @@ auth.onAuthStateChanged((user) => {
         var displayName = currentUserData.fullname.split(' ')[0];
         if(authArea) authArea.innerHTML = `<button class="btn-hlogin" onclick="showPage('page-profile')">👤 ${displayName}</button>`;
         
-        // Đổ dữ liệu vào trang Profile / Portfolio
         document.getElementById('pName').innerText = currentUserData.fullname;
         document.getElementById('pMeta').innerHTML = `<span>📧 ${currentUserData.email}</span>`;
         var avHtml = currentUserData.avatar ? `<img src="${currentUserData.avatar}">` : currentUserData.fullname.charAt(0).toUpperCase();
@@ -684,7 +741,12 @@ auth.onAuthStateChanged((user) => {
   } else {
     currentUserData = null;
     if(authArea) authArea.innerHTML = '<button class="btn-hlogin" onclick="showPage(\'page-login\')">Đăng nhập</button>';
-    showPage('page-login');
+    
+    const urlParams = new URLSearchParams(window.location.search);
+    const pageParam = urlParams.get('page');
+    if (!pageParam || ['page-profile', 'page-pr-course', 'page-mkt-course'].includes(pageParam)) {
+        showPage('page-login');
+    }
   }
 });
 
@@ -692,7 +754,7 @@ auth.onAuthStateChanged((user) => {
    4. SIMULATION LOGIC (Phòng Lab)
 ═══════════════════════════════ */
 let crisisTimerId = null;
-let crisisTimeLeft = 120; // 2 phút cho gay cấn
+let crisisTimeLeft = 120;
 
 function startSimulation() {
   document.getElementById('sim-start-btn').style.display = 'none';
@@ -703,10 +765,9 @@ function startSimulation() {
   crisisTimeLeft = 120;
   document.getElementById('crisis-timer').innerText = "02:00";
   
-  // Thêm kịch bản giật gân theo thời gian
   setTimeout(() => {
     document.getElementById('simFeed').innerHTML += `<div class="alert-msg">🔥 <b>[00:30]</b> Cổ phiếu công ty vừa giảm 5%. CEO đang nổi điên!</div>`;
-  }, 10000); // Sau 10 giây hiện thông báo mới
+  }, 10000);
 
   crisisTimerId = setInterval(() => {
     crisisTimeLeft--;
@@ -730,13 +791,18 @@ function submitSimulation() {
   clearInterval(crisisTimerId);
   toast("✅ Xuất sắc! Phản xạ tốt. Kết quả đã được lưu vào Portfolio.", "success");
   document.getElementById('pr-response').disabled = true;
-  
-  // Bạn có thể viết code push `text` này lên Firestore vào collection `portfolio` ở đây
 }
 
 document.addEventListener('DOMContentLoaded', function() {
   const savedTheme = localStorage.getItem('cep_theme');
   if(savedTheme === 'dark') document.body.classList.add('dark-mode');
+  
+  const urlParams = new URLSearchParams(window.location.search);
+  const pageParam = urlParams.get('page');
+  if (pageParam) { showPage(pageParam, false); }
+  
+  // Gọi hàm load số liệu thực tế cho bảng Thống kê
+  loadRealStats();
 });
 </script>
 </body>
