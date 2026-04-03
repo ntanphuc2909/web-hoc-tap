@@ -42,7 +42,7 @@ body.dark-mode .auth-card{box-shadow:0 20px 60px rgba(0,0,0,.6);}
 body.dark-mode .auth-header h2{color:#7ececa;}
 .auth-header p{color:var(--text2);font-size:13px;}
 
-/* Nút Google to đùng */
+/* Nút Google */
 .btn-google { width: 100%; padding: 14px; background: #fff; border: 2px solid var(--border); border-radius: 12px; font-size: 15px; font-weight: 700; color: #333; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: all .2s; margin-bottom: 20px; font-family: 'DM Sans', sans-serif;}
 .btn-google:hover { border-color: #4285F4; background: #f8faff; box-shadow: 0 4px 15px rgba(66, 133, 244, 0.15);}
 .btn-google img { width: 20px; height: 20px; object-fit: contain; }
@@ -82,7 +82,7 @@ body.dark-mode .header-nav .nav-active{background:rgba(126,206,202,.12);color:#7
 .nav-logout{background:rgba(231,111,81,.1);color:#E76F51;}
 
 /* ════════════════════════════════════════
-   HOME / LANDING
+   HOME / LANDING (KHÔI PHỤC LẠI HERO CŨ)
 ════════════════════════════════════════ */
 .home-big-header{background:#111827;box-shadow:0 2px 20px rgba(0,0,0,.3);position:sticky;top:0;z-index:1000;}
 body.dark-mode .home-big-header{background:#0d1020;}
@@ -95,10 +95,22 @@ body.dark-mode .home-big-header{background:#0d1020;}
 .btn-hlogin{padding:8px 18px;background:transparent;color:rgba(255,255,255,.85);border:1.5px solid rgba(255,255,255,.2);border-radius:8px;font-weight:600;font-size:13px;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;}
 .btn-hlogin:hover{border-color:#4DD9AC;color:#4DD9AC;}
 
+/* CSS ĐÃ ĐƯỢC KHÔI PHỤC CHO HERO SECTION */
 .hero-land{background:var(--gradient);position:relative;overflow:hidden;padding:100px 40px 80px; z-index: 1;}
+.hero-land::before{content:'';position:absolute;top:-50%;right:-5%;width:500px;height:500px;background:radial-gradient(circle,rgba(244,162,97,.15) 0%,transparent 70%);border-radius:50%;animation:floatAnim 18s ease-in-out infinite;}
+@keyframes floatAnim{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(-20px,25px) scale(1.08);}}
 .hero-content{max-width:1200px;margin:0 auto;position:relative;z-index:1;}
-.hero-land h1{font-family:'Playfair Display',serif;font-size:52px;color:#fff;margin-bottom:18px;line-height:1.2;}
-.hero-land p{font-size:18px;color:rgba(255,255,255,.9);max-width:600px;margin-bottom:28px;line-height:1.7;}
+.hero-land h1{font-family:'Playfair Display',serif;font-size:52px;color:#fff;margin-bottom:18px;line-height:1.2; animation:fadeUp .8s ease .2s both;}
+.hero-land p{font-size:18px;color:rgba(255,255,255,.9);max-width:600px;margin-bottom:28px;line-height:1.7; animation:fadeUp .8s ease .4s both;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;animation:fadeUp .8s ease .6s both;}
+.btn-cta{padding:15px 36px;background:var(--secondary);color:#1A1A2E;border:none;border-radius:50px;font-weight:800;font-size:16px;cursor:pointer;box-shadow:0 8px 24px rgba(244,162,97,.4);font-family:'DM Sans',sans-serif; transition:all .3s;}
+.btn-cta:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(244,162,97,.5);}
+.btn-cta-out{padding:14px 32px;background:transparent;color:#fff;border:2px solid rgba(255,255,255,.6);border-radius:50px;font-size:15px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .25s;}
+.btn-cta-out:hover{background:rgba(255,255,255,.12);}
+
+#newPhoneBg { position: absolute; top: 0; right: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; overflow: hidden;}
+#newPhoneBg img { position: absolute; top: 0; right: 0; width: 450px; height: auto; transform: translate(15%, -15%) rotate(5deg); opacity: 0.15;}
 
 /* THỐNG KÊ */
 .stats-strip{background:var(--card);padding:40px 32px;}
@@ -221,6 +233,7 @@ body.dark-mode .pf-score { background: rgba(126,206,202,0.15); color: #7ececa;}
   .marketing-workspace { grid-template-columns: 1fr; }
   .reels-container { height: 75vh; border-radius: 12px;}
   .stats-inner{grid-template-columns: 1fr; gap:16px;}
+  .hero-btns { justify-content: center; }
 }
 </style>
 </head>
@@ -389,9 +402,17 @@ body.dark-mode .pf-score { background: rgba(126,206,202,0.15); color: #7ececa;}
   </header>
 
   <section class="hero-land">
-    <div class="hero-content" style="text-align:center;">
-      <h1 style="font-size: 48px;">No Theory. Just Execution.</h1>
-      <p style="margin: 0 auto 30px;">Chào mừng đến với Agency Ảo. Dưới đây là các Brief (Yêu cầu) từ Khách hàng tuần này. Hãy chọn một thử thách để chứng minh năng lực của bạn.</p>
+    <div id="newPhoneBg">
+      <img src="z7673677338583_4c44f8411415381a5c0f2ab71346a677.jpg" alt="background phone">
+    </div>
+    <div class="hero-content">
+      <h1>No Theory.<br>Just Execution.</h1>
+      <p>Chào mừng đến với Agency Ảo. Dưới đây là các Brief (Yêu cầu) từ Khách hàng tuần này. Hãy chọn một thử thách để chứng minh năng lực của bạn.</p>
+      
+      <div class="hero-btns">
+        <button class="btn-cta" onclick="scrollToId('dept-section')">🚀 Nhận Brief Ngay</button>
+        <button class="btn-cta-out" onclick="showPage('page-reels')">📱 Xem Reels Học Thuật</button>
+      </div>
     </div>
   </section>
 
