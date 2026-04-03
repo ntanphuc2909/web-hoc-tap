@@ -76,11 +76,6 @@ body.dark-mode .terms-row a{color:#7ececa;}
 body.dark-mode .forgot-link{color:#7ececa;}
 .info-box{background:#fff8f0;border-left:4px solid var(--secondary);padding:13px;border-radius:6px;font-size:13px;color:#555;margin-bottom:18px;line-height:1.5;}
 body.dark-mode .info-box{background:#1e2a3a;color:#cbd5e0;}
-.success-box{display:none;text-align:center;padding:28px;background:#e8f5e9;border-radius:12px;}
-body.dark-mode .success-box{background:#162516;}
-.success-box h3{color:var(--primary);margin-bottom:10px;font-size:18px;}
-body.dark-mode .success-box h3{color:#7ececa;}
-.success-box p{color:var(--text2);font-size:13px;line-height:1.6;}
 .strength-wrap{display:none;margin-top:8px;}
 .strength-bar{height:4px;background:var(--border);border-radius:2px;overflow:hidden;margin-bottom:4px;}
 .strength-fill{height:100%;border-radius:2px;transition:width .3s;}
@@ -120,8 +115,6 @@ body.dark-mode .header-nav .nav-active{background:rgba(126,206,202,.12);color:#7
 /* ════════════════════════════════════════
    HOME / LANDING
 ════════════════════════════════════════ */
-.top-bar{background:var(--primary);color:#fff;padding:10px 0;text-align:center;font-size:13px;}
-.top-bar a{color:var(--secondary);font-weight:600;}
 .home-big-header{background:#111827;box-shadow:0 2px 20px rgba(0,0,0,.3);position:sticky;top:0;z-index:1000;}
 body.dark-mode .home-big-header{background:#0d1020;}
 .home-hc{max-width:1400px;margin:0 auto;padding:0 28px;height:64px;display:flex;align-items:center;gap:0;}
@@ -320,12 +313,13 @@ body.dark-mode .settings-card h3{color:#7ececa;}
 input:checked+.tslider{background:var(--primary);}
 input:checked+.tslider:before{transform:translateX(22px);}
 
-.lang-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:100%;margin-top:10px;}
+.lang-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;width:100%;margin-top:10px;}
 .lang-opt{padding:12px 8px;border:2px solid var(--border);border-radius:10px;cursor:pointer;transition:all .22s;text-align:center;background:var(--card);}
 .lang-opt:hover{border-color:#aaa;transform:translateY(-2px);}
 .lang-opt.active{border-color:var(--primary);background:rgba(45,95,93,.06);}
 body.dark-mode .lang-opt.active{border-color:#7ececa;background:rgba(126,206,202,.1);}
-.lang-flag{font-size:26px;margin-bottom:5px;}
+.lang-flag{font-size:22px; font-weight:bold; color:var(--primary); margin-bottom:5px; font-family:sans-serif;}
+body.dark-mode .lang-flag{color:#7ececa;}
 .lang-name{font-size:12px;font-weight:600;color:var(--text);}
 
 .cp-card{background:var(--card);border-radius:14px;padding:28px;box-shadow:0 2px 10px rgba(0,0,0,.06);}
@@ -349,10 +343,7 @@ body.dark-mode .sec-info h3{color:#7ececa;}
 #newPhoneBg { position: absolute; top: 0; right: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; overflow: hidden;}
 #newPhoneBg img { position: absolute; top: 0; right: 0; width: 450px; height: auto; transform: translate(15%, -15%) rotate(5deg); opacity: 0.15;}
 
-/* ════════════════════════════════════════
-   NEW: COURSE SPECIFIC STYLES (ADAPT, SUBSTITUTE, COMBINE)
-════════════════════════════════════════ */
-/* 1. Case Study 3D Flip Card (Adapt) */
+/* COURSE STYLES */
 .case-study-container { margin: 20px 0; }
 .flip-card { background-color: transparent; width: 100%; height: 260px; perspective: 1000px; cursor: pointer; margin-bottom: 20px; }
 .flip-card-inner { position: relative; width: 100%; height: 100%; text-align: left; transition: transform 0.8s; transform-style: preserve-3d; }
@@ -367,7 +358,6 @@ body.dark-mode .flip-card-back h4 { color: #7ececa; }
 .brand-tag { background: rgba(255,255,255,0.2); padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; display:inline-block; margin-bottom:12px;}
 .flip-hint { margin-top: auto; font-size: 13px; opacity: 0.8; font-style:italic;}
 
-/* 2. Crisis Simulation (Substitute) */
 .simulation-lab { background: var(--card); border: 2px solid #E76F51; border-radius: 12px; overflow: hidden; margin-top: 20px; }
 .sim-header { background: #E76F51; color: white; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; }
 .sim-header h3 { font-size: 16px; margin: 0; }
@@ -380,7 +370,6 @@ body.dark-mode .flip-card-back h4 { color: #7ececa; }
 .sim-action textarea { flex: 1; width: 100%; border: 1px solid var(--border); border-radius: 8px; padding: 10px; margin-bottom: 10px; font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); resize: none;}
 .sim-action textarea:focus { outline: none; border-color: #E76F51; }
 
-/* 3. Marketing Workspace (Combine) */
 .marketing-workspace { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; margin-top: 20px; }
 .workspace-editor { background: var(--card); padding: 20px; border-radius: 12px; border: 1px solid var(--border); display:flex; flex-direction:column;}
 .workspace-editor h3 { font-size: 18px; color: var(--accent); margin-bottom: 15px; font-family: 'Playfair Display', serif;}
@@ -396,7 +385,23 @@ body.dark-mode .workspace-trends h3 { color: #7ececa; }
 .trend-up { color: #2D5F5D; font-weight: bold; background: rgba(45,95,93,0.15); padding: 3px 8px; border-radius: 12px; font-size: 11px;}
 body.dark-mode .trend-up { color: #7ececa; background: rgba(126,206,202,0.15);}
 
+@media(max-width:900px){
+  .why-inner{grid-template-columns:1fr;}
+  .why-icon-big{max-width:100%;height:220px;font-size:80px;}
+}
 @media(max-width:768px){
+  .auth-card{grid-template-columns:1fr;}
+  .auth-left{padding:32px 24px;}
+  .auth-right{padding:28px 20px;max-height:none;}
+  .form-row,.efr{grid-template-columns:1fr;}
+  .hero-land h1{font-size:36px;}
+  .stats-inner{grid-template-columns:1fr 1fr;}
+  .home-search{display:none;}
+  .dept-grid,.features-grid{grid-template-columns:1fr;}
+  .inner-wrap{padding:0 14px;}
+  .cp-actions,.edit-actions{flex-direction:column;}
+  .hub-btns{display:none;}
+  .logo-text{display:none;}
   .sim-body { grid-template-columns: 1fr; }
   .sim-feed { border-right: none; border-bottom: 1px solid var(--border); height: 180px; }
   .marketing-workspace { grid-template-columns: 1fr; }
@@ -579,10 +584,6 @@ body.dark-mode .trend-up { color: #7ececa; background: rgba(126,206,202,0.15);}
 </div>
 
 <div class="page" id="page-home">
-  <div class="top-bar">
-    <span data-i18n="topBar">Giờ làm việc: 8:00 – 22:00 | Liên hệ: </span>
-    <a href="tel:0356348552">0356348552</a>
-  </div>
   <header class="home-big-header">
     <div class="home-hc">
       <div class="home-logo" onclick="showPage('page-home')">
@@ -731,7 +732,7 @@ body.dark-mode .trend-up { color: #7ececa; background: rgba(126,206,202,0.15);}
     </div>
   </div>
   <footer id="footer-contact">
-    <div class="footer-inner">
+    <div class="footer-inner" style="grid-template-columns: repeat(3, 1fr);">
       <div class="footer-sec">
         <h3>Career Experience</h3>
         <p data-i18n="footerAbout">Nền tảng phát triển kỹ năng PR & Marketing chuyên nghiệp dành cho sinh viên và người đi làm.</p>
@@ -748,13 +749,7 @@ body.dark-mode .trend-up { color: #7ececa; background: rgba(126,206,202,0.15);}
         <p>📞 0356348552</p>
         <p>✉️ <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="98f6ecf9f6e8f0edfbaaa1a8a1d8fff5f9f1f4b6fbf7f5">[email&#160;protected]</a></p>
       </div>
-      <div class="footer-sec">
-        <h3 data-i18n="footerHours">Giờ làm việc</h3>
-        <p data-i18n="fh1">T2–T6: 8:00 – 22:00</p>
-        <p data-i18n="fh2">T7: 8:00 – 20:00</p>
-        <p data-i18n="fh3">CN: 9:00 – 18:00</p>
       </div>
-    </div>
     <div class="footer-bottom">© 2026 Career Experience (CEP). All rights reserved.</div>
   </footer>
 </div>
@@ -764,6 +759,8 @@ body.dark-mode .trend-up { color: #7ececa; background: rgba(126,206,202,0.15);}
     <div class="hc">
       <div class="logo" onclick="showPage('page-home')"><div class="logo-sm">CEP</div><span class="logo-text">Career Experience</span></div>
       <nav class="header-nav">
+        <a onclick="goBack()" style="font-weight: bold; padding-right: 15px; color: var(--text2);" data-i18n="navBack">⬅ Quay lại</a>
+        
         <a onclick="showPage('page-home')" data-i18n="navHome">🏠 Trang chủ</a>
         <a class="nav-active" data-i18n="navProfile">👤 Hồ sơ</a>
         <a onclick="showPage('page-settings')" data-i18n="navSettings">⚙️ Cài đặt</a>
@@ -854,6 +851,7 @@ body.dark-mode .trend-up { color: #7ececa; background: rgba(126,206,202,0.15);}
     <div class="hc">
       <div class="logo" onclick="showPage('page-home')"><div class="logo-sm">CEP</div><span class="logo-text">Career Experience</span></div>
       <nav class="header-nav">
+        <a onclick="goBack()" style="font-weight: bold; padding-right: 15px; color: var(--text2);" data-i18n="navBack">⬅ Quay lại</a>
         <a onclick="showPage('page-home')" data-i18n="navHome">🏠 Trang chủ</a>
         <a onclick="showPage('page-profile')" data-i18n="navProfile">👤 Hồ sơ</a>
         <a class="nav-active" data-i18n="navSettings">⚙️ Cài đặt</a>
@@ -875,14 +873,18 @@ body.dark-mode .trend-up { color: #7ececa; background: rgba(126,206,202,0.15);}
       <h3 data-i18n="sLangH">🌐 Ngôn ngữ</h3>
       <div class="setting-row" style="flex-direction:column;align-items:flex-start;gap:12px;">
         <div class="setting-info"><h4 data-i18n="sLangTitle">Ngôn ngữ hiển thị</h4><p data-i18n="sLangDesc">Áp dụng toàn bộ giao diện ứng dụng</p></div>
+        
         <div class="lang-grid">
-          <div class="lang-opt" data-lang="vi" id="lang-vi" onclick="setLang('vi')"><div class="lang-flag">🇻🇳</div><div class="lang-name">Tiếng Việt</div></div>
-          <div class="lang-opt" data-lang="en" id="lang-en" onclick="setLang('en')"><div class="lang-flag">🇬🇧</div><div class="lang-name">English</div></div>
-          <div class="lang-opt" data-lang="zh" id="lang-zh" onclick="setLang('zh')"><div class="lang-flag">🇨🇳</div><div class="lang-name">中文</div></div>
-          <div class="lang-opt" data-lang="ja" id="lang-ja" onclick="setLang('ja')"><div class="lang-flag">🇯🇵</div><div class="lang-name">日本語</div></div>
-          <div class="lang-opt" data-lang="ko" id="lang-ko" onclick="setLang('ko')"><div class="lang-flag">🇰🇷</div><div class="lang-name">한국어</div></div>
-          <div class="lang-opt" data-lang="fr" id="lang-fr" onclick="setLang('fr')"><div class="lang-flag">🇫🇷</div><div class="lang-name">Français</div></div>
+          <div class="lang-opt" data-lang="vi" id="lang-vi" onclick="setLang('vi')">
+            <div class="lang-flag">VN</div>
+            <div class="lang-name">Tiếng Việt</div>
+          </div>
+          <div class="lang-opt" data-lang="en" id="lang-en" onclick="setLang('en')">
+            <div class="lang-flag">GB</div>
+            <div class="lang-name">English</div>
+          </div>
         </div>
+
       </div>
     </div>
     <div class="settings-card">
@@ -926,6 +928,7 @@ body.dark-mode .trend-up { color: #7ececa; background: rgba(126,206,202,0.15);}
     <div class="hc">
       <div class="logo" onclick="showPage('page-home')"><div class="logo-sm">CEP</div><span class="logo-text">Career Experience</span></div>
       <nav class="header-nav">
+        <a onclick="goBack()" style="font-weight: bold; padding-right: 15px; color: var(--text2);" data-i18n="navBack">⬅ Quay lại</a>
         <a onclick="showPage('page-home')" data-i18n="navHome">🏠 Trang chủ</a>
         <a onclick="showPage('page-profile')" data-i18n="navProfile">👤 Hồ sơ</a>
         <a onclick="showPage('page-settings')" data-i18n="navSettings">⚙️ Cài đặt</a>
@@ -962,7 +965,7 @@ body.dark-mode .trend-up { color: #7ececa; background: rgba(126,206,202,0.15);}
         <div class="ok-msg" id="cpConOk" data-i18n="cpConOk">✓ Mật khẩu khớp</div>
       </div>
       <div class="cp-actions">
-        <button class="btn-cp btn-cp-s" onclick="showPage('page-settings')" style="border:2px solid var(--primary);" data-i18n="cancelBtn">Hủy</button>
+        <button class="btn-cp btn-cp-s" onclick="goBack()" style="border:2px solid var(--primary);" data-i18n="cancelBtn">Hủy</button>
         <button class="btn-cp btn-cp-p" onclick="doChangePw()" data-i18n="cpSaveBtn">✅ Cập nhật</button>
       </div>
     </div>
@@ -974,6 +977,7 @@ body.dark-mode .trend-up { color: #7ececa; background: rgba(126,206,202,0.15);}
     <div class="hc">
       <div class="logo" onclick="showPage('page-home')"><div class="logo-sm">CEP</div><span class="logo-text">Career Experience</span></div>
       <nav class="header-nav">
+        <a onclick="goBack()" style="font-weight: bold; padding-right: 15px; color: var(--text2);" data-i18n="navBack">⬅ Quay lại</a>
         <a onclick="showPage('page-home')" data-i18n="navHome">🏠 Trang chủ</a>
         <a class="nav-active">📚 Khóa học PR</a>
         <button class="nav-btn nav-logout" onclick="doLogout()" data-i18n="navLogout">🚪 Đăng xuất</button>
@@ -1042,13 +1046,15 @@ body.dark-mode .trend-up { color: #7ececa; background: rgba(126,206,202,0.15);}
     <div class="hc">
       <div class="logo" onclick="showPage('page-home')"><div class="logo-sm">CEP</div><span class="logo-text">Career Experience</span></div>
       <nav class="header-nav">
+        <a onclick="goBack()" style="font-weight: bold; padding-right: 15px; color: var(--text2);" data-i18n="navBack">⬅ Quay lại</a>
         <a onclick="showPage('page-home')" data-i18n="navHome">🏠 Trang chủ</a>
         <a class="nav-active">📚 Khóa học Marketing</a>
         <button class="nav-btn nav-logout" onclick="doLogout()" data-i18n="navLogout">🚪 Đăng xuất</button>
       </nav>
     </div>
   </header>
-  <div class="inner-wrap" style="max-width:1100px;"> <div class="page-header">
+  <div class="inner-wrap" style="max-width:1100px;">
+    <div class="page-header">
       <h1>Khóa học Marketing (Workspace)</h1>
       <p>Thực hành Digital Marketing kết hợp theo dõi xu hướng thực tế.</p>
     </div>
@@ -1102,11 +1108,11 @@ const db = firebase.firestore();
 let currentUserData = null;
 
 /* ═══════════════════════════════
-   TRANSLATIONS & I18N
+   TRANSLATIONS & I18N (Rút gọn)
 ═══════════════════════════════ */
 var I18N = {
   vi: {
-    navHome:'🏠 Trang chủ',navProfile:'👤 Hồ sơ',navSettings:'⚙️ Cài đặt',navChangePwd:'🔑 Đổi mật khẩu',navLogout:'🚪 Đăng xuất',navLogin:'Đăng nhập',navRegister:'Đăng ký',
+    navBack:'⬅ Quay lại', navHome:'🏠 Trang chủ',navProfile:'👤 Hồ sơ',navSettings:'⚙️ Cài đặt',navChangePwd:'🔑 Đổi mật khẩu',navLogout:'🚪 Đăng xuất',navLogin:'Đăng nhập',navRegister:'Đăng ký',
     loginWelcome:'Chào mừng trở lại!',loginSubLeft:'Khám phá cơ hội học tập về PR & Marketing',loginH2:'Đăng nhập',loginSub:'Đăng nhập để tiếp tục hành trình học tập',
     emailLbl:'Email',pwLbl:'Mật khẩu',rememberMe:'Ghi nhớ đăng nhập',forgotLink:'Quên mật khẩu?',loginBtn:'Đăng nhập',orWith:'Hoặc đăng nhập với',
     noAccountRow:'Chưa có tài khoản? <a onclick="showPage(\'page-register\')" style="cursor:pointer;">Đăng ký ngay</a>',
@@ -1118,7 +1124,7 @@ var I18N = {
     hasAccountRow:'Đã có tài khoản? <a onclick="showPage(\'page-login\')" style="cursor:pointer;">Đăng nhập ngay</a>',
     fpTitle:'Quên mật khẩu?',fpSub:'Đừng lo! Chúng tôi sẽ giúp bạn khôi phục tài khoản',fp1h:'Nhập email',fp1p:'Email đã đăng ký',fp2h:'Nhận mật khẩu mới',fp2p:'Kiểm tra hộp thư email',fp3h:'Đăng nhập lại',fp3p:'Dùng mật khẩu mới',
     fpH2:'Khôi phục mật khẩu',fpSubRight:'Nhập email để nhận link đặt lại mật khẩu',fpNote:'Link khôi phục mật khẩu sẽ được gửi vào email của bạn.',fpBtn:'Khôi phục mật khẩu',fpBackLink:'← Quay lại đăng nhập',
-    topBar:'Giờ làm việc: 8:00 – 22:00 | Liên hệ: ',smMain:'Điều hướng chính',smDepts:'Ngành học',smAbout:'Về CEP',smAccount:'Tài khoản',smRegCta:'🚀 Đăng ký ngay hôm nay',smContact:'📩 Liên hệ tư vấn',
+    smMain:'Điều hướng chính',smDepts:'Ngành học',smAbout:'Về CEP',smAccount:'Tài khoản',smRegCta:'🚀 Đăng ký ngay hôm nay',smContact:'📩 Liên hệ tư vấn',
     heroH1:'Khởi đầu sự nghiệp<br>của bạn ngay hôm nay',heroP:'Khám phá và phát triển kỹ năng PR & Marketing chuyên nghiệp cùng Career Experience',heroExplore:'🚀 Khám phá ngay',heroLearn:'📖 Tìm hiểu thêm',
     statDepts:'Ngành học',statStudents:'Học viên',statTasks:'Bài tập thực chiến',statSat:'Hài lòng',featTitle:'Tại sao chọn CEP?',featSub:'Nền tảng học tập thực chiến dành riêng cho PR & Marketing',
     f1h:'Bài tập thực chiến',f1p:'Tự tạo và thực hành bài tập sát thực tế ngành PR & Marketing',f2h:'Cộng đồng kết nối',f2p:'Kết nối với các chuyên gia và học viên trong ngành',f3h:'Theo dõi tiến độ',f3p:'Hệ thống theo dõi và đánh giá tiến độ học tập của bạn',f4h:'Chứng nhận hoàn thành',f4p:'Nhận chứng nhận sau khi hoàn thành các bài tập ngành',
@@ -1128,7 +1134,7 @@ var I18N = {
     why1:'Bài tập được thiết kế bởi các chuyên gia thực chiến trong ngành PR & Marketing.',why2:'Chất lượng luôn được đặt lên hàng đầu để người học tiếp nhận kiến thức hiệu quả nhất.',why3:'Cộng đồng học viên năng động, hỗ trợ nhau trong suốt quá trình học tập.',
     reviewTitle:'Review về CEP',reviewSub:'Học viên nói gì về chúng tôi',reviewBadge:'Tuyệt vời!',
     r1:'CEP có nội dung rất thực tế, giúp mình áp dụng ngay vào công việc PR. Giao diện thân thiện, dễ dùng.',r1role:'Học viên PR',r2:'Mảng Marketing ở CEP rất bài bản. Bài tập sát thực tế.',r2role:'Học viên Marketing',r3:'Cộng đồng học viên CEP rất nhiệt tình. Mình học được rất nhiều.',r3role:'Học viên PR & Marketing',
-    footerAbout:'Nền tảng phát triển kỹ năng PR & Marketing dành cho sinh viên và người đi làm.',footerLinks:'Liên kết nhanh',footerContact:'Liên hệ',footerAddr:'Trường ĐH Văn Lang, TP. HCM',footerHours:'Giờ làm việc',fh1:'T2–T6: 8:00 – 22:00',fh2:'T7: 8:00 – 20:00',fh3:'CN: 9:00 – 18:00',
+    footerAbout:'Nền tảng phát triển kỹ năng PR & Marketing dành cho sinh viên và người đi làm.',footerLinks:'Liên kết nhanh',footerContact:'Liên hệ',footerAddr:'Trường ĐH Văn Lang, TP. HCM',
     continueLearning:'▶ Tiếp tục học',editBtn:'✏️ Chỉnh sửa',editTitle:'Chỉnh sửa hồ sơ',avatarLbl:'Ảnh đại diện',choosePhoto:'Chọn ảnh',occLbl:'Nghề nghiệp',locLbl:'Địa điểm',webLbl:'Website / LinkedIn',bioLbl:'Giới thiệu',saveBtn:'💾 Lưu thay đổi',cancelBtn:'Hủy',
     dobLbl:'Ngày sinh',genderLbl:'Giới tính',fbLbl:'Link Facebook',eduLbl:'Học vấn',expLbl:'Kinh nghiệm',skillsLbl:'Kỹ năng',male:'Nam',female:'Nữ',otherGender:'Khác',
     statsTitle:'📊 Thống kê học tập',statActive:'Bài tập đang làm',statCerts:'Chứng nhận',statHours:'Giờ học',noIntro:'Chưa có giới thiệu. Hãy thêm vài dòng về bản thân!',roleLblMap:{student:'Học sinh / Sinh viên',professional:'Người đi làm',teacher:'Giáo viên',other:'Khác'},joinedDate:'Tham gia',welcomeBack:'Chào mừng trở lại,',
@@ -1140,11 +1146,47 @@ var I18N = {
     cpCurLbl:'Mật khẩu hiện tại *',cpCurErr:'Mật khẩu hiện tại không đúng',cpNewLbl:'Mật khẩu mới *',cpNewErr:'Mật khẩu phải có ít nhất 8 ký tự',cpConLbl:'Xác nhận mật khẩu mới *',cpConErr:'Mật khẩu không khớp',cpConOk:'✓ Mật khẩu khớp',cpSaveBtn:'✅ Cập nhật',
     strengthWeak:'⚠️ Yếu',strengthMed:'👍 Trung bình',strengthStrong:'💪 Mạnh',confirmLogout:'Bạn có chắc muốn đăng xuất?',
     errFill:'❌ Vui lòng điền đầy đủ thông tin!',errPwdShort:'❌ Mật khẩu phải ít nhất 8 ký tự!',errPwdMatch:'❌ Mật khẩu xác nhận không khớp!',errTerms:'❌ Vui lòng đồng ý điều khoản!',errFpFill:'❌ Vui lòng nhập email!',errNameEmpty:'❌ Họ và tên không được trống!',loginRequired:'⚠️ Vui lòng đăng nhập!'
+  },
+  en: {
+    navBack:'⬅ Back', navHome:'🏠 Home',navProfile:'👤 Profile',navSettings:'⚙️ Settings',navChangePwd:'🔑 Change Password',navLogout:'🚪 Logout',navLogin:'Login',navRegister:'Register',
+    loginWelcome:'Welcome Back!',loginSubLeft:'Explore PR & Marketing learning opportunities',loginH2:'Login',loginSub:'Sign in to continue your journey',
+    emailLbl:'Email',pwLbl:'Password',rememberMe:'Remember me',forgotLink:'Forgot password?',loginBtn:'Login',orWith:'Or login with',
+    noAccountRow:'No account? <a onclick="showPage(\'page-register\')" style="cursor:pointer;">Sign up</a>',
+    regWelcome:'Join Us!',regSubLeft:'Start your professional PR & Marketing journey',regH2:'Create Account',regSub:'Create a free account to get started',
+    b1:'PR Practical Tasks',b2:'Marketing Practical Tasks',b3:'24/7 Support',b4:'Student Community',
+    fullnameLbl:'Full Name *',phoneLbl:'Phone Number',confirmPwLbl:'Confirm Password *',roleLbl:'You are',
+    roleDefault:'Select role',roleStudent:'Student',rolePro:'Professional',roleTeacher:'Teacher',roleOther:'Other',
+    termsLabel:'I agree to the <a href="#">Terms</a> and <a href="#">Privacy Policy</a>',regBtn:'Register',
+    hasAccountRow:'Already have an account? <a onclick="showPage(\'page-login\')" style="cursor:pointer;">Login now</a>',
+    fpTitle:'Forgot Password?',fpSub:"Don't worry! We'll help you recover your account",fp1h:'Enter email',fp1p:'Registered email',fp2h:'Get new password',fp2p:'Check your inbox',fp3h:'Login again',fp3p:'Use the new password',
+    fpH2:'Password Recovery',fpSubRight:'Enter your email to get a new password',fpNote:'The reset link will be sent to your email.',fpBtn:'Recover Password',fpBackLink:'← Back to Login',
+    smMain:'Main Navigation',smDepts:'Departments',smAbout:'About CEP',smAccount:'Account',smRegCta:'🚀 Register Today',smContact:'📩 Contact Us',
+    heroH1:'Start Your Career<br>Journey Today',heroP:'Explore and develop professional PR & Marketing skills with Career Experience',heroExplore:'🚀 Explore Now',heroLearn:'📖 Learn More',
+    statDepts:'Departments',statStudents:'Students',statTasks:'Practical Tasks',statSat:'Satisfied',featTitle:'Why Choose CEP?',featSub:'The practical learning platform designed for PR & Marketing',
+    f1h:'Practical Tasks',f1p:'Create and practice tasks aligned with real PR & Marketing industry needs',f2h:'Community',f2p:'Connect with professionals and fellow students',f3h:'Track Progress',f3p:'System to monitor and evaluate your learning progress',f4h:'Completion Certificate',f4p:'Earn a certificate upon completing departmental tasks',
+    deptTitle:'Departments',deptSub:'Choose your field — task content will be added soon',prBadge:'PR',prTitle:'Public Relations',prDesc:'Develop public relations, brand building and media management skills.',
+    mktBadge:'Marketing',mktTitle:'Marketing',mktDesc:'Practice Digital Marketing, Content Strategy and Brand Management.',deptBtnSoon:'🔜 Coming Soon',
+    whyTitle:'Why Choose Career Experience?',whyDesc:"CEP isn't just where you learn — it's a platform where you connect with your passion and build your dream career.",
+    why1:'Tasks designed by real-world professionals in PR & Marketing.',why2:'Quality is always our top priority.',why3:'Dynamic student community, supporting each other.',
+    reviewTitle:'Reviews About CEP',reviewSub:'What students say about us',reviewBadge:'Excellent!',
+    r1:'CEP has very practical content. Friendly and easy-to-use interface.',r1role:'PR Student',r2:"CEP's Marketing section is very structured. Tasks are realistic.",r2role:'Marketing Student',r3:"CEP's student community is very enthusiastic. I've learned a lot.",r3role:'PR & Marketing Student',
+    footerAbout:'Professional PR & Marketing skills development platform.',footerLinks:'Quick Links',footerContact:'Contact',footerAddr:'Van Lang University, HCMC',
+    continueLearning:'▶ Continue Learning',editBtn:'✏️ Edit',editTitle:'Edit Profile',avatarLbl:'Profile Photo',choosePhoto:'Choose Photo',occLbl:'Occupation',locLbl:'Location',webLbl:'Website / LinkedIn',bioLbl:'About Me',saveBtn:'💾 Save',cancelBtn:'Cancel',
+    dobLbl:'Date of Birth',genderLbl:'Gender',fbLbl:'Facebook Link',eduLbl:'Education',expLbl:'Experience',skillsLbl:'Skills',male:'Male',female:'Female',otherGender:'Other',
+    statsTitle:'📊 Learning Stats',statActive:'Active Tasks',statCerts:'Certificates',statHours:'Study Hours',noIntro:'No introduction yet. Add a few lines about yourself!',roleLblMap:{student:'Student',professional:'Professional',teacher:'Teacher',other:'Other'},joinedDate:'Joined',welcomeBack:'Welcome back,',
+    settingsH1:'⚙️ Settings',settingsSub:'Customize your experience',sApp:'🎨 Appearance',sDarkH:'Dark Mode',sDarkP:'Enable to protect your eyes at night',sLangH:'🌐 Language',sLangTitle:'Display Language',sLangDesc:'Applies to the entire app interface',
+    sNotif:'🔔 Notifications',sSysN:'System Notifications',sSysNd:'Get updates about tasks',sEmailN:'Email Notifications',sEmailNd:'Get emails about your progress',
+    sSec:'🔐 Security',sCpH:'Change Password',sCpP:'Update password periodically',sCpBtn:'Change Password',s2fH:'2-Factor Auth',s2fP:'Enhance security',s2fBtn:'Setup',
+    sAccH:'⚠️ Account',sExH:'Export Data',sExP:'Download all your data',sExBtn:'📥 Export',sLoH:'Logout',sLoP:'Logout from this device',sLoBtn:'🚪 Logout',
+    cpH1:'🔑 Change Password',cpSub:'Protect your account with a strong password',cpTipsTitle:'🔐 A strong password should have:',cpT1:'At least 8 characters',cpT2:'Uppercase and lowercase letters',cpT3:'Numbers and special characters',cpT4:'No personal info',
+    cpCurLbl:'Current Password *',cpCurErr:'Current password is incorrect',cpNewLbl:'New Password *',cpNewErr:'Password must be at least 8 characters',cpConLbl:'Confirm New Password *',cpConErr:'Passwords do not match',cpConOk:'✓ Passwords match',cpSaveBtn:'✅ Update',
+    strengthWeak:'⚠️ Weak',strengthMed:'👍 Medium',strengthStrong:'💪 Strong',confirmLogout:'Are you sure you want to logout?',
+    errFill:'❌ Please fill all fields!',errPwdShort:'❌ Password must be at least 8 characters!',errPwdMatch:'❌ Passwords do not match!',errTerms:'❌ You must agree to the terms!',errFpFill:'❌ Please enter email!',errNameEmpty:'❌ Name cannot be empty!',loginRequired:'⚠️ Please login first!'
   }
 };
 
 /* ═══════════════════════════════
-   CORE LOGIC & STATE
+   CORE LOGIC & HISTORY API
 ═══════════════════════════════ */
 var currentLang = 'vi';
 
@@ -1159,10 +1201,16 @@ function toast(msgKey, type) {
   setTimeout(() => tst.classList.remove('show'), 3000);
 }
 
-function showPage(pageId) {
+// Hàm showPage có đẩy trạng thái vào lịch sử trình duyệt để nút Back hoạt động
+function showPage(pageId, pushToHistory = true) {
   document.querySelectorAll('.page').forEach(function(p) { p.classList.remove('active'); });
   document.getElementById(pageId).classList.add('active');
   window.scrollTo({ top: 0, behavior: 'smooth' });
+  
+  if (pushToHistory) {
+    const newUrl = window.location.pathname + "?page=" + pageId;
+    window.history.pushState({ page: pageId }, "", newUrl);
+  }
   
   if (pageId === 'page-profile') {
     if(!auth.currentUser) {
@@ -1173,6 +1221,32 @@ function showPage(pageId) {
     renderProfile();
   }
 }
+
+// Hàm quay lại (Kích hoạt khi bấm nút ⬅ Quay lại trên thanh Nav)
+function goBack() {
+  if (window.history.length > 1) {
+    window.history.back(); // Tương đương bấm nút Back của trình duyệt
+  } else {
+    showPage('page-home'); // Fallback nếu không có lịch sử
+  }
+}
+
+// Lắng nghe sự kiện khi người dùng bấm nút Back (←) trên trình duyệt
+window.addEventListener('popstate', function(event) {
+  if (event.state && event.state.page) {
+    showPage(event.state.page, false);
+  } else {
+    const urlParams = new URLSearchParams(window.location.search);
+    const page = urlParams.get('page');
+    if (page) {
+      showPage(page, false);
+    } else if (auth.currentUser) {
+      showPage('page-home', false);
+    } else {
+      showPage('page-login', false);
+    }
+  }
+});
 
 function scrollToId(id) {
   var el = document.getElementById(id);
@@ -1485,7 +1559,7 @@ function setLang(lang) {
 }
 
 /* ═══════════════════════════════
-   SIMULATION LOGIC (NEW)
+   SIMULATION LOGIC
 ═══════════════════════════════ */
 let crisisTimerId = null;
 let crisisTimeLeft = 60;
@@ -1537,6 +1611,13 @@ document.addEventListener('DOMContentLoaded', function() {
   const savedLang = localStorage.getItem('cep_lang') || 'vi'; setLang(savedLang);
 
   const urlParams = new URLSearchParams(window.location.search);
+  
+  // Khởi tạo trang nếu có trong urlParams (để nút Back hoạt động mượt)
+  const pageParam = urlParams.get('page');
+  if (pageParam) {
+     showPage(pageParam, false);
+  }
+
   if (urlParams.get('mode') === 'resetPassword' && urlParams.get('oobCode')) {
     window.resetActionCode = urlParams.get('oobCode'); showPage('page-reset-password');
   }
