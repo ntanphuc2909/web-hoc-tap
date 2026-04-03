@@ -42,7 +42,6 @@ body.dark-mode .auth-card{box-shadow:0 20px 60px rgba(0,0,0,.6);}
 body.dark-mode .auth-header h2{color:#7ececa;}
 .auth-header p{color:var(--text2);font-size:13px;}
 
-/* Nút Google */
 .btn-google { width: 100%; padding: 14px; background: #fff; border: 2px solid var(--border); border-radius: 12px; font-size: 15px; font-weight: 700; color: #333; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: all .2s; margin-bottom: 20px; font-family: 'DM Sans', sans-serif;}
 .btn-google:hover { border-color: #4285F4; background: #f8faff; box-shadow: 0 4px 15px rgba(66, 133, 244, 0.15);}
 .btn-google img { width: 20px; height: 20px; object-fit: contain; }
@@ -62,9 +61,14 @@ body.dark-mode .auth-header h2{color:#7ececa;}
 .divider span{background:var(--card);padding:0 12px;position:relative;color:var(--text2);font-size:12px; font-weight:600;}
 .pw-wrap{position:relative;}
 .tpw{position:absolute;right:12px;top:50%;transform:translateY(-50%);cursor:pointer;font-size:17px;user-select:none;}
+.link-row{text-align:center;font-size:13px;color:var(--text2);margin-top:8px;}
+.link-row a{color:var(--primary);font-weight:700;cursor:pointer;}
+body.dark-mode .link-row a{color:#7ececa;}
+.benefits{margin-top:22px;width:100%;}
+.benefit-item{display:flex;align-items:center;gap:10px;margin-bottom:10px;font-size:14px;text-align:left;}
 
 /* ════════════════════════════════════════
-   INNER HEADER
+   INNER HEADER & HOME NAV
 ════════════════════════════════════════ */
 .inner-header{background:var(--header-bg);box-shadow:var(--header-shadow);position:sticky;top:0;z-index:1000;transition:background .3s,box-shadow .3s;}
 .hc{max-width:1200px;margin:0 auto;padding:0 28px;height:64px;display:flex;align-items:center;justify-content:space-between;}
@@ -81,9 +85,6 @@ body.dark-mode .header-nav .nav-active{background:rgba(126,206,202,.12);color:#7
 .nav-btn{padding:7px 14px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;border:none;transition:all .2s;}
 .nav-logout{background:rgba(231,111,81,.1);color:#E76F51;}
 
-/* ════════════════════════════════════════
-   HOME / LANDING (KHÔI PHỤC LẠI HERO CŨ)
-════════════════════════════════════════ */
 .home-big-header{background:#111827;box-shadow:0 2px 20px rgba(0,0,0,.3);position:sticky;top:0;z-index:1000;}
 body.dark-mode .home-big-header{background:#0d1020;}
 .home-hc{max-width:1400px;margin:0 auto;padding:0 28px;height:64px;display:flex;align-items:center;gap:0;}
@@ -91,19 +92,20 @@ body.dark-mode .home-big-header{background:#0d1020;}
 .home-logo-circle{width:44px;height:44px;background:var(--gradient);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:900;font-size:16px;color:#fff;}
 .home-logo-text{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:#fff;line-height:1.3;}
 .home-right{display:flex;align-items:center;gap:0;margin-left:auto;flex-shrink:0;}
-.home-auth{display:flex;align-items:center;gap:8px;padding:0 12px;}
 .btn-hlogin{padding:8px 18px;background:transparent;color:rgba(255,255,255,.85);border:1.5px solid rgba(255,255,255,.2);border-radius:8px;font-weight:600;font-size:13px;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;}
 .btn-hlogin:hover{border-color:#4DD9AC;color:#4DD9AC;}
 
-/* CSS ĐÃ ĐƯỢC KHÔI PHỤC CHO HERO SECTION */
+/* ════════════════════════════════════════
+   HOME SECTIONS (RESTORED ABOUT, REVIEWS, FOOTER)
+════════════════════════════════════════ */
 .hero-land{background:var(--gradient);position:relative;overflow:hidden;padding:100px 40px 80px; z-index: 1;}
 .hero-land::before{content:'';position:absolute;top:-50%;right:-5%;width:500px;height:500px;background:radial-gradient(circle,rgba(244,162,97,.15) 0%,transparent 70%);border-radius:50%;animation:floatAnim 18s ease-in-out infinite;}
 @keyframes floatAnim{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(-20px,25px) scale(1.08);}}
-.hero-content{max-width:1200px;margin:0 auto;position:relative;z-index:1;}
+.hero-content{max-width:1200px;margin:0 auto;position:relative;z-index:1;text-align:center;}
 .hero-land h1{font-family:'Playfair Display',serif;font-size:52px;color:#fff;margin-bottom:18px;line-height:1.2; animation:fadeUp .8s ease .2s both;}
-.hero-land p{font-size:18px;color:rgba(255,255,255,.9);max-width:600px;margin-bottom:28px;line-height:1.7; animation:fadeUp .8s ease .4s both;}
+.hero-land p{font-size:18px;color:rgba(255,255,255,.9);max-width:600px;margin:0 auto 28px;line-height:1.7; animation:fadeUp .8s ease .4s both;}
 @keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
-.hero-btns{display:flex;gap:14px;flex-wrap:wrap;animation:fadeUp .8s ease .6s both;}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap; justify-content:center; animation:fadeUp .8s ease .6s both;}
 .btn-cta{padding:15px 36px;background:var(--secondary);color:#1A1A2E;border:none;border-radius:50px;font-weight:800;font-size:16px;cursor:pointer;box-shadow:0 8px 24px rgba(244,162,97,.4);font-family:'DM Sans',sans-serif; transition:all .3s;}
 .btn-cta:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(244,162,97,.5);}
 .btn-cta-out{padding:14px 32px;background:transparent;color:#fff;border:2px solid rgba(255,255,255,.6);border-radius:50px;font-size:15px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .25s;}
@@ -112,7 +114,6 @@ body.dark-mode .home-big-header{background:#0d1020;}
 #newPhoneBg { position: absolute; top: 0; right: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; overflow: hidden;}
 #newPhoneBg img { position: absolute; top: 0; right: 0; width: 450px; height: auto; transform: translate(15%, -15%) rotate(5deg); opacity: 0.15;}
 
-/* THỐNG KÊ */
 .stats-strip{background:var(--card);padding:40px 32px;}
 .stats-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
 .stat-box{text-align:center;padding:24px;background:var(--bg);border-radius:12px;border:1px solid var(--border);}
@@ -120,11 +121,21 @@ body.dark-mode .home-big-header{background:#0d1020;}
 body.dark-mode .stat-num{color:#7ececa;}
 .stat-lbl{font-size:13px;color:var(--text2);}
 
-/* Sàn Thử Thách */
 .section{max-width:1200px;margin:0 auto;padding:64px 32px;}
 .sec-title{font-family:'Playfair Display',serif;font-size:36px;color:var(--text);margin-bottom:12px;text-align:center;}
 .sec-sub{color:var(--text2);font-size:16px;text-align:center;margin-bottom:48px;}
 
+/* Tại sao chọn CEP (Features) */
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:28px;}
+.feat-card{background:var(--card);border-radius:16px;padding:32px 24px;text-align:center;box-shadow:0 4px 18px rgba(0,0,0,.06);transition:all .3s;}
+body.dark-mode .feat-card{box-shadow:0 4px 18px rgba(0,0,0,.3);}
+.feat-card:hover{transform:translateY(-8px);box-shadow:0 12px 36px rgba(0,0,0,.12);}
+.feat-icon{width:72px;height:72px;margin:0 auto 20px;background:var(--gradient);border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:32px;}
+.feat-card h3{font-family:'Playfair Display',serif;color:var(--primary);font-size:20px;margin-bottom:10px;}
+body.dark-mode .feat-card h3{color:#7ececa;}
+.feat-card p{color:var(--text2);font-size:14px;line-height:1.7;}
+
+/* Sàn Thử Thách (Briefs) */
 .brief-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:28px;}
 .brief-card{background:var(--card);border-radius:18px;overflow:hidden;box-shadow:0 6px 24px rgba(0,0,0,.08);transition:all .3s;cursor:pointer; border: 1px solid var(--border);}
 body.dark-mode .brief-card{box-shadow:0 6px 24px rgba(0,0,0,.35);}
@@ -142,6 +153,40 @@ body.dark-mode .badge-creative{background:rgba(126,206,202,.15);color:#7ececa;}
 .brief-btn{padding:10px 22px;background:var(--text);color:var(--card);border:none;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif; width: 100%;}
 .brief-card:hover .brief-btn{background:var(--gradient); color:#fff;}
 
+/* Về CEP (Why-BG) */
+.why-bg{background:linear-gradient(135deg,#2D5F5D 0%,#1A4645 100%);color:#fff;padding:80px 32px;}
+.why-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+.why-icon-big{width:100%;max-width:400px;height:380px;background:rgba(255,255,255,.1);border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:120px;backdrop-filter:blur(4px); overflow:hidden;}
+.why-icon-big img{width:100%;height:100%;object-fit:cover;border-radius:20px;}
+.why-text h2{font-family:'Playfair Display',serif;font-size:40px;margin-bottom:20px;}
+.why-text p{font-size:16px;line-height:1.8;opacity:.9;margin-bottom:18px;}
+.why-point{display:flex;align-items:flex-start;gap:12px;margin-bottom:14px;}
+.why-dot{width:22px;height:22px;background:var(--secondary);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;color:#fff;flex-shrink:0;margin-top:2px;}
+
+/* Đánh giá (Reviews) */
+.reviews-bg{background:var(--card);padding:64px 32px;}
+body.dark-mode .reviews-bg{background:#0f1117;}
+.reviews-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px;}
+.review-card{background:var(--bg);border-radius:16px;padding:28px;border:1px solid var(--border);transition:all .3s;}
+body.dark-mode .review-card{background:#1a1d2e;}
+.review-card:hover{transform:translateY(-4px);box-shadow:0 10px 30px rgba(0,0,0,.1);}
+.review-stars{color:#FFD700;font-size:18px;margin-bottom:10px;}
+.review-badge{display:inline-block;padding:4px 14px;background:var(--secondary);color:#fff;border-radius:20px;font-size:12px;font-weight:600;margin-bottom:14px;}
+.review-text{font-size:14px;line-height:1.7;color:var(--text);margin-bottom:18px;}
+.reviewer{display:flex;align-items:center;gap:12px;padding-top:14px;border-top:1px solid var(--border);}
+.reviewer-av{width:44px;height:44px;background:var(--gradient);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;font-size:16px;flex-shrink:0;}
+.reviewer h4{font-size:14px;color:var(--text);margin-bottom:2px;}
+.reviewer p{font-size:12px;color:var(--text2);}
+
+/* Footer */
+footer{background:#111827;color:#fff;padding:60px 32px 28px;}
+body.dark-mode footer{background:#080b12;}
+.footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-bottom:40px;}
+.footer-sec h3{font-family:'Playfair Display',serif;font-size:20px;margin-bottom:18px;color:var(--secondary);}
+.footer-sec p,.footer-sec a{color:rgba(255,255,255,.75);font-size:14px;display:block;margin-bottom:10px;text-decoration:none;transition:color .2s;}
+.footer-sec a:hover{color:var(--secondary);}
+.footer-bottom{text-align:center;padding-top:24px;border-top:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.5);font-size:13px;}
+
 /* ════════════════════════════════════════
    MICRO-LEARNING (REELS/TIKTOK UI)
 ════════════════════════════════════════ */
@@ -158,7 +203,7 @@ body.dark-mode .badge-creative{background:rgba(126,206,202,.15);color:#7ececa;}
 .action-text { font-size: 11px; color:#fff; font-weight: bold; margin-top:4px;}
 
 /* ════════════════════════════════════════
-   COURSE UIs & PORTFOLIO
+   COURSE UIs (LAB & WORKSPACE)
 ════════════════════════════════════════ */
 .inner-wrap{max-width:1100px;margin:36px auto;padding:0 24px;}
 .page-header{margin-bottom:28px;}
@@ -166,7 +211,7 @@ body.dark-mode .badge-creative{background:rgba(126,206,202,.15);color:#7ececa;}
 body.dark-mode .page-header h1{color:#7ececa;}
 .page-header p{color:var(--text2);font-size:14px;}
 
-/* Case Study 3D Flip Card */
+/* Flip Card */
 .case-study-container { margin: 20px 0; display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;}
 .flip-card { background-color: transparent; width: 100%; height: 280px; perspective: 1000px; cursor: pointer; }
 .flip-card-inner { position: relative; width: 100%; height: 100%; text-align: left; transition: transform 0.8s; transform-style: preserve-3d; }
@@ -181,7 +226,7 @@ body.dark-mode .flip-card-back h4 { color: #7ececa; }
 .brand-tag { background: rgba(255,255,255,0.2); padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; display:inline-block; margin-bottom:12px;}
 .flip-hint { margin-top: auto; font-size: 13px; opacity: 0.8; font-style:italic;}
 
-/* Crisis Simulation (Phòng Lab) */
+/* Simulation Lab */
 .simulation-lab { background: var(--card); border: 2px solid #E76F51; border-radius: 12px; overflow: hidden; margin-top: 30px; }
 .sim-header { background: #E76F51; color: white; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; }
 .sim-header h3 { font-size: 16px; margin: 0; font-weight:700;}
@@ -210,6 +255,69 @@ body.dark-mode .workspace-editor h3 { color: #7ececa;}
 .trend-up { color: #2D5F5D; font-weight: 800; background: rgba(45,95,93,0.15); padding: 4px 8px; border-radius: 4px; font-size: 11px;}
 body.dark-mode .trend-up { color: #7ececa; background: rgba(126,206,202,0.15);}
 
+/* ════════════════════════════════════════
+   RESTORED: PROFILE PAGE & SETTINGS
+════════════════════════════════════════ */
+.profile-banner{height:150px;background:var(--gradient);border-radius:16px 16px 0 0;position:relative;}
+.profile-avatar{width:96px;height:96px;border-radius:50%;background:var(--gradient);border:4px solid var(--card);position:absolute;bottom:-48px;left:32px;color:#fff;display:flex;align-items:center;justify-content:center;font-size:34px;font-weight:700;overflow:hidden;box-shadow:0 4px 14px rgba(0,0,0,.15);}
+.profile-avatar img{width:100%;height:100%;object-fit:cover;}
+.pcard{background:var(--card);border-radius:0 0 14px 14px;padding:64px 28px 28px;box-shadow:0 2px 12px rgba(0,0,0,.07);margin-bottom:18px;}
+.pcard + .pcard{border-radius:14px;padding-top:24px;}
+.pname{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--text);margin-bottom:6px;}
+.pmeta{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:10px;}
+.pmeta span{font-size:13px;color:var(--text2);}
+.pbio{font-size:14px;color:var(--text);line-height:1.6;opacity:.8;}
+.pdetails{margin-top: 18px; padding-top: 18px; border-top: 1px solid var(--border); display: grid; gap: 12px; font-size: 13.5px; color: var(--text);}
+.pdetails b{color: var(--primary);}
+body.dark-mode .pdetails b{color: #7ececa;}
+.pedit-btn{padding:8px 16px;background:var(--gradient);color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;flex-shrink:0;}
+
+.edit-sec{display:none;margin-top:24px;padding-top:24px;border-top:1.5px solid var(--border);}
+.edit-sec.show{display:block;}
+.efg{margin-bottom:14px;}
+.efg label{display:block;margin-bottom:5px;font-weight:500;font-size:13px;color:var(--text);}
+.efg input,.efg select,.efg textarea{width:100%;padding:10px 13px;border:2px solid var(--border);border-radius:8px;font-size:13px;font-family:'DM Sans',sans-serif;background:var(--card);color:var(--text);transition:all .25s;}
+.efg input:focus,.efg select:focus,.efg textarea:focus{outline:none;border-color:var(--primary);}
+.efg textarea{resize:vertical;min-height:72px;}
+.efr{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:0;}
+.edit-actions{display:flex;gap:10px;margin-top:6px;}
+.btn-save{padding:10px 22px;background:var(--gradient);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;}
+.btn-cancel-ed{padding:10px 18px;background:var(--card);color:var(--primary);border:2px solid var(--primary);border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;}
+.av-upload{display:flex;align-items:center;gap:16px;margin-bottom:18px;}
+.av-preview{width:64px;height:64px;border-radius:50%;background:var(--gradient);color:#fff;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;overflow:hidden;flex-shrink:0;}
+.av-preview img{width:100%;height:100%;object-fit:cover;border-radius:50%;}
+.btn-av{padding:8px 14px;background:var(--secondary);color:#fff;border-radius:7px;font-size:13px;font-weight:600;cursor:pointer;display:inline-block;}
+
+/* Settings */
+.settings-card{background:var(--card);border-radius:14px;padding:24px;margin-bottom:18px;box-shadow:0 2px 10px rgba(0,0,0,.06);}
+body.dark-mode .settings-card{box-shadow:0 2px 10px rgba(0,0,0,.35);}
+.settings-card h3{font-family:'Playfair Display',serif;font-size:18px;color:var(--primary);margin-bottom:16px;padding-bottom:12px;border-bottom:1.5px solid var(--border);}
+body.dark-mode .settings-card h3{color:#7ececa;}
+.setting-row{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--border);}
+.setting-row:last-child{border-bottom:none;}
+.setting-info h4{font-size:14px;font-weight:600;color:var(--text);margin-bottom:3px;}
+.setting-info p{font-size:12px;color:var(--text2);}
+.sact-btn{padding:8px 16px;border:2px solid var(--border);border-radius:8px;background:var(--card);font-size:13px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;color:var(--text);transition:all .2s;}
+.sact-btn:hover{border-color:var(--primary);color:var(--primary);}
+.sact-btn.danger{border-color:#e76f51;color:#e76f51;}
+.sact-btn.danger:hover{background:rgba(231,111,81,.08);}
+
+.toggle{position:relative;display:inline-block;width:48px;height:26px;flex-shrink:0;}
+.toggle input{opacity:0;width:0;height:0;}
+.tslider{position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background:#ccc;border-radius:13px;transition:.3s;}
+.tslider:before{position:absolute;content:'';height:20px;width:20px;left:3px;bottom:3px;background:#fff;border-radius:50%;transition:.3s;box-shadow:0 1px 3px rgba(0,0,0,.2);}
+input:checked+.tslider{background:var(--primary);}
+input:checked+.tslider:before{transform:translateX(22px);}
+
+.lang-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;width:100%;margin-top:10px;}
+.lang-opt{padding:12px 8px;border:2px solid var(--border);border-radius:10px;cursor:pointer;transition:all .22s;text-align:center;background:var(--card);}
+.lang-opt:hover{border-color:#aaa;transform:translateY(-2px);}
+.lang-opt.active{border-color:var(--primary);background:rgba(45,95,93,.06);}
+body.dark-mode .lang-opt.active{border-color:#7ececa;background:rgba(126,206,202,.1);}
+.lang-flag{font-size:22px; font-weight:bold; color:var(--primary); margin-bottom:5px; font-family:sans-serif;}
+body.dark-mode .lang-flag{color:#7ececa;}
+.lang-name{font-size:12px;font-weight:600;color:var(--text);}
+
 /* Portfolio */
 .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-top:15px;}
 .pf-item { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 16px; cursor: pointer; transition:all .2s;}
@@ -223,6 +331,10 @@ body.dark-mode .pf-score { background: rgba(126,206,202,0.15); color: #7ececa;}
 #_toast{position:fixed;bottom:24px;right:24px;z-index:99999;padding:13px 20px;border-radius:12px;font-size:14px;font-weight:500;color:#fff;box-shadow:0 6px 24px rgba(0,0,0,.2);transform:translateY(70px);opacity:0;transition:all .35s cubic-bezier(.34,1.56,.64,1);max-width:320px;line-height:1.5;pointer-events:none;}
 #_toast.show{transform:translateY(0);opacity:1;pointer-events:auto;}
 
+@media(max-width:900px){
+  .why-inner{grid-template-columns:1fr;}
+  .why-icon-big{max-width:100%;height:220px;font-size:80px;}
+}
 @media(max-width:768px){
   .auth-card{grid-template-columns:1fr;}
   .auth-left{padding:32px 24px;}
@@ -234,6 +346,12 @@ body.dark-mode .pf-score { background: rgba(126,206,202,0.15); color: #7ececa;}
   .reels-container { height: 75vh; border-radius: 12px;}
   .stats-inner{grid-template-columns: 1fr; gap:16px;}
   .hero-btns { justify-content: center; }
+  .form-row,.efr{grid-template-columns:1fr;}
+  .dept-grid,.features-grid{grid-template-columns:1fr;}
+  .lang-grid{grid-template-columns:repeat(2,1fr);}
+  .inner-wrap{padding:0 14px;}
+  .edit-actions{flex-direction:column;}
+  .logo-text{display:none;}
 }
 </style>
 </head>
@@ -277,7 +395,7 @@ body.dark-mode .pf-score { background: rgba(126,206,202,0.15); color: #7ececa;}
         <div class="link-row" style="margin-top:20px;">
           <a onclick="showPage('page-forgot')" style="font-size: 14px; font-weight: bold; text-decoration: underline;">Quên mật khẩu?</a>
         </div>
-        <div class="link-row" style="margin-top:10px; font-size: 12px;">Bạn chưa có tài khoản? <a onclick="showPage('page-register')">Đăng ký</a></div>
+        <div class="link-row" style="margin-top:10px; font-size: 12px;">Bạn chưa có tài khoản? <a onclick="showPage('page-register')">Đăng ký nhanh</a></div>
       </div>
     </div>
   </div>
@@ -408,7 +526,6 @@ body.dark-mode .pf-score { background: rgba(126,206,202,0.15); color: #7ececa;}
     <div class="hero-content">
       <h1>No Theory.<br>Just Execution.</h1>
       <p>Chào mừng đến với Agency Ảo. Dưới đây là các Brief (Yêu cầu) từ Khách hàng tuần này. Hãy chọn một thử thách để chứng minh năng lực của bạn.</p>
-      
       <div class="hero-btns">
         <button class="btn-cta" onclick="scrollToId('dept-section')">🚀 Nhận Brief Ngay</button>
         <button class="btn-cta-out" onclick="showPage('page-reels')">📱 Xem Reels Học Thuật</button>
@@ -447,7 +564,6 @@ body.dark-mode .pf-score { background: rgba(126,206,202,0.15); color: #7ececa;}
           <button class="brief-btn" onclick="showPage('page-pr-course')">VÀO PHÒNG LAB XỬ LÝ NGAY</button>
         </div>
       </div>
-      
       <div class="brief-card">
         <div class="brief-banner campaign">💡</div>
         <div class="brief-body">
@@ -459,20 +575,94 @@ body.dark-mode .pf-score { background: rgba(126,206,202,0.15); color: #7ececa;}
       </div>
     </div>
   </div>
+
+  <div class="section">
+    <div class="sec-title" data-i18n="featTitle">Tại sao chọn CEP?</div>
+    <div class="sec-sub" data-i18n="featSub">Nền tảng học tập thực chiến dành riêng cho PR & Marketing</div>
+    <div class="features-grid">
+      <div class="feat-card"><div class="feat-icon">🎯</div><h3 data-i18n="f1h">Bài tập thực chiến</h3><p data-i18n="f1p">Tự tạo và thực hành bài tập sát với thực tế ngành PR & Marketing</p></div>
+      <div class="feat-card"><div class="feat-icon">🤝</div><h3 data-i18n="f2h">Cộng đồng kết nối</h3><p data-i18n="f2p">Kết nối với các chuyên gia và học viên trong ngành</p></div>
+      <div class="feat-card"><div class="feat-icon">📊</div><h3 data-i18n="f3h">Theo dõi tiến độ</h3><p data-i18n="f3p">Hệ thống theo dõi và đánh giá tiến độ học tập của bạn</p></div>
+      <div class="feat-card"><div class="feat-icon">🏆</div><h3 data-i18n="f4h">Chứng nhận hoàn thành</h3><p data-i18n="f4p">Nhận chứng nhận sau khi hoàn thành các bài tập ngành</p></div>
+    </div>
+  </div>
+
+  <div class="why-bg" id="why-section">
+    <div class="why-inner">
+      <div class="why-icon-big">
+        <img src="z7673677338583_4c44f8411415381a5c0f2ab71346a677.jpg" alt="Icon">
+      </div>
+      <div class="why-text">
+        <h2 data-i18n="whyTitle">Tại sao nên chọn Career Experience?</h2>
+        <p data-i18n="whyDesc">CEP không chỉ là nơi bạn học — đây là nền tảng nơi bạn kết nối với đam mê, khám phá tiềm năng và xây dựng sự nghiệp mơ ước trong lĩnh vực PR & Marketing.</p>
+        <div class="why-point"><div class="why-dot">✓</div><p data-i18n="why1">Bài tập được thiết kế bởi các chuyên gia thực chiến trong ngành PR & Marketing.</p></div>
+        <div class="why-point"><div class="why-dot">✓</div><p data-i18n="why2">Chất lượng luôn được đặt lên hàng đầu để người học tiếp nhận kiến thức hiệu quả nhất.</p></div>
+        <div class="why-point"><div class="why-dot">✓</div><p data-i18n="why3">Cộng đồng học viên năng động, hỗ trợ nhau trong suốt quá trình học tập.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="reviews-bg">
+    <div class="section" style="padding-top:0;padding-bottom:0;">
+      <div class="sec-title" data-i18n="reviewTitle">Review về CEP</div>
+      <div class="sec-sub" data-i18n="reviewSub">Học viên nói gì về chúng tôi</div>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-badge" data-i18n="reviewBadge">Tuyệt vời!</div>
+        <p class="review-text" data-i18n="r1">CEP có nội dung rất thực tế, giúp mình áp dụng ngay vào công việc PR. Giao diện thân thiện, dễ dùng.</p>
+        <div class="reviewer"><div class="reviewer-av">MT</div><div><h4>Ms. Trang Đồng</h4><p data-i18n="r1role">Học viên PR</p></div></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-badge" data-i18n="reviewBadge">Tuyệt vời!</div>
+        <p class="review-text" data-i18n="r2">Mảng Marketing ở CEP rất bài bản. Bài tập sát thực tế, giúp mình hiểu sâu hơn về Digital Marketing.</p>
+        <div class="reviewer"><div class="reviewer-av">TB</div><div><h4>Mr. Tùng Bùi</h4><p data-i18n="r2role">Học viên Marketing</p></div></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-badge" data-i18n="reviewBadge">Tuyệt vời!</div>
+        <p class="review-text" data-i18n="r3">Cộng đồng học viên CEP rất nhiệt tình. Mình học được rất nhiều từ các bạn cùng ngành PR & Marketing.</p>
+        <div class="reviewer"><div class="reviewer-av">LA</div><div><h4>Ms. Lan Anh</h4><p data-i18n="r3role">Học viên PR & Marketing</p></div></div>
+      </div>
+    </div>
+  </div>
+
+  <footer id="footer-contact">
+    <div class="footer-inner">
+      <div class="footer-sec">
+        <h3>Career Experience</h3>
+        <p data-i18n="footerAbout">Nền tảng phát triển kỹ năng PR & Marketing chuyên nghiệp dành cho sinh viên và người đi làm.</p>
+      </div>
+      <div class="footer-sec">
+        <h3 data-i18n="footerLinks">Liên kết nhanh</h3>
+        <a onclick="scrollToId('dept-section')" data-i18n="smDepts">Ngành học</a>
+        <a onclick="scrollToId('why-section')" data-i18n="smAbout">Về CEP</a>
+        <a onclick="showPage('page-register')" data-i18n="navRegister">Đăng ký</a>
+      </div>
+      <div class="footer-sec">
+        <h3 data-i18n="footerContact">Liên hệ</h3>
+        <p>📍 <span data-i18n="footerAddr">Trường ĐH Văn Lang, TP. HCM</span></p>
+        <p>📞 0356348552</p>
+        <p>✉️ <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="98f6ecf9f6e8f0edfbaaa1a8a1d8fff5f9f1f4b6fbf7f5">[email&#160;protected]</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 Career Experience (CEP). All rights reserved.</div>
+  </footer>
 </div>
 
 <div class="page" id="page-reels" style="background:#111; min-height:100vh; padding-top:20px;">
   <div style="position:absolute; top:20px; left:20px; z-index:100;">
     <button onclick="goBack()" style="background:rgba(255,255,255,0.2); color:#fff; border:none; padding:10px 15px; border-radius:20px; font-weight:bold; cursor:pointer; backdrop-filter:blur(5px);">⬅ Quay lại Workspace</button>
   </div>
-  
   <div class="reels-container">
     <div class="reel-video" style="background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');">
       <div class="reel-overlay"></div>
       <div class="reel-content">
         <div class="brand-tag" style="background:#E76F51;">#CaseStudy</div>
         <h2 class="reel-title">Bài học từ khủng hoảng truyền thông KFC 2023</h2>
-        <p class="reel-desc">Khi gà hết sạch, KFC đã lật ngược thế cờ bằng cách đăng báo xin lỗi với dòng chữ "FCK". Một bước đi táo bạo biến nguy thành cơ.</p>
+        <p class="reel-desc">Khi gà hết sạch, KFC đã lật ngược thế cờ bằng cách đăng báo xin lỗi avec dòng chữ "FCK". Một bước đi táo bạo biến nguy thành cơ.</p>
       </div>
       <div class="reel-actions">
         <div><div class="action-btn">❤️</div><div class="action-text">12K</div></div>
@@ -512,7 +702,6 @@ body.dark-mode .pf-score { background: rgba(126,206,202,0.15); color: #7ececa;}
       <h1>Phòng Lab Xử Lý Khủng Hoảng</h1>
       <p>Áp lực thời gian thực. Mọi quyết định đều ảnh hưởng đến Portfolio của bạn.</p>
     </div>
-    
     <div class="case-study-container">
       <div class="flip-card">
         <div class="flip-card-inner">
@@ -550,7 +739,6 @@ body.dark-mode .pf-score { background: rgba(126,206,202,0.15); color: #7ececa;}
         </div>
       </div>
     </div>
-
     <div class="simulation-lab">
       <div class="sim-header">
         <h3>⚠️ THỬ THÁCH TUẦN: BỊ KOL BÓC PHỐT</h3>
@@ -561,14 +749,14 @@ body.dark-mode .pf-score { background: rgba(126,206,202,0.15); color: #7ececa;}
           <div class="alert-msg">🔥 <b>[00:00]</b> Một KOL 2 triệu follow vừa đăng TikTok tố cáo kem chống nắng của bạn gây dị ứng mặt.</div>
         </div>
         <div class="sim-action">
-          <p><b>Hành động của bạn:</b> Khách hàng đang phẫn nộ trên Fanpage. Hãy soạn một đoạn Press Release (Thông cáo báo chí) dưới 100 chữ để xoa dịu dư luận ngay!</p>
+          <p><b>Hành động của bạn:</b> Khách hàng đang phẫn nộ trên Fanpage. Hãy soạn một đoạn Press Release dưới 100 chữ để xoa dịu dư luận ngay!</p>
           <textarea id="pr-response" placeholder="Nhập câu trả lời của bạn... (Ví dụ: Chúng tôi xin lỗi...)"></textarea>
           <button class="btn-main" style="background: #E76F51;" onclick="submitSimulation()">ĐĂNG TẢI LÊN FANPAGE</button>
         </div>
       </div>
       <div style="padding:40px; text-align:center;" id="sim-start-btn">
         <h4 style="margin-bottom:10px; font-size:20px;">Bắt đầu Giải Brief</h4>
-        <p style="font-size:14px; color:var(--text2); margin-bottom:20px;">Đồng hồ sẽ đếm ngược 2 phút. Nếu không phản hồi, thương hiệu sẽ "chết". Kết quả sẽ được lưu vào Portfolio của bạn.</p>
+        <p style="font-size:14px; color:var(--text2); margin-bottom:20px;">Đồng hồ sẽ đếm ngược 2 phút. Nếu không phản hồi, thương hiệu sẽ "chết". Kết quả sẽ được lưu vào Portfolio.</p>
         <button class="btn-main" style="width:auto; padding:12px 36px;" onclick="startSimulation()">TÔI ĐÃ SẴN SÀNG</button>
       </div>
     </div>
@@ -589,7 +777,6 @@ body.dark-mode .pf-score { background: rgba(126,206,202,0.15); color: #7ececa;}
       <h1>Trạm Sáng Tạo Content</h1>
       <p>Thử thách: Trà sữa Y sắp ra mắt vị "Măng cụt muối ớt". Viết content chốt đơn có lồng ghép Keyword đang Hot.</p>
     </div>
-    
     <div class="marketing-workspace">
       <div class="workspace-editor">
         <h3>📝 Trình Soạn Thảo Chiến Dịch</h3>
@@ -597,7 +784,6 @@ body.dark-mode .pf-score { background: rgba(126,206,202,0.15); color: #7ececa;}
         <textarea placeholder="Nội dung bài đăng MXH của bạn. Khuyến khích copy một từ khóa Trending bên cạnh bỏ vào đây để tăng Viral..."></textarea>
         <button class="btn-main" onclick="toast('Bài viết đã được lưu vào Portfolio cá nhân!', 'success')">NỘP BÀI VÀO PORTFOLIO</button>
       </div>
-      
       <div class="workspace-trends">
         <h3>🔥 Live Trend Tracker</h3>
         <p style="font-size: 12px; color: var(--text2); margin-bottom:15px; padding-bottom:15px; border-bottom:1px solid var(--border);">Top từ khóa trên Facebook & TikTok hôm nay.</p>
@@ -621,8 +807,10 @@ body.dark-mode .pf-score { background: rgba(126,206,202,0.15); color: #7ececa;}
     <div class="hc">
       <div class="logo" onclick="showPage('page-home')"><div class="logo-sm">CEP</div><span class="logo-text">Virtual Agency</span></div>
       <nav class="header-nav">
-        <a onclick="showPage('page-home')">🏠 Bảng tin</a>
-        <button class="nav-btn nav-logout" onclick="doLogout()">🚪 Đăng xuất</button>
+        <a onclick="showPage('page-home')" data-i18n="navHome">🏠 Trang chủ</a>
+        <a class="nav-active" data-i18n="navProfile">👤 Hồ sơ</a>
+        <a onclick="showPage('page-settings')" data-i18n="navSettings">⚙️ Cài đặt</a>
+        <button class="nav-btn nav-logout" onclick="doLogout()" data-i18n="navLogout">🚪 Đăng xuất</button>
       </nav>
     </div>
   </header>
@@ -632,15 +820,69 @@ body.dark-mode .pf-score { background: rgba(126,206,202,0.15); color: #7ececa;}
       <div style="display:flex;align-items:flex-start;gap:16px;">
         <div style="flex:1;">
           <div class="pname" id="pName">Tên Học Viên</div>
-          <div class="pmeta" id="pMeta"><span>📧 email@gmail.com</span><span>💼 Junior Marketer</span></div>
+          <div class="pmeta" id="pMeta"><span>📧 email@gmail.com</span></div>
+          <div class="pbio" id="pBio"></div>
+          <div class="pdetails" id="pDetails"></div>
+        </div>
+        <button class="pedit-btn" onclick="toggleEdit()">✏️ Chỉnh sửa</button>
+      </div>
+      
+      <div class="edit-sec" id="editSec">
+        <h3 style="font-family:'Playfair Display',serif;font-size:18px;color:var(--primary);margin-bottom:18px;">Chỉnh sửa hồ sơ</h3>
+        <div class="av-upload">
+          <div class="av-preview" id="avPreview"></div>
+          <div>
+            <div style="font-size:13px;color:var(--text2);margin-bottom:8px;">Ảnh đại diện</div>
+            <label class="btn-av" for="avInput">📷 Chọn ảnh</label>
+            <input type="file" id="avInput" accept="image/*" style="display:none;" onchange="handleAv(this)">
+          </div>
+        </div>
+        <div class="efr">
+          <div class="efg"><label>Họ và tên *</label><input id="eFn"></div>
+          <div class="efg"><label>Số điện thoại</label><input id="ePh"></div>
+        </div>
+        <div class="efr">
+          <div class="efg"><label>Ngày sinh</label><input type="date" id="eDob"></div>
+          <div class="efg"><label>Giới tính</label>
+            <select id="eGen"><option value="male">Nam</option><option value="female">Nữ</option><option value="otherGender">Khác</option></select>
+          </div>
+        </div>
+        <div class="efr">
+          <div class="efg"><label>Nghề nghiệp</label><input id="eOc"></div>
+          <div class="efg"><label>Địa điểm</label><input id="eLc"></div>
+        </div>
+        <div class="efr">
+          <div class="efg"><label>Website / LinkedIn</label><input id="eWb"></div>
+          <div class="efg"><label>Facebook Link</label><input id="eFb"></div>
+        </div>
+        <div class="efg">
+          <label>Vai trò</label>
+          <select id="eRl"><option value="student">Học sinh / Sinh viên</option><option value="professional">Người đi làm</option><option value="teacher">Giáo viên</option></select>
+        </div>
+        <div class="efg"><label>Giới thiệu</label><textarea id="eBi"></textarea></div>
+        <div class="efg"><label>Học vấn</label><textarea id="eEdu" rows="2"></textarea></div>
+        <div class="efg"><label>Kinh nghiệm</label><textarea id="eExp" rows="2"></textarea></div>
+        <div class="efg"><label>Kỹ năng</label><input id="eSkills" placeholder="VD: SEO, Content, Thiết kế..."></div>
+        
+        <div class="edit-actions">
+          <button class="btn-save" onclick="saveProfile()">💾 Lưu thay đổi</button>
+          <button class="btn-cancel-ed" onclick="toggleEdit()">Hủy</button>
         </div>
       </div>
     </div>
     
     <div class="pcard">
-      <h3 style="font-family:'Playfair Display',serif;font-size:20px;color:var(--primary);margin-bottom:5px;">🌟 Portfolio Thực Chiến</h3>
+      <h3 style="font-family:'Playfair Display',serif;font-size:18px;color:var(--primary);margin-bottom:16px;">📊 Thống kê học tập</h3>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+        <div style="text-align:center;padding:16px;background:var(--bg);border-radius:10px;"><div style="font-size:28px;font-weight:700;color:var(--primary);">0</div><div style="font-size:13px;color:var(--text2);">Bài tập đang làm</div></div>
+        <div style="text-align:center;padding:16px;background:var(--bg);border-radius:10px;"><div style="font-size:28px;font-weight:700;color:var(--primary);">0</div><div style="font-size:13px;color:var(--text2);">Chứng nhận</div></div>
+        <div style="text-align:center;padding:16px;background:var(--bg);border-radius:10px;"><div style="font-size:28px;font-weight:700;color:var(--primary);">0h</div><div style="font-size:13px;color:var(--text2);">Giờ học</div></div>
+      </div>
+    </div>
+
+    <div class="pcard">
+      <h3 style="font-family:'Playfair Display',serif;font-size:20px;color:var(--accent);margin-bottom:5px;">🌟 Portfolio Thực Chiến</h3>
       <p style="font-size:13px; color:var(--text2); margin-bottom:15px;">Danh sách các Brief bạn đã giải quyết thành công. Dùng link này để gửi cho Nhà tuyển dụng.</p>
-      
       <div class="portfolio-grid">
         <div class="pf-item">
           <div class="pf-score">Điểm: 9.5/10</div>
@@ -652,6 +894,58 @@ body.dark-mode .pf-score { background: rgba(126,206,202,0.15); color: #7ececa;}
           <h4 style="margin-top:10px;">Content: Trà sữa Măng Cụt</h4>
           <p>Bắt trend "Chữa lành" xuất sắc, concept: "Trà sữa Măng Cụt - Chữa lành tâm hồn sau deadline".</p>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page" id="page-settings">
+  <header class="inner-header">
+    <div class="hc">
+      <div class="logo" onclick="showPage('page-home')"><div class="logo-sm">CEP</div><span class="logo-text">Virtual Agency</span></div>
+      <nav class="header-nav">
+        <a onclick="showPage('page-home')" data-i18n="navHome">🏠 Trang chủ</a>
+        <a onclick="showPage('page-profile')" data-i18n="navProfile">👤 Hồ sơ</a>
+        <a class="nav-active" data-i18n="navSettings">⚙️ Cài đặt</a>
+        <button class="nav-btn nav-logout" onclick="doLogout()" data-i18n="navLogout">🚪 Đăng xuất</button>
+      </nav>
+    </div>
+  </header>
+  <div class="inner-wrap">
+    <div class="page-header"><h1 data-i18n="settingsH1">⚙️ Cài đặt</h1><p data-i18n="settingsSub">Tuỳ chỉnh trải nghiệm của bạn</p></div>
+    <div class="settings-card">
+      <h3 data-i18n="sApp">🎨 Giao diện</h3>
+      <div class="setting-row">
+        <div class="setting-info"><h4 data-i18n="sDarkH">Chế độ tối</h4><p data-i18n="sDarkP">Bật để bảo vệ mắt vào ban đêm</p></div>
+        <label class="toggle"><input type="checkbox" id="darkToggle" onchange="toggleDark(this.checked)"><span class="tslider"></span></label>
+      </div>
+    </div>
+    <div class="settings-card">
+      <h3 data-i18n="sLangH">🌐 Ngôn ngữ</h3>
+      <div class="setting-row" style="flex-direction:column;align-items:flex-start;gap:12px;">
+        <div class="setting-info"><h4 data-i18n="sLangTitle">Ngôn ngữ hiển thị</h4><p data-i18n="sLangDesc">Áp dụng toàn bộ giao diện ứng dụng</p></div>
+        <div class="lang-grid">
+          <div class="lang-opt" data-lang="vi" id="lang-vi" onclick="setLang('vi')"><div class="lang-flag">VN</div><div class="lang-name">Tiếng Việt</div></div>
+          <div class="lang-opt" data-lang="en" id="lang-en" onclick="setLang('en')"><div class="lang-flag">GB</div><div class="lang-name">English</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="settings-card">
+      <h3 data-i18n="sNotif">🔔 Thông báo</h3>
+      <div class="setting-row">
+        <div class="setting-info"><h4 data-i18n="sSysN">Thông báo hệ thống</h4><p data-i18n="sSysNd">Nhận thông báo về bài tập và cập nhật</p></div>
+        <label class="toggle"><input type="checkbox" checked><span class="tslider"></span></label>
+      </div>
+    </div>
+    <div class="settings-card">
+      <h3 data-i18n="sAccH">⚠️ Tài khoản</h3>
+      <div class="setting-row">
+        <div class="setting-info"><h4 data-i18n="sExH">Xuất dữ liệu</h4><p data-i18n="sExP">Tải xuống toàn bộ dữ liệu</p></div>
+        <button class="sact-btn" onclick="exportData()" data-i18n="sExBtn">📥 Xuất</button>
+      </div>
+      <div class="setting-row">
+        <div class="setting-info"><h4 data-i18n="sLoH">Đăng xuất</h4><p data-i18n="sLoP">Đăng xuất khỏi thiết bị này</p></div>
+        <button class="sact-btn danger" onclick="doLogout()" data-i18n="sLoBtn">🚪 Đăng xuất</button>
       </div>
     </div>
   </div>
@@ -685,6 +979,86 @@ let currentUserData = null;
 emailjs.init("aHnJ33MLii-dyHWFW");
 
 /* ═══════════════════════════════
+   TRANSLATIONS & I18N
+═══════════════════════════════ */
+var I18N = {
+  vi: {
+    navHome:'🏠 Trang chủ',navProfile:'👤 Hồ sơ',navSettings:'⚙️ Cài đặt',navLogout:'🚪 Đăng xuất',navLogin:'Đăng nhập',navRegister:'Đăng ký',
+    loginWelcome:'Chào mừng trở lại!',loginSubLeft:'Khám phá cơ hội học tập về PR & Marketing',loginH2:'Đăng nhập',loginSub:'Đăng nhập để tiếp tục hành trình học tập',
+    emailLbl:'Email',pwLbl:'Mật khẩu',rememberMe:'Ghi nhớ đăng nhập',forgotLink:'Quên mật khẩu?',loginBtn:'Đăng nhập',orWith:'Hoặc đăng nhập với',
+    noAccountRow:'Chưa có tài khoản? <a onclick="showPage(\'page-register\')" style="cursor:pointer;">Đăng ký ngay</a>',
+    regWelcome:'Tham gia cùng chúng tôi!',regSubLeft:'Bắt đầu hành trình PR & Marketing chuyên nghiệp',regH2:'Đăng ký tài khoản',regSub:'Tạo tài khoản miễn phí để bắt đầu',
+    b1:'Bài tập thực chiến PR',b2:'Bài tập thực chiến Marketing',b3:'Hỗ trợ 24/7',b4:'Cộng đồng học viên',
+    fullnameLbl:'Họ và tên *',phoneLbl:'Số điện thoại',confirmPwLbl:'Xác nhận mật khẩu *',roleLbl:'Bạn là',
+    roleDefault:'Chọn vai trò',roleStudent:'Học sinh / Sinh viên',rolePro:'Người đi làm',roleTeacher:'Giáo viên',roleOther:'Khác',
+    termsLabel:'Tôi đồng ý với <a href="#">Điều khoản</a> và <a href="#">Chính sách bảo mật</a>',regBtn:'Đăng ký',
+    hasAccountRow:'Đã có tài khoản? <a onclick="showPage(\'page-login\')" style="cursor:pointer;">Đăng nhập ngay</a>',
+    fpTitle:'Quên mật khẩu?',fpSub:'Đừng lo! Chúng tôi sẽ giúp bạn khôi phục tài khoản',fp1h:'Nhập email',fp1p:'Email đã đăng ký',fp2h:'Nhận mật khẩu mới',fp2p:'Kiểm tra hộp thư email',fp3h:'Đăng nhập lại',fp3p:'Dùng mật khẩu mới',
+    fpH2:'Khôi phục mật khẩu',fpSubRight:'Nhập email để nhận link đặt lại mật khẩu',fpNote:'Link khôi phục mật khẩu sẽ được gửi vào email của bạn.',fpBtn:'Khôi phục mật khẩu',fpBackLink:'← Quay lại đăng nhập',
+    smMain:'Điều hướng chính',smDepts:'Ngành học',smAbout:'Về CEP',smAccount:'Tài khoản',smRegCta:'🚀 Đăng ký ngay hôm nay',smContact:'📩 Liên hệ tư vấn',
+    heroH1:'Khởi đầu sự nghiệp<br>của bạn ngay hôm nay',heroP:'Khám phá và phát triển kỹ năng PR & Marketing chuyên nghiệp cùng Career Experience',heroExplore:'🚀 Khám phá ngay',heroLearn:'📖 Tìm hiểu thêm',
+    statDepts:'Ngành học',statStudents:'Học viên',statTasks:'Bài tập thực chiến',statSat:'Hài lòng',featTitle:'Tại sao chọn CEP?',featSub:'Nền tảng học tập thực chiến dành riêng cho PR & Marketing',
+    f1h:'Bài tập thực chiến',f1p:'Tự tạo và thực hành bài tập sát thực tế ngành PR & Marketing',f2h:'Cộng đồng kết nối',f2p:'Kết nối với các chuyên gia và học viên trong ngành',f3h:'Theo dõi tiến độ',f3p:'Hệ thống theo dõi và đánh giá tiến độ học tập của bạn',f4h:'Chứng nhận hoàn thành',f4p:'Nhận chứng nhận sau khi hoàn thành các bài tập ngành',
+    deptTitle:'Ngành học',deptSub:'Chọn ngành bạn muốn phát triển — nội dung bài tập sẽ được cập nhật sớm',prBadge:'PR',prTitle:'Public Relations',prDesc:'Phát triển kỹ năng quan hệ công chúng, xây dựng thương hiệu và quản lý truyền thông.',
+    mktBadge:'Marketing',mktTitle:'Marketing',mktDesc:'Thực hành Digital Marketing, Content Strategy và Brand Management.',deptBtnSoon:'🔜 Sắp ra mắt',
+    whyTitle:'Tại sao nên chọn Career Experience?',whyDesc:'CEP không chỉ là nơi bạn học — đây là nền tảng nơi bạn kết nối với đam mê, khám phá tiềm năng và xây dựng sự nghiệp mơ ước trong PR & Marketing.',
+    why1:'Bài tập được thiết kế bởi các chuyên gia thực chiến trong ngành PR & Marketing.',why2:'Chất lượng luôn được đặt lên hàng đầu để người học tiếp nhận kiến thức hiệu quả nhất.',why3:'Cộng đồng học viên năng động, hỗ trợ nhau trong suốt quá trình học tập.',
+    reviewTitle:'Review về CEP',reviewSub:'Học viên nói gì về chúng tôi',reviewBadge:'Tuyệt vời!',
+    r1:'CEP có nội dung rất thực tế, giúp mình áp dụng ngay vào công việc PR. Giao diện thân thiện, dễ dùng.',r1role:'Học viên PR',r2:'Mảng Marketing ở CEP rất bài bản. Bài tập sát thực tế.',r2role:'Học viên Marketing',r3:'Cộng đồng học viên CEP rất nhiệt tình. Mình học được rất nhiều.',r3role:'Học viên PR & Marketing',
+    footerAbout:'Nền tảng phát triển kỹ năng PR & Marketing dành cho sinh viên và người đi làm.',footerLinks:'Liên kết nhanh',footerContact:'Liên hệ',footerAddr:'Trường ĐH Văn Lang, TP. HCM',
+    continueLearning:'▶ Tiếp tục học',editBtn:'✏️ Chỉnh sửa',editTitle:'Chỉnh sửa hồ sơ',avatarLbl:'Ảnh đại diện',choosePhoto:'Chọn ảnh',occLbl:'Nghề nghiệp',locLbl:'Địa điểm',webLbl:'Website / LinkedIn',bioLbl:'Giới thiệu',saveBtn:'💾 Lưu thay đổi',cancelBtn:'Hủy',
+    dobLbl:'Ngày sinh',genderLbl:'Giới tính',fbLbl:'Link Facebook',eduLbl:'Học vấn',expLbl:'Kinh nghiệm',skillsLbl:'Kỹ năng',male:'Nam',female:'Nữ',otherGender:'Khác',
+    statsTitle:'📊 Thống kê học tập',statActive:'Bài tập đang làm',statCerts:'Chứng nhận',statHours:'Giờ học',noIntro:'Chưa có giới thiệu. Hãy thêm vài dòng về bản thân!',roleLblMap:{student:'Học sinh / Sinh viên',professional:'Người đi làm',teacher:'Giáo viên',other:'Khác'},joinedDate:'Tham gia',welcomeBack:'Chào mừng trở lại,',
+    settingsH1:'⚙️ Cài đặt',settingsSub:'Tuỳ chỉnh trải nghiệm của bạn',sApp:'🎨 Giao diện',sDarkH:'Chế độ tối',sDarkP:'Bật để bảo vệ mắt vào ban đêm',sLangH:'🌐 Ngôn ngữ',sLangTitle:'Ngôn ngữ hiển thị',sLangDesc:'Áp dụng toàn bộ giao diện ứng dụng',
+    sNotif:'🔔 Thông báo',sSysN:'Thông báo hệ thống',sSysNd:'Nhận thông báo về bài tập và cập nhật',sEmailN:'Thông báo email',sEmailNd:'Nhận email về tiến trình học tập',
+    sSec:'🔐 Bảo mật',sCpH:'Đổi mật khẩu',sCpP:'Cập nhật mật khẩu định kỳ',sCpBtn:'Đổi mật khẩu',s2fH:'Xác thực 2 bước',s2fP:'Tăng cường bảo mật',s2fBtn:'Thiết lập',
+    sAccH:'⚠️ Tài khoản',sExH:'Xuất dữ liệu',sExP:'Tải xuống toàn bộ dữ liệu',sExBtn:'📥 Xuất',sLoH:'Đăng xuất',sLoP:'Đăng xuất khỏi thiết bị này',sLoBtn:'🚪 Đăng xuất',
+    cpH1:'🔑 Đổi mật khẩu',cpSub:'Bảo vệ tài khoản với mật khẩu mạnh',cpTipsTitle:'🔐 Mật khẩu mạnh nên có:',cpT1:'Ít nhất 8 ký tự',cpT2:'Chữ hoa và chữ thường',cpT3:'Số và ký tự đặc biệt',cpT4:'Không dùng thông tin cá nhân',
+    cpCurLbl:'Mật khẩu hiện tại *',cpCurErr:'Mật khẩu hiện tại không đúng',cpNewLbl:'Mật khẩu mới *',cpNewErr:'Mật khẩu phải có ít nhất 8 ký tự',cpConLbl:'Xác nhận mật khẩu mới *',cpConErr:'Mật khẩu không khớp',cpConOk:'✓ Mật khẩu khớp',cpSaveBtn:'✅ Cập nhật',
+    strengthWeak:'⚠️ Yếu',strengthMed:'👍 Trung bình',strengthStrong:'💪 Mạnh',confirmLogout:'Bạn có chắc muốn đăng xuất?',
+    errFill:'❌ Vui lòng điền đầy đủ thông tin!',errPwdShort:'❌ Mật khẩu phải ít nhất 8 ký tự!',errPwdMatch:'❌ Mật khẩu xác nhận không khớp!',errTerms:'❌ Vui lòng đồng ý điều khoản!',errFpFill:'❌ Vui lòng nhập email!',errNameEmpty:'❌ Họ và tên không được trống!',loginRequired:'⚠️ Vui lòng đăng nhập!'
+  },
+  en: {
+    navHome:'🏠 Home',navProfile:'👤 Profile',navSettings:'⚙️ Settings',navLogout:'🚪 Logout',navLogin:'Login',navRegister:'Register',
+    loginWelcome:'Welcome Back!',loginSubLeft:'Explore PR & Marketing learning opportunities',loginH2:'Login',loginSub:'Sign in to continue your journey',
+    emailLbl:'Email',pwLbl:'Password',rememberMe:'Remember me',forgotLink:'Forgot password?',loginBtn:'Login',orWith:'Or login with',
+    noAccountRow:'No account? <a onclick="showPage(\'page-register\')" style="cursor:pointer;">Sign up</a>',
+    regWelcome:'Join Us!',regSubLeft:'Start your professional PR & Marketing journey',regH2:'Create Account',regSub:'Create a free account to get started',
+    b1:'PR Practical Tasks',b2:'Marketing Practical Tasks',b3:'24/7 Support',b4:'Student Community',
+    fullnameLbl:'Full Name *',phoneLbl:'Phone Number',confirmPwLbl:'Confirm Password *',roleLbl:'You are',
+    roleDefault:'Select role',roleStudent:'Student',rolePro:'Professional',roleTeacher:'Teacher',roleOther:'Other',
+    termsLabel:'I agree to the <a href="#">Terms</a> and <a href="#">Privacy Policy</a>',regBtn:'Register',
+    hasAccountRow:'Already have an account? <a onclick="showPage(\'page-login\')" style="cursor:pointer;">Login now</a>',
+    fpTitle:'Forgot Password?',fpSub:"Don't worry! We'll help you recover your account",fp1h:'Enter email',fp1p:'Registered email',fp2h:'Get new password',fp2p:'Check your inbox',fp3h:'Login again',fp3p:'Use the new password',
+    fpH2:'Password Recovery',fpSubRight:'Enter your email to get a new password',fpNote:'The reset link will be sent to your email.',fpBtn:'Recover Password',fpBackLink:'← Back to Login',
+    smMain:'Main Navigation',smDepts:'Departments',smAbout:'About CEP',smAccount:'Account',smRegCta:'🚀 Register Today',smContact:'📩 Contact Us',
+    heroH1:'Start Your Career<br>Journey Today',heroP:'Explore and develop professional PR & Marketing skills with Career Experience',heroExplore:'🚀 Explore Now',heroLearn:'📖 Learn More',
+    statDepts:'Departments',statStudents:'Students',statTasks:'Practical Tasks',statSat:'Satisfied',featTitle:'Why Choose CEP?',featSub:'The practical learning platform designed for PR & Marketing',
+    f1h:'Practical Tasks',f1p:'Create and practice tasks aligned with real PR & Marketing industry needs',f2h:'Community',f2p:'Connect with professionals and fellow students',f3h:'Track Progress',f3p:'System to monitor and evaluate your learning progress',f4h:'Completion Certificate',f4p:'Earn a certificate upon completing departmental tasks',
+    deptTitle:'Departments',deptSub:'Choose your field — task content will be added soon',prBadge:'PR',prTitle:'Public Relations',prDesc:'Develop public relations, brand building and media management skills.',
+    mktBadge:'Marketing',mktTitle:'Marketing',mktDesc:'Practice Digital Marketing, Content Strategy and Brand Management.',deptBtnSoon:'🔜 Coming Soon',
+    whyTitle:'Why Choose Career Experience?',whyDesc:"CEP isn't just where you learn — it's a platform where you connect with your passion and build your dream career.",
+    why1:'Tasks designed by real-world professionals in PR & Marketing.',why2:'Quality is always our top priority.',why3:'Dynamic student community, supporting each other.',
+    reviewTitle:'Reviews About CEP',reviewSub:'What students say about us',reviewBadge:'Excellent!',
+    r1:'CEP has very practical content. Friendly and easy-to-use interface.',r1role:'PR Student',r2:"CEP's Marketing section is very structured. Tasks are realistic.",r2role:'Marketing Student',r3:"CEP's student community is very enthusiastic. I've learned a lot.",r3role:'PR & Marketing Student',
+    footerAbout:'Professional PR & Marketing skills development platform.',footerLinks:'Quick Links',footerContact:'Contact',footerAddr:'Van Lang University, HCMC',
+    continueLearning:'▶ Continue Learning',editBtn:'✏️ Edit',editTitle:'Edit Profile',avatarLbl:'Profile Photo',choosePhoto:'Choose Photo',occLbl:'Occupation',locLbl:'Location',webLbl:'Website / LinkedIn',bioLbl:'About Me',saveBtn:'💾 Save',cancelBtn:'Cancel',
+    dobLbl:'Date of Birth',genderLbl:'Gender',fbLbl:'Facebook Link',eduLbl:'Education',expLbl:'Experience',skillsLbl:'Skills',male:'Male',female:'Female',otherGender:'Other',
+    statsTitle:'📊 Learning Stats',statActive:'Active Tasks',statCerts:'Certificates',statHours:'Study Hours',noIntro:'No introduction yet. Add a few lines about yourself!',roleLblMap:{student:'Student',professional:'Professional',teacher:'Teacher',other:'Other'},joinedDate:'Joined',welcomeBack:'Welcome back,',
+    settingsH1:'⚙️ Settings',settingsSub:'Customize your experience',sApp:'🎨 Appearance',sDarkH:'Dark Mode',sDarkP:'Enable to protect your eyes at night',sLangH:'🌐 Language',sLangTitle:'Display Language',sLangDesc:'Applies to the entire app interface',
+    sNotif:'🔔 Notifications',sSysN:'System Notifications',sSysNd:'Get updates about tasks',sEmailN:'Email Notifications',sEmailNd:'Get emails about your progress',
+    sSec:'🔐 Security',sCpH:'Change Password',sCpP:'Update password periodically',sCpBtn:'Change Password',s2fH:'2-Factor Auth',s2fP:'Enhance security',s2fBtn:'Setup',
+    sAccH:'⚠️ Account',sExH:'Export Data',sExP:'Download all your data',sExBtn:'📥 Export',sLoH:'Logout',sLoP:'Logout from this device',sLoBtn:'🚪 Logout',
+    cpH1:'🔑 Change Password',cpSub:'Protect your account with a strong password',cpTipsTitle:'🔐 A strong password should have:',cpT1:'At least 8 characters',cpT2:'Uppercase and lowercase letters',cpT3:'Numbers and special characters',cpT4:'No personal info',
+    cpCurLbl:'Current Password *',cpCurErr:'Current password is incorrect',cpNewLbl:'New Password *',cpNewErr:'Password must be at least 8 characters',cpConLbl:'Confirm New Password *',cpConErr:'Passwords do not match',cpConOk:'✓ Passwords match',cpSaveBtn:'✅ Update',
+    strengthWeak:'⚠️ Weak',strengthMed:'👍 Medium',strengthStrong:'💪 Strong',confirmLogout:'Are you sure you want to logout?',
+    errFill:'❌ Please fill all fields!',errPwdShort:'❌ Password must be at least 8 characters!',errPwdMatch:'❌ Passwords do not match!',errTerms:'❌ You must agree to the terms!',errFpFill:'❌ Please enter email!',errNameEmpty:'❌ Name cannot be empty!',loginRequired:'⚠️ Please login first!'
+  }
+};
+var currentLang = 'vi';
+function t(key) { return I18N[currentLang][key] || I18N['vi'][key] || key; }
+
+/* ═══════════════════════════════
    2. CORE UI FUNCTIONS
 ═══════════════════════════════ */
 function showPage(pageId, pushToHistory = true) {
@@ -696,6 +1070,15 @@ function showPage(pageId, pushToHistory = true) {
     const newUrl = window.location.pathname + "?page=" + pageId;
     window.history.pushState({ page: pageId }, "", newUrl);
   }
+  
+  if (pageId === 'page-profile') {
+    if(!auth.currentUser) {
+      toast('loginRequired', 'error');
+      showPage('page-login');
+      return;
+    }
+    renderProfile();
+  }
 }
 
 function goBack() { 
@@ -703,14 +1086,20 @@ function goBack() {
   else { showPage('page-home'); }
 }
 
+function scrollToId(id) {
+  var el = document.getElementById(id);
+  if(el) el.scrollIntoView({behavior: 'smooth'});
+}
+
 window.addEventListener('popstate', function(event) {
   if (event.state && event.state.page) { showPage(event.state.page, false); } 
   else { showPage(auth.currentUser ? 'page-home' : 'page-login', false); }
 });
 
-function toast(msg, type) {
+function toast(msgKey, type) {
+  var text = (I18N[currentLang] && I18N[currentLang][msgKey]) ? I18N[currentLang][msgKey] : msgKey;
   var tst = document.getElementById('_toast');
-  tst.innerText = msg;
+  tst.innerText = text;
   tst.style.background = type === 'error' ? '#e76f51' : '#2D5F5D';
   tst.classList.add('show');
   setTimeout(() => tst.classList.remove('show'), 3000);
@@ -722,12 +1111,22 @@ function togglePw(id, icon) {
   else { input.type = 'password'; icon.innerText = '👁️'; }
 }
 
+function checkStrength(val, wrapId) {
+  var wrap = document.getElementById(wrapId);
+  var txt = wrap.querySelector('.strength-txt');
+  if(!val) { wrap.style.display = 'none'; return; }
+  wrap.style.display = 'block';
+  wrap.className = 'strength-wrap';
+  if(val.length < 6) { wrap.classList.add('sw-weak'); txt.innerText = t('strengthWeak'); }
+  else if(val.length < 10 && !/[A-Z]/.test(val)) { wrap.classList.add('sw-medium'); txt.innerText = t('strengthMed'); }
+  else { wrap.classList.add('sw-strong'); txt.innerText = t('strengthStrong'); }
+}
+
 function loadRealStats() {
   db.collection('users').get().then(snap => {
     document.getElementById('real-users').innerText = snap.size + "+";
   }).catch(err => {
     document.getElementById('real-users').innerText = "0";
-    console.error("Lỗi lấy user:", err);
   });
   document.getElementById('real-depts').innerText = "2";
   document.getElementById('real-tasks').innerText = document.querySelectorAll('.brief-card').length + "+";
@@ -790,25 +1189,14 @@ function doLogout() {
 
 // ---- EMAILJS OTP CHO LUỒNG QUÊN MẬT KHẨU ----
 let generatedOTP = "";
-
 function sendMockOTP() {
   var email = document.getElementById('forgotEmail').value.trim();
   if(!email) return toast('Vui lòng nhập địa chỉ email!', 'error');
-
   toast('Đang tạo và gửi mã OTP, vui lòng đợi...', 'info');
-
-  // Tạo mã ngẫu nhiên 6 số
   generatedOTP = Math.floor(100000 + Math.random() * 900000).toString();
 
-  // Gửi Email qua hệ thống EmailJS
-  emailjs.send(
-    "service_qdstcnm",        // Service ID của bạn
-    "template_kfx7i8d",       // Template ID của bạn
-    {
-      to_email: email,       
-      otp_code: generatedOTP 
-    }
-  ).then(function(response) {
+  emailjs.send("service_qdstcnm", "template_kfx7i8d", { to_email: email, otp_code: generatedOTP })
+  .then(function(response) {
       toast('✅ Đã gửi mã OTP! Vui lòng kiểm tra hộp thư đến (hoặc Spam).', 'success');
       document.getElementById('otpGroup').style.display = 'block';
   }, function(error) {
@@ -832,7 +1220,6 @@ function doConfirmReset() {
   var newPw = document.getElementById('resetNewPw').value;
   if(!newPw) return toast('Vui lòng nhập mật khẩu mới', 'error');
   if(newPw.length < 8) return toast('Mật khẩu phải có ít nhất 8 ký tự', 'error');
-  
   toast('Đã lưu mật khẩu mới thành công!', 'success');
   showPage('page-login');
 }
@@ -847,10 +1234,12 @@ auth.onAuthStateChanged((user) => {
         var displayName = currentUserData.fullname.split(' ')[0];
         if(authArea) authArea.innerHTML = `<button class="btn-hlogin" onclick="showPage('page-profile')">👤 ${displayName}</button>`;
         
-        document.getElementById('pName').innerText = currentUserData.fullname;
-        document.getElementById('pMeta').innerHTML = `<span>📧 ${currentUserData.email}</span>`;
+        if(document.getElementById('pName')) document.getElementById('pName').innerText = currentUserData.fullname;
+        if(document.getElementById('pMeta')) document.getElementById('pMeta').innerHTML = `<span>📧 ${currentUserData.email}</span>`;
         var avHtml = currentUserData.avatar ? `<img src="${currentUserData.avatar}">` : currentUserData.fullname.charAt(0).toUpperCase();
-        document.getElementById('profileAv').innerHTML = avHtml;
+        if(document.getElementById('profileAv')) document.getElementById('profileAv').innerHTML = avHtml;
+        
+        if(document.getElementById('page-profile').classList.contains('active')) renderProfile();
       }
     });
 
@@ -863,11 +1252,107 @@ auth.onAuthStateChanged((user) => {
     
     const urlParams = new URLSearchParams(window.location.search);
     const pageParam = urlParams.get('page');
-    if (!pageParam || ['page-profile', 'page-pr-course', 'page-mkt-course'].includes(pageParam)) {
+    if (!pageParam || ['page-profile', 'page-pr-course', 'page-mkt-course', 'page-settings'].includes(pageParam)) {
         showPage('page-login');
     }
   }
 });
+
+/* ═══════════════════════════════
+   PROFILE (KHÔI PHỤC)
+═══════════════════════════════ */
+function renderProfile() {
+  if(!currentUserData) return;
+  var avHtml = currentUserData.avatar ? '<img src="'+currentUserData.avatar+'">' : currentUserData.fullname.charAt(0).toUpperCase();
+  document.getElementById('profileAv').innerHTML = avHtml;
+  document.getElementById('pName').innerText = currentUserData.fullname;
+  
+  var roleMap = I18N[currentLang].roleLblMap || I18N['vi'].roleLblMap;
+  var roleText = roleMap[currentUserData.role] || currentUserData.role;
+  var meta = '<span>📧 '+currentUserData.email+'</span><span>🎭 '+roleText+'</span>';
+  if(currentUserData.location) meta += '<span>📍 '+currentUserData.location+'</span>';
+  if(currentUserData.occupation) meta += '<span>💼 '+currentUserData.occupation+'</span>';
+  document.getElementById('pMeta').innerHTML = meta;
+  document.getElementById('pBio').innerText = currentUserData.bio || t('noIntro');
+
+  var genderMap = { male: t('male'), female: t('female'), otherGender: t('otherGender') };
+  var detailsHtml = '';
+  if(currentUserData.dob) detailsHtml += '<div>📅 <b>' + t('dobLbl') + ':</b> ' + currentUserData.dob + '</div>';
+  if(currentUserData.gender) detailsHtml += '<div>⚧️ <b>' + t('genderLbl') + ':</b> ' + (genderMap[currentUserData.gender] || currentUserData.gender) + '</div>';
+  if(currentUserData.facebook) detailsHtml += '<div>📘 <b>Facebook:</b> <a href="'+currentUserData.facebook+'" target="_blank" style="color:var(--primary)">'+currentUserData.facebook+'</a></div>';
+  if(currentUserData.education) detailsHtml += '<div>🎓 <b>' + t('eduLbl') + ':</b> ' + currentUserData.education + '</div>';
+  if(currentUserData.experience) detailsHtml += '<div>💼 <b>' + t('expLbl') + ':</b> ' + currentUserData.experience + '</div>';
+  if(currentUserData.skills) detailsHtml += '<div>⚡ <b>' + t('skillsLbl') + ':</b> ' + currentUserData.skills + '</div>';
+  document.getElementById('pDetails').innerHTML = detailsHtml;
+
+  document.getElementById('avPreview').innerHTML = avHtml;
+  document.getElementById('eFn').value = currentUserData.fullname || '';
+  document.getElementById('ePh').value = currentUserData.phone || '';
+  document.getElementById('eOc').value = currentUserData.occupation || '';
+  document.getElementById('eLc').value = currentUserData.location || '';
+  document.getElementById('eWb').value = currentUserData.website || '';
+  document.getElementById('eBi').value = currentUserData.bio || '';
+  document.getElementById('eRl').value = currentUserData.role || 'student';
+  document.getElementById('eDob').value = currentUserData.dob || '';
+  document.getElementById('eGen').value = currentUserData.gender || 'male';
+  document.getElementById('eFb').value = currentUserData.facebook || '';
+  document.getElementById('eEdu').value = currentUserData.education || '';
+  document.getElementById('eExp').value = currentUserData.experience || '';
+  document.getElementById('eSkills').value = currentUserData.skills || '';
+}
+
+function toggleEdit() { document.getElementById('editSec').classList.toggle('show'); }
+
+var tempAvatar = '';
+function handleAv(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function(e) { tempAvatar = e.target.result; document.getElementById('avPreview').innerHTML = '<img src="'+tempAvatar+'">'; };
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+function saveProfile() {
+  var data = {
+    fullname: document.getElementById('eFn').value.trim(), phone: document.getElementById('ePh').value.trim(), occupation: document.getElementById('eOc').value.trim(),
+    location: document.getElementById('eLc').value.trim(), website: document.getElementById('eWb').value.trim(), bio: document.getElementById('eBi').value.trim(),
+    role: document.getElementById('eRl').value, dob: document.getElementById('eDob').value, gender: document.getElementById('eGen').value,
+    facebook: document.getElementById('eFb').value.trim(), education: document.getElementById('eEdu').value.trim(), experience: document.getElementById('eExp').value.trim(), skills: document.getElementById('eSkills').value.trim()
+  };
+  if(!data.fullname) return toast('errNameEmpty', 'error');
+  if(tempAvatar) data.avatar = tempAvatar;
+
+  db.collection('users').doc(auth.currentUser.uid).update(data).then(() => {
+    toast('toastSaveProfile', 'success'); currentUserData = {...currentUserData, ...data}; toggleEdit(); renderProfile(); auth.onAuthStateChanged(auth.currentUser);
+  }).catch((error) => { toast('Lỗi cập nhật: ' + error.message, 'error'); });
+}
+
+/* ═══════════════════════════════
+   SETTINGS & THEME (KHÔI PHỤC)
+═══════════════════════════════ */
+function toggleDark(isDark) {
+  if(isDark) document.body.classList.add('dark-mode'); else document.body.classList.remove('dark-mode');
+  localStorage.setItem('cep_theme', isDark ? 'dark' : 'light');
+  var toggle = document.getElementById('darkToggle'); if(toggle) toggle.checked = isDark;
+}
+
+function setLang(lang) {
+  currentLang = lang; localStorage.setItem('cep_lang', lang);
+  document.querySelectorAll('.lang-opt').forEach(function(el){ el.classList.remove('active'); });
+  var activeOpt = document.querySelector('.lang-opt[data-lang="'+lang+'"]'); if(activeOpt) activeOpt.classList.add('active');
+  
+  document.querySelectorAll('[data-i18n]').forEach(function(el) {
+    var key = el.getAttribute('data-i18n');
+    if(I18N[lang] && I18N[lang][key]) {
+      if(el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') el.placeholder = I18N[lang][key];
+      else if (el.tagName === 'OPTION') el.innerText = I18N[lang][key]; else el.innerText = I18N[lang][key];
+    }
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
+    var key = el.getAttribute('data-i18n-html'); if(I18N[lang] && I18N[lang][key]) el.innerHTML = I18N[lang][key];
+  });
+  if(document.getElementById('page-profile').classList.contains('active')) renderProfile();
+}
 
 /* ═══════════════════════════════
    4. SIMULATION LOGIC (Phòng Lab)
@@ -914,8 +1399,10 @@ function submitSimulation() {
 
 document.addEventListener('DOMContentLoaded', function() {
   const savedTheme = localStorage.getItem('cep_theme');
-  if(savedTheme === 'dark') document.body.classList.add('dark-mode');
+  if(savedTheme === 'dark') { document.body.classList.add('dark-mode'); var tg = document.getElementById('darkToggle'); if(tg) tg.checked = true;}
   
+  const savedLang = localStorage.getItem('cep_lang') || 'vi'; setLang(savedLang);
+
   const urlParams = new URLSearchParams(window.location.search);
   const pageParam = urlParams.get('page');
   if (pageParam) { showPage(pageParam, false); }
