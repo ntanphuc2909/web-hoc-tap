@@ -96,6 +96,9 @@ body.dark-mode .link-row a{color:#7ececa;}
 .menu-toggle-btn{display:flex;flex-direction:column;gap:5px;align-items:center;justify-content:center;cursor:pointer;width:40px;height:40px;background:rgba(77,217,172,.12);border:1.5px solid rgba(77,217,172,.4);border-radius:50%;transition:all .25s;flex-shrink:0;margin:0 15px;}
 .menu-toggle-btn:hover{background:rgba(77,217,172,.22);border-color:#4DD9AC;}
 .menu-toggle-btn span{width:16px;height:2px;background:#4DD9AC;border-radius:2px;transition:all .35s cubic-bezier(.23,1,.32,1);display:block;}
+.menu-toggle-btn.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.menu-toggle-btn.open span:nth-child(2){opacity:0;transform:scaleX(0);}
+.menu-toggle-btn.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
 
 .home-search{flex:1;max-width:380px;position:relative;display:flex;align-items:center; margin-right: 20px;}
 .home-search input{width:100%;background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.1);border-radius:8px;padding:9px 40px 9px 16px;color:#fff;font-family:'DM Sans',sans-serif;font-size:13px;transition:all .25s;}
@@ -104,13 +107,13 @@ body.dark-mode .link-row a{color:#7ececa;}
 .home-search-btn{position:absolute;right:5px;background:#2D5F5D;border:none;color:#fff;width:30px;height:30px;border-radius:6px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:13px;transition:background .2s;}
 .home-search-btn:hover{background:#4DD9AC;}
 
-/* MENU NGANG TRÊN TASKBAR ĐƯỢC KHÔI PHỤC */
+/* MENU NGANG TRÊN TASKBAR */
 .header-nav{display:flex;align-items:center;gap:8px;}
 .header-nav a.nav-link {color:rgba(255,255,255,0.85);text-decoration:none;font-weight:600;font-size:14px;padding:8px 16px;border-radius:8px;transition:all .2s;cursor:pointer; display:flex; align-items:center; gap:6px;}
 .header-nav a.nav-link:hover{background:rgba(255,255,255,0.1);color:#fff;}
 .header-nav .nav-active{background:rgba(255,255,255,0.15) !important; color:#fff !important; font-weight:700;}
 
-/* Dropdown Menu Ngành Học Desktop */
+/* Dropdown Ngành Học Desktop */
 .nav-dropdown { position: relative; display: inline-block; height: 100%;}
 .nav-dropdown-content { 
   display: none; position: absolute; background-color: var(--card); 
@@ -123,11 +126,12 @@ body.dark-mode .link-row a{color:#7ececa;}
 .nav-dropdown-content a:hover { background-color: rgba(45,95,93,.08); color: var(--primary) !important; }
 body.dark-mode .nav-dropdown-content a:hover { background-color: rgba(126,206,202,.12); color: #7ececa !important; }
 
+/* Khu vực Auth bên phải (Avatar, Cài đặt, Đăng xuất) */
 .home-right{display:flex;align-items:center;gap:0;margin-left:auto;flex-shrink:0;}
 .home-divider{width:1px;height:28px;background:rgba(255,255,255,.1);margin:0 15px;}
 .home-auth{display:flex;align-items:center;gap:8px;}
 
-/* Nút User Bar Góc Phải */
+/* Nút User */
 .btn-user-profile {
   display:flex; align-items:center; background:rgba(255,255,255,0.08); padding:6px 16px 6px 6px; 
   border-radius:24px; color:#fff; border:1px solid rgba(255,255,255,0.15); 
@@ -136,9 +140,12 @@ body.dark-mode .nav-dropdown-content a:hover { background-color: rgba(126,206,20
 .btn-user-profile:hover { background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.3); }
 .btn-hlogin{padding:8px 18px;background:transparent;color:rgba(255,255,255,.85);border:1.5px solid rgba(255,255,255,.2);border-radius:8px;font-weight:600;font-size:13px;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;}
 .btn-hlogin:hover{border-color:#4DD9AC;color:#4DD9AC;}
+.nav-btn{padding:7px 14px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;border:none;transition:all .2s;}
+.nav-logout{background:rgba(231,111,81,.1);color:#E76F51;}
+.nav-logout:hover{background:rgba(231,111,81,.2);}
 
 /* ════════════════════════════════════════
-   SLIDE MENU (GỘP & ĐẨY LOGOUT XUỐNG CÙNG)
+   SLIDE MENU (MOBILE & DESKTOP)
 ════════════════════════════════════════ */
 .overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0);display:none;z-index:1999;transition:background .35s ease;}
 .overlay.active{display:block;background:rgba(0,0,0,.55);}
@@ -153,14 +160,12 @@ body.dark-mode .slide-menu{background:#0d1020;}
 .sm-close{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);color:#fff;font-size:18px;cursor:pointer;width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;transition:all .2s;}
 .sm-close:hover{background:rgba(255,255,255,.15);}
 
-.sm-nav-container { flex: 1; overflow-y: auto; display: flex; flex-direction: column; padding: 10px 0; }
-.sm-label{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.3);padding:14px 22px 5px;}
+.sm-nav-container { flex: 1; overflow-y: auto; display: flex; flex-direction: column; padding: 15px 0; }
 .sm-link{color:rgba(255,255,255,.82);padding:12px 22px;display:flex;align-items:center;gap:12px;text-decoration:none;font-size:14px;font-weight:500;transition:all .22s;position:relative; cursor:pointer;}
 .sm-link:hover, .sm-active{color:#4DD9AC;background:rgba(77,217,172,.08);}
 .sm-link::before{content:'';position:absolute;left:0;top:50%;transform:translateY(-50%) scaleY(0);width:3px;height:60%;background:#4DD9AC;border-radius:0 2px 2px 0;transition:transform .22s;}
 .sm-link:hover::before, .sm-active::before{transform:translateY(-50%) scaleY(1);}
 .sm-icon{width:18px;text-align:center;font-size:15px;flex-shrink:0;}
-.sm-divider{height:1px;background:rgba(255,255,255,.07);margin:8px 22px;}
 
 .sm-accordion-btn { display:flex; align-items:center; cursor: pointer; color:rgba(255,255,255,.82); padding:12px 22px; font-size:14px; font-weight:500; transition:all .22s; position:relative;}
 .sm-accordion-btn:hover { color:#4DD9AC; background:rgba(77,217,172,.08); }
@@ -218,6 +223,23 @@ body.dark-mode .feat-card{box-shadow:0 4px 18px rgba(0,0,0,.3);}
 .feat-card h3{font-family:'Playfair Display',serif;color:var(--primary);font-size:20px;margin-bottom:10px;}
 body.dark-mode .feat-card h3{color:#7ececa;}
 .feat-card p{color:var(--text2);font-size:14px;line-height:1.7;}
+
+.brief-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:28px;}
+.brief-card{background:var(--card);border-radius:18px;overflow:hidden;box-shadow:0 6px 24px rgba(0,0,0,.08);transition:all .3s;cursor:pointer; border: 1px solid var(--border);}
+body.dark-mode .brief-card{box-shadow:0 6px 24px rgba(0,0,0,.35);}
+.brief-card:hover{transform:translateY(-6px);box-shadow:0 14px 40px rgba(0,0,0,.14); border-color: var(--primary);}
+.brief-banner{height:160px;display:flex;align-items:center;justify-content:center;font-size:60px;position:relative;}
+.brief-banner.crisis{background:linear-gradient(135deg,#1a4645 0%,#2D5F5D 100%);}
+.brief-banner.campaign{background:linear-gradient(135deg,#E76F51 0%,#F4A261 100%);}
+.brief-body{padding:24px;}
+.brief-badge{display:inline-block;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:800;margin-bottom:10px;text-transform:uppercase;}
+.badge-urgent{background:#ffebee;color:#E76F51;}
+.badge-creative{background:rgba(45,95,93,.15);color:var(--primary);}
+body.dark-mode .badge-creative{background:rgba(126,206,202,.15);color:#7ececa;}
+.brief-card h3{font-family:'Playfair Display',serif;font-size:20px;color:var(--text);margin-bottom:8px;}
+.brief-card p{color:var(--text2);font-size:14px;line-height:1.6;margin-bottom:18px;}
+.brief-btn{padding:10px 22px;background:var(--text);color:var(--card);border:none;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif; width: 100%;}
+.brief-card:hover .brief-btn{background:var(--gradient); color:#fff;}
 
 .why-bg{background:linear-gradient(135deg,#2D5F5D 0%,#1A4645 100%);color:#fff;padding:80px 32px;}
 .why-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
@@ -362,6 +384,8 @@ body.dark-mode .settings-card h3{color:#7ececa;}
 .setting-row:last-child{border-bottom:none;}
 .setting-info h4{font-size:14px;font-weight:600;color:var(--text);margin-bottom:3px;}
 .setting-info p{font-size:12px;color:var(--text2);}
+.sact-btn{padding:8px 16px;border:2px solid var(--border);border-radius:8px;background:var(--card);font-size:13px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;color:var(--text);transition:all .2s;}
+.sact-btn:hover{border-color:var(--primary);color:var(--primary);}
 .toggle{position:relative;display:inline-block;width:48px;height:26px;flex-shrink:0;}
 .toggle input{opacity:0;width:0;height:0;}
 .tslider{position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background:#ccc;border-radius:13px;transition:.3s;}
@@ -395,14 +419,15 @@ input:checked+.tslider:before{transform:translateX(22px);}
   .logo-text{display:none;}
   .home-search{display:none;}
   .home-divider{display:none;}
-  .header-nav{display:none;}
+  .header-nav{display:none !important;}
+  .hide-mobile{display:none !important;}
 }
 </style>
 </head>
 <body class="has-global-header">
 <div id="_toast"></div>
 
-<header id="globalHeader">
+<header id="globalHeader" class="home-big-header">
   <div class="home-hc">
     <div class="home-logo" onclick="showPage('page-home')">
       <div class="home-logo-circle">CEP</div>
@@ -446,11 +471,8 @@ input:checked+.tslider:before{transform:translateX(22px);}
   
   <div class="sm-nav-container">
     <nav class="sm-nav">
-      <div class="sm-label">Điều hướng chính</div>
       <a onclick="closeMenu();showPage('page-home')" class="sm-link"><span class="sm-icon">🏠</span><span>Trang chủ</span></a>
-      <div class="sm-divider"></div>
-
-      <div class="sm-label">Khóa học & Thực chiến</div>
+      
       <a class="sm-accordion-btn" onclick="toggleSubMenu(this)">
         <span class="sm-icon">📚</span><span>Ngành học</span>
         <span class="sm-arrow" style="margin-left:auto; font-size:10px; transition:transform 0.3s;">▼</span>
@@ -461,9 +483,6 @@ input:checked+.tslider:before{transform:translateX(22px);}
       </div>
 
       <a onclick="closeMenu();showPage('page-reels')" class="sm-link"><span class="sm-icon">📱</span><span>Reels Học Thuật</span></a>
-      
-      <div class="sm-divider"></div>
-      <div class="sm-label">Tài khoản</div>
       <a onclick="closeMenu();showPage('page-profile')" class="sm-link"><span class="sm-icon">👤</span><span>Hồ sơ & Portfolio</span></a>
       <a onclick="closeMenu();showPage('page-settings')" class="sm-link"><span class="sm-icon">⚙️</span><span>Cài đặt</span></a>
     </nav>
@@ -987,7 +1006,7 @@ const auth = firebase.auth();
 const db = firebase.firestore();
 let currentUserData = null;
 
-emailjs.init("aHnJ33MLii-dyHWFW");
+emailjs.init("aHnJ33MLii-dyHWFW"); 
 
 /* ═══════════════════════════════
    MENU JS (ACCORDION & SLIDE MENU)
@@ -1055,7 +1074,7 @@ function showPage(pageId, pushToHistory = true) {
     renderProfile();
   }
 
-  // Cập nhật trạng thái nút Active trên thanh ngang
+  // Cập nhật trạng thái nút Active trên thanh ngang Desktop
   document.querySelectorAll('.header-nav a.nav-link').forEach(link => link.classList.remove('nav-active'));
   if(pageId === 'page-home') {
     document.getElementById('nav-home-btn').classList.add('nav-active');
@@ -1205,8 +1224,21 @@ auth.onAuthStateChanged((user) => {
         currentUserData = doc.data();
         var displayName = currentUserData.fullname.split(' ')[0];
         
-        var avHtml = currentUserData.avatar ? `<img src="${currentUserData.avatar}" style="width:22px;height:22px;border-radius:50%;margin-right:6px;object-fit:cover;">` : `<span style="font-size:16px; margin-right:6px;">👤</span>`;
-        if(authArea) authArea.innerHTML = `<button class="btn-user-profile" onclick="showPage('page-profile')">${avHtml} <span>${displayName}</span></button>`;
+        var avHtml = currentUserData.avatar ? `<img src="${currentUserData.avatar}" style="width:24px;height:24px;border-radius:50%;margin-right:6px;object-fit:cover;">` : `<span style="font-size:16px; margin-right:6px;">👤</span>`;
+        
+        // CHÈN NÚT CÀI ĐẶT & ĐĂNG XUẤT VÀO THANH NGANG ĐÚNG YÊU CẦU ẢNH 3
+        if(authArea) {
+            authArea.innerHTML = `
+                <button class="btn-user-profile" onclick="showPage('page-profile')">${avHtml} <span style="margin-left:4px;">${displayName}</span></button>
+                <a onclick="showPage('page-settings')" class="nav-link hide-mobile" style="color:rgba(255,255,255,0.85); font-weight:600; cursor:pointer; margin-left:8px; text-decoration:none;" title="Cài đặt">⚙️ Cài đặt</a>
+                <button class="nav-btn nav-logout hide-mobile" onclick="doLogout()" style="margin-left:8px;" title="Đăng xuất">🚪 Đăng xuất</button>
+            `;
+        }
+        
+        var bigAvHtml = currentUserData.avatar ? `<img src="${currentUserData.avatar}">` : currentUserData.fullname.charAt(0).toUpperCase();
+        if(document.getElementById('pName')) document.getElementById('pName').innerText = currentUserData.fullname;
+        if(document.getElementById('pMeta')) document.getElementById('pMeta').innerHTML = `<span>📧 ${currentUserData.email}</span>`;
+        if(document.getElementById('profileAv')) document.getElementById('profileAv').innerHTML = bigAvHtml;
         
         if(document.getElementById('page-profile').classList.contains('active')) renderProfile();
       }
