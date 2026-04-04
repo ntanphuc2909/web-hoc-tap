@@ -114,6 +114,7 @@ body.dark-mode .home-big-header{background:#0d1020;}
 .btn-hlogin{padding:8px 18px;background:transparent;color:rgba(255,255,255,.85);border:1.5px solid rgba(255,255,255,.2);border-radius:8px;font-weight:600;font-size:13px;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;}
 .btn-hlogin:hover{border-color:#4DD9AC;color:#4DD9AC;}
 
+/* SLIDE MENU CSS */
 .overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0);display:none;z-index:1999;transition:background .35s ease;}
 .overlay.active{display:block;background:rgba(0,0,0,.55);}
 .slide-menu{position:fixed;top:0;left:-340px;width:310px;height:100vh;background:#111827;color:#fff;transition:left .38s cubic-bezier(.23,1,.32,1);z-index:2000;overflow-y:auto;display:flex;flex-direction:column;}
@@ -134,6 +135,13 @@ body.dark-mode .slide-menu{background:#0d1020;}
 .sm-nav a:hover::before,.sm-nav a.sm-active::before{transform:translateY(-50%) scaleY(1);}
 .sm-icon{width:18px;text-align:center;font-size:15px;flex-shrink:0;}
 .sm-divider{height:1px;background:rgba(255,255,255,.07);margin:8px 22px;}
+
+/* CSS DROPDOWN NGÀNH HỌC */
+.sm-accordion-btn { display:flex; align-items:center; cursor: pointer; }
+.sm-submenu { display: none; flex-direction: column; background: rgba(0,0,0,0.15); border-left: 2px solid #4DD9AC; margin-left: 22px; margin-right: 22px; margin-bottom: 5px; border-radius: 0 0 8px 8px; overflow:hidden;}
+.sm-submenu a { padding: 10px 16px; font-size: 13px; opacity: 0.85; border-radius: 0; }
+.sm-submenu a::before { display: none; }
+.sm-submenu a:hover { opacity: 1; background: rgba(77,217,172,.05); }
 
 .home-user-bar{max-width:1200px;margin:0 auto;padding:20px 32px 0;}
 .hub-inner{background:var(--card);border-radius:14px;padding:18px 24px;display:flex;align-items:center;gap:16px;box-shadow:0 2px 12px rgba(0,0,0,.07);border:1px solid var(--border);}
@@ -331,6 +339,14 @@ body.dark-mode .pdetails b{color: #7ececa;}
 .av-preview img{width:100%;height:100%;object-fit:cover;border-radius:50%;}
 .btn-av{padding:8px 14px;background:var(--secondary);color:#fff;border-radius:7px;font-size:13px;font-weight:600;cursor:pointer;display:inline-block;}
 
+.portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-top:15px;}
+.pf-item { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 16px; cursor: pointer; transition:all .2s;}
+.pf-item:hover { border-color: var(--primary); transform:translateY(-2px);}
+.pf-item h4 { font-size: 15px; color: var(--text); margin-bottom: 8px; font-family: 'Playfair Display', serif;}
+.pf-item p { font-size: 12px; color: var(--text2); line-height: 1.5; margin-bottom: 10px;}
+.pf-score { display:inline-block; padding: 3px 8px; background: rgba(45,95,93,0.1); color: var(--primary); font-size: 11px; font-weight:700; border-radius: 4px;}
+body.dark-mode .pf-score { background: rgba(126,206,202,0.15); color: #7ececa;}
+
 /* Settings */
 .settings-card{background:var(--card);border-radius:14px;padding:24px;margin-bottom:18px;box-shadow:0 2px 10px rgba(0,0,0,.06);}
 body.dark-mode .settings-card{box-shadow:0 2px 10px rgba(0,0,0,.35);}
@@ -358,15 +374,6 @@ body.dark-mode .lang-opt.active{border-color:#7ececa;background:rgba(126,206,202
 .lang-flag{font-size:22px; font-weight:bold; color:var(--primary); margin-bottom:5px; font-family:sans-serif;}
 body.dark-mode .lang-flag{color:#7ececa;}
 .lang-name{font-size:12px;font-weight:600;color:var(--text);}
-
-/* Portfolio */
-.portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-top:15px;}
-.pf-item { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 16px; cursor: pointer; transition:all .2s;}
-.pf-item:hover { border-color: var(--primary); transform:translateY(-2px);}
-.pf-item h4 { font-size: 15px; color: var(--text); margin-bottom: 8px; font-family: 'Playfair Display', serif;}
-.pf-item p { font-size: 12px; color: var(--text2); line-height: 1.5; margin-bottom: 10px;}
-.pf-score { display:inline-block; padding: 3px 8px; background: rgba(45,95,93,0.1); color: var(--primary); font-size: 11px; font-weight:700; border-radius: 4px;}
-body.dark-mode .pf-score { background: rgba(126,206,202,0.15); color: #7ececa;}
 
 /* TOAST */
 #_toast{position:fixed;bottom:24px;right:24px;z-index:99999;padding:13px 20px;border-radius:12px;font-size:14px;font-weight:500;color:#fff;box-shadow:0 6px 24px rgba(0,0,0,.2);transform:translateY(70px);opacity:0;transition:all .35s cubic-bezier(.34,1.56,.64,1);max-width:320px;line-height:1.5;pointer-events:none;}
@@ -581,8 +588,16 @@ body.dark-mode .pf-score { background: rgba(126,206,202,0.15); color: #7ececa;}
       <div class="sm-label" data-i18n="smMain">Điều hướng chính</div>
       <a onclick="closeMenu();showPage('page-home')" class="sm-active"><span class="sm-icon">🏠</span><span data-i18n="navHome">Trang chủ</span></a>
       <a onclick="closeMenu();showPage('page-reels')"><span class="sm-icon">📱</span><span>Reels Học Thuật</span></a>
-      <a onclick="closeMenu();scrollToId('dept-section')"><span class="sm-icon">🔥</span><span data-i18n="smDepts">Sàn Thử Thách</span></a>
-      <a onclick="closeMenu();scrollToId('why-section')"><span class="sm-icon">⭐</span><span data-i18n="smAbout">Về CEP</span></a>
+      
+      <a class="sm-accordion-btn" onclick="toggleSubMenu(this)">
+        <span class="sm-icon">📚</span><span data-i18n="smDepts">Ngành học</span>
+        <span class="sm-arrow" style="margin-left:auto; font-size:10px; transition:transform 0.3s;">▼</span>
+      </a>
+      <div class="sm-submenu">
+        <a onclick="closeMenu();showPage('page-pr-course')">📣 Public Relations (PR)</a>
+        <a onclick="closeMenu();showPage('page-mkt-course')">📈 Marketing</a>
+      </div>
+      
       <div class="sm-divider"></div>
       <div class="sm-label" data-i18n="smAccount">Tài khoản</div>
       <a onclick="closeMenu();showPage('page-profile')"><span class="sm-icon">👤</span><span data-i18n="navProfile">Hồ sơ & Portfolio</span></a>
@@ -737,7 +752,7 @@ body.dark-mode .pf-score { background: rgba(126,206,202,0.15); color: #7ececa;}
 
 <div class="page" id="page-reels" style="background:#111; min-height:100vh; padding-top:20px;">
   <div style="position:absolute; top:20px; left:20px; z-index:100;">
-    <button onclick="goBack()" style="background:rgba(255,255,255,0.2); color:#fff; border:none; padding:10px 15px; border-radius:20px; font-weight:bold; cursor:pointer; backdrop-filter:blur(5px);">⬅ Quay lại</button>
+    <button onclick="goBack()" style="background:rgba(255,255,255,0.2); color:#fff; border:none; padding:10px 15px; border-radius:20px; font-weight:bold; cursor:pointer; backdrop-filter:blur(5px);">⬅ Quay lại Workspace</button>
   </div>
   <div class="reels-container">
     <div class="reel-video" style="background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');">
@@ -1062,87 +1077,8 @@ let currentUserData = null;
 emailjs.init("aHnJ33MLii-dyHWFW"); // Public Key
 
 /* ═══════════════════════════════
-   TRANSLATIONS & I18N
+   MENU JS (ACCORDION & SLIDE MENU)
 ═══════════════════════════════ */
-var I18N = {
-  vi: {
-    navHome:'🏠 Trang chủ',navProfile:'👤 Hồ sơ',navSettings:'⚙️ Cài đặt',navChangePwd:'🔑 Đổi mật khẩu',navLogout:'🚪 Đăng xuất',navLogin:'Đăng nhập',navRegister:'Đăng ký',
-    loginWelcome:'Chào mừng trở lại!',loginSubLeft:'Khám phá cơ hội học tập về PR & Marketing',loginH2:'Đăng nhập',loginSub:'Đăng nhập để tiếp tục hành trình học tập',
-    emailLbl:'Email',pwLbl:'Mật khẩu',rememberMe:'Ghi nhớ đăng nhập',forgotLink:'Quên mật khẩu?',loginBtn:'Đăng nhập',orWith:'Hoặc đăng nhập với',
-    noAccountRow:'Chưa có tài khoản? <a onclick="showPage(\'page-register\')" style="cursor:pointer;">Đăng ký ngay</a>',
-    regWelcome:'Tham gia cùng chúng tôi!',regSubLeft:'Bắt đầu hành trình PR & Marketing chuyên nghiệp',regH2:'Đăng ký tài khoản',regSub:'Tạo tài khoản miễn phí để bắt đầu',
-    b1:'Bài tập thực chiến PR',b2:'Bài tập thực chiến Marketing',b3:'Hỗ trợ 24/7',b4:'Cộng đồng học viên',
-    fullnameLbl:'Họ và tên *',phoneLbl:'Số điện thoại',confirmPwLbl:'Xác nhận mật khẩu *',roleLbl:'Bạn là',
-    roleDefault:'Chọn vai trò',roleStudent:'Học sinh / Sinh viên',rolePro:'Người đi làm',roleTeacher:'Giáo viên',roleOther:'Khác',
-    termsLabel:'Tôi đồng ý với <a href="#">Điều khoản</a> và <a href="#">Chính sách bảo mật</a>',regBtn:'Đăng ký',
-    hasAccountRow:'Đã có tài khoản? <a onclick="showPage(\'page-login\')" style="cursor:pointer;">Đăng nhập ngay</a>',
-    fpTitle:'Quên mật khẩu?',fpSub:'Đừng lo! Chúng tôi sẽ giúp bạn khôi phục tài khoản',fp1h:'Nhập email',fp1p:'Email đã đăng ký',fp2h:'Nhận mật khẩu mới',fp2p:'Kiểm tra hộp thư email',fp3h:'Đăng nhập lại',fp3p:'Dùng mật khẩu mới',
-    fpH2:'Khôi phục mật khẩu',fpSubRight:'Nhập email để nhận link đặt lại mật khẩu',fpNote:'Link khôi phục mật khẩu sẽ được gửi vào email của bạn.',fpBtn:'Khôi phục mật khẩu',fpBackLink:'← Quay lại đăng nhập',
-    topBar:'Giờ làm việc: 8:00 – 22:00 | Liên hệ: ',smMain:'Điều hướng chính',smDepts:'Ngành học',smAbout:'Về CEP',smAccount:'Tài khoản',smRegCta:'🚀 Đăng ký ngay hôm nay',smContact:'📩 Liên hệ tư vấn',
-    heroH1:'Khởi đầu sự nghiệp<br>của bạn ngay hôm nay',heroP:'Khám phá và phát triển kỹ năng PR & Marketing chuyên nghiệp cùng Career Experience',heroExplore:'🚀 Khám phá ngay',heroLearn:'📖 Tìm hiểu thêm',
-    statDepts:'Ngành học',statStudents:'Học viên',statTasks:'Bài tập thực chiến',statSat:'Hài lòng',featTitle:'Tại sao chọn CEP?',featSub:'Nền tảng học tập thực chiến dành riêng cho PR & Marketing',
-    f1h:'Bài tập thực chiến',f1p:'Tự tạo và thực hành bài tập sát thực tế ngành PR & Marketing',f2h:'Cộng đồng kết nối',f2p:'Kết nối với các chuyên gia và học viên trong ngành',f3h:'Theo dõi tiến độ',f3p:'Hệ thống theo dõi và đánh giá tiến độ học tập của bạn',f4h:'Chứng nhận hoàn thành',f4p:'Nhận chứng nhận sau khi hoàn thành các bài tập ngành',
-    deptTitle:'Ngành học',deptSub:'Chọn ngành bạn muốn phát triển — nội dung bài tập sẽ được cập nhật sớm',prBadge:'PR',prTitle:'Public Relations',prDesc:'Phát triển kỹ năng quan hệ công chúng, xây dựng thương hiệu và quản lý truyền thông.',
-    mktBadge:'Marketing',mktTitle:'Marketing',mktDesc:'Thực hành Digital Marketing, Content Strategy và Brand Management.',deptBtnSoon:'🔜 Sắp ra mắt',
-    whyTitle:'Tại sao nên chọn Career Experience?',whyDesc:'CEP không chỉ là nơi bạn học — đây là nền tảng nơi bạn kết nối với đam mê, khám phá tiềm năng và xây dựng sự nghiệp mơ ước trong PR & Marketing.',
-    why1:'Bài tập được thiết kế bởi các chuyên gia thực chiến trong ngành PR & Marketing.',why2:'Chất lượng luôn được đặt lên hàng đầu để người học tiếp nhận kiến thức hiệu quả nhất.',why3:'Cộng đồng học viên năng động, hỗ trợ nhau trong suốt quá trình học tập.',
-    reviewTitle:'Review về CEP',reviewSub:'Học viên nói gì về chúng tôi',reviewBadge:'Tuyệt vời!',
-    r1:'CEP có nội dung rất thực tế, giúp mình áp dụng ngay vào công việc PR. Giao diện thân thiện, dễ dùng.',r1role:'Học viên PR',r2:'Mảng Marketing ở CEP rất bài bản. Bài tập sát thực tế.',r2role:'Học viên Marketing',r3:'Cộng đồng học viên CEP rất nhiệt tình. Mình học được rất nhiều.',r3role:'Học viên PR & Marketing',
-    footerAbout:'Nền tảng phát triển kỹ năng PR & Marketing dành cho sinh viên và người đi làm.',footerLinks:'Liên kết nhanh',footerContact:'Liên hệ',footerAddr:'Trường ĐH Văn Lang, TP. HCM',footerHours:'Giờ làm việc',fh1:'T2–T6: 8:00 – 22:00',fh2:'T7: 8:00 – 20:00',fh3:'CN: 9:00 – 18:00',
-    continueLearning:'▶ Tiếp tục học',editBtn:'✏️ Chỉnh sửa',editTitle:'Chỉnh sửa hồ sơ',avatarLbl:'Ảnh đại diện',choosePhoto:'Chọn ảnh',occLbl:'Nghề nghiệp',locLbl:'Địa điểm',webLbl:'Website / LinkedIn',bioLbl:'Giới thiệu',saveBtn:'💾 Lưu thay đổi',cancelBtn:'Hủy',
-    dobLbl:'Ngày sinh',genderLbl:'Giới tính',fbLbl:'Link Facebook',eduLbl:'Học vấn',expLbl:'Kinh nghiệm',skillsLbl:'Kỹ năng',male:'Nam',female:'Nữ',otherGender:'Khác',
-    statsTitle:'📊 Thống kê học tập',statActive:'Bài tập đang làm',statCerts:'Chứng nhận',statHours:'Giờ học',noIntro:'Chưa có giới thiệu. Hãy thêm vài dòng về bản thân!',roleLblMap:{student:'Học sinh / Sinh viên',professional:'Người đi làm',teacher:'Giáo viên',other:'Khác'},joinedDate:'Tham gia',welcomeBack:'Chào mừng trở lại,',
-    settingsH1:'⚙️ Cài đặt',settingsSub:'Tuỳ chỉnh trải nghiệm của bạn',sApp:'🎨 Giao diện',sDarkH:'Chế độ tối',sDarkP:'Bật để bảo vệ mắt vào ban đêm',sLangH:'🌐 Ngôn ngữ',sLangTitle:'Ngôn ngữ hiển thị',sLangDesc:'Áp dụng toàn bộ giao diện ứng dụng',
-    sNotif:'🔔 Thông báo',sSysN:'Thông báo hệ thống',sSysNd:'Nhận thông báo về bài tập và cập nhật',sEmailN:'Thông báo email',sEmailNd:'Nhận email về tiến trình học tập',
-    sSec:'🔐 Bảo mật',sCpH:'Đổi mật khẩu',sCpP:'Cập nhật mật khẩu định kỳ',sCpBtn:'Đổi mật khẩu',s2fH:'Xác thực 2 bước',s2fP:'Tăng cường bảo mật',s2fBtn:'Thiết lập',
-    sAccH:'⚠️ Tài khoản',sExH:'Xuất dữ liệu',sExP:'Tải xuống toàn bộ dữ liệu',sExBtn:'📥 Xuất',sLoH:'Đăng xuất',sLoP:'Đăng xuất khỏi thiết bị này',sLoBtn:'🚪 Đăng xuất',
-    cpH1:'🔑 Đổi mật khẩu',cpSub:'Bảo vệ tài khoản với mật khẩu mạnh',cpTipsTitle:'🔐 Mật khẩu mạnh nên có:',cpT1:'Ít nhất 8 ký tự',cpT2:'Chữ hoa và chữ thường',cpT3:'Số và ký tự đặc biệt',cpT4:'Không dùng thông tin cá nhân',
-    cpCurLbl:'Mật khẩu hiện tại *',cpCurErr:'Mật khẩu hiện tại không đúng',cpNewLbl:'Mật khẩu mới *',cpNewErr:'Mật khẩu phải có ít nhất 8 ký tự',cpConLbl:'Xác nhận mật khẩu mới *',cpConErr:'Mật khẩu không khớp',cpConOk:'✓ Mật khẩu khớp',cpSaveBtn:'✅ Cập nhật',
-    strengthWeak:'⚠️ Yếu',strengthMed:'👍 Trung bình',strengthStrong:'💪 Mạnh',confirmLogout:'Bạn có chắc muốn đăng xuất?',
-    errFill:'❌ Vui lòng điền đầy đủ thông tin!',errPwdShort:'❌ Mật khẩu phải ít nhất 8 ký tự!',errPwdMatch:'❌ Mật khẩu xác nhận không khớp!',errTerms:'❌ Vui lòng đồng ý điều khoản!',errFpFill:'❌ Vui lòng nhập email!',errNameEmpty:'❌ Họ và tên không được trống!',loginRequired:'⚠️ Vui lòng đăng nhập!'
-  },
-  en: {
-    navHome:'🏠 Home',navProfile:'👤 Profile',navSettings:'⚙️ Settings',navChangePwd:'🔑 Change Password',navLogout:'🚪 Logout',navLogin:'Login',navRegister:'Register',
-    loginWelcome:'Welcome Back!',loginSubLeft:'Explore PR & Marketing learning opportunities',loginH2:'Login',loginSub:'Sign in to continue your journey',
-    emailLbl:'Email',pwLbl:'Password',rememberMe:'Remember me',forgotLink:'Forgot password?',loginBtn:'Login',orWith:'Or login with',
-    noAccountRow:'No account? <a onclick="showPage(\'page-register\')" style="cursor:pointer;">Sign up</a>',
-    regWelcome:'Join Us!',regSubLeft:'Start your professional PR & Marketing journey',regH2:'Create Account',regSub:'Create a free account to get started',
-    b1:'PR Practical Tasks',b2:'Marketing Practical Tasks',b3:'24/7 Support',b4:'Student Community',
-    fullnameLbl:'Full Name *',phoneLbl:'Phone Number',confirmPwLbl:'Confirm Password *',roleLbl:'You are',
-    roleDefault:'Select role',roleStudent:'Student',rolePro:'Professional',roleTeacher:'Teacher',roleOther:'Other',
-    termsLabel:'I agree to the <a href="#">Terms</a> and <a href="#">Privacy Policy</a>',regBtn:'Register',
-    hasAccountRow:'Already have an account? <a onclick="showPage(\'page-login\')" style="cursor:pointer;">Login now</a>',
-    fpTitle:'Forgot Password?',fpSub:"Don't worry! We'll help you recover your account",fp1h:'Enter email',fp1p:'Registered email',fp2h:'Get new password',fp2p:'Check your inbox',fp3h:'Login again',fp3p:'Use the new password',
-    fpH2:'Password Recovery',fpSubRight:'Enter your email to get a new password',fpNote:'The reset link will be sent to your email.',fpBtn:'Recover Password',fpBackLink:'← Back to Login',
-    topBar:'Working hours: 8:00–22:00 | Contact: ',smMain:'Main Navigation',smDepts:'Departments',smAbout:'About CEP',smAccount:'Account',smRegCta:'🚀 Register Today',smContact:'📩 Contact Us',
-    heroH1:'Start Your Career<br>Journey Today',heroP:'Explore and develop professional PR & Marketing skills with Career Experience',heroExplore:'🚀 Explore Now',heroLearn:'📖 Learn More',
-    statDepts:'Departments',statStudents:'Students',statTasks:'Practical Tasks',statSat:'Satisfied',featTitle:'Why Choose CEP?',featSub:'The practical learning platform designed for PR & Marketing',
-    f1h:'Practical Tasks',f1p:'Create and practice tasks aligned with real PR & Marketing industry needs',f2h:'Community',f2p:'Connect with professionals and fellow students',f3h:'Track Progress',f3p:'System to monitor and evaluate your learning progress',f4h:'Completion Certificate',f4p:'Earn a certificate upon completing departmental tasks',
-    deptTitle:'Departments',deptSub:'Choose your field — task content will be added soon',prBadge:'PR',prTitle:'Public Relations',prDesc:'Develop public relations, brand building and media management skills.',
-    mktBadge:'Marketing',mktTitle:'Marketing',mktDesc:'Practice Digital Marketing, Content Strategy and Brand Management.',deptBtnSoon:'🔜 Coming Soon',
-    whyTitle:'Why Choose Career Experience?',whyDesc:"CEP isn't just where you learn — it's a platform where you connect with your passion and build your dream career.",
-    why1:'Tasks designed by real-world professionals in PR & Marketing.',why2:'Quality is always our top priority.',why3:'Dynamic student community, supporting each other.',
-    reviewTitle:'Reviews About CEP',reviewSub:'What students say about us',reviewBadge:'Excellent!',
-    r1:'CEP has very practical content. Friendly and easy-to-use interface.',r1role:'PR Student',r2:"CEP's Marketing section is very structured. Tasks are realistic.",r2role:'Marketing Student',r3:"CEP's student community is very enthusiastic. I've learned a lot.",r3role:'PR & Marketing Student',
-    footerAbout:'Professional PR & Marketing skills development platform.',footerLinks:'Quick Links',footerContact:'Contact',footerAddr:'Van Lang University, HCMC',footerHours:'Working Hours',fh1:'Mon–Fri: 8:00–22:00',fh2:'Sat: 8:00–20:00',fh3:'Sun: 9:00–18:00',
-    continueLearning:'▶ Continue Learning',editBtn:'✏️ Edit',editTitle:'Edit Profile',avatarLbl:'Profile Photo',choosePhoto:'Choose Photo',occLbl:'Occupation',locLbl:'Location',webLbl:'Website / LinkedIn',bioLbl:'About Me',saveBtn:'💾 Save',cancelBtn:'Cancel',
-    dobLbl:'Date of Birth',genderLbl:'Gender',fbLbl:'Facebook Link',eduLbl:'Education',expLbl:'Experience',skillsLbl:'Skills',male:'Male',female:'Female',otherGender:'Other',
-    statsTitle:'📊 Learning Stats',statActive:'Active Tasks',statCerts:'Certificates',statHours:'Study Hours',noIntro:'No introduction yet. Add a few lines about yourself!',roleLblMap:{student:'Student',professional:'Professional',teacher:'Teacher',other:'Other'},joinedDate:'Joined',welcomeBack:'Welcome back,',
-    settingsH1:'⚙️ Settings',settingsSub:'Customize your experience',sApp:'🎨 Appearance',sDarkH:'Dark Mode',sDarkP:'Enable to protect your eyes at night',sLangH:'🌐 Language',sLangTitle:'Display Language',sLangDesc:'Applies to the entire app interface',
-    sNotif:'🔔 Notifications',sSysN:'System Notifications',sSysNd:'Get updates about tasks',sEmailN:'Email Notifications',sEmailNd:'Get emails about your progress',
-    sSec:'🔐 Security',sCpH:'Change Password',sCpP:'Update password periodically',sCpBtn:'Change Password',s2fH:'2-Factor Auth',s2fP:'Enhance security',s2fBtn:'Setup',
-    sAccH:'⚠️ Account',sExH:'Export Data',sExP:'Download all your data',sExBtn:'📥 Export',sLoH:'Logout',sLoP:'Logout from this device',sLoBtn:'🚪 Logout',
-    cpH1:'🔑 Change Password',cpSub:'Protect your account with a strong password',cpTipsTitle:'🔐 A strong password should have:',cpT1:'At least 8 characters',cpT2:'Uppercase and lowercase letters',cpT3:'Numbers and special characters',cpT4:'No personal info',
-    cpCurLbl:'Current Password *',cpCurErr:'Current password is incorrect',cpNewLbl:'New Password *',cpNewErr:'Password must be at least 8 characters',cpConLbl:'Confirm New Password *',cpConErr:'Passwords do not match',cpConOk:'✓ Passwords match',cpSaveBtn:'✅ Update',
-    strengthWeak:'⚠️ Weak',strengthMed:'👍 Medium',strengthStrong:'💪 Strong',confirmLogout:'Are you sure you want to logout?',
-    errFill:'❌ Please fill all fields!',errPwdShort:'❌ Password must be at least 8 characters!',errPwdMatch:'❌ Passwords do not match!',errTerms:'❌ You must agree to the terms!',errFpFill:'❌ Please enter email!',errNameEmpty:'❌ Name cannot be empty!',loginRequired:'⚠️ Please login first!'
-  }
-};
-var currentLang = 'vi';
-
-function t(key) { return I18N[currentLang][key] || I18N['vi'][key] || key; }
-
-/* Menu Toggle & Search Logic */
 var menuToggle = document.getElementById('menuToggle');
 var slideMenu = document.getElementById('slideMenu');
 var overlay = document.getElementById('overlay');
@@ -1153,6 +1089,20 @@ function closeMenu() { slideMenu.classList.remove('open'); overlay.classList.rem
 if(menuToggle) menuToggle.addEventListener('click', function(){ slideMenu.classList.contains('open') ? closeMenu() : openMenu(); });
 if(smClose) smClose.addEventListener('click', closeMenu);
 if(overlay) overlay.addEventListener('click', closeMenu);
+
+function toggleSubMenu(btn) {
+  var submenu = btn.nextElementSibling;
+  var arrow = btn.querySelector('.sm-arrow');
+  if(submenu.style.display === 'flex') {
+    submenu.style.display = 'none';
+    arrow.style.transform = 'rotate(0deg)';
+    btn.classList.remove('sm-active');
+  } else {
+    submenu.style.display = 'flex';
+    arrow.style.transform = 'rotate(180deg)';
+    btn.classList.add('sm-active');
+  }
+}
 
 function doSearch() {
   var val = document.getElementById('searchInput').value;
@@ -1174,7 +1124,7 @@ function showPage(pageId, pushToHistory = true) {
   
   if (pageId === 'page-profile') {
     if(!auth.currentUser) {
-      toast('loginRequired', 'error');
+      toast('⚠️ Vui lòng đăng nhập!', 'error');
       showPage('page-login');
       return;
     }
@@ -1197,10 +1147,9 @@ window.addEventListener('popstate', function(event) {
   else { showPage(auth.currentUser ? 'page-home' : 'page-login', false); }
 });
 
-function toast(msgKey, type) {
-  var text = (I18N[currentLang] && I18N[currentLang][msgKey]) ? I18N[currentLang][msgKey] : msgKey;
+function toast(msg, type) {
   var tst = document.getElementById('_toast');
-  tst.innerText = text;
+  tst.innerText = msg;
   tst.style.background = type === 'error' ? '#e76f51' : '#2D5F5D';
   tst.classList.add('show');
   setTimeout(() => tst.classList.remove('show'), 3000);
@@ -1210,17 +1159,6 @@ function togglePw(id, icon) {
   var input = document.getElementById(id);
   if(input.type === 'password') { input.type = 'text'; icon.innerText = '🙈'; }
   else { input.type = 'password'; icon.innerText = '👁️'; }
-}
-
-function checkStrength(val, wrapId) {
-  var wrap = document.getElementById(wrapId);
-  var txt = wrap.querySelector('.strength-txt');
-  if(!val) { wrap.style.display = 'none'; return; }
-  wrap.style.display = 'block';
-  wrap.className = 'strength-wrap';
-  if(val.length < 6) { wrap.classList.add('sw-weak'); txt.innerText = t('strengthWeak'); }
-  else if(val.length < 10 && !/[A-Z]/.test(val)) { wrap.classList.add('sw-medium'); txt.innerText = t('strengthMed'); }
-  else { wrap.classList.add('sw-strong'); txt.innerText = t('strengthStrong'); }
 }
 
 function loadRealStats() {
@@ -1288,7 +1226,6 @@ function doLogout() {
   auth.signOut().then(() => { currentUserData = null; toast('🚪 Đã đăng xuất', 'success'); showPage('page-login'); });
 }
 
-// ---- EMAILJS OTP CHO LUỒNG QUÊN MẬT KHẨU ----
 let generatedOTP = "";
 function sendMockOTP() {
   var email = document.getElementById('forgotEmail').value.trim();
@@ -1367,7 +1304,7 @@ auth.onAuthStateChanged((user) => {
 });
 
 /* ═══════════════════════════════
-   PROFILE 
+   PROFILE (KHÔI PHỤC)
 ═══════════════════════════════ */
 function renderProfile() {
   if(!currentUserData) return;
@@ -1375,22 +1312,20 @@ function renderProfile() {
   document.getElementById('profileAv').innerHTML = avHtml;
   document.getElementById('pName').innerText = currentUserData.fullname;
   
-  var roleMap = I18N[currentLang].roleLblMap || I18N['vi'].roleLblMap;
-  var roleText = roleMap[currentUserData.role] || currentUserData.role;
+  var roleText = currentUserData.role === 'student' ? 'Học sinh / Sinh viên' : currentUserData.role;
   var meta = '<span>📧 '+currentUserData.email+'</span><span>🎭 '+roleText+'</span>';
   if(currentUserData.location) meta += '<span>📍 '+currentUserData.location+'</span>';
   if(currentUserData.occupation) meta += '<span>💼 '+currentUserData.occupation+'</span>';
   document.getElementById('pMeta').innerHTML = meta;
-  document.getElementById('pBio').innerText = currentUserData.bio || t('noIntro');
+  document.getElementById('pBio').innerText = currentUserData.bio || 'Chưa có giới thiệu.';
 
-  var genderMap = { male: t('male'), female: t('female'), otherGender: t('otherGender') };
   var detailsHtml = '';
-  if(currentUserData.dob) detailsHtml += '<div>📅 <b>' + t('dobLbl') + ':</b> ' + currentUserData.dob + '</div>';
-  if(currentUserData.gender) detailsHtml += '<div>⚧️ <b>' + t('genderLbl') + ':</b> ' + (genderMap[currentUserData.gender] || currentUserData.gender) + '</div>';
+  if(currentUserData.dob) detailsHtml += '<div>📅 <b>Ngày sinh:</b> ' + currentUserData.dob + '</div>';
+  if(currentUserData.gender) detailsHtml += '<div>⚧️ <b>Giới tính:</b> ' + currentUserData.gender + '</div>';
   if(currentUserData.facebook) detailsHtml += '<div>📘 <b>Facebook:</b> <a href="'+currentUserData.facebook+'" target="_blank" style="color:var(--primary)">'+currentUserData.facebook+'</a></div>';
-  if(currentUserData.education) detailsHtml += '<div>🎓 <b>' + t('eduLbl') + ':</b> ' + currentUserData.education + '</div>';
-  if(currentUserData.experience) detailsHtml += '<div>💼 <b>' + t('expLbl') + ':</b> ' + currentUserData.experience + '</div>';
-  if(currentUserData.skills) detailsHtml += '<div>⚡ <b>' + t('skillsLbl') + ':</b> ' + currentUserData.skills + '</div>';
+  if(currentUserData.education) detailsHtml += '<div>🎓 <b>Học vấn:</b> ' + currentUserData.education + '</div>';
+  if(currentUserData.experience) detailsHtml += '<div>💼 <b>Kinh nghiệm:</b> ' + currentUserData.experience + '</div>';
+  if(currentUserData.skills) detailsHtml += '<div>⚡ <b>Kỹ năng:</b> ' + currentUserData.skills + '</div>';
   document.getElementById('pDetails').innerHTML = detailsHtml;
 
   document.getElementById('avPreview').innerHTML = avHtml;
@@ -1427,39 +1362,26 @@ function saveProfile() {
     role: document.getElementById('eRl').value, dob: document.getElementById('eDob').value, gender: document.getElementById('eGen').value,
     facebook: document.getElementById('eFb').value.trim(), education: document.getElementById('eEdu').value.trim(), experience: document.getElementById('eExp').value.trim(), skills: document.getElementById('eSkills').value.trim()
   };
-  if(!data.fullname) return toast('errNameEmpty', 'error');
+  if(!data.fullname) return toast('Tên không được để trống', 'error');
   if(tempAvatar) data.avatar = tempAvatar;
 
   db.collection('users').doc(auth.currentUser.uid).update(data).then(() => {
-    toast('toastSaveProfile', 'success'); currentUserData = {...currentUserData, ...data}; toggleEdit(); renderProfile(); auth.onAuthStateChanged(auth.currentUser);
+    toast('Đã lưu thông tin thành công!', 'success'); currentUserData = {...currentUserData, ...data}; toggleEdit(); renderProfile(); auth.onAuthStateChanged(auth.currentUser);
   }).catch((error) => { toast('Lỗi cập nhật: ' + error.message, 'error'); });
 }
 
 /* ═══════════════════════════════
-   SETTINGS & THEME
+   THEME SYNC
 ═══════════════════════════════ */
 function toggleDark(isDark) {
   if(isDark) document.body.classList.add('dark-mode'); else document.body.classList.remove('dark-mode');
   localStorage.setItem('cep_theme', isDark ? 'dark' : 'light');
   var toggle = document.getElementById('darkToggle'); if(toggle) toggle.checked = isDark;
 }
-
 function setLang(lang) {
-  currentLang = lang; localStorage.setItem('cep_lang', lang);
+  // Mock function, currently UI relies on hardcoded Vietnamese for testing.
   document.querySelectorAll('.lang-opt').forEach(function(el){ el.classList.remove('active'); });
   var activeOpt = document.querySelector('.lang-opt[data-lang="'+lang+'"]'); if(activeOpt) activeOpt.classList.add('active');
-  
-  document.querySelectorAll('[data-i18n]').forEach(function(el) {
-    var key = el.getAttribute('data-i18n');
-    if(I18N[lang] && I18N[lang][key]) {
-      if(el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') el.placeholder = I18N[lang][key];
-      else if (el.tagName === 'OPTION') el.innerText = I18N[lang][key]; else el.innerText = I18N[lang][key];
-    }
-  });
-  document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
-    var key = el.getAttribute('data-i18n-html'); if(I18N[lang] && I18N[lang][key]) el.innerHTML = I18N[lang][key];
-  });
-  if(document.getElementById('page-profile').classList.contains('active')) renderProfile();
 }
 
 /* ═══════════════════════════════
@@ -1509,8 +1431,6 @@ document.addEventListener('DOMContentLoaded', function() {
   const savedTheme = localStorage.getItem('cep_theme');
   if(savedTheme === 'dark') { document.body.classList.add('dark-mode'); var tg = document.getElementById('darkToggle'); if(tg) tg.checked = true;}
   
-  const savedLang = localStorage.getItem('cep_lang') || 'vi'; setLang(savedLang);
-
   const urlParams = new URLSearchParams(window.location.search);
   const pageParam = urlParams.get('page');
   if (pageParam) { showPage(pageParam, false); }
