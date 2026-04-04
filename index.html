@@ -25,7 +25,7 @@ a{text-decoration:none; cursor: pointer;}
 .page{display:none;min-height:100vh; padding-bottom: 60px;}
 .page.active{display:block;}
 
-/* Đẩy content xuống để không bị che bởi Taskbar cố định */
+/* Đẩy nội dung xuống để không bị che bởi Taskbar cố định */
 body.has-global-header .page {
   padding-top: 64px; 
 }
@@ -83,7 +83,7 @@ body.dark-mode .link-row a{color:#7ececa;}
   z-index: 2000;
   background: var(--header-bg);
   box-shadow: var(--header-shadow);
-  display: none; /* JS toggles this */
+  display: none; 
   height: 64px;
 }
 
@@ -104,6 +104,25 @@ body.dark-mode .link-row a{color:#7ececa;}
 .home-search-btn{position:absolute;right:5px;background:#2D5F5D;border:none;color:#fff;width:30px;height:30px;border-radius:6px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:13px;transition:background .2s;}
 .home-search-btn:hover{background:#4DD9AC;}
 
+/* MENU NGANG TRÊN TASKBAR ĐƯỢC KHÔI PHỤC */
+.header-nav{display:flex;align-items:center;gap:8px;}
+.header-nav a.nav-link {color:rgba(255,255,255,0.85);text-decoration:none;font-weight:600;font-size:14px;padding:8px 16px;border-radius:8px;transition:all .2s;cursor:pointer; display:flex; align-items:center; gap:6px;}
+.header-nav a.nav-link:hover{background:rgba(255,255,255,0.1);color:#fff;}
+.header-nav .nav-active{background:rgba(255,255,255,0.15) !important; color:#fff !important; font-weight:700;}
+
+/* Dropdown Menu Ngành Học Desktop */
+.nav-dropdown { position: relative; display: inline-block; height: 100%;}
+.nav-dropdown-content { 
+  display: none; position: absolute; background-color: var(--card); 
+  min-width: 240px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); 
+  border-radius: 12px; z-index: 1001; top: 110%; left: 0; 
+  padding: 10px 0; border: 1px solid var(--border); overflow: hidden;
+}
+.nav-dropdown:hover .nav-dropdown-content { display: block; animation: fadeUp 0.2s ease; }
+.nav-dropdown-content a { color: var(--text) !important; padding: 12px 20px; display: block; font-weight: 600; font-size: 13px; transition: background 0.2s; cursor:pointer;}
+.nav-dropdown-content a:hover { background-color: rgba(45,95,93,.08); color: var(--primary) !important; }
+body.dark-mode .nav-dropdown-content a:hover { background-color: rgba(126,206,202,.12); color: #7ececa !important; }
+
 .home-right{display:flex;align-items:center;gap:0;margin-left:auto;flex-shrink:0;}
 .home-divider{width:1px;height:28px;background:rgba(255,255,255,.1);margin:0 15px;}
 .home-auth{display:flex;align-items:center;gap:8px;}
@@ -119,7 +138,7 @@ body.dark-mode .link-row a{color:#7ececa;}
 .btn-hlogin:hover{border-color:#4DD9AC;color:#4DD9AC;}
 
 /* ════════════════════════════════════════
-   SLIDE MENU (MOBILE & DESKTOP)
+   SLIDE MENU (GỘP & ĐẨY LOGOUT XUỐNG CÙNG)
 ════════════════════════════════════════ */
 .overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0);display:none;z-index:1999;transition:background .35s ease;}
 .overlay.active{display:block;background:rgba(0,0,0,.55);}
@@ -150,7 +169,7 @@ body.dark-mode .slide-menu{background:#0d1020;}
 .sm-submenu a:hover { opacity: 1; background: rgba(77,217,172,.05); color:#4DD9AC;}
 
 /* Highlighted Logout Box at Bottom */
-.sm-footer-box { padding: 20px; border-top: 1px solid rgba(255,255,255,0.07); background: rgba(0,0,0,0.1); }
+.sm-footer-box { padding: 20px; border-top: 1px solid rgba(255,255,255,0.07); background: rgba(0,0,0,0.1); margin-top: auto; }
 .sm-logout-btn {
   display: flex; align-items: center; justify-content: center; gap: 8px;
   background: rgba(231, 111, 81, 0.1);
@@ -255,7 +274,6 @@ body.dark-mode footer{background:#080b12;}
 body.dark-mode .page-header h1{color:#7ececa;}
 .page-header p{color:var(--text2);font-size:14px;}
 
-/* Flip Card */
 .case-study-container { margin: 20px 0; display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;}
 .flip-card { background-color: transparent; width: 100%; height: 280px; perspective: 1000px; cursor: pointer; }
 .flip-card-inner { position: relative; width: 100%; height: 100%; text-align: left; transition: transform 0.8s; transform-style: preserve-3d; }
@@ -270,7 +288,6 @@ body.dark-mode .flip-card-back h4 { color: #7ececa; }
 .brand-tag { background: rgba(255,255,255,0.2); padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; display:inline-block; margin-bottom:12px;}
 .flip-hint { margin-top: auto; font-size: 13px; opacity: 0.8; font-style:italic;}
 
-/* Simulation Lab */
 .simulation-lab { background: var(--card); border: 2px solid #E76F51; border-radius: 12px; overflow: hidden; margin-top: 30px; }
 .sim-header { background: #E76F51; color: white; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; }
 .sim-header h3 { font-size: 16px; margin: 0; font-weight:700;}
@@ -283,7 +300,6 @@ body.dark-mode .flip-card-back h4 { color: #7ececa; }
 .sim-action textarea { flex: 1; width: 100%; border: 1px solid var(--border); border-radius: 8px; padding: 12px; margin-bottom: 15px; font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); resize: none; line-height:1.5;}
 .sim-action textarea:focus { outline: none; border-color: #E76F51; box-shadow: 0 0 0 3px rgba(231,111,81,0.1); }
 
-/* Marketing Workspace */
 .marketing-workspace { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; margin-top: 20px; }
 .workspace-editor { background: var(--card); padding: 24px; border-radius: 12px; border: 1px solid var(--border); display:flex; flex-direction:column; box-shadow:0 4px 15px rgba(0,0,0,0.03);}
 .workspace-editor h3 { font-size: 18px; color: var(--primary); margin-bottom: 15px; font-family: 'Playfair Display', serif;}
@@ -346,8 +362,6 @@ body.dark-mode .settings-card h3{color:#7ececa;}
 .setting-row:last-child{border-bottom:none;}
 .setting-info h4{font-size:14px;font-weight:600;color:var(--text);margin-bottom:3px;}
 .setting-info p{font-size:12px;color:var(--text2);}
-.sact-btn{padding:8px 16px;border:2px solid var(--border);border-radius:8px;background:var(--card);font-size:13px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;color:var(--text);transition:all .2s;}
-.sact-btn:hover{border-color:var(--primary);color:var(--primary);}
 .toggle{position:relative;display:inline-block;width:48px;height:26px;flex-shrink:0;}
 .toggle input{opacity:0;width:0;height:0;}
 .tslider{position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background:#ccc;border-radius:13px;transition:.3s;}
@@ -381,13 +395,14 @@ input:checked+.tslider:before{transform:translateX(22px);}
   .logo-text{display:none;}
   .home-search{display:none;}
   .home-divider{display:none;}
+  .header-nav{display:none;}
 }
 </style>
 </head>
-<body>
+<body class="has-global-header">
 <div id="_toast"></div>
 
-<header id="globalHeader" class="home-big-header">
+<header id="globalHeader">
   <div class="home-hc">
     <div class="home-logo" onclick="showPage('page-home')">
       <div class="home-logo-circle">CEP</div>
@@ -399,6 +414,20 @@ input:checked+.tslider:before{transform:translateX(22px);}
     <div class="home-search">
       <input type="text" id="searchInput" placeholder="Tìm kiếm Brief, Khóa học...">
       <button class="home-search-btn" onclick="doSearch()">🔍</button>
+    </div>
+
+    <div class="header-nav" style="margin-left: 15px; display:flex; gap:10px;">
+      <a id="nav-home-btn" onclick="showPage('page-home')" class="nav-link nav-active">🏠 Bảng tin</a>
+      
+      <div class="nav-dropdown">
+        <a id="nav-course-btn" class="nav-link" style="cursor:pointer;">📚 Ngành học ▾</a>
+        <div class="nav-dropdown-content">
+          <a onclick="showPage('page-pr-course')">🚨 Xử lý Khủng hoảng (PR)</a>
+          <a onclick="showPage('page-mkt-course')">💡 Sáng tạo Trend (Marketing)</a>
+        </div>
+      </div>
+
+      <a id="nav-reels-btn" onclick="showPage('page-reels')" class="nav-link">📱 Reels Học Thuật</a>
     </div>
 
     <div class="home-right">
@@ -931,13 +960,6 @@ input:checked+.tslider:before{transform:translateX(22px);}
         <label class="toggle"><input type="checkbox" checked><span class="tslider"></span></label>
       </div>
     </div>
-    <div class="settings-card">
-      <h3>⚠️ Tài khoản</h3>
-      <div class="setting-row">
-        <div class="setting-info"><h4>Đăng xuất</h4><p>Đăng xuất khỏi thiết bị này</p></div>
-        <button class="sact-btn danger" onclick="doLogout()">🚪 Đăng xuất</button>
-      </div>
-    </div>
   </div>
 </div>
 
@@ -965,7 +987,7 @@ const auth = firebase.auth();
 const db = firebase.firestore();
 let currentUserData = null;
 
-emailjs.init("aHnJ33MLii-dyHWFW"); // Public Key
+emailjs.init("aHnJ33MLii-dyHWFW");
 
 /* ═══════════════════════════════
    MENU JS (ACCORDION & SLIDE MENU)
@@ -1031,6 +1053,16 @@ function showPage(pageId, pushToHistory = true) {
       return;
     }
     renderProfile();
+  }
+
+  // Cập nhật trạng thái nút Active trên thanh ngang
+  document.querySelectorAll('.header-nav a.nav-link').forEach(link => link.classList.remove('nav-active'));
+  if(pageId === 'page-home') {
+    document.getElementById('nav-home-btn').classList.add('nav-active');
+  } else if(pageId === 'page-reels') {
+    document.getElementById('nav-reels-btn').classList.add('nav-active');
+  } else if(pageId === 'page-pr-course' || pageId === 'page-mkt-course') {
+    document.getElementById('nav-course-btn').classList.add('nav-active');
   }
 }
 
@@ -1173,8 +1205,8 @@ auth.onAuthStateChanged((user) => {
         currentUserData = doc.data();
         var displayName = currentUserData.fullname.split(' ')[0];
         
-        var avHtml = currentUserData.avatar ? `<img src="${currentUserData.avatar}" style="width:22px;height:22px;border-radius:50%;margin-right:6px;object-fit:cover;">` : `👤`;
-        if(authArea) authArea.innerHTML = `<button class="btn-user-profile" onclick="showPage('page-profile')">${avHtml} <span style="margin-left:4px;">${displayName}</span></button>`;
+        var avHtml = currentUserData.avatar ? `<img src="${currentUserData.avatar}" style="width:22px;height:22px;border-radius:50%;margin-right:6px;object-fit:cover;">` : `<span style="font-size:16px; margin-right:6px;">👤</span>`;
+        if(authArea) authArea.innerHTML = `<button class="btn-user-profile" onclick="showPage('page-profile')">${avHtml} <span>${displayName}</span></button>`;
         
         if(document.getElementById('page-profile').classList.contains('active')) renderProfile();
       }
@@ -1213,7 +1245,7 @@ function renderProfile() {
 
   var detailsHtml = '';
   if(currentUserData.dob) detailsHtml += '<div>📅 <b>Ngày sinh:</b> ' + currentUserData.dob + '</div>';
-  if(currentUserData.gender) detailsHtml += '<div>⚧️ <b>Giới tính:</b> ' + currentUserData.gender + '</div>';
+  if(currentUserData.gender) detailsHtml += '<div>⚧️ <b>Giới tính:</b> ' + (currentUserData.gender==='male'?'Nam':(currentUserData.gender==='female'?'Nữ':'Khác')) + '</div>';
   if(currentUserData.facebook) detailsHtml += '<div>📘 <b>Facebook:</b> <a href="'+currentUserData.facebook+'" target="_blank" style="color:var(--primary)">'+currentUserData.facebook+'</a></div>';
   if(currentUserData.education) detailsHtml += '<div>🎓 <b>Học vấn:</b> ' + currentUserData.education + '</div>';
   if(currentUserData.experience) detailsHtml += '<div>💼 <b>Kinh nghiệm:</b> ' + currentUserData.experience + '</div>';
