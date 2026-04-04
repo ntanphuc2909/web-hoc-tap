@@ -13,17 +13,22 @@
   --primary:#2D5F5D;--secondary:#F4A261;--accent:#E76F51;
   --gradient:linear-gradient(135deg,#2D5F5D 0%,#1A4645 100%);
   --bg:#f8f9fa;--card:#fff;--text:#2C3E50;--text2:#6c757d;
-  --border:#e0e0e0;--header-bg:#fff;--header-shadow:0 2px 15px rgba(0,0,0,.07);
+  --border:#e0e0e0;--header-bg:#111827;--header-shadow:0 2px 20px rgba(0,0,0,.3);
 }
 body.dark-mode{
   --bg:#0f1117;--card:#1a1d2e;--text:#e2e8f0;--text2:#94a3b8;
-  --border:#2d3748;--header-bg:#1a1d2e;--header-shadow:0 2px 15px rgba(0,0,0,.45);
+  --border:#2d3748;--header-bg:#0d1020;--header-shadow:0 2px 20px rgba(0,0,0,.5);
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);transition:background .3s,color .3s;}
 a{text-decoration:none; cursor: pointer;}
 .page{display:none;min-height:100vh; padding-bottom: 60px;}
 .page.active{display:block;}
+
+/* Đẩy content xuống để không bị che bởi Taskbar cố định */
+body.has-global-header .page {
+  padding-top: 64px; 
+}
 
 /* ════════════════════════════════════════
    AUTH PAGES
@@ -68,72 +73,57 @@ body.dark-mode .link-row a{color:#7ececa;}
 .benefit-item{display:flex;align-items:center;gap:10px;margin-bottom:10px;font-size:14px;text-align:left;}
 
 /* ════════════════════════════════════════
-   DROPDOWN MENU (TASKBAR)
+   GLOBAL TASKBAR (HEADER CỐ ĐỊNH)
 ════════════════════════════════════════ */
-.nav-dropdown { position: relative; display: inline-block; height: 100%; padding: 6px 12px;}
-.nav-dropdown > a { display: flex; align-items: center; height: 100%; font-weight: 600; font-size: 13px;}
-.nav-dropdown-content { 
-  display: none; position: absolute; background-color: var(--card); 
-  min-width: 220px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); 
-  border-radius: 12px; z-index: 1001; top: 100%; left: 0; 
-  padding: 10px 0; border: 1px solid var(--border); overflow: hidden;
+#globalHeader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 2000;
+  background: var(--header-bg);
+  box-shadow: var(--header-shadow);
+  display: none; /* JS toggles this */
+  height: 64px;
 }
-.nav-dropdown:hover .nav-dropdown-content { display: block; animation: fadeUp 0.2s ease; }
-.nav-dropdown-content a { color: var(--text) !important; padding: 12px 20px; display: block; font-weight: 600; font-size: 13px; transition: background 0.2s; }
-.nav-dropdown-content a:hover { background-color: rgba(45,95,93,.08); color: var(--primary) !important; }
-body.dark-mode .nav-dropdown-content a:hover { background-color: rgba(126,206,202,.12); color: #7ececa !important; }
 
-/* ════════════════════════════════════════
-   INNER HEADER & HOME NAV
-════════════════════════════════════════ */
-.inner-header{background:var(--header-bg);box-shadow:var(--header-shadow);position:sticky;top:0;z-index:1000;transition:background .3s,box-shadow .3s;}
-.hc{max-width:1200px;margin:0 auto;padding:0 28px;height:64px;display:flex;align-items:center;justify-content:space-between;}
-.logo{display:flex;align-items:center;gap:10px;cursor:pointer;}
-.logo-sm{width:40px;height:40px;background:var(--gradient);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:900;font-size:15px;color:#fff;}
-.logo-text{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:var(--primary);}
-body.dark-mode .logo-text{color:#7ececa;}
-.header-nav{display:flex;align-items:center;gap:4px;}
-.header-nav a.nav-link {color:var(--text);text-decoration:none;font-weight:600;font-size:13px;padding:6px 12px;border-radius:7px;transition:all .2s;cursor:pointer;}
-.header-nav a.nav-link:hover{background:rgba(45,95,93,.08);color:var(--primary);}
-body.dark-mode .header-nav a.nav-link:hover{background:rgba(126,206,202,.12);color:#7ececa;}
-.header-nav .nav-active{background:rgba(45,95,93,.1);color:var(--primary);font-weight:700;}
-body.dark-mode .header-nav .nav-active{background:rgba(126,206,202,.12);color:#7ececa;}
-.nav-btn{padding:7px 14px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;border:none;transition:all .2s;}
-.nav-logout{background:rgba(231,111,81,.1);color:#E76F51;}
-.nav-logout:hover{background:rgba(231,111,81,.2);}
-
-.home-big-header{background:#111827;box-shadow:0 2px 20px rgba(0,0,0,.3);position:sticky;top:0;z-index:1000;}
-body.dark-mode .home-big-header{background:#0d1020;}
-.home-hc{max-width:1400px;margin:0 auto;padding:0 28px;height:64px;display:flex;align-items:center;gap:0;}
+.home-hc{max-width:1400px;margin:0 auto;padding:0 28px;height:100%;display:flex;align-items:center;gap:0;}
 .home-logo{display:flex;align-items:center;gap:12px;flex-shrink:0;margin-right:10px;cursor:pointer;}
-.home-logo-circle{width:44px;height:44px;background:var(--gradient);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:900;font-size:16px;color:#fff;transition:transform .3s;}
+.home-logo-circle{width:42px;height:42px;background:var(--gradient);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:900;font-size:15px;color:#fff;transition:transform .3s;}
 .home-logo-circle:hover{transform:rotate(360deg) scale(1.1);}
-.home-logo-text{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:#fff;line-height:1.3;}
+.home-logo-text{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:#fff;line-height:1.2;}
 
-.menu-toggle-btn{display:flex;flex-direction:column;gap:5px;align-items:center;justify-content:center;cursor:pointer;width:42px;height:42px;background:rgba(77,217,172,.12);border:1.5px solid rgba(77,217,172,.4);border-radius:50%;transition:all .25s;flex-shrink:0;margin:0 10px;}
+.menu-toggle-btn{display:flex;flex-direction:column;gap:5px;align-items:center;justify-content:center;cursor:pointer;width:40px;height:40px;background:rgba(77,217,172,.12);border:1.5px solid rgba(77,217,172,.4);border-radius:50%;transition:all .25s;flex-shrink:0;margin:0 15px;}
 .menu-toggle-btn:hover{background:rgba(77,217,172,.22);border-color:#4DD9AC;}
-.menu-toggle-btn span{width:18px;height:2px;background:#4DD9AC;border-radius:2px;transition:all .35s cubic-bezier(.23,1,.32,1);display:block;}
-.menu-toggle-btn.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
-.menu-toggle-btn.open span:nth-child(2){opacity:0;transform:scaleX(0);}
-.menu-toggle-btn.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.menu-toggle-btn span{width:16px;height:2px;background:#4DD9AC;border-radius:2px;transition:all .35s cubic-bezier(.23,1,.32,1);display:block;}
 
-.home-search{flex:1;max-width:400px;margin:0 16px;position:relative;display:flex;align-items:center;}
-.home-search input{width:100%;background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.1);border-radius:8px;padding:10px 44px 10px 16px;color:#fff;font-family:'DM Sans',sans-serif;font-size:14px;transition:all .25s;}
+.home-search{flex:1;max-width:380px;position:relative;display:flex;align-items:center; margin-right: 20px;}
+.home-search input{width:100%;background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.1);border-radius:8px;padding:9px 40px 9px 16px;color:#fff;font-family:'DM Sans',sans-serif;font-size:13px;transition:all .25s;}
 .home-search input::placeholder{color:rgba(255,255,255,.35);}
 .home-search input:focus{outline:none;border-color:#4DD9AC;background:rgba(77,217,172,.05);}
-.home-search-btn{position:absolute;right:6px;background:#2D5F5D;border:none;color:#fff;width:32px;height:32px;border-radius:6px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;transition:background .2s;}
+.home-search-btn{position:absolute;right:5px;background:#2D5F5D;border:none;color:#fff;width:30px;height:30px;border-radius:6px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:13px;transition:background .2s;}
 .home-search-btn:hover{background:#4DD9AC;}
 
 .home-right{display:flex;align-items:center;gap:0;margin-left:auto;flex-shrink:0;}
-.home-divider{width:1px;height:32px;background:rgba(255,255,255,.1);margin:0 10px;}
+.home-divider{width:1px;height:28px;background:rgba(255,255,255,.1);margin:0 15px;}
 .home-auth{display:flex;align-items:center;gap:8px;}
+
+/* Nút User Bar Góc Phải */
+.btn-user-profile {
+  display:flex; align-items:center; background:rgba(255,255,255,0.08); padding:6px 16px 6px 6px; 
+  border-radius:24px; color:#fff; border:1px solid rgba(255,255,255,0.15); 
+  cursor:pointer; font-weight:600; font-size:13px; transition:all 0.2s; font-family:'DM Sans', sans-serif;
+}
+.btn-user-profile:hover { background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.3); }
 .btn-hlogin{padding:8px 18px;background:transparent;color:rgba(255,255,255,.85);border:1.5px solid rgba(255,255,255,.2);border-radius:8px;font-weight:600;font-size:13px;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;}
 .btn-hlogin:hover{border-color:#4DD9AC;color:#4DD9AC;}
 
-/* SLIDE MENU CSS */
+/* ════════════════════════════════════════
+   SLIDE MENU (MOBILE & DESKTOP)
+════════════════════════════════════════ */
 .overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0);display:none;z-index:1999;transition:background .35s ease;}
 .overlay.active{display:block;background:rgba(0,0,0,.55);}
-.slide-menu{position:fixed;top:0;left:-340px;width:310px;height:100vh;background:#111827;color:#fff;transition:left .38s cubic-bezier(.23,1,.32,1);z-index:2000;overflow-y:auto;display:flex;flex-direction:column;}
+.slide-menu{position:fixed;top:0;left:-340px;width:310px;height:100vh;background:#111827;color:#fff;transition:left .38s cubic-bezier(.23,1,.32,1);z-index:2000;display:flex;flex-direction:column;}
 body.dark-mode .slide-menu{background:#0d1020;}
 .slide-menu.open{left:0;box-shadow:8px 0 40px rgba(0,0,0,.4);}
 .sm-header{display:flex;justify-content:space-between;align-items:center;padding:20px 22px 16px;border-bottom:1px solid rgba(255,255,255,.07);background:rgba(45,95,93,.25);}
@@ -143,32 +133,33 @@ body.dark-mode .slide-menu{background:#0d1020;}
 .sm-title small{display:block;font-family:'DM Sans',sans-serif;font-size:11px;color:rgba(255,255,255,.4);font-weight:400;}
 .sm-close{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);color:#fff;font-size:18px;cursor:pointer;width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;transition:all .2s;}
 .sm-close:hover{background:rgba(255,255,255,.15);}
-.sm-nav{display:flex;flex-direction:column;padding:10px 0;flex:1;}
+
+.sm-nav-container { flex: 1; overflow-y: auto; display: flex; flex-direction: column; padding: 10px 0; }
 .sm-label{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.3);padding:14px 22px 5px;}
-.sm-nav a.sm-link{color:rgba(255,255,255,.82);padding:12px 22px;display:flex;align-items:center;gap:12px;text-decoration:none;font-size:14px;font-weight:500;transition:all .22s;position:relative; cursor:pointer;}
-.sm-nav a.sm-link:hover,.sm-nav a.sm-active{color:#4DD9AC;background:rgba(77,217,172,.08);}
-.sm-nav a.sm-link::before{content:'';position:absolute;left:0;top:50%;transform:translateY(-50%) scaleY(0);width:3px;height:60%;background:#4DD9AC;border-radius:0 2px 2px 0;transition:transform .22s;}
-.sm-nav a.sm-link:hover::before,.sm-nav a.sm-active::before{transform:translateY(-50%) scaleY(1);}
+.sm-link{color:rgba(255,255,255,.82);padding:12px 22px;display:flex;align-items:center;gap:12px;text-decoration:none;font-size:14px;font-weight:500;transition:all .22s;position:relative; cursor:pointer;}
+.sm-link:hover, .sm-active{color:#4DD9AC;background:rgba(77,217,172,.08);}
+.sm-link::before{content:'';position:absolute;left:0;top:50%;transform:translateY(-50%) scaleY(0);width:3px;height:60%;background:#4DD9AC;border-radius:0 2px 2px 0;transition:transform .22s;}
+.sm-link:hover::before, .sm-active::before{transform:translateY(-50%) scaleY(1);}
 .sm-icon{width:18px;text-align:center;font-size:15px;flex-shrink:0;}
 .sm-divider{height:1px;background:rgba(255,255,255,.07);margin:8px 22px;}
 
-/* CSS DROPDOWN NGÀNH HỌC MENU TRƯỢT */
 .sm-accordion-btn { display:flex; align-items:center; cursor: pointer; color:rgba(255,255,255,.82); padding:12px 22px; font-size:14px; font-weight:500; transition:all .22s; position:relative;}
 .sm-accordion-btn:hover { color:#4DD9AC; background:rgba(77,217,172,.08); }
 .sm-submenu { display: none; flex-direction: column; background: rgba(0,0,0,0.15); border-left: 2px solid #4DD9AC; margin-left: 22px; margin-right: 22px; margin-bottom: 5px; border-radius: 0 0 8px 8px; overflow:hidden;}
-.sm-submenu a { padding: 10px 16px; font-size: 13px; opacity: 0.85; border-radius: 0; color:#fff; cursor:pointer;}
+.sm-submenu a { padding: 10px 16px; font-size: 13px; opacity: 0.85; border-radius: 0; color:#fff; cursor:pointer; text-decoration:none;}
 .sm-submenu a:hover { opacity: 1; background: rgba(77,217,172,.05); color:#4DD9AC;}
 
-.home-user-bar{max-width:1200px;margin:0 auto;padding:20px 32px 0;}
-.hub-inner{background:var(--card);border-radius:14px;padding:18px 24px;display:flex;align-items:center;gap:16px;box-shadow:0 2px 12px rgba(0,0,0,.07);border:1px solid var(--border);}
-.hub-av{width:48px;height:48px;border-radius:50%;background:var(--gradient);color:#fff;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;flex-shrink:0;overflow:hidden;}
-.hub-av img{width:100%;height:100%;object-fit:cover;border-radius:50%;}
-.hub-info h3{font-weight:600;font-size:15px;color:var(--text);margin-bottom:2px;}
-.hub-info p{font-size:13px;color:var(--text2);}
-.hub-btns{margin-left:auto;display:flex;gap:8px;}
-.btn-sm{padding:8px 16px;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;border:none;transition:all .2s;}
-.btn-sm-p{background:var(--gradient);color:#fff;}
-.btn-sm-o{background:var(--card);color:var(--primary);border:1.5px solid var(--primary)!important;border:none;}
+/* Highlighted Logout Box at Bottom */
+.sm-footer-box { padding: 20px; border-top: 1px solid rgba(255,255,255,0.07); background: rgba(0,0,0,0.1); }
+.sm-logout-btn {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  background: rgba(231, 111, 81, 0.1);
+  color: #E76F51; padding: 12px 20px;
+  border-radius: 10px; font-weight: 600; font-size: 14px;
+  transition: all 0.2s; cursor: pointer;
+  border: 1px solid rgba(231, 111, 81, 0.3);
+}
+.sm-logout-btn:hover { background: rgba(231, 111, 81, 0.2); transform: translateY(-2px); }
 
 /* ════════════════════════════════════════
    HOME SECTIONS
@@ -357,22 +348,12 @@ body.dark-mode .settings-card h3{color:#7ececa;}
 .setting-info p{font-size:12px;color:var(--text2);}
 .sact-btn{padding:8px 16px;border:2px solid var(--border);border-radius:8px;background:var(--card);font-size:13px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;color:var(--text);transition:all .2s;}
 .sact-btn:hover{border-color:var(--primary);color:var(--primary);}
-.sact-btn.danger{border-color:#e76f51;color:#e76f51;}
-.sact-btn.danger:hover{background:rgba(231,111,81,.08);}
 .toggle{position:relative;display:inline-block;width:48px;height:26px;flex-shrink:0;}
 .toggle input{opacity:0;width:0;height:0;}
 .tslider{position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background:#ccc;border-radius:13px;transition:.3s;}
 .tslider:before{position:absolute;content:'';height:20px;width:20px;left:3px;bottom:3px;background:#fff;border-radius:50%;transition:.3s;box-shadow:0 1px 3px rgba(0,0,0,.2);}
 input:checked+.tslider{background:var(--primary);}
 input:checked+.tslider:before{transform:translateX(22px);}
-.lang-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;width:100%;margin-top:10px;}
-.lang-opt{padding:12px 8px;border:2px solid var(--border);border-radius:10px;cursor:pointer;transition:all .22s;text-align:center;background:var(--card);}
-.lang-opt:hover{border-color:#aaa;transform:translateY(-2px);}
-.lang-opt.active{border-color:var(--primary);background:rgba(45,95,93,.06);}
-body.dark-mode .lang-opt.active{border-color:#7ececa;background:rgba(126,206,202,.1);}
-.lang-flag{font-size:22px; font-weight:bold; color:var(--primary); margin-bottom:5px; font-family:sans-serif;}
-body.dark-mode .lang-flag{color:#7ececa;}
-.lang-name{font-size:12px;font-weight:600;color:var(--text);}
 
 /* TOAST */
 #_toast{position:fixed;bottom:24px;right:24px;z-index:99999;padding:13px 20px;border-radius:12px;font-size:14px;font-weight:500;color:#fff;box-shadow:0 6px 24px rgba(0,0,0,.2);transform:translateY(70px);opacity:0;transition:all .35s cubic-bezier(.34,1.56,.64,1);max-width:320px;line-height:1.5;pointer-events:none;}
@@ -395,7 +376,6 @@ body.dark-mode .lang-flag{color:#7ececa;}
   .hero-btns { justify-content: center; }
   .form-row,.efr{grid-template-columns:1fr;}
   .dept-grid,.features-grid{grid-template-columns:1fr;}
-  .lang-grid{grid-template-columns:repeat(2,1fr);}
   .inner-wrap{padding:0 14px;}
   .edit-actions{flex-direction:column;}
   .logo-text{display:none;}
@@ -407,18 +387,78 @@ body.dark-mode .lang-flag{color:#7ececa;}
 <body>
 <div id="_toast"></div>
 
+<header id="globalHeader" class="home-big-header">
+  <div class="home-hc">
+    <div class="home-logo" onclick="showPage('page-home')">
+      <div class="home-logo-circle">CEP</div>
+      <div class="home-logo-text">Career<br>Experience</div>
+    </div>
+    
+    <button class="menu-toggle-btn" id="menuToggle"><span></span><span></span><span></span></button>
+    
+    <div class="home-search">
+      <input type="text" id="searchInput" placeholder="Tìm kiếm Brief, Khóa học...">
+      <button class="home-search-btn" onclick="doSearch()">🔍</button>
+    </div>
+
+    <div class="home-right">
+      <div class="home-divider"></div>
+      <div class="home-auth" id="homeAuthArea"></div>
+    </div>
+  </div>
+</header>
+
+<div class="overlay" id="overlay"></div>
+<div class="slide-menu" id="slideMenu">
+  <div class="sm-header">
+    <div class="sm-brand"><div class="sm-circle">CEP</div><div class="sm-title">Danh mục<small>Career Experience</small></div></div>
+    <button class="sm-close" id="smClose">✕</button>
+  </div>
+  
+  <div class="sm-nav-container">
+    <nav class="sm-nav">
+      <div class="sm-label">Điều hướng chính</div>
+      <a onclick="closeMenu();showPage('page-home')" class="sm-link"><span class="sm-icon">🏠</span><span>Trang chủ</span></a>
+      <div class="sm-divider"></div>
+
+      <div class="sm-label">Khóa học & Thực chiến</div>
+      <a class="sm-accordion-btn" onclick="toggleSubMenu(this)">
+        <span class="sm-icon">📚</span><span>Ngành học</span>
+        <span class="sm-arrow" style="margin-left:auto; font-size:10px; transition:transform 0.3s;">▼</span>
+      </a>
+      <div class="sm-submenu">
+        <a onclick="closeMenu();showPage('page-pr-course')">🚨 Xử lý Khủng hoảng (PR)</a>
+        <a onclick="closeMenu();showPage('page-mkt-course')">💡 Sáng tạo Trend (Marketing)</a>
+      </div>
+
+      <a onclick="closeMenu();showPage('page-reels')" class="sm-link"><span class="sm-icon">📱</span><span>Reels Học Thuật</span></a>
+      
+      <div class="sm-divider"></div>
+      <div class="sm-label">Tài khoản</div>
+      <a onclick="closeMenu();showPage('page-profile')" class="sm-link"><span class="sm-icon">👤</span><span>Hồ sơ & Portfolio</span></a>
+      <a onclick="closeMenu();showPage('page-settings')" class="sm-link"><span class="sm-icon">⚙️</span><span>Cài đặt</span></a>
+    </nav>
+  </div>
+
+  <div class="sm-footer-box">
+    <a onclick="closeMenu();doLogout()" class="sm-logout-btn">
+      <span class="sm-icon">🚪</span><span>Đăng xuất tài khoản</span>
+    </a>
+  </div>
+</div>
+
 <div class="page active" id="page-login">
   <div class="auth-bg">
     <div class="auth-card">
       <div class="auth-left">
-        <div class="logo-circle">CEP</div>
-        <h1>Khởi đầu sự nghiệp</h1>
-        <p>Career Experience - Dành riêng cho dân PR & Marketing</p>
+        <div class="logo-circle" onclick="showPage('page-home')">CEP</div>
+        <h1>Chào mừng trở lại!</h1>
+        <p>Khám phá hàng ngàn cơ hội học tập về PR & Marketing</p>
       </div>
       <div class="auth-right">
         <div class="auth-header">
           <h2>Đăng nhập</h2>
-          <p>Tham gia giải Case Study thực chiến ngay</p>
+          <p>Đăng nhập để tiếp tục hành trình học tập</p>
         </div>
         
         <button class="btn-google" onclick="doGoogleLogin()">
@@ -444,7 +484,7 @@ body.dark-mode .lang-flag{color:#7ececa;}
         <div class="link-row" style="margin-top:20px;">
           <a onclick="showPage('page-forgot')" style="font-size: 14px; font-weight: bold; text-decoration: underline;">Quên mật khẩu?</a>
         </div>
-        <div class="link-row" style="margin-top:10px; font-size: 12px;">Bạn chưa có tài khoản? <a onclick="showPage('page-register')">Đăng ký nhanh</a></div>
+        <div class="link-row" style="margin-top:10px; font-size: 12px;">Chưa có tài khoản? <a onclick="showPage('page-register')">Đăng ký ngay</a></div>
       </div>
     </div>
   </div>
@@ -454,11 +494,11 @@ body.dark-mode .lang-flag{color:#7ececa;}
   <div class="auth-bg">
     <div class="auth-card" style="max-width:800px;">
       <div class="auth-left">
-        <div class="logo-circle">CEP</div>
-        <h1>Gia nhập CEP</h1>
+        <div class="logo-circle" onclick="showPage('page-home')">CEP</div>
+        <h1>Tham gia cùng chúng tôi!</h1>
         <div class="benefits">
-          <div class="benefit-item">✅ Không lý thuyết suông</div>
-          <div class="benefit-item">✅ Giải Case Study mỗi tuần</div>
+          <div class="benefit-item">✅ Bài tập thực chiến PR</div>
+          <div class="benefit-item">✅ Bài tập thực chiến Marketing</div>
           <div class="benefit-item">✅ Xây dựng Portfolio công khai</div>
         </div>
       </div>
@@ -468,8 +508,7 @@ body.dark-mode .lang-flag{color:#7ececa;}
         </div>
         
         <button class="btn-google" onclick="doGoogleLogin()">
-          <img src="google.png" alt="Google">
-          Đăng ký siêu tốc bằng Google
+          <img src="google.png" alt="Google"> Đăng ký siêu tốc bằng Google
         </button>
         
         <div class="divider"><span>ĐĂNG KÝ TRUYỀN THỐNG</span></div>
@@ -552,84 +591,6 @@ body.dark-mode .lang-flag{color:#7ececa;}
 </div>
 
 <div class="page" id="page-home">
-  <header class="home-big-header">
-    <div class="home-hc">
-      <div class="home-logo" onclick="showPage('page-home')">
-        <div class="home-logo-circle">CEP</div>
-        <div class="home-logo-text">Career<br>Experience</div>
-      </div>
-      
-      <button class="menu-toggle-btn" id="menuToggle"><span></span><span></span><span></span></button>
-      
-      <div class="home-search">
-        <input type="text" id="searchInput" placeholder="Tìm kiếm Brief, Khóa học...">
-        <button class="home-search-btn" onclick="doSearch()">🔍</button>
-      </div>
-
-      <div class="header-nav" style="margin-left: 15px; display:flex; gap:10px;">
-        <a onclick="showPage('page-home')" class="nav-active nav-link" style="color:#fff;">🏠 Bảng tin</a>
-        
-        <div class="nav-dropdown">
-          <a style="color:#fff; cursor:pointer;">📚 Ngành học ▾</a>
-          <div class="nav-dropdown-content">
-            <a onclick="showPage('page-pr-course')">🚨 Xử lý Khủng hoảng (PR)</a>
-            <a onclick="showPage('page-mkt-course')">💡 Sáng tạo Trend (Marketing)</a>
-          </div>
-        </div>
-
-        <a onclick="showPage('page-reels')" class="nav-link" style="color:#fff;">📱 Reels Học Thuật</a>
-      </div>
-
-      <div class="home-right">
-        <div class="home-divider"></div>
-        <div class="home-auth" id="homeAuthArea"></div>
-      </div>
-    </div>
-  </header>
-
-  <div class="overlay" id="overlay"></div>
-  <div class="slide-menu" id="slideMenu">
-    <div class="sm-header">
-      <div class="sm-brand"><div class="sm-circle">CEP</div><div class="sm-title">Danh mục<small>Career Experience</small></div></div>
-      <button class="sm-close" id="smClose">✕</button>
-    </div>
-    <nav class="sm-nav">
-      <div class="sm-label" data-i18n="smMain">Điều hướng chính</div>
-      <a onclick="closeMenu();showPage('page-home')" class="sm-active sm-link"><span class="sm-icon">🏠</span><span data-i18n="navHome">Trang chủ</span></a>
-      <div class="sm-divider"></div>
-
-      <div class="sm-label">Khóa học & Thực chiến</div>
-      <a class="sm-accordion-btn" onclick="toggleSubMenu(this)">
-        <span class="sm-icon">📚</span><span data-i18n="smDepts">Ngành học</span>
-        <span class="sm-arrow" style="margin-left:auto; font-size:10px; transition:transform 0.3s;">▼</span>
-      </a>
-      <div class="sm-submenu">
-        <a onclick="closeMenu();showPage('page-pr-course')">🚨 Xử lý Khủng hoảng (PR)</a>
-        <a onclick="closeMenu();showPage('page-mkt-course')">💡 Sáng tạo Trend (Marketing)</a>
-      </div>
-
-      <a onclick="closeMenu();showPage('page-reels')" class="sm-link"><span class="sm-icon">📱</span><span>Reels Học Thuật</span></a>
-      
-      <div class="sm-divider"></div>
-      <div class="sm-label" data-i18n="smAccount">Tài khoản</div>
-      <a onclick="closeMenu();showPage('page-profile')" class="sm-link"><span class="sm-icon">👤</span><span data-i18n="navProfile">Hồ sơ & Portfolio</span></a>
-      <a onclick="closeMenu();showPage('page-settings')" class="sm-link"><span class="sm-icon">⚙️</span><span data-i18n="navSettings">Cài đặt</span></a>
-      <a onclick="closeMenu();doLogout()" class="sm-link"><span class="sm-icon">🚪</span><span data-i18n="navLogout">Đăng xuất</span></a>
-    </nav>
-  </div>
-
-  <div id="homeUserBar" style="display:none;">
-    <div class="home-user-bar">
-      <div class="hub-inner">
-        <div class="hub-av" id="hubAv"></div>
-        <div class="hub-info"><h3 id="hubName"></h3><p id="hubSub"></p></div>
-        <div class="hub-btns">
-          <button class="btn-sm btn-sm-o" onclick="showPage('page-profile')" data-i18n="navProfile">👤 Hồ sơ & Portfolio</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <section class="hero-land">
     <div id="newPhoneBg">
       <img src="z7673677338583_4c44f8411415381a5c0f2ab71346a677.jpg" alt="background phone">
@@ -648,27 +609,27 @@ body.dark-mode .lang-flag{color:#7ececa;}
     <div class="stats-inner">
       <div class="stat-box">
         <div class="stat-num" id="real-depts">2</div>
-        <div class="stat-lbl" data-i18n="statDepts">Ngành học</div>
+        <div class="stat-lbl">Ngành học</div>
       </div>
       <div class="stat-box">
         <div class="stat-num" id="real-users">⌛</div>
-        <div class="stat-lbl" data-i18n="statStudents">Học viên</div>
+        <div class="stat-lbl">Học viên</div>
       </div>
       <div class="stat-box">
         <div class="stat-num" id="real-tasks">⌛</div>
-        <div class="stat-lbl" data-i18n="statTasks">Bài tập thực chiến</div>
+        <div class="stat-lbl">Bài tập thực chiến</div>
       </div>
     </div>
   </div>
 
   <div class="section">
-    <div class="sec-title" data-i18n="featTitle">Tại sao chọn CEP?</div>
-    <div class="sec-sub" data-i18n="featSub">Nền tảng học tập thực chiến dành riêng cho PR & Marketing</div>
+    <div class="sec-title">Tại sao chọn CEP?</div>
+    <div class="sec-sub">Nền tảng học tập thực chiến dành riêng cho PR & Marketing</div>
     <div class="features-grid">
-      <div class="feat-card"><div class="feat-icon">🎯</div><h3 data-i18n="f1h">Bài tập thực chiến</h3><p data-i18n="f1p">Tự tạo và thực hành bài tập sát với thực tế ngành PR & Marketing</p></div>
-      <div class="feat-card"><div class="feat-icon">🤝</div><h3 data-i18n="f2h">Cộng đồng kết nối</h3><p data-i18n="f2p">Kết nối với các chuyên gia và học viên trong ngành</p></div>
-      <div class="feat-card"><div class="feat-icon">📊</div><h3 data-i18n="f3h">Theo dõi tiến độ</h3><p data-i18n="f3p">Hệ thống theo dõi và đánh giá tiến độ học tập của bạn</p></div>
-      <div class="feat-card"><div class="feat-icon">🏆</div><h3 data-i18n="f4h">Chứng nhận hoàn thành</h3><p data-i18n="f4p">Nhận chứng nhận sau khi hoàn thành các bài tập ngành</p></div>
+      <div class="feat-card"><div class="feat-icon">🎯</div><h3>Bài tập thực chiến</h3><p>Tự tạo và thực hành bài tập sát với thực tế ngành PR & Marketing</p></div>
+      <div class="feat-card"><div class="feat-icon">🤝</div><h3>Cộng đồng kết nối</h3><p>Kết nối với các chuyên gia và học viên trong ngành</p></div>
+      <div class="feat-card"><div class="feat-icon">📊</div><h3>Theo dõi tiến độ</h3><p>Hệ thống theo dõi và đánh giá tiến độ học tập của bạn</p></div>
+      <div class="feat-card"><div class="feat-icon">🏆</div><h3>Chứng nhận hoàn thành</h3><p>Nhận chứng nhận sau khi hoàn thành các bài tập ngành</p></div>
     </div>
   </div>
 
@@ -676,38 +637,38 @@ body.dark-mode .lang-flag{color:#7ececa;}
     <div class="why-inner">
       <div class="why-icon-big"><img src="z7673677338583_4c44f8411415381a5c0f2ab71346a677.jpg" alt="Icon"></div>
       <div class="why-text">
-        <h2 data-i18n="whyTitle">Tại sao nên chọn Career Experience?</h2>
-        <p data-i18n="whyDesc">CEP không chỉ là nơi bạn học — đây là nền tảng nơi bạn kết nối với đam mê, khám phá tiềm năng và xây dựng sự nghiệp mơ ước trong lĩnh vực PR & Marketing.</p>
-        <div class="why-point"><div class="why-dot">✓</div><p data-i18n="why1">Bài tập được thiết kế bởi các chuyên gia thực chiến trong ngành PR & Marketing.</p></div>
-        <div class="why-point"><div class="why-dot">✓</div><p data-i18n="why2">Chất lượng luôn được đặt lên hàng đầu để người học tiếp nhận kiến thức hiệu quả nhất.</p></div>
-        <div class="why-point"><div class="why-dot">✓</div><p data-i18n="why3">Cộng đồng học viên năng động, hỗ trợ nhau trong suốt quá trình học tập.</p></div>
+        <h2>Tại sao nên chọn Career Experience?</h2>
+        <p>CEP không chỉ là nơi bạn học — đây là nền tảng nơi bạn kết nối với đam mê, khám phá tiềm năng và xây dựng sự nghiệp mơ ước trong lĩnh vực PR & Marketing.</p>
+        <div class="why-point"><div class="why-dot">✓</div><p>Bài tập được thiết kế bởi các chuyên gia thực chiến trong ngành PR & Marketing.</p></div>
+        <div class="why-point"><div class="why-dot">✓</div><p>Chất lượng luôn được đặt lên hàng đầu để người học tiếp nhận kiến thức hiệu quả nhất.</p></div>
+        <div class="why-point"><div class="why-dot">✓</div><p>Cộng đồng học viên năng động, hỗ trợ nhau trong suốt quá trình học tập.</p></div>
       </div>
     </div>
   </div>
 
   <div class="reviews-bg">
     <div class="section" style="padding-top:0;padding-bottom:0;">
-      <div class="sec-title" data-i18n="reviewTitle">Review về CEP</div>
-      <div class="sec-sub" data-i18n="reviewSub">Học viên nói gì về chúng tôi</div>
+      <div class="sec-title">Review về CEP</div>
+      <div class="sec-sub">Học viên nói gì về chúng tôi</div>
     </div>
     <div class="reviews-grid">
       <div class="review-card">
         <div class="review-stars">★★★★★</div>
-        <div class="review-badge" data-i18n="reviewBadge">Tuyệt vời!</div>
-        <p class="review-text" data-i18n="r1">CEP có nội dung rất thực tế, giúp mình áp dụng ngay vào công việc PR. Giao diện thân thiện, dễ dùng.</p>
-        <div class="reviewer"><div class="reviewer-av">MT</div><div><h4>Ms. Trang Đồng</h4><p data-i18n="r1role">Học viên PR</p></div></div>
+        <div class="review-badge">Tuyệt vời!</div>
+        <p class="review-text">CEP có nội dung rất thực tế, giúp mình áp dụng ngay vào công việc PR. Giao diện thân thiện, dễ dùng.</p>
+        <div class="reviewer"><div class="reviewer-av">MT</div><div><h4>Ms. Trang Đồng</h4><p>Học viên PR</p></div></div>
       </div>
       <div class="review-card">
         <div class="review-stars">★★★★★</div>
-        <div class="review-badge" data-i18n="reviewBadge">Tuyệt vời!</div>
-        <p class="review-text" data-i18n="r2">Mảng Marketing ở CEP rất bài bản. Bài tập sát thực tế, giúp mình hiểu sâu hơn về Digital Marketing.</p>
-        <div class="reviewer"><div class="reviewer-av">TB</div><div><h4>Mr. Tùng Bùi</h4><p data-i18n="r2role">Học viên Marketing</p></div></div>
+        <div class="review-badge">Tuyệt vời!</div>
+        <p class="review-text">Mảng Marketing ở CEP rất bài bản. Bài tập sát thực tế, giúp mình hiểu sâu hơn về Digital Marketing.</p>
+        <div class="reviewer"><div class="reviewer-av">TB</div><div><h4>Mr. Tùng Bùi</h4><p>Học viên Marketing</p></div></div>
       </div>
       <div class="review-card">
         <div class="review-stars">★★★★★</div>
-        <div class="review-badge" data-i18n="reviewBadge">Tuyệt vời!</div>
-        <p class="review-text" data-i18n="r3">Cộng đồng học viên CEP rất nhiệt tình. Mình học được rất nhiều từ các bạn cùng ngành PR & Marketing.</p>
-        <div class="reviewer"><div class="reviewer-av">LA</div><div><h4>Ms. Lan Anh</h4><p data-i18n="r3role">Học viên PR & Marketing</p></div></div>
+        <div class="review-badge">Tuyệt vời!</div>
+        <p class="review-text">Cộng đồng học viên CEP rất nhiệt tình. Mình học được rất nhiều từ các bạn cùng ngành PR & Marketing.</p>
+        <div class="reviewer"><div class="reviewer-av">LA</div><div><h4>Ms. Lan Anh</h4><p>Học viên PR & Marketing</p></div></div>
       </div>
     </div>
   </div>
@@ -716,17 +677,17 @@ body.dark-mode .lang-flag{color:#7ececa;}
     <div class="footer-inner">
       <div class="footer-sec">
         <h3>Career Experience</h3>
-        <p data-i18n="footerAbout">Nền tảng phát triển kỹ năng PR & Marketing chuyên nghiệp dành cho sinh viên và người đi làm.</p>
+        <p>Nền tảng phát triển kỹ năng PR & Marketing chuyên nghiệp dành cho sinh viên và người đi làm.</p>
       </div>
       <div class="footer-sec">
-        <h3 data-i18n="footerLinks">Liên kết nhanh</h3>
-        <a onclick="scrollToId('dept-section')" data-i18n="smDepts">Ngành học</a>
-        <a onclick="scrollToId('why-section')" data-i18n="smAbout">Về CEP</a>
-        <a onclick="showPage('page-register')" data-i18n="navRegister">Đăng ký</a>
+        <h3>Liên kết nhanh</h3>
+        <a onclick="showPage('page-pr-course')">Ngành học</a>
+        <a onclick="scrollToId('why-section')">Về CEP</a>
+        <a onclick="showPage('page-register')">Đăng ký</a>
       </div>
       <div class="footer-sec">
-        <h3 data-i18n="footerContact">Liên hệ</h3>
-        <p>📍 <span data-i18n="footerAddr">Trường ĐH Văn Lang, TP. HCM</span></p>
+        <h3>Liên hệ</h3>
+        <p>📍 Trường ĐH Văn Lang, TP. HCM</p>
         <p>📞 0356348552</p>
         <p>✉️ <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="98f6ecf9f6e8f0edfbaaa1a8a1d8fff5f9f1f4b6fbf7f5">[email&#160;protected]</a></p>
       </div>
@@ -735,10 +696,7 @@ body.dark-mode .lang-flag{color:#7ececa;}
   </footer>
 </div>
 
-<div class="page" id="page-reels" style="background:#111; min-height:100vh; padding-top:20px;">
-  <div style="position:absolute; top:20px; left:20px; z-index:100;">
-    <button onclick="goBack()" style="background:rgba(255,255,255,0.2); color:#fff; border:none; padding:10px 15px; border-radius:20px; font-weight:bold; cursor:pointer; backdrop-filter:blur(5px);">⬅ Quay lại</button>
-  </div>
+<div class="page" id="page-reels" style="background:#111; min-height:100vh;">
   <div class="reels-container">
     <div class="reel-video" style="background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');">
       <div class="reel-overlay"></div>
@@ -772,14 +730,6 @@ body.dark-mode .lang-flag{color:#7ececa;}
 </div>
 
 <div class="page" id="page-pr-course">
-  <header class="inner-header">
-    <div class="hc">
-      <div class="logo" onclick="showPage('page-home')"><div class="logo-sm">CEP</div><span class="logo-text">Career Experience</span></div>
-      <nav class="header-nav">
-        <a onclick="goBack()" style="font-weight: 700; color: var(--text2);">⬅ Rời phòng Lab</a>
-      </nav>
-    </div>
-  </header>
   <div class="inner-wrap">
     <div class="page-header">
       <h1>Phòng Lab Xử Lý Khủng Hoảng</h1>
@@ -848,14 +798,6 @@ body.dark-mode .lang-flag{color:#7ececa;}
 </div>
 
 <div class="page" id="page-mkt-course">
-  <header class="inner-header">
-    <div class="hc">
-      <div class="logo" onclick="showPage('page-home')"><div class="logo-sm">CEP</div><span class="logo-text">Career Experience</span></div>
-      <nav class="header-nav">
-        <a onclick="goBack()" style="font-weight: 700; color: var(--text2);">⬅ Rời Workspace</a>
-      </nav>
-    </div>
-  </header>
   <div class="inner-wrap" style="max-width:1100px;">
     <div class="page-header">
       <h1>Trạm Sáng Tạo Content</h1>
@@ -887,17 +829,6 @@ body.dark-mode .lang-flag{color:#7ececa;}
 </div>
 
 <div class="page" id="page-profile">
-  <header class="inner-header">
-    <div class="hc">
-      <div class="logo" onclick="showPage('page-home')"><div class="logo-sm">CEP</div><span class="logo-text">Career Experience</span></div>
-      <nav class="header-nav">
-        <a onclick="showPage('page-home')" data-i18n="navHome">🏠 Trang chủ</a>
-        <a class="nav-active" data-i18n="navProfile">👤 Hồ sơ</a>
-        <a onclick="showPage('page-settings')" data-i18n="navSettings">⚙️ Cài đặt</a>
-        <button class="nav-btn nav-logout" onclick="doLogout()" data-i18n="navLogout">🚪 Đăng xuất</button>
-      </nav>
-    </div>
-  </header>
   <div class="inner-wrap" style="max-width:860px;">
     <div class="profile-banner"><div class="profile-avatar" id="profileAv"></div></div>
     <div class="pcard">
@@ -984,52 +915,27 @@ body.dark-mode .lang-flag{color:#7ececa;}
 </div>
 
 <div class="page" id="page-settings">
-  <header class="inner-header">
-    <div class="hc">
-      <div class="logo" onclick="showPage('page-home')"><div class="logo-sm">CEP</div><span class="logo-text">Career Experience</span></div>
-      <nav class="header-nav">
-        <a onclick="showPage('page-home')" data-i18n="navHome">🏠 Trang chủ</a>
-        <a onclick="showPage('page-profile')" data-i18n="navProfile">👤 Hồ sơ</a>
-        <a class="nav-active" data-i18n="navSettings">⚙️ Cài đặt</a>
-        <button class="nav-btn nav-logout" onclick="doLogout()" data-i18n="navLogout">🚪 Đăng xuất</button>
-      </nav>
-    </div>
-  </header>
   <div class="inner-wrap">
-    <div class="page-header"><h1 data-i18n="settingsH1">⚙️ Cài đặt</h1><p data-i18n="settingsSub">Tuỳ chỉnh trải nghiệm của bạn</p></div>
+    <div class="page-header"><h1>⚙️ Cài đặt</h1><p>Tuỳ chỉnh trải nghiệm của bạn</p></div>
     <div class="settings-card">
-      <h3 data-i18n="sApp">🎨 Giao diện</h3>
+      <h3>🎨 Giao diện</h3>
       <div class="setting-row">
-        <div class="setting-info"><h4 data-i18n="sDarkH">Chế độ tối</h4><p data-i18n="sDarkP">Bật để bảo vệ mắt vào ban đêm</p></div>
+        <div class="setting-info"><h4>Chế độ tối</h4><p>Bật để bảo vệ mắt vào ban đêm</p></div>
         <label class="toggle"><input type="checkbox" id="darkToggle" onchange="toggleDark(this.checked)"><span class="tslider"></span></label>
       </div>
     </div>
     <div class="settings-card">
-      <h3 data-i18n="sLangH">🌐 Ngôn ngữ</h3>
-      <div class="setting-row" style="flex-direction:column;align-items:flex-start;gap:12px;">
-        <div class="setting-info"><h4 data-i18n="sLangTitle">Ngôn ngữ hiển thị</h4><p data-i18n="sLangDesc">Áp dụng toàn bộ giao diện ứng dụng</p></div>
-        <div class="lang-grid">
-          <div class="lang-opt" data-lang="vi" id="lang-vi" onclick="setLang('vi')"><div class="lang-flag">VN</div><div class="lang-name">Tiếng Việt</div></div>
-          <div class="lang-opt" data-lang="en" id="lang-en" onclick="setLang('en')"><div class="lang-flag">GB</div><div class="lang-name">English</div></div>
-        </div>
-      </div>
-    </div>
-    <div class="settings-card">
-      <h3 data-i18n="sNotif">🔔 Thông báo</h3>
+      <h3>🔔 Thông báo</h3>
       <div class="setting-row">
-        <div class="setting-info"><h4 data-i18n="sSysN">Thông báo hệ thống</h4><p data-i18n="sSysNd">Nhận thông báo về bài tập và cập nhật</p></div>
+        <div class="setting-info"><h4>Thông báo hệ thống</h4><p>Nhận thông báo về bài tập và cập nhật</p></div>
         <label class="toggle"><input type="checkbox" checked><span class="tslider"></span></label>
       </div>
     </div>
     <div class="settings-card">
-      <h3 data-i18n="sAccH">⚠️ Tài khoản</h3>
+      <h3>⚠️ Tài khoản</h3>
       <div class="setting-row">
-        <div class="setting-info"><h4 data-i18n="sExH">Xuất dữ liệu</h4><p data-i18n="sExP">Tải xuống toàn bộ dữ liệu</p></div>
-        <button class="sact-btn" onclick="exportData()" data-i18n="sExBtn">📥 Xuất</button>
-      </div>
-      <div class="setting-row">
-        <div class="setting-info"><h4 data-i18n="sLoH">Đăng xuất</h4><p data-i18n="sLoP">Đăng xuất khỏi thiết bị này</p></div>
-        <button class="sact-btn danger" onclick="doLogout()" data-i18n="sLoBtn">🚪 Đăng xuất</button>
+        <div class="setting-info"><h4>Đăng xuất</h4><p>Đăng xuất khỏi thiết bị này</p></div>
+        <button class="sact-btn danger" onclick="doLogout()">🚪 Đăng xuất</button>
       </div>
     </div>
   </div>
@@ -1101,6 +1007,17 @@ function showPage(pageId, pushToHistory = true) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.getElementById(pageId).classList.add('active');
   window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  // Quản lý hiển thị Global Taskbar
+  const authPages = ['page-login', 'page-register', 'page-forgot', 'page-reset-password'];
+  const globalHeader = document.getElementById('globalHeader');
+  if (authPages.includes(pageId)) {
+    globalHeader.style.display = 'none';
+    document.body.classList.remove('has-global-header');
+  } else {
+    globalHeader.style.display = 'block';
+    document.body.classList.add('has-global-header');
+  }
   
   if (pushToHistory) {
     const newUrl = window.location.pathname + "?page=" + pageId;
@@ -1249,7 +1166,6 @@ function doConfirmReset() {
 
 auth.onAuthStateChanged((user) => {
   var authArea = document.getElementById('homeAuthArea');
-  var userBar = document.getElementById('homeUserBar');
   
   if (user) {
     db.collection('users').doc(user.uid).get().then((doc) => {
@@ -1257,16 +1173,8 @@ auth.onAuthStateChanged((user) => {
         currentUserData = doc.data();
         var displayName = currentUserData.fullname.split(' ')[0];
         
-        if(authArea) authArea.innerHTML = `<button class="btn-hlogin" onclick="showPage('page-profile')">👤 ${displayName}</button>`;
-        if(userBar) userBar.style.display = 'block';
-        if(document.getElementById('hubName')) document.getElementById('hubName').innerText = currentUserData.fullname;
-        if(document.getElementById('hubSub')) document.getElementById('hubSub').innerText = currentUserData.email;
-        
-        var avHtml = currentUserData.avatar ? `<img src="${currentUserData.avatar}">` : currentUserData.fullname.charAt(0).toUpperCase();
-        if(document.getElementById('hubAv')) document.getElementById('hubAv').innerHTML = avHtml;
-        if(document.getElementById('pName')) document.getElementById('pName').innerText = currentUserData.fullname;
-        if(document.getElementById('pMeta')) document.getElementById('pMeta').innerHTML = `<span>📧 ${currentUserData.email}</span>`;
-        if(document.getElementById('profileAv')) document.getElementById('profileAv').innerHTML = avHtml;
+        var avHtml = currentUserData.avatar ? `<img src="${currentUserData.avatar}" style="width:22px;height:22px;border-radius:50%;margin-right:6px;object-fit:cover;">` : `👤`;
+        if(authArea) authArea.innerHTML = `<button class="btn-user-profile" onclick="showPage('page-profile')">${avHtml} <span style="margin-left:4px;">${displayName}</span></button>`;
         
         if(document.getElementById('page-profile').classList.contains('active')) renderProfile();
       }
@@ -1278,7 +1186,6 @@ auth.onAuthStateChanged((user) => {
   } else {
     currentUserData = null;
     if(authArea) authArea.innerHTML = '<button class="btn-hlogin" onclick="showPage(\'page-login\')">Đăng nhập</button>';
-    if(userBar) userBar.style.display = 'none';
     
     const urlParams = new URLSearchParams(window.location.search);
     const pageParam = urlParams.get('page');
@@ -1362,10 +1269,6 @@ function toggleDark(isDark) {
   if(isDark) document.body.classList.add('dark-mode'); else document.body.classList.remove('dark-mode');
   localStorage.setItem('cep_theme', isDark ? 'dark' : 'light');
   var toggle = document.getElementById('darkToggle'); if(toggle) toggle.checked = isDark;
-}
-function setLang(lang) {
-  document.querySelectorAll('.lang-opt').forEach(function(el){ el.classList.remove('active'); });
-  var activeOpt = document.querySelector('.lang-opt[data-lang="'+lang+'"]'); if(activeOpt) activeOpt.classList.add('active');
 }
 
 /* ═══════════════════════════════
