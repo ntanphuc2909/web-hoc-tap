@@ -126,7 +126,7 @@ body.dark-mode .link-row a{color:#7ececa;}
 .nav-dropdown-content a:hover { background-color: rgba(45,95,93,.08); color: var(--primary) !important; }
 body.dark-mode .nav-dropdown-content a:hover { background-color: rgba(126,206,202,.12); color: #7ececa !important; }
 
-/* Khu vực Auth bên phải (CHỈ CÓ NÚT AVATAR/TÊN) */
+/* Khu vực Auth bên phải */
 .home-right{display:flex;align-items:center;gap:0;margin-left:auto;flex-shrink:0;}
 .home-divider{width:1px;height:28px;background:rgba(255,255,255,.1);margin:0 15px;}
 .home-auth{display:flex;align-items:center;gap:8px;}
@@ -142,7 +142,7 @@ body.dark-mode .nav-dropdown-content a:hover { background-color: rgba(126,206,20
 .btn-hlogin:hover{border-color:#4DD9AC;color:#4DD9AC;}
 
 /* ════════════════════════════════════════
-   SLIDE MENU (MOBILE & DESKTOP)
+   SLIDE MENU (GỘP CHUNG MỌI THỨ VÀO ĐÂY)
 ════════════════════════════════════════ */
 .overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0);display:none;z-index:1999;transition:background .35s ease;}
 .overlay.active{display:block;background:rgba(0,0,0,.55);}
@@ -157,14 +157,12 @@ body.dark-mode .slide-menu{background:#0d1020;}
 .sm-close{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);color:#fff;font-size:18px;cursor:pointer;width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;transition:all .2s;}
 .sm-close:hover{background:rgba(255,255,255,.15);}
 
-.sm-nav-container { flex: 1; overflow-y: auto; display: flex; flex-direction: column; padding: 10px 0; }
-.sm-label{font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.4);padding:18px 22px 6px;}
+.sm-nav-container { flex: 1; overflow-y: auto; display: flex; flex-direction: column; padding: 15px 0; }
 .sm-link{color:rgba(255,255,255,.82);padding:12px 22px;display:flex;align-items:center;gap:12px;text-decoration:none;font-size:14px;font-weight:500;transition:all .22s;position:relative; cursor:pointer;}
 .sm-link:hover, .sm-active{color:#4DD9AC;background:rgba(77,217,172,.08);}
 .sm-link::before{content:'';position:absolute;left:0;top:50%;transform:translateY(-50%) scaleY(0);width:3px;height:60%;background:#4DD9AC;border-radius:0 2px 2px 0;transition:transform .22s;}
 .sm-link:hover::before, .sm-active::before{transform:translateY(-50%) scaleY(1);}
 .sm-icon{width:18px;text-align:center;font-size:15px;flex-shrink:0;}
-.sm-divider{height:1px;background:rgba(255,255,255,.07);margin:10px 22px;}
 
 .sm-accordion-btn { display:flex; align-items:center; cursor: pointer; color:rgba(255,255,255,.82); padding:12px 22px; font-size:14px; font-weight:500; transition:all .22s; position:relative;}
 .sm-accordion-btn:hover { color:#4DD9AC; background:rgba(77,217,172,.08); }
@@ -394,14 +392,6 @@ input:checked+.tslider:before{transform:translateX(22px);}
 #_toast{position:fixed;bottom:24px;right:24px;z-index:99999;padding:13px 20px;border-radius:12px;font-size:14px;font-weight:500;color:#fff;box-shadow:0 6px 24px rgba(0,0,0,.2);transform:translateY(70px);opacity:0;transition:all .35s cubic-bezier(.34,1.56,.64,1);max-width:320px;line-height:1.5;pointer-events:none;}
 #_toast.show{transform:translateY(0);opacity:1;pointer-events:auto;}
 
-/* Nút Setting & Logout riêng trong Profile (Ảnh 3) */
-.profile-action-btn { display:flex; align-items:center; gap:8px; font-weight:700; font-size:15px; cursor:pointer; padding:8px 16px; border-radius:10px; transition:all 0.2s;}
-.profile-action-btn.btn-setting { color:var(--text2); }
-.profile-action-btn.btn-setting:hover { background:rgba(0,0,0,0.05); color:var(--text); }
-body.dark-mode .profile-action-btn.btn-setting:hover { background:rgba(255,255,255,0.05); }
-.profile-action-btn.btn-logout { background:rgba(231,111,81,.1); color:#E76F51; border:1px solid rgba(231,111,81,.2); }
-.profile-action-btn.btn-logout:hover { background:rgba(231,111,81,.2); transform:translateY(-2px); }
-
 @media(max-width:900px){
   .why-inner{grid-template-columns:1fr;}
   .why-icon-big{max-width:100%;height:220px;font-size:80px;}
@@ -424,7 +414,7 @@ body.dark-mode .profile-action-btn.btn-setting:hover { background:rgba(255,255,2
   .logo-text{display:none;}
   .home-search{display:none;}
   .home-divider{display:none;}
-  .header-nav{display:none !important;}
+  .hide-mobile{display:none !important;}
 }
 </style>
 </head>
@@ -441,11 +431,11 @@ body.dark-mode .profile-action-btn.btn-setting:hover { background:rgba(255,255,2
     <button class="menu-toggle-btn" id="menuToggle"><span></span><span></span><span></span></button>
     
     <div class="home-search">
-      <input type="text" id="searchInput" placeholder="Tìm kiếm Brief, Khóa học...">
+      <input type="text" id="searchInput" autocomplete="off" placeholder="Tìm kiếm Brief, Khóa học...">
       <button class="home-search-btn" onclick="doSearch()">🔍</button>
     </div>
 
-    <div class="header-nav" style="margin-left: 15px; display:flex; gap:10px;">
+    <div class="header-nav hide-mobile" style="margin-left: 15px; display:flex; gap:10px;">
       <a id="nav-home-btn" onclick="showPage('page-home')" class="nav-link nav-active">🏠 Bảng tin</a>
       
       <div class="nav-dropdown">
@@ -460,7 +450,7 @@ body.dark-mode .profile-action-btn.btn-setting:hover { background:rgba(255,255,2
     </div>
 
     <div class="home-right">
-      <div class="home-divider"></div>
+      <div class="home-divider hide-mobile"></div>
       <div class="home-auth" id="homeAuthArea"></div>
     </div>
   </div>
@@ -475,11 +465,8 @@ body.dark-mode .profile-action-btn.btn-setting:hover { background:rgba(255,255,2
   
   <div class="sm-nav-container">
     <nav class="sm-nav">
-      <div class="sm-label">ĐIỀU HƯỚNG CHÍNH</div>
       <a onclick="closeMenu();showPage('page-home')" class="sm-link"><span class="sm-icon">🏠</span><span>Trang chủ</span></a>
-      <div class="sm-divider"></div>
-
-      <div class="sm-label">KHÓA HỌC & THỰC CHIẾN</div>
+      
       <a class="sm-accordion-btn" onclick="toggleSubMenu(this)">
         <span class="sm-icon">📚</span><span>Ngành học</span>
         <span class="sm-arrow" style="margin-left:auto; font-size:10px; transition:transform 0.3s;">▼</span>
@@ -490,9 +477,6 @@ body.dark-mode .profile-action-btn.btn-setting:hover { background:rgba(255,255,2
       </div>
 
       <a onclick="closeMenu();showPage('page-reels')" class="sm-link"><span class="sm-icon">📱</span><span>Reels Học Thuật</span></a>
-      
-      <div class="sm-divider"></div>
-      <div class="sm-label">TÀI KHOẢN</div>
       <a onclick="closeMenu();showPage('page-profile')" class="sm-link"><span class="sm-icon">👤</span><span>Hồ sơ & Portfolio</span></a>
       <a onclick="closeMenu();showPage('page-settings')" class="sm-link"><span class="sm-icon">⚙️</span><span>Cài đặt</span></a>
     </nav>
@@ -518,20 +502,30 @@ body.dark-mode .profile-action-btn.btn-setting:hover { background:rgba(255,255,2
           <h2>Đăng nhập</h2>
           <p>Đăng nhập để tiếp tục hành trình học tập</p>
         </div>
+        
         <button class="btn-google" onclick="doGoogleLogin()">
           <img src="google.png" alt="Google">
           Tiếp tục với Google
         </button>
+        
         <div class="divider"><span>HOẶC DÙNG EMAIL</span></div>
-        <div class="form-group"><label>Email</label><input type="email" id="loginEmail"></div>
+
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" id="loginEmail">
+        </div>
         <div class="form-group">
           <label>Mật khẩu</label>
           <div class="pw-wrap">
-            <input type="password" id="loginPassword"><span class="tpw" onclick="togglePw('loginPassword',this)">👁️</span>
+            <input type="password" id="loginPassword">
+            <span class="tpw" onclick="togglePw('loginPassword',this)">👁️</span>
           </div>
         </div>
         <button class="btn-main" onclick="doLogin()">Đăng nhập</button>
-        <div class="link-row" style="margin-top:20px;"><a onclick="showPage('page-forgot')" style="font-size: 14px; font-weight: bold; text-decoration: underline;">Quên mật khẩu?</a></div>
+        
+        <div class="link-row" style="margin-top:20px;">
+          <a onclick="showPage('page-forgot')" style="font-size: 14px; font-weight: bold; text-decoration: underline;">Quên mật khẩu?</a>
+        </div>
         <div class="link-row" style="margin-top:10px; font-size: 12px;">Chưa có tài khoản? <a onclick="showPage('page-register')">Đăng ký ngay</a></div>
       </div>
     </div>
@@ -551,16 +545,24 @@ body.dark-mode .profile-action-btn.btn-setting:hover { background:rgba(255,255,2
         </div>
       </div>
       <div class="auth-right">
-        <div class="auth-header"><h2>Tạo tài khoản</h2></div>
+        <div class="auth-header">
+          <h2>Tạo tài khoản</h2>
+        </div>
+        
         <button class="btn-google" onclick="doGoogleLogin()">
           <img src="google.png" alt="Google"> Đăng ký siêu tốc bằng Google
         </button>
+        
         <div class="divider"><span>ĐĂNG KÝ TRUYỀN THỐNG</span></div>
+
         <div class="form-group"><label>Họ và tên</label><input type="text" id="regFullname"></div>
         <div class="form-group"><label>Email</label><input type="email" id="regEmail"></div>
         <div class="form-group">
           <label>Mật khẩu</label>
-          <div class="pw-wrap"><input type="password" id="regPassword"><span class="tpw" onclick="togglePw('regPassword',this)">👁️</span></div>
+          <div class="pw-wrap">
+            <input type="password" id="regPassword">
+            <span class="tpw" onclick="togglePw('regPassword',this)">👁️</span>
+          </div>
         </div>
         <button class="btn-main" onclick="doRegister()">Tạo tài khoản</button>
         <div class="link-row" style="margin-top:20px;">Đã có tài khoản? <a onclick="showPage('page-login')">Đăng nhập</a></div>
@@ -578,7 +580,11 @@ body.dark-mode .profile-action-btn.btn-setting:hover { background:rgba(255,255,2
         <p>Bảo mật tài khoản của bạn thông qua mã OTP an toàn.</p>
       </div>
       <div class="auth-right">
-        <div class="auth-header"><h2>Khôi phục mật khẩu</h2><p>Nhập email để nhận mã xác nhận (OTP)</p></div>
+        <div class="auth-header">
+          <h2>Khôi phục mật khẩu</h2>
+          <p>Nhập email để nhận mã xác nhận (OTP)</p>
+        </div>
+        
         <div id="forgotFormArea">
           <div class="form-group">
             <label>Địa chỉ Email</label>
@@ -587,10 +593,12 @@ body.dark-mode .profile-action-btn.btn-setting:hover { background:rgba(255,255,2
               <button class="btn-main btn-secondary" style="width: auto; padding: 0 15px; font-size: 13px;" onclick="sendMockOTP()">Gửi mã</button>
             </div>
           </div>
+          
           <div class="form-group" id="otpGroup" style="display: none; animation: fadeIn 0.5s ease;">
             <label style="color: var(--accent); font-weight: 700;">Mã xác nhận (OTP)</label>
             <input type="text" id="forgotOTP" placeholder="Nhập mã 6 số (VD: 123456)..." maxlength="6" style="text-align:center; letter-spacing: 5px; font-size: 18px; font-weight: bold;">
           </div>
+
           <button class="btn-main" onclick="verifyMockOTP()">✅ Xác nhận & Đổi mật khẩu</button>
           <div class="link-row" style="margin-top:14px;"><a onclick="showPage('page-login')">← Quay lại đăng nhập</a></div>
         </div>
@@ -603,10 +611,16 @@ body.dark-mode .profile-action-btn.btn-setting:hover { background:rgba(255,255,2
   <div class="auth-bg">
     <div class="auth-card" style="max-width:500px; display:block;">
       <div class="auth-right" style="max-height:none; width: 100%;">
-        <div class="auth-header"><h2>Mật khẩu mới</h2><p>Vui lòng nhập mật khẩu mới cho tài khoản của bạn</p></div>
+        <div class="auth-header">
+          <h2>Mật khẩu mới</h2>
+          <p>Vui lòng nhập mật khẩu mới cho tài khoản của bạn</p>
+        </div>
         <div class="form-group">
           <label>Mật khẩu mới *</label>
-          <div class="pw-wrap"><input type="password" id="resetNewPw" oninput="checkStrength(this.value,'resetStr')"><span class="tpw" onclick="togglePw('resetNewPw',this)">👁️</span></div>
+          <div class="pw-wrap">
+            <input type="password" id="resetNewPw" oninput="checkStrength(this.value,'resetStr')">
+            <span class="tpw" onclick="togglePw('resetNewPw',this)">👁️</span>
+          </div>
           <div class="strength-wrap" id="resetStr" style="margin-top:8px; display:none;">
             <div class="strength-bar" style="height:4px;background:var(--border);border-radius:2px;overflow:hidden;margin-bottom:4px;"><div class="strength-fill" style="height:100%;transition:width .3s;"></div></div>
             <div class="strength-txt" style="font-size:12px;font-weight:600;"></div>
@@ -846,17 +860,7 @@ body.dark-mode .profile-action-btn.btn-setting:hover { background:rgba(255,255,2
 </div>
 
 <div class="page" id="page-profile">
-  <div class="inner-wrap" style="max-width:860px; position:relative;">
-    
-    <div style="display:flex; justify-content:flex-end; align-items:center; gap:15px; margin-bottom:20px;">
-        <a onclick="showPage('page-settings')" class="profile-action-btn btn-setting">
-            <span style="font-size:20px;">⚙️</span> Cài đặt
-        </a>
-        <button onclick="doLogout()" class="profile-action-btn btn-logout">
-            <span style="font-size:18px;">🚪</span> Đăng xuất
-        </button>
-    </div>
-
+  <div class="inner-wrap" style="max-width:860px;">
     <div class="profile-banner"><div class="profile-avatar" id="profileAv"></div></div>
     <div class="pcard">
       <div style="display:flex;align-items:flex-start;gap:16px;">
@@ -1205,7 +1209,6 @@ auth.onAuthStateChanged((user) => {
         
         var avHtml = currentUserData.avatar ? `<img src="${currentUserData.avatar}" style="width:24px;height:24px;border-radius:50%;margin-right:6px;object-fit:cover;">` : `<span style="font-size:16px; margin-right:6px;">👤</span>`;
         
-        // CHỈ CÓ NÚT PROFILE TRÊN THANH TASKBAR
         if(authArea) {
             authArea.innerHTML = `
                 <button class="btn-user-profile" onclick="showPage('page-profile')">${avHtml} <span style="margin-left:4px;">${displayName}</span></button>
