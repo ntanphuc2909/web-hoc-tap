@@ -190,23 +190,15 @@ body.dark-mode .hnl-drop-menu{background:#0d1020;border-color:rgba(255,255,255,.
 .home-right{display:flex;align-items:center;gap:6px;margin-left:auto;flex-shrink:0;}
 .home-divider{width:1px;height:28px;background:rgba(255,255,255,.12);margin:0 4px;}
 .home-auth{display:flex;align-items:center;gap:8px;padding:0 8px;}
-/* Đăng nhập – viền pill mỏng */
 .btn-hlogin{padding:8px 20px;background:transparent;color:rgba(255,255,255,.9);border:1.5px solid rgba(255,255,255,.28);border-radius:20px;font-weight:500;font-size:13px;cursor:pointer;transition:all .22s;font-family:'DM Sans',sans-serif;letter-spacing:.2px;}
 .btn-hlogin:hover{border-color:#4DD9AC;color:#4DD9AC;background:rgba(77,217,172,.07);}
-/* Đăng ký – gradient cam nổi bật */
 .btn-hreg{padding:8px 20px;background:linear-gradient(135deg,#F4A261,#E76F51);color:#fff;border:none;border-radius:20px;font-weight:700;font-size:13px;cursor:pointer;transition:all .22s;font-family:'DM Sans',sans-serif;box-shadow:0 3px 12px rgba(231,111,81,.38);letter-spacing:.2px;}
 .btn-hreg:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(231,111,81,.52);letter-spacing:.2px;}
-/* Nút Cài đặt nổi bật trên header */
 .header-settings-btn{
-  display:flex;align-items:center;gap:7px;
-  padding:8px 18px;
-  background:linear-gradient(135deg,#2D5F5D,#4DD9AC);
-  color:#fff;border:none;border-radius:20px;
-  font-size:13px;font-weight:700;cursor:pointer;
-  font-family:'DM Sans',sans-serif;transition:all .25s;
-  white-space:nowrap;flex-shrink:0;margin:0 4px;
-  box-shadow:0 0 0 0 rgba(77,217,172,.5);
-  animation:settingsPulse 2.5s ease-in-out infinite;
+  display:flex;align-items:center;gap:7px;padding:8px 18px;background:linear-gradient(135deg,#2D5F5D,#4DD9AC);
+  color:#fff;border:none;border-radius:20px;font-size:13px;font-weight:700;cursor:pointer;
+  font-family:'DM Sans',sans-serif;transition:all .25s;white-space:nowrap;flex-shrink:0;margin:0 4px;
+  box-shadow:0 0 0 0 rgba(77,217,172,.5);animation:settingsPulse 2.5s ease-in-out infinite;
 }
 .header-settings-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(77,217,172,.4);animation:none;}
 @keyframes settingsPulse{
@@ -472,6 +464,14 @@ body.dark-mode .btn-see-more:hover {
   background: #7ececa;
   color: #1a1d2e;
 }
+
+/* ════ STYLE FORM VIẾT ĐÁNH GIÁ ════ */
+.write-review-card { background: var(--card); border-radius: 16px; padding: 24px; border: 1px solid var(--border); margin-bottom: 30px; box-shadow: 0 4px 15px rgba(0,0,0,.04); }
+body.dark-mode .write-review-card { box-shadow: 0 4px 15px rgba(0,0,0,.25); }
+.star-rating-input { display: flex; gap: 5px; margin-bottom: 10px; }
+.star-rating-input span { font-size: 32px; color: var(--border); cursor: pointer; transition: all 0.2s; line-height: 1; }
+.star-rating-input span.active { color: #FFD700; }
+.star-rating-input span:hover { transform: scale(1.1); }
 
 @media(max-width:900px){
   .why-inner{grid-template-columns:1fr;}
@@ -893,8 +893,9 @@ body.auth-page #globalHeader { display: none; }
       </div>
     </div>
     
-    <div style="text-align: center; margin-top: 40px;">
+    <div style="text-align: center; margin-top: 40px; display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;">
       <button class="btn-see-more" onclick="showPage('page-all-reviews')">Xem thêm đánh giá</button>
+      <button class="btn-cta" style="padding: 12px 32px; font-size: 15px;" onclick="showPage('page-all-reviews')">✏️ Viết đánh giá</button>
     </div>
   </div>
   <footer id="footer-contact">
@@ -1880,6 +1881,22 @@ function restartQuiz() {
       <p>Thống kê các đánh giá từ học viên theo thời gian thực</p>
     </div>
     
+    <div class="write-review-card" id="writeReviewCard">
+      <h3 style="font-family:'Playfair Display',serif;font-size:18px;color:var(--primary);margin-bottom:12px;">✏️ Viết đánh giá của bạn</h3>
+      <div class="form-group" style="margin-bottom:10px;">
+        <label style="font-size:13px; font-weight:600; color:var(--text); margin-bottom:6px; display:block;">Mức độ hài lòng:</label>
+        <div class="star-rating-input" id="starRatingInput">
+          <span data-val="1" class="active">★</span><span data-val="2" class="active">★</span><span data-val="3" class="active">★</span><span data-val="4" class="active">★</span><span data-val="5" class="active">★</span>
+        </div>
+        <input type="hidden" id="reviewRatingVal" value="5">
+      </div>
+      <div class="form-group" style="margin-bottom:16px;">
+        <label style="font-size:13px; font-weight:600; color:var(--text); margin-bottom:6px; display:block;">Chia sẻ trải nghiệm của bạn:</label>
+        <textarea id="reviewContentInput" placeholder="Khóa học rất tuyệt vời..." style="width:100%;padding:12px;border:2px solid var(--border);border-radius:8px;background:var(--card);color:var(--text);font-family:'DM Sans',sans-serif;resize:vertical;min-height:80px;"></textarea>
+      </div>
+      <button class="btn-main" onclick="submitReview()" style="width:auto; padding:10px 28px; border-radius:8px;">Gửi đánh giá</button>
+    </div>
+
     <div id="allReviewsContainer" style="display: flex; flex-direction: column; gap: 20px;">
       <p style="text-align:center; color:var(--text2);">Đang tải dữ liệu...</p>
     </div>
@@ -2323,27 +2340,23 @@ function renderAchievements() {
    FIREBASE AUTH ACTIONS
 ═══════════════════════════════ */
 
-// Tính năng mới: Đăng nhập Google 1 chạm (Single Sign-On)
 function signInWithGoogle() {
   var provider = new firebase.auth.GoogleAuthProvider();
   auth.signInWithPopup(provider).then((result) => {
     var user = result.user;
-    // Kiểm tra xem user này đã có profile trong Firestore chưa
     db.collection('users').doc(user.uid).get().then((doc) => {
       if (!doc.exists) {
-        // Tạo profile tự động lấy thông tin từ Google
         db.collection('users').doc(user.uid).set({
           fullname: user.displayName || 'Người dùng mới',
           email: user.email,
           phone: user.phoneNumber || '',
           avatar: user.photoURL || null,
-          role: 'student', // Mặc định là sinh viên
+          role: 'student',
           createdAt: firebase.firestore.FieldValue.serverTimestamp()
         });
       }
     });
     toast('✅ Đăng nhập bằng Google thành công!', 'success');
-    // Router sẽ tự động xử lý chuyển hướng ở onAuthStateChanged
   }).catch((error) => {
     toast('❌ Lỗi Google Sign-In: ' + error.message, 'error');
   });
@@ -2362,21 +2375,17 @@ function doRegister() {
   auth.createUserWithEmailAndPassword(email, pwd)
     .then((userCredential) => {
       var user = userCredential.user;
-      // Đã loại bỏ user.sendEmailVerification() để giảm ma sát UX
-      
-      // Lưu thông tin vào Firestore
       return db.collection('users').doc(user.uid).set({
         fullname: name,
         email: email,
         phone: '',
-        role: 'student', // Đã lược bỏ trường nhập, mặc định là sinh viên
+        role: 'student',
         avatar: null,
         createdAt: firebase.firestore.FieldValue.serverTimestamp()
       });
     })
     .then(() => {
       toast('✅ Đăng ký thành công! Đang tự động đăng nhập...', 'success');
-      // Không cần signOut nữa, user đã đăng nhập luôn
     })
     .catch((error) => {
       toast('Lỗi: ' + error.message, 'error');
@@ -2391,9 +2400,7 @@ function doLogin() {
 
   auth.signInWithEmailAndPassword(email, pwd)
     .then((userCredential) => {
-      // Đã loại bỏ check user.emailVerified để login trơn tru
       toast('toastLoginOk', 'success');
-      // showPage('page-home'); // Sẽ được onAuthStateChanged xử lý tự động
     })
     .catch((error) => {
       toast('❌ Email hoặc mật khẩu không đúng!', 'error');
@@ -2465,7 +2472,7 @@ function doChangePw() {
 }
 
 /* ═══════════════════════════════
-   FIREBASE AUTH LISTENER (Update for Routing)
+   FIREBASE AUTH LISTENER
 ═══════════════════════════════ */
 let isFirstLoad = true;
 
@@ -2511,7 +2518,6 @@ auth.onAuthStateChanged((user) => {
        if(!isResetting) initRoute();
        isFirstLoad = false;
     } else {
-       // Điều hướng tự động khỏi login/register khi đã đăng nhập
        let activePage = document.querySelector('.page.active');
        if(activePage && !isResetting && ['page-login', 'page-register'].includes(activePage.id)){
           showPage('page-home');
@@ -2631,7 +2637,7 @@ function saveProfile() {
     currentUserData = {...currentUserData, ...data};
     toggleEdit();
     renderProfile();
-    auth.onAuthStateChanged(auth.currentUser); // Kích hoạt refresh avatar
+    auth.onAuthStateChanged(auth.currentUser); 
   }).catch((error) => {
     toast('Lỗi cập nhật: ' + error.message, 'error');
   });
@@ -2697,10 +2703,8 @@ function initRealtimeReviews() {
   const container = document.getElementById('allReviewsContainer');
   if (!container) return;
 
-  // Hủy listener cũ nếu có để tránh lặp
   if (unsubscribeReviews) unsubscribeReviews();
 
-  // Lắng nghe collection 'reviews' từ Firestore theo thời gian thực
   unsubscribeReviews = db.collection('reviews').orderBy('timestamp', 'desc').onSnapshot((snapshot) => {
     if (snapshot.empty) {
       container.innerHTML = '<p style="text-align:center; color:var(--text2);">Chưa có đánh giá nào trên hệ thống máy chủ.</p>';
@@ -2711,7 +2715,6 @@ function initRealtimeReviews() {
     snapshot.forEach((doc) => {
       const data = doc.data();
       
-      // Format thời gian
       let dateStr = '';
       if (data.timestamp) {
         let date = data.timestamp.toDate();
@@ -2750,19 +2753,82 @@ function initRealtimeReviews() {
 }
 
 /* ═══════════════════════════════
+   LOGIC VIẾT ĐÁNH GIÁ & CHỌN SAO
+═══════════════════════════════ */
+document.addEventListener('DOMContentLoaded', function() {
+  const stars = document.querySelectorAll('#starRatingInput span');
+  const ratingInput = document.getElementById('reviewRatingVal');
+  
+  if(stars) {
+    stars.forEach(star => {
+      star.addEventListener('click', function() {
+        let val = this.getAttribute('data-val');
+        ratingInput.value = val;
+        stars.forEach(s => {
+          if(s.getAttribute('data-val') <= val) {
+            s.classList.add('active');
+          } else {
+            s.classList.remove('active');
+          }
+        });
+      });
+    });
+  }
+});
+
+function submitReview() {
+  if(!auth.currentUser) {
+    showPage('page-login');
+    return toast('⚠️ Vui lòng đăng nhập để viết đánh giá!', 'error');
+  }
+  
+  const rating = parseInt(document.getElementById('reviewRatingVal').value);
+  const content = document.getElementById('reviewContentInput').value.trim();
+  
+  if(!content) return toast('❌ Vui lòng nhập nội dung đánh giá!', 'error');
+  if(content.length < 10) return toast('❌ Đánh giá cần ít nhất 10 ký tự.', 'error');
+
+  const btn = document.querySelector('#writeReviewCard .btn-main');
+  btn.innerText = 'Đang gửi...';
+  btn.disabled = true;
+
+  db.collection('users').doc(auth.currentUser.uid).get().then(doc => {
+    let userData = doc.exists ? doc.data() : {};
+    let reviewData = {
+      uid: auth.currentUser.uid,
+      name: userData.fullname || auth.currentUser.displayName || 'Học viên',
+      avatar: userData.avatar || auth.currentUser.photoURL || null,
+      role: (userData.role === 'student' ? 'Học viên CEP' : 'Thành viên CEP'),
+      rating: rating,
+      badge: rating >= 4 ? 'Tuyệt vời!' : (rating === 3 ? 'Khá tốt' : 'Góp ý'),
+      content: content,
+      timestamp: firebase.firestore.FieldValue.serverTimestamp()
+    };
+
+    db.collection('reviews').add(reviewData).then(() => {
+      toast('✅ Gửi đánh giá thành công! Cảm ơn bạn.', 'success');
+      document.getElementById('reviewContentInput').value = '';
+      btn.innerText = 'Gửi đánh giá';
+      btn.disabled = false;
+    }).catch(error => {
+      toast('❌ Lỗi: ' + error.message, 'error');
+      btn.innerText = 'Gửi đánh giá';
+      btn.disabled = false;
+    });
+  });
+}
+
+/* ═══════════════════════════════
    INITIALIZE
 ═══════════════════════════════ */
 document.addEventListener('DOMContentLoaded', function() {
-  // Load Theme
   const savedTheme = localStorage.getItem('cep_theme');
   if(savedTheme === 'dark') document.body.classList.add('dark-mode');
   updateThemeBtns();
 
-  // Load Language
   const savedLang = localStorage.getItem('cep_lang') || 'vi';
   setLang(savedLang);
 
-  // Đảm bảo header ẩn trên auth pages khi init
   var authPages = ['page-login','page-register','page-forgot','page-reset-password'];
   var activePage = document.querySelector('.page.active');
   var globalHeader = document.getElementById('globalHeader');
@@ -2770,7 +2836,6 @@ document.addEventListener('DOMContentLoaded', function() {
     globalHeader.style.display = 'none';
   }
 
-  // Check URL for Reset Password from Firebase Email
   const urlParams = new URLSearchParams(window.location.search);
   const mode = urlParams.get('mode');
   const actionCode = urlParams.get('oobCode');
