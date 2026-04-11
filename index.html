@@ -431,6 +431,22 @@ body.dark-mode .sec-info h3{color:#7ececa;}
   opacity: 0.15;
 }
 
+/* ════ LEGAL PAGES STYLES ════ */
+.legal-wrap { max-width: 860px; margin: 36px auto; padding: 0 24px; }
+.legal-header { text-align: center; margin-bottom: 32px; }
+.legal-header h1 { font-family: 'Playfair Display', serif; font-size: 32px; color: var(--primary); margin-bottom: 12px; }
+body.dark-mode .legal-header h1 { color: #7ececa; }
+.legal-header p { color: var(--text2); font-size: 15px; }
+.legal-card { background: var(--card); border-radius: 16px; padding: 40px; box-shadow: 0 4px 20px rgba(0,0,0,.05); border: 1px solid var(--border); }
+body.dark-mode .legal-card { box-shadow: 0 4px 20px rgba(0,0,0,.3); }
+.legal-content h3 { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--text); margin: 24px 0 12px; }
+.legal-content p { font-size: 15px; color: var(--text2); line-height: 1.8; margin-bottom: 14px; }
+.legal-content ul { padding-left: 20px; margin-bottom: 14px; color: var(--text2); font-size: 15px; line-height: 1.8; }
+.legal-content li { margin-bottom: 6px; }
+.legal-back { display: inline-block; margin-bottom: 20px; color: var(--primary); font-weight: 600; cursor: pointer; font-size: 14px; transition: color 0.2s;}
+body.dark-mode .legal-back { color: #7ececa; }
+.legal-back:hover { text-decoration: underline; }
+
 @media(max-width:900px){
   .why-inner{grid-template-columns:1fr;}
   .why-icon-big{max-width:100%;height:220px;font-size:80px;}
@@ -445,7 +461,8 @@ body.dark-mode .sec-info h3{color:#7ececa;}
   .home-search{display:none;}
   .dept-grid,.features-grid{grid-template-columns:1fr;}
   .lang-grid{grid-template-columns:repeat(2,1fr);}
-  .inner-wrap{padding:0 14px;}
+  .inner-wrap, .legal-wrap{padding:0 14px;}
+  .legal-card{padding: 24px;}
   .cp-actions,.edit-actions{flex-direction:column;}
   .hub-btns{display:none;}
   .logo-text{display:none;}
@@ -628,7 +645,7 @@ body.auth-page #globalHeader { display: none; }
 
         <div class="terms-row" style="margin-bottom:15px; display:flex; gap:10px;">
           <input type="checkbox" id="regTerms">
-          <label for="regTerms" style="font-size:13px; color:var(--text2);" data-i18n-html="termsLabel">Tôi đồng ý với <a href="#">Điều khoản</a> và <a href="#">Chính sách bảo mật</a></label>
+          <label for="regTerms" style="font-size:13px; color:var(--text2);" data-i18n-html="termsLabel">Tôi đồng ý với <a onclick="showPage('page-terms')">Điều khoản</a> và <a onclick="showPage('page-privacy')">Chính sách bảo mật</a></label>
         </div>
         <button class="btn-main" onclick="doRegister()" data-i18n="regBtn">Đăng ký ngay</button>
         
@@ -691,6 +708,78 @@ body.auth-page #globalHeader { display: none; }
         </div>
         <button class="btn-main" onclick="doConfirmReset()">✅ Cập nhật mật khẩu</button>
       </div>
+    </div>
+  </div>
+</div>
+
+<div class="page" id="page-terms">
+  <div class="legal-wrap">
+    <div class="legal-back" onclick="history.back()">← Quay lại trước đó</div>
+    <div class="legal-header">
+      <h1>Điều khoản sử dụng (Terms of Service)</h1>
+      <p>Cập nhật lần cuối: Tháng 4, 2026</p>
+    </div>
+    <div class="legal-card legal-content">
+      <h3>1. Chấp thuận Điều khoản</h3>
+      <p>Chào mừng bạn đến với Career Experience (CEP) - Nền tảng học tập thực chiến dành cho lĩnh vực PR & Marketing. Bằng việc truy cập, đăng ký tài khoản thông qua Email hoặc Single Sign-On (Google), và sử dụng các tính năng giả lập tình huống, bạn đồng ý tuân thủ toàn bộ các điều khoản được quy định dưới đây. Nếu bạn không đồng ý, vui lòng ngừng sử dụng dịch vụ.</p>
+      
+      <h3>2. Tài khoản và Bảo mật</h3>
+      <ul>
+        <li>Bạn có thể tạo tài khoản qua phương thức "Đăng nhập bằng Google" (Single Sign-On) để có trải nghiệm nhanh chóng nhất. Khi sử dụng phương thức này, hệ thống sẽ tự động cập nhật Tên, Email và Ảnh đại diện của bạn.</li>
+        <li>Bạn chịu trách nhiệm hoàn toàn về việc bảo mật thông tin đăng nhập của mình và mọi hoạt động diễn ra dưới tài khoản đó.</li>
+        <li>CEP có quyền vô hiệu hóa tài khoản của bạn nếu phát hiện hành vi vi phạm hoặc lạm dụng nền tảng.</li>
+      </ul>
+
+      <h3>3. Quyền sở hữu trí tuệ</h3>
+      <p>Toàn bộ nội dung học tập, bài kiểm tra (Quiz Game), kịch bản giả lập xử lý khủng hoảng truyền thông (như Study Case: ClearDrop) và mã nguồn giao diện thuộc bản quyền của Career Experience (CEP). Bạn không được sao chép, phân phối hoặc sử dụng vào mục đích thương mại mà không có sự cho phép bằng văn bản.</p>
+
+      <h3>4. Tính chất học thuật của Nội dung</h3>
+      <p>Tất cả các case study, tên thương hiệu, cá nhân, hoặc tình huống được đề cập trong các bài tập (Ví dụ: Sự cố lỗi sản phẩm ClearDrop) đều hoàn toàn là <b>hư cấu và phục vụ mục đích giáo dục</b>. Bất kỳ sự trùng hợp nào với các tổ chức hoặc cá nhân có thật đều là ngẫu nhiên.</p>
+
+      <h3>5. Giới hạn trách nhiệm</h3>
+      <p>Hệ thống CEP cung cấp các công cụ và kiến thức mang tính chất tham khảo học thuật. Chúng tôi không chịu trách nhiệm pháp lý nếu bạn áp dụng các chiến lược PR/Marketing này vào thực tế kinh doanh và gây ra tổn thất tài chính hay uy tín cho doanh nghiệp của bạn.</p>
+
+      <p style="margin-top:30px; text-align:center;"><i>Mọi thắc mắc liên quan đến Điều khoản sử dụng, vui lòng liên hệ với chúng tôi qua chức năng Hỗ trợ ở phần Chân trang.</i></p>
+    </div>
+  </div>
+</div>
+
+<div class="page" id="page-privacy">
+  <div class="legal-wrap">
+    <div class="legal-back" onclick="history.back()">← Quay lại trước đó</div>
+    <div class="legal-header">
+      <h1>Chính sách bảo mật (Privacy Policy)</h1>
+      <p>Cập nhật lần cuối: Tháng 4, 2026</p>
+    </div>
+    <div class="legal-card legal-content">
+      <h3>1. Thu thập dữ liệu</h3>
+      <p>Khi bạn tạo tài khoản trên Career Experience (CEP), đặc biệt là qua tính năng <b>Đăng nhập bằng Google</b>, chúng tôi sẽ thu thập các thông tin công khai cơ bản để tối ưu trải nghiệm của bạn (Seamless UX), bao gồm:</p>
+      <ul>
+        <li>Họ và tên, Địa chỉ Email, và Ảnh đại diện (Avatar).</li>
+        <li>Các thông tin cá nhân khác mà bạn tự nguyện bổ sung vào "Hồ sơ" (Profile) như: Chuyên ngành, Ngày sinh, Bio, Kỹ năng, v.v.</li>
+        <li>Dữ liệu về tiến độ học tập: Điểm số bài Quiz, lựa chọn của bạn trong các Case Study Xử lý khủng hoảng, tổng số giờ học và Thành tựu đạt được.</li>
+      </ul>
+
+      <h3>2. Mục đích sử dụng dữ liệu</h3>
+      <p>Dữ liệu của bạn được sử dụng nhằm mục đích:</p>
+      <ul>
+        <li>Tạo và quản lý tài khoản người dùng trên hệ thống máy chủ Firebase bảo mật cao.</li>
+        <li>Cung cấp kết quả đánh giá, phân tích thế mạnh kỹ năng của bạn (Thống kê học tập).</li>
+        <li>Cá nhân hóa giao diện và trải nghiệm theo từng người dùng (Lưu trữ trạng thái Dark Mode, Ngôn ngữ ưa thích).</li>
+      </ul>
+
+      <h3>3. Chia sẻ dữ liệu và Bên thứ ba</h3>
+      <p>Chúng tôi cam kết <b>không bán, trao đổi hoặc cho thuê</b> dữ liệu cá nhân của sinh viên cho bất kỳ bên thứ ba nào vì mục đích quảng cáo thương mại. Dữ liệu của bạn được lưu trữ hoàn toàn trên cơ sở hạ tầng đám mây an toàn của Google Firebase.</p>
+
+      <h3>4. Quyền kiểm soát của bạn</h3>
+      <p>Bạn hoàn toàn làm chủ dữ liệu của mình. Tại mục "Cài đặt" (Settings), bạn có quyền:</p>
+      <ul>
+        <li><b>Xuất dữ liệu (Export Data):</b> Tải xuống toàn bộ hồ sơ và lịch sử học tập của bạn dưới định dạng JSON.</li>
+        <li><b>Chỉnh sửa thông tin:</b> Cập nhật avatar, đổi mật khẩu và thay đổi thông tin liên hệ.</li>
+        <li>Yêu cầu xóa toàn bộ tài khoản và dữ liệu hệ thống bằng cách liên hệ với ban quản trị CEP.</li>
+      </ul>
+      
+      <p style="margin-top:30px; text-align:center;"><i>Bằng cách sử dụng nền tảng, bạn xác nhận rằng bạn đã đọc, hiểu và đồng ý với việc chúng tôi xử lý dữ liệu như mô tả trong Chính sách bảo mật này.</i></p>
     </div>
   </div>
 </div>
@@ -788,7 +877,8 @@ body.auth-page #globalHeader { display: none; }
         <h3 data-i18n="footerLinks">Liên kết nhanh</h3>
         <a onclick="scrollToId('dept-section')" data-i18n="smDepts">Ngành học</a>
         <a onclick="scrollToId('why-section')" data-i18n="smAbout">Về CEP</a>
-        <a onclick="showPage('page-register')" data-i18n="navRegister">Đăng ký</a>
+        <a onclick="showPage('page-terms')">Điều khoản sử dụng</a>
+        <a onclick="showPage('page-privacy')">Chính sách bảo mật</a>
       </div>
       <div class="footer-sec">
         <h3 data-i18n="footerContact">Liên hệ</h3>
@@ -1789,7 +1879,7 @@ var I18N = {
     b1:'Bài tập thực chiến PR',b2:'Bài tập thực chiến Marketing',b3:'Hỗ trợ 24/7',b4:'Cộng đồng học viên',
     fullnameLbl:'Họ và tên *',phoneLbl:'Số điện thoại',confirmPwLbl:'Xác nhận mật khẩu *',roleLbl:'Bạn là',
     roleDefault:'Chọn vai trò',roleStudent:'Học sinh / Sinh viên',rolePro:'Người đi làm',roleTeacher:'Giáo viên',roleOther:'Khác',
-    termsLabel:'Tôi đồng ý với <a href="#">Điều khoản</a> và <a href="#">Chính sách bảo mật</a>',regBtn:'Đăng ký ngay',
+    termsLabel:'Tôi đồng ý với <a onclick="showPage(\'page-terms\')">Điều khoản</a> và <a onclick="showPage(\'page-privacy\')">Chính sách bảo mật</a>',regBtn:'Đăng ký ngay',
     hasAccountRow:'Đã có tài khoản? <a onclick="showPage(\'page-login\')" style="cursor:pointer;">Đăng nhập ngay</a>',
     fpTitle:'Quên mật khẩu?',fpSub:'Đừng lo! Chúng tôi sẽ giúp bạn khôi phục tài khoản',fp1h:'Nhập email',fp1p:'Email đã đăng ký',fp2h:'Nhận mật khẩu mới',fp2p:'Kiểm tra hộp thư email',fp3h:'Đăng nhập lại',fp3p:'Dùng mật khẩu mới',
     fpH2:'Khôi phục mật khẩu',fpSubRight:'Nhập email để nhận link đặt lại mật khẩu',fpNote:'Link khôi phục mật khẩu sẽ được gửi vào email của bạn.',fpBtn:'Khôi phục mật khẩu',fpBackLink:'← Quay lại đăng nhập',
@@ -1825,7 +1915,7 @@ var I18N = {
     b1:'PR Practical Tasks',b2:'Marketing Practical Tasks',b3:'24/7 Support',b4:'Student Community',
     fullnameLbl:'Full Name *',phoneLbl:'Phone Number',confirmPwLbl:'Confirm Password *',roleLbl:'You are',
     roleDefault:'Select role',roleStudent:'Student',rolePro:'Professional',roleTeacher:'Teacher',roleOther:'Other',
-    termsLabel:'I agree to the <a href="#">Terms</a> and <a href="#">Privacy Policy</a>',regBtn:'Register Now',
+    termsLabel:'I agree to the <a onclick="showPage(\'page-terms\')">Terms</a> and <a onclick="showPage(\'page-privacy\')">Privacy Policy</a>',regBtn:'Register Now',
     hasAccountRow:'Already have an account? <a onclick="showPage(\'page-login\')" style="cursor:pointer;">Login now</a>',
     fpTitle:'Forgot Password?',fpSub:"Don't worry! We'll help you recover your account",fp1h:'Enter email',fp1p:'Registered email',fp2h:'Get new password',fp2p:'Check your inbox',fp3h:'Login again',fp3p:'Use the new password',
     fpH2:'Password Recovery',fpSubRight:'Enter your email to get a new password',fpNote:'The reset link will be sent to your email.',fpBtn:'Recover Password',fpBackLink:'← Back to Login',
@@ -2563,6 +2653,14 @@ document.addEventListener('DOMContentLoaded', function() {
   // Load Language
   const savedLang = localStorage.getItem('cep_lang') || 'vi';
   setLang(savedLang);
+
+  // Đảm bảo header ẩn trên auth pages khi init
+  var authPages = ['page-login','page-register','page-forgot','page-reset-password'];
+  var activePage = document.querySelector('.page.active');
+  var globalHeader = document.getElementById('globalHeader');
+  if(globalHeader && activePage && authPages.includes(activePage.id)) {
+    globalHeader.style.display = 'none';
+  }
 
   // Check URL for Reset Password from Firebase Email
   const urlParams = new URLSearchParams(window.location.search);
