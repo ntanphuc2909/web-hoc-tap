@@ -454,7 +454,6 @@ body.dark-mode .sec-info h3{color:#7ececa;}
 <body>
 <div id="_toast"></div>
 
-<!-- ════ GLOBAL HEADER (xuất hiện trên mọi trang) ════ -->
 <header class="home-big-header" id="globalHeader" style="position:fixed;top:0;left:0;right:0;z-index:1001;display:none;">
   <div class="home-hc">
     <div class="home-logo" onclick="showPage('page-home')">
@@ -491,7 +490,6 @@ body.dark-mode .sec-info h3{color:#7ececa;}
   </div>
 </header>
 
-<!-- Global Overlay & Slide Menu -->
 <div class="overlay" id="overlay"></div>
 <div class="slide-menu" id="slideMenu">
   <div class="sm-header">
@@ -893,7 +891,7 @@ body.auth-page #globalHeader { display: none; }
         <h3 style="font-family:'Playfair Display',serif;font-size:18px;color:var(--primary);">🏆 Thành tựu</h3>
         <button onclick="showPage('page-pr-course')" style="padding:7px 16px;background:var(--gradient);color:#fff;border:none;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;">+ Làm thêm bài tập</button>
       </div>
-      <div id="achievementContent"><!-- rendered by JS --></div>
+      <div id="achievementContent"></div>
     </div>
   </div>
 </div>
@@ -1232,14 +1230,11 @@ body.dark-mode .qe-stat .qes-num{color:#7ececa;}
 
   <div class="pr-content">
 
-    <!-- TAB 1: CURRICULUM -->
     <div class="pr-section visible" id="pr-curriculum">
       <div class="lesson-list" id="prCurriculumList">
-        <!-- Exercise frames rendered by JS -->
-      </div>
+        </div>
     </div>
 
-    <!-- TAB 2: STUDY CASE -->
     <div class="pr-section" id="pr-studycase">
       <div class="case-card" id="caseMainCard">
         <div class="case-header">
@@ -1255,10 +1250,8 @@ body.dark-mode .qe-stat .qes-num{color:#7ececa;}
             <span style="font-size:12px;color:var(--text2);margin-right:6px;">Tiến độ:</span>
           </div>
 
-          <!-- Questions container -->
           <div id="caseQuestions"></div>
 
-          <!-- Result -->
           <div class="case-result" id="caseResult">
             <div class="result-emoji" id="resultEmoji"></div>
             <div class="result-score" id="resultScore"></div>
@@ -1279,10 +1272,8 @@ body.dark-mode .qe-stat .qes-num{color:#7ececa;}
       </div>
     </div>
 
-    <!-- TAB 3: QUIZ GAME -->
     <div class="pr-section" id="pr-quizgame">
       <div class="quiz-wrap">
-        <!-- Start Screen -->
         <div class="quiz-start" id="quizStart">
           <div class="big-emoji">🎮</div>
           <h2>PR Quiz Challenge!</h2>
@@ -1297,7 +1288,6 @@ body.dark-mode .qe-stat .qes-num{color:#7ececa;}
           <button class="btn-start-quiz" onclick="startQuiz()">🚀 Bắt đầu chơi!</button>
         </div>
 
-        <!-- Game Screen -->
         <div class="quiz-game" id="quizGame">
           <div class="quiz-top">
             <div class="quiz-stat">💰 Điểm: <strong id="qScore">0</strong></div>
@@ -1320,7 +1310,6 @@ body.dark-mode .qe-stat .qes-num{color:#7ececa;}
           </div>
         </div>
 
-        <!-- End Screen -->
         <div class="quiz-end" id="quizEnd">
           <div class="stars-row" id="qStars"></div>
           <div class="qe-score" id="qFinalScore"></div>
@@ -1340,8 +1329,7 @@ body.dark-mode .qe-stat .qes-num{color:#7ececa;}
       </div>
     </div>
 
-  </div><!-- /pr-content -->
-</div>
+  </div></div>
 
 <script>
 /* ════════════════════════════════════
@@ -1556,7 +1544,7 @@ var quizData = [
   { q: "Nguyên tắc nào KHÔNG thuộc mô hình PESO trong PR?", opts: ["Paid Media","Earned Media","Social Media","Owned Media"], ans: 2, explain: "PESO = Paid, Earned, Shared, Owned. 'Social Media' không phải là tên riêng trong PESO — Shared Media mới là tên đúng (bao gồm cả mạng xã hội)." },
   { q: "Stakeholder trong PR là gì?", opts: ["Cổ đông nắm giữ cổ phần công ty","Tất cả các bên có liên quan đến tổ chức","Chỉ gồm khách hàng và báo chí","Nhà quản lý cấp cao"], ans: 1, explain: "Stakeholder = tất cả bên liên quan: khách hàng, nhân viên, nhà đầu tư, cộng đồng, chính phủ, báo chí..." },
   { q: "Earned Media trong PR là gì?", opts: ["Quảng cáo trả phí trên Google","Nội dung do thương hiệu tự đăng","Bài viết báo chí và chia sẻ tự nhiên từ công chúng","Video đăng trên YouTube chính thức"], ans: 2, explain: "Earned Media là truyền thông 'được kiếm' — báo chí tự đưa tin, người dùng tự chia sẻ mà không tốn chi phí quảng cáo trực tiếp." },
-  { q: "Đâu là ví dụ điển hình về 'Streisand Effect'?", opts: ["Một thương hiệu tăng nhận diện nhờ chiến dịch viral","Việc cố gắng che giấu thông tin lại khiến thông tin đó lan rộng hơn","Báo chí tự nguyện gỡ bài xấu về thương hiệu","Chiến dịch PR tạo ra làn sóng hashtag tích cực"], ans: 1, explain: "Streisand Effect: ca sĩ Barbra Streisand kiện gỡ ảnh nhà mình khỏi internet nhưng vô tình khiến hàng triệu người tìm xem. Trong PR, cố ngăn thông tin thường làm nó lan nhanh hơn." },
+  { q: "Đâu là ví dụ điển hình về 'Streisand Effect'?", opts: ["Một thương hiệu tăng nhận diện nhờ chiến dịch viral","Việc cố gắng che giấu thông tin lại khiến thông vịn đó lan rộng hơn","Báo chí tự nguyện gỡ bài xấu về thương hiệu","Chiến dịch PR tạo ra làn sóng hashtag tích cực"], ans: 1, explain: "Streisand Effect: ca sĩ Barbra Streisand kiện gỡ ảnh nhà mình khỏi internet nhưng vô tình khiến hàng triệu người tìm xem. Trong PR, cố ngăn thông tin thường làm nó lan nhanh hơn." },
   { q: "Mục tiêu chính của Crisis Communication là gì?", opts: ["Xóa bỏ hoàn toàn thông tin xấu trên mạng","Bảo vệ và phục hồi uy tín của tổ chức","Tạo ra câu chuyện hoàn toàn mới để đánh lạc hướng","Trừng phạt những người lan truyền tin xấu"], ans: 1, explain: "Crisis Communication nhằm bảo vệ uy tín, giữ niềm tin của các bên liên quan và phục hồi hình ảnh tổ chức sau khủng hoảng." },
   { q: "Công cụ nào thường được dùng để đo lường hiệu quả chiến dịch PR?", opts: ["ROI và doanh thu bán hàng","Media Reach, Sentiment Analysis và Share of Voice","Số lượng nhân viên tham gia","Chi phí quảng cáo tiết kiệm được"], ans: 1, explain: "PR đo bằng: Media Reach (độ phủ), Sentiment (tông độ tích cực/tiêu cực), Share of Voice (thị phần truyền thông so với đối thủ)." },
   { q: "Trong PR, 'Key Message' là gì?", opts: ["Tin nhắn quan trọng gửi cho CEO","Thông điệp cốt lõi nhất thương hiệu muốn công chúng ghi nhớ","Mật khẩu hệ thống quản lý PR","Bộ câu hỏi dành cho phóng viên"], ans: 1, explain: "Key Message = 2-3 thông điệp cốt lõi mà thương hiệu muốn công chúng nhớ đến. Mọi hoạt động truyền thông đều phải hướng về Key Message này." }
