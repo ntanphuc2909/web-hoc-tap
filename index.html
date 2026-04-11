@@ -180,48 +180,38 @@ body.dark-mode .hnl-drop-menu{background:#0d1020;border-color:rgba(255,255,255,.
 .menu-toggle-btn.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
 .menu-toggle-btn.open span:nth-child(2){opacity:0;transform:scaleX(0);}
 .menu-toggle-btn.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
-.home-search{flex:1;max-width:440px;margin:0 16px;position:relative;display:flex;align-items:center;}
-.home-search input{width:100%;background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.1);border-radius:8px;padding:10px 44px 10px 16px;color:#fff;font-family:'DM Sans',sans-serif;font-size:14px;transition:all .25s;}
-.home-search input::placeholder{color:rgba(255,255,255,.35);}
-.home-search input:focus{outline:none;border-color:#4DD9AC;background:rgba(77,217,172,.05);}
-.home-search-btn{position:absolute;right:6px;background:#2D5F5D;border:none;color:#fff;width:32px;height:32px;border-radius:6px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;transition:background .2s;}
-.home-search-btn:hover{background:#4DD9AC;}
-.home-right{display:flex;align-items:center;gap:0;margin-left:auto;flex-shrink:0;}
-.home-divider{width:1px;height:32px;background:rgba(255,255,255,.1);margin:0 4px;}
-.home-theme-btn{background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.2);color:#fff;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0;margin:0 4px;}
-.home-theme-btn:hover{background:rgba(255,255,255,.18);}
+.home-search{flex:1;max-width:420px;margin:0 16px;position:relative;display:flex;align-items:center;}
+.home-search input{width:100%;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.12);border-radius:24px;padding:9px 48px 9px 18px;color:#fff;font-family:'DM Sans',sans-serif;font-size:13.5px;transition:all .25s;}
+.home-search input::placeholder{color:rgba(255,255,255,.38);}
+.home-search input:focus{outline:none;border-color:#4DD9AC;background:rgba(77,217,172,.06);box-shadow:0 0 0 3px rgba(77,217,172,.12);}
+.home-search-btn{position:absolute;right:5px;background:linear-gradient(135deg,#2D5F5D,#4DD9AC);border:none;color:#fff;width:34px;height:34px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;transition:all .2s;box-shadow:0 2px 8px rgba(77,217,172,.3);}
+.home-search-btn:hover{transform:scale(1.1);box-shadow:0 4px 14px rgba(77,217,172,.5);}
+.home-right{display:flex;align-items:center;gap:6px;margin-left:auto;flex-shrink:0;}
+.home-divider{width:1px;height:28px;background:rgba(255,255,255,.12);margin:0 4px;}
+.home-auth{display:flex;align-items:center;gap:8px;padding:0 8px;}
+/* Đăng nhập – viền pill mỏng */
+.btn-hlogin{padding:8px 20px;background:transparent;color:rgba(255,255,255,.9);border:1.5px solid rgba(255,255,255,.28);border-radius:20px;font-weight:500;font-size:13px;cursor:pointer;transition:all .22s;font-family:'DM Sans',sans-serif;letter-spacing:.2px;}
+.btn-hlogin:hover{border-color:#4DD9AC;color:#4DD9AC;background:rgba(77,217,172,.07);}
+/* Đăng ký – gradient cam nổi bật */
+.btn-hreg{padding:8px 20px;background:linear-gradient(135deg,#F4A261,#E76F51);color:#fff;border:none;border-radius:20px;font-weight:700;font-size:13px;cursor:pointer;transition:all .22s;font-family:'DM Sans',sans-serif;box-shadow:0 3px 12px rgba(231,111,81,.38);letter-spacing:.2px;}
+.btn-hreg:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(231,111,81,.52);letter-spacing:.2px;}
+/* Nút Cài đặt nổi bật trên header */
 .header-settings-btn{
   display:flex;align-items:center;gap:7px;
-  padding:8px 16px;
+  padding:8px 18px;
   background:linear-gradient(135deg,#2D5F5D,#4DD9AC);
-  color:#fff;
-  border:none;
-  border-radius:20px;
-  font-size:13px;
-  font-weight:700;
-  cursor:pointer;
-  font-family:'DM Sans',sans-serif;
-  transition:all .25s;
-  white-space:nowrap;
+  color:#fff;border:none;border-radius:20px;
+  font-size:13px;font-weight:700;cursor:pointer;
+  font-family:'DM Sans',sans-serif;transition:all .25s;
+  white-space:nowrap;flex-shrink:0;margin:0 4px;
   box-shadow:0 0 0 0 rgba(77,217,172,.5);
   animation:settingsPulse 2.5s ease-in-out infinite;
-  flex-shrink:0;
-  margin:0 6px;
 }
-.header-settings-btn:hover{
-  transform:translateY(-2px);
-  box-shadow:0 6px 20px rgba(77,217,172,.4);
-  animation:none;
-}
+.header-settings-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(77,217,172,.4);animation:none;}
 @keyframes settingsPulse{
   0%,100%{box-shadow:0 0 0 0 rgba(77,217,172,.45);}
   50%{box-shadow:0 0 0 7px rgba(77,217,172,.0);}
 }
-.home-auth{display:flex;align-items:center;gap:8px;padding:0 12px;}
-.btn-hlogin{padding:8px 18px;background:transparent;color:rgba(255,255,255,.85);border:1.5px solid rgba(255,255,255,.2);border-radius:8px;font-weight:500;font-size:13px;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;}
-.btn-hlogin:hover{border-color:#4DD9AC;color:#4DD9AC;}
-.btn-hreg{padding:8px 18px;background:#2D5F5D;color:#fff;border:1.5px solid #2D5F5D;border-radius:8px;font-weight:600;font-size:13px;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;}
-.btn-hreg:hover{background:#4DD9AC;border-color:#4DD9AC;color:#111827;}
 .overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0);display:none;z-index:1999;transition:background .35s ease;}
 .overlay.active{display:block;background:rgba(0,0,0,.55);}
 .slide-menu{position:fixed;top:0;left:-340px;width:310px;height:100vh;background:#111827;color:#fff;transition:left .38s cubic-bezier(.23,1,.32,1);z-index:2000;overflow-y:auto;display:flex;flex-direction:column;}
@@ -754,11 +744,10 @@ body.auth-page #globalHeader { display: none; }
   <div class="section">
     <div class="sec-title" data-i18n="featTitle">Tại sao chọn CEP?</div>
     <div class="sec-sub" data-i18n="featSub">Nền tảng học tập thực chiến dành riêng cho PR & Marketing</div>
-    <div class="features-grid">
+    <div class="features-grid" style="grid-template-columns:repeat(3,1fr);">
       <div class="feat-card"><div class="feat-icon">🎯</div><h3 data-i18n="f1h">Bài tập thực chiến</h3><p data-i18n="f1p">Tự tạo và thực hành bài tập sát với thực tế ngành PR & Marketing</p></div>
       <div class="feat-card"><div class="feat-icon">🤝</div><h3 data-i18n="f2h">Cộng đồng kết nối</h3><p data-i18n="f2p">Kết nối với các chuyên gia và học viên trong ngành</p></div>
       <div class="feat-card"><div class="feat-icon">📊</div><h3 data-i18n="f3h">Theo dõi tiến độ</h3><p data-i18n="f3p">Hệ thống theo dõi và đánh giá tiến độ học tập của bạn</p></div>
-      <div class="feat-card"><div class="feat-icon">🏆</div><h3 data-i18n="f4h">Chứng nhận hoàn thành</h3><p data-i18n="f4p">Nhận chứng nhận sau khi hoàn thành các bài tập ngành</p></div>
     </div>
   </div>
   <div class="why-bg" id="why-section">
@@ -894,10 +883,9 @@ body.auth-page #globalHeader { display: none; }
     </div>
     <div class="pcard">
       <h3 style="font-family:'Playfair Display',serif;font-size:18px;color:var(--primary);margin-bottom:16px;" data-i18n="statsTitle">📊 Thống kê học tập</h3>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
-        <div style="text-align:center;padding:16px;background:var(--bg);border-radius:10px;"><div style="font-size:28px;font-weight:700;color:var(--primary);" id="statActiveCount">0</div><div style="font-size:13px;color:var(--text2);" data-i18n="statActive">Bài tập đang làm</div></div>
-        <div style="text-align:center;padding:16px;background:var(--bg);border-radius:10px;"><div style="font-size:28px;font-weight:700;color:var(--primary);" id="statCertsCount">0</div><div style="font-size:13px;color:var(--text2);" data-i18n="statCerts">Chứng nhận</div></div>
-        <div style="text-align:center;padding:16px;background:var(--bg);border-radius:10px;"><div style="font-size:28px;font-weight:700;color:var(--primary);" id="statPointsTotal">0</div><div style="font-size:13px;color:var(--text2);">Tổng điểm</div></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <div style="text-align:center;padding:20px 16px;background:var(--bg);border-radius:12px;border:1.5px solid var(--border);"><div style="font-size:32px;font-weight:800;color:var(--primary);font-family:'Playfair Display',serif;" id="statActiveCount">0</div><div style="font-size:13px;color:var(--text2);margin-top:4px;" data-i18n="statActive">Bài tập đã làm</div></div>
+        <div style="text-align:center;padding:20px 16px;background:var(--bg);border-radius:12px;border:1.5px solid var(--border);"><div style="font-size:32px;font-weight:800;color:var(--primary);font-family:'Playfair Display',serif;" id="statPointsTotal">0</div><div style="font-size:13px;color:var(--text2);margin-top:4px;">Tổng điểm</div></div>
       </div>
     </div>
     <div class="pcard">
@@ -924,9 +912,15 @@ body.auth-page #globalHeader { display: none; }
       <h3 data-i18n="sLangH">🌐 Ngôn ngữ</h3>
       <div class="setting-row" style="flex-direction:column;align-items:flex-start;gap:12px;">
         <div class="setting-info"><h4 data-i18n="sLangTitle">Ngôn ngữ hiển thị</h4><p data-i18n="sLangDesc">Áp dụng toàn bộ giao diện ứng dụng</p></div>
-        <div class="lang-grid">
-          <div class="lang-opt" data-lang="vi" id="lang-vi" onclick="setLang('vi')"><div class="lang-flag">🇻🇳</div><div class="lang-name">Tiếng Việt</div></div>
-          <div class="lang-opt" data-lang="en" id="lang-en" onclick="setLang('en')"><div class="lang-flag">🇬🇧</div><div class="lang-name">English</div></div>
+        <div class="lang-grid" style="grid-template-columns:1fr 1fr;max-width:480px;">
+          <div class="lang-opt" data-lang="vi" id="lang-vi" onclick="setLang('vi')" style="padding:18px 12px;">
+            <div class="lang-flag" style="font-size:28px;margin-bottom:6px;">🇻🇳</div>
+            <div class="lang-name" style="font-size:14px;font-weight:700;">Tiếng Việt</div>
+          </div>
+          <div class="lang-opt" data-lang="en" id="lang-en" onclick="setLang('en')" style="padding:18px 12px;">
+            <div class="lang-flag" style="font-size:28px;margin-bottom:6px;">🇬🇧</div>
+            <div class="lang-name" style="font-size:14px;font-weight:700;">English</div>
+          </div>
         </div>
       </div>
     </div>
@@ -2323,7 +2317,7 @@ auth.onAuthStateChanged((user) => {
         currentUserData = doc.data();
         var displayName = currentUserData.fullname.split(' ')[0];
         
-        authArea.innerHTML = `<button class="btn-hlogin" onclick="showPage('page-profile')">👤 ${displayName}</button>`;
+        authArea.innerHTML = `<button style="display:flex;align-items:center;gap:8px;padding:7px 16px;background:rgba(77,217,172,.13);border:1.5px solid rgba(77,217,172,.4);color:#4DD9AC;border-radius:20px;font-weight:600;font-size:13px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .22s;" onmouseover="this.style.background='rgba(77,217,172,.22)'" onmouseout="this.style.background='rgba(77,217,172,.13)'" onclick="showPage('page-profile')">👤 ${displayName}</button>`;
         userBar.style.display = 'block';
         document.getElementById('hubName').innerText = t('welcomeBack') + ' ' + currentUserData.fullname + '!';
         document.getElementById('hubSub').innerText = currentUserData.email;
