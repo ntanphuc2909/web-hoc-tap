@@ -447,6 +447,32 @@ body.dark-mode .legal-card { box-shadow: 0 4px 20px rgba(0,0,0,.3); }
 body.dark-mode .legal-back { color: #7ececa; }
 .legal-back:hover { text-decoration: underline; }
 
+/* Nút Xem thêm đánh giá */
+.btn-see-more {
+  padding: 12px 32px;
+  background: transparent;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  border-radius: 50px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  transition: all .25s;
+}
+.btn-see-more:hover {
+  background: var(--primary);
+  color: #fff;
+}
+body.dark-mode .btn-see-more {
+  color: #7ececa;
+  border-color: #7ececa;
+}
+body.dark-mode .btn-see-more:hover {
+  background: #7ececa;
+  color: #1a1d2e;
+}
+
 @media(max-width:900px){
   .why-inner{grid-template-columns:1fr;}
   .why-icon-big{max-width:100%;height:220px;font-size:80px;}
@@ -865,6 +891,10 @@ body.auth-page #globalHeader { display: none; }
         <p class="review-text" data-i18n="r3">Cộng đồng học viên CEP rất nhiệt tình. Mình học được rất nhiều từ các bạn cùng ngành PR & Marketing.</p>
         <div class="reviewer"><div class="reviewer-av">LA</div><div><h4>Ms. Lan Anh</h4><p data-i18n="r3role">Học viên PR & Marketing</p></div></div>
       </div>
+    </div>
+    
+    <div style="text-align: center; margin-top: 40px;">
+      <button class="btn-see-more" onclick="showPage('page-all-reviews')">Xem thêm đánh giá</button>
     </div>
   </div>
   <footer id="footer-contact">
@@ -1842,6 +1872,20 @@ function restartQuiz() {
   </div>
 </div>
 
+<div class="page" id="page-all-reviews">
+  <div class="inner-wrap">
+    <div class="legal-back" onclick="showPage('page-home')">← Quay lại Trang chủ</div>
+    <div class="page-header">
+      <h1>Tất cả đánh giá</h1>
+      <p>Thống kê các đánh giá từ học viên theo thời gian thực</p>
+    </div>
+    
+    <div id="allReviewsContainer" style="display: flex; flex-direction: column; gap: 20px;">
+      <p style="text-align:center; color:var(--text2);">Đang tải dữ liệu...</p>
+    </div>
+  </div>
+</div>
+
 <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
@@ -2006,6 +2050,9 @@ function showPage(pageId, pushState = true) {
   }
   if (pageId === 'page-pr-course') {
     renderPrCurriculum();
+  }
+  if (pageId === 'page-all-reviews') {
+    initRealtimeReviews();
   }
 }
 
@@ -2639,6 +2686,67 @@ function setLang(lang) {
   });
 
   if(document.getElementById('page-profile').classList.contains('active')) renderProfile();
+}
+
+/* ═══════════════════════════════
+   REALTIME REVIEWS LOGIC
+═══════════════════════════════ */
+let unsubscribeReviews = null;
+
+function initRealtimeReviews() {
+  const container = document.getElementById('allReviewsContainer');
+  if (!container) return;
+
+  // Hủy listener cũ nếu có để tránh lặp
+  if (unsubscribeReviews) unsubscribeReviews();
+
+  // Lắng nghe collection 'reviews' từ Firestore theo thời gian thực
+  unsubscribeReviews = db.collection('reviews').orderBy('timestamp', 'desc').onSnapshot((snapshot) => {
+    if (snapshot.empty) {
+      container.innerHTML = '<p style="text-align:center; color:var(--text2);">Chưa có đánh giá nào trên hệ thống máy chủ.</p>';
+      return;
+    }
+    
+    let html = '';
+    snapshot.forEach((doc) => {
+      const data = doc.data();
+      
+      // Format thời gian
+      let dateStr = '';
+      if (data.timestamp) {
+        let date = data.timestamp.toDate();
+        dateStr = date.toLocaleDateString('vi-VN') + ' ' + date.toLocaleTimeString('vi-VN');
+      }
+
+      let avatarHtml = data.avatar 
+        ? `<img src="${data.avatar}" style="width:100%;height:100%;border-radius:50%;object-fit:cover;">` 
+        : (data.name ? data.name.charAt(0).toUpperCase() : 'U');
+
+      html += `
+        <div class="review-card" style="margin-bottom: 0;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+            <div class="review-stars" style="margin-bottom:10px; color:#FFD700; font-size:18px;">
+              ${'★'.repeat(data.rating || 5)}${'☆'.repeat(5 - (data.rating || 5))}
+            </div>
+            <span style="font-size:12px; color:var(--text2);">${dateStr}</span>
+          </div>
+          <div class="review-badge">${data.badge || 'Tuyệt vời!'}</div>
+          <p class="review-text">${data.content}</p>
+          <div class="reviewer" style="padding-top:14px; border-top:1px solid var(--border);">
+            <div class="reviewer-av">${avatarHtml}</div>
+            <div>
+              <h4 style="font-size:14px; color:var(--text); margin-bottom:2px;">${data.name || 'Học viên ẩn danh'}</h4>
+              <p style="font-size:12px; color:var(--text2);">${data.role || 'Học viên CEP'}</p>
+            </div>
+          </div>
+        </div>
+      `;
+    });
+    container.innerHTML = html;
+  }, (error) => {
+    console.error("Lỗi khi tải đánh giá:", error);
+    container.innerHTML = '<p style="text-align:center; color:#f44336;">Lỗi kết nối cơ sở dữ liệu.</p>';
+  });
 }
 
 /* ═══════════════════════════════
