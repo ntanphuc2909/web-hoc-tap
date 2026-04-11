@@ -55,12 +55,13 @@ body.dark-mode .form-group input:focus,body.dark-mode .form-group select:focus{b
 .btn-main{width:100%;padding:13px;background:var(--gradient);color:#fff;border:none;border-radius:8px;font-size:15px;font-weight:700;cursor:pointer;transition:all .25s;font-family:'DM Sans',sans-serif;margin-bottom:4px;}
 .btn-main:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(45,95,93,.3);}
 .btn-main:active{transform:translateY(0);}
+.btn-google{width:100%;padding:13px;background:#fff;color:#333;border:2px solid var(--border);border-radius:8px;font-size:15px;font-weight:700;cursor:pointer;transition:all .25s;font-family:'DM Sans',sans-serif;display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:16px;}
+.btn-google:hover{border-color:var(--primary);background:#f8f9fa;}
+body.dark-mode .btn-google{background:var(--card);color:var(--text);}
+body.dark-mode .btn-google:hover{border-color:#7ececa;background:#2d3748;}
 .divider{text-align:center;margin:16px 0;position:relative;}
 .divider::before{content:'';position:absolute;top:50%;left:0;right:0;height:1px;background:var(--border);}
 .divider span{background:var(--card);padding:0 12px;position:relative;color:var(--text2);font-size:12px;}
-.social-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px;}
-.btn-social{padding:10px;border:2px solid var(--border);border-radius:8px;background:var(--card);cursor:pointer;font-size:13px;font-weight:500;display:flex;align-items:center;justify-content:center;gap:7px;transition:all .2s;font-family:'DM Sans',sans-serif;color:var(--text);}
-.btn-social:hover{border-color:var(--primary);}
 .link-row{text-align:center;font-size:13px;color:var(--text2);margin-top:8px;}
 .link-row a{color:var(--primary);font-weight:700;cursor:pointer;}
 body.dark-mode .link-row a{color:#7ececa;}
@@ -548,6 +549,13 @@ body.auth-page #globalHeader { display: none; }
           <h2 data-i18n="loginH2">Đăng nhập</h2>
           <p data-i18n="loginSub">Đăng nhập để tiếp tục hành trình học tập</p>
         </div>
+        
+        <button class="btn-google" onclick="signInWithGoogle()">
+          <svg width="20" height="20" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+          Tiếp tục với Google
+        </button>
+        <div class="divider"><span>Hoặc dùng Email</span></div>
+
         <div class="form-group">
           <label data-i18n="emailLbl">Email</label>
           <input type="email" id="loginEmail" autocomplete="email">
@@ -566,10 +574,6 @@ body.auth-page #globalHeader { display: none; }
           <a onclick="showPage('page-forgot')" style="font-size:13px; color:var(--primary); font-weight:600; cursor:pointer;" data-i18n="forgotLink">Quên mật khẩu?</a>
         </div>
         <button class="btn-main" onclick="doLogin()" data-i18n="loginBtn">Đăng nhập</button>
-        <div class="divider"><span data-i18n="orWith">Hoặc đăng nhập với</span></div>
-        <div class="social-row" style="grid-template-columns:1fr;">
-          <button class="btn-social" onclick="toast('Tính năng sắp ra mắt!','info')">🔴 Google</button>
-        </div>
         <div class="link-row" data-i18n-html="noAccountRow">Chưa có tài khoản? <a onclick="showPage('page-register')">Đăng ký ngay</a></div>
       </div>
     </div>
@@ -595,54 +599,40 @@ body.auth-page #globalHeader { display: none; }
           <h2 data-i18n="regH2">Đăng ký tài khoản</h2>
           <p data-i18n="regSub">Tạo tài khoản miễn phí để bắt đầu</p>
         </div>
+
+        <button class="btn-google" onclick="signInWithGoogle()">
+          <svg width="20" height="20" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+          Đăng ký nhanh bằng Google
+        </button>
+        <div class="divider"><span>Hoặc dùng Email</span></div>
+
         <div class="form-group">
           <label data-i18n="fullnameLbl">Họ và tên *</label>
           <input type="text" id="regFullname" autocomplete="name">
         </div>
-        <div class="form-row">
-          <div class="form-group"><label data-i18n="emailLbl">Email *</label><input type="email" id="regEmail" autocomplete="email"></div>
-          <div class="form-group"><label data-i18n="phoneLbl">Số điện thoại</label><input type="tel" id="regPhone"></div>
-        </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label data-i18n="pwLbl">Mật khẩu *</label>
-            <div class="pw-wrap">
-              <input type="password" id="regPassword" oninput="checkStrength(this.value,'regStr')">
-              <span class="tpw" onclick="togglePw('regPassword',this)">👁️</span>
-            </div>
-            <div class="strength-wrap" id="regStr" style="margin-top:8px; display:none;">
-              <div class="strength-bar" style="height:4px;background:var(--border);border-radius:2px;overflow:hidden;margin-bottom:4px;"><div class="strength-fill" style="height:100%;transition:width .3s;"></div></div>
-              <div class="strength-txt" style="font-size:12px;font-weight:600;"></div>
-            </div>
-          </div>
-          <div class="form-group">
-            <label data-i18n="confirmPwLbl">Xác nhận mật khẩu *</label>
-            <div class="pw-wrap">
-              <input type="password" id="regConfirm">
-              <span class="tpw" onclick="togglePw('regConfirm',this)">👁️</span>
-            </div>
-          </div>
+        <div class="form-group">
+          <label data-i18n="emailLbl">Email *</label>
+          <input type="email" id="regEmail" autocomplete="email">
         </div>
         <div class="form-group">
-          <label data-i18n="roleLbl">Bạn là</label>
-          <select id="regRole">
-            <option value="" data-i18n="roleDefault">Chọn vai trò</option>
-            <option value="student" data-i18n="roleStudent">Học sinh / Sinh viên</option>
-            <option value="professional" data-i18n="rolePro">Người đi làm</option>
-            <option value="teacher" data-i18n="roleTeacher">Giáo viên</option>
-            <option value="other" data-i18n="roleOther">Khác</option>
-          </select>
+          <label data-i18n="pwLbl">Mật khẩu *</label>
+          <div class="pw-wrap">
+            <input type="password" id="regPassword" oninput="checkStrength(this.value,'regStr')">
+            <span class="tpw" onclick="togglePw('regPassword',this)">👁️</span>
+          </div>
+          <div class="strength-wrap" id="regStr" style="margin-top:8px; display:none;">
+            <div class="strength-bar" style="height:4px;background:var(--border);border-radius:2px;overflow:hidden;margin-bottom:4px;"><div class="strength-fill" style="height:100%;transition:width .3s;"></div></div>
+            <div class="strength-txt" style="font-size:12px;font-weight:600;"></div>
+          </div>
         </div>
+
         <div class="terms-row" style="margin-bottom:15px; display:flex; gap:10px;">
           <input type="checkbox" id="regTerms">
           <label for="regTerms" style="font-size:13px; color:var(--text2);" data-i18n-html="termsLabel">Tôi đồng ý với <a href="#">Điều khoản</a> và <a href="#">Chính sách bảo mật</a></label>
         </div>
-        <button class="btn-main" onclick="doRegister()" data-i18n="regBtn">Đăng ký</button>
-        <div class="divider"><span data-i18n="orWith">Hoặc đăng ký với</span></div>
-        <div class="social-row" style="grid-template-columns:1fr;">
-          <button class="btn-social" onclick="toast('Tính năng sắp ra mắt!','info')">🔴 Google</button>
-        </div>
-        <div class="link-row" data-i18n-html="hasAccountRow">Đã có tài khoản? <a onclick="showPage('page-login')">Đăng nhập ngay</a></div>
+        <button class="btn-main" onclick="doRegister()" data-i18n="regBtn">Đăng ký ngay</button>
+        
+        <div class="link-row" data-i18n-html="hasAccountRow" style="margin-top:16px;">Đã có tài khoản? <a onclick="showPage('page-login')">Đăng nhập ngay</a></div>
       </div>
     </div>
   </div>
@@ -739,7 +729,7 @@ body.auth-page #globalHeader { display: none; }
       <div class="stat-box"><div class="stat-num">98%</div><div class="stat-lbl" data-i18n="statSat">Hài lòng</div></div>
     </div>
   </div>
-  <div class="section">
+  <div class="section" id="dept-section">
     <div class="sec-title" data-i18n="featTitle">Tại sao chọn CEP?</div>
     <div class="sec-sub" data-i18n="featSub">Nền tảng học tập thực chiến dành riêng cho PR & Marketing</div>
     <div class="features-grid" style="grid-template-columns:repeat(3,1fr);">
@@ -1544,7 +1534,7 @@ var quizData = [
   { q: "Nguyên tắc nào KHÔNG thuộc mô hình PESO trong PR?", opts: ["Paid Media","Earned Media","Social Media","Owned Media"], ans: 2, explain: "PESO = Paid, Earned, Shared, Owned. 'Social Media' không phải là tên riêng trong PESO — Shared Media mới là tên đúng (bao gồm cả mạng xã hội)." },
   { q: "Stakeholder trong PR là gì?", opts: ["Cổ đông nắm giữ cổ phần công ty","Tất cả các bên có liên quan đến tổ chức","Chỉ gồm khách hàng và báo chí","Nhà quản lý cấp cao"], ans: 1, explain: "Stakeholder = tất cả bên liên quan: khách hàng, nhân viên, nhà đầu tư, cộng đồng, chính phủ, báo chí..." },
   { q: "Earned Media trong PR là gì?", opts: ["Quảng cáo trả phí trên Google","Nội dung do thương hiệu tự đăng","Bài viết báo chí và chia sẻ tự nhiên từ công chúng","Video đăng trên YouTube chính thức"], ans: 2, explain: "Earned Media là truyền thông 'được kiếm' — báo chí tự đưa tin, người dùng tự chia sẻ mà không tốn chi phí quảng cáo trực tiếp." },
-  { q: "Đâu là ví dụ điển hình về 'Streisand Effect'?", opts: ["Một thương hiệu tăng nhận diện nhờ chiến dịch viral","Việc cố gắng che giấu thông tin lại khiến thông vịn đó lan rộng hơn","Báo chí tự nguyện gỡ bài xấu về thương hiệu","Chiến dịch PR tạo ra làn sóng hashtag tích cực"], ans: 1, explain: "Streisand Effect: ca sĩ Barbra Streisand kiện gỡ ảnh nhà mình khỏi internet nhưng vô tình khiến hàng triệu người tìm xem. Trong PR, cố ngăn thông tin thường làm nó lan nhanh hơn." },
+  { q: "Đâu là ví dụ điển hình về 'Streisand Effect'?", opts: ["Một thương hiệu tăng nhận diện nhờ chiến dịch viral","Việc cố gắng che giấu thông tin lại khiến thông tin đó lan rộng hơn","Báo chí tự nguyện gỡ bài xấu về thương hiệu","Chiến dịch PR tạo ra làn sóng hashtag tích cực"], ans: 1, explain: "Streisand Effect: ca sĩ Barbra Streisand kiện gỡ ảnh nhà mình khỏi internet nhưng vô tình khiến hàng triệu người tìm xem. Trong PR, cố ngăn thông tin thường làm nó lan nhanh hơn." },
   { q: "Mục tiêu chính của Crisis Communication là gì?", opts: ["Xóa bỏ hoàn toàn thông tin xấu trên mạng","Bảo vệ và phục hồi uy tín của tổ chức","Tạo ra câu chuyện hoàn toàn mới để đánh lạc hướng","Trừng phạt những người lan truyền tin xấu"], ans: 1, explain: "Crisis Communication nhằm bảo vệ uy tín, giữ niềm tin của các bên liên quan và phục hồi hình ảnh tổ chức sau khủng hoảng." },
   { q: "Công cụ nào thường được dùng để đo lường hiệu quả chiến dịch PR?", opts: ["ROI và doanh thu bán hàng","Media Reach, Sentiment Analysis và Share of Voice","Số lượng nhân viên tham gia","Chi phí quảng cáo tiết kiệm được"], ans: 1, explain: "PR đo bằng: Media Reach (độ phủ), Sentiment (tông độ tích cực/tiêu cực), Share of Voice (thị phần truyền thông so với đối thủ)." },
   { q: "Trong PR, 'Key Message' là gì?", opts: ["Tin nhắn quan trọng gửi cho CEO","Thông điệp cốt lõi nhất thương hiệu muốn công chúng ghi nhớ","Mật khẩu hệ thống quản lý PR","Bộ câu hỏi dành cho phóng viên"], ans: 1, explain: "Key Message = 2-3 thông điệp cốt lõi mà thương hiệu muốn công chúng nhớ đến. Mọi hoạt động truyền thông đều phải hướng về Key Message này." }
@@ -1799,7 +1789,7 @@ var I18N = {
     b1:'Bài tập thực chiến PR',b2:'Bài tập thực chiến Marketing',b3:'Hỗ trợ 24/7',b4:'Cộng đồng học viên',
     fullnameLbl:'Họ và tên *',phoneLbl:'Số điện thoại',confirmPwLbl:'Xác nhận mật khẩu *',roleLbl:'Bạn là',
     roleDefault:'Chọn vai trò',roleStudent:'Học sinh / Sinh viên',rolePro:'Người đi làm',roleTeacher:'Giáo viên',roleOther:'Khác',
-    termsLabel:'Tôi đồng ý với <a href="#">Điều khoản</a> và <a href="#">Chính sách bảo mật</a>',regBtn:'Đăng ký',
+    termsLabel:'Tôi đồng ý với <a href="#">Điều khoản</a> và <a href="#">Chính sách bảo mật</a>',regBtn:'Đăng ký ngay',
     hasAccountRow:'Đã có tài khoản? <a onclick="showPage(\'page-login\')" style="cursor:pointer;">Đăng nhập ngay</a>',
     fpTitle:'Quên mật khẩu?',fpSub:'Đừng lo! Chúng tôi sẽ giúp bạn khôi phục tài khoản',fp1h:'Nhập email',fp1p:'Email đã đăng ký',fp2h:'Nhận mật khẩu mới',fp2p:'Kiểm tra hộp thư email',fp3h:'Đăng nhập lại',fp3p:'Dùng mật khẩu mới',
     fpH2:'Khôi phục mật khẩu',fpSubRight:'Nhập email để nhận link đặt lại mật khẩu',fpNote:'Link khôi phục mật khẩu sẽ được gửi vào email của bạn.',fpBtn:'Khôi phục mật khẩu',fpBackLink:'← Quay lại đăng nhập',
@@ -1835,7 +1825,7 @@ var I18N = {
     b1:'PR Practical Tasks',b2:'Marketing Practical Tasks',b3:'24/7 Support',b4:'Student Community',
     fullnameLbl:'Full Name *',phoneLbl:'Phone Number',confirmPwLbl:'Confirm Password *',roleLbl:'You are',
     roleDefault:'Select role',roleStudent:'Student',rolePro:'Professional',roleTeacher:'Teacher',roleOther:'Other',
-    termsLabel:'I agree to the <a href="#">Terms</a> and <a href="#">Privacy Policy</a>',regBtn:'Register',
+    termsLabel:'I agree to the <a href="#">Terms</a> and <a href="#">Privacy Policy</a>',regBtn:'Register Now',
     hasAccountRow:'Already have an account? <a onclick="showPage(\'page-login\')" style="cursor:pointer;">Login now</a>',
     fpTitle:'Forgot Password?',fpSub:"Don't worry! We'll help you recover your account",fp1h:'Enter email',fp1p:'Registered email',fp2h:'Get new password',fp2p:'Check your inbox',fp3h:'Login again',fp3p:'Use the new password',
     fpH2:'Password Recovery',fpSubRight:'Enter your email to get a new password',fpNote:'The reset link will be sent to your email.',fpBtn:'Recover Password',fpBackLink:'← Back to Login',
@@ -1865,7 +1855,7 @@ var I18N = {
 };
 
 /* ═══════════════════════════════
-   CORE LOGIC & STATE
+   CORE LOGIC & ROUTING (History API)
 ═══════════════════════════════ */
 var currentLang = 'vi';
 
@@ -1874,7 +1864,6 @@ function t(key) {
 }
 
 function toast(msgKey, type) {
-  // Nhận key và dịch ra ngôn ngữ hiện tại, nếu msgKey truyền vào không có trong I18N thì in thẳng msgKey
   var text = I18N[currentLang][msgKey] || I18N['vi'][msgKey] || msgKey;
   var tst = document.getElementById('_toast');
   tst.innerText = text;
@@ -1883,9 +1872,25 @@ function toast(msgKey, type) {
   setTimeout(() => tst.classList.remove('show'), 3000);
 }
 
-function showPage(pageId) {
+// Hàm showPage mới hỗ trợ history.pushState để dùng nút Back và F5
+function showPage(pageId, pushState = true) {
+  // Xác định các trang cần đăng nhập
+  const protectedPages = ['page-profile', 'page-settings', 'page-changepass', 'page-pr-course', 'page-mkt-course'];
+  
+  if (protectedPages.includes(pageId) && !auth.currentUser) {
+    toast('loginRequired', 'error');
+    pageId = 'page-login';
+  }
+
   document.querySelectorAll('.page').forEach(function(p) { p.classList.remove('active'); });
-  document.getElementById(pageId).classList.add('active');
+  let targetPage = document.getElementById(pageId);
+  if(targetPage) {
+    targetPage.classList.add('active');
+  } else {
+    pageId = 'page-home';
+    document.getElementById(pageId).classList.add('active');
+  }
+  
   window.scrollTo({ top: 0, behavior: 'smooth' });
 
   // Ẩn/hiện global header: ẩn trên auth pages
@@ -1899,18 +1904,39 @@ function showPage(pageId) {
     }
   }
 
+  // Cập nhật URL History
+  if (pushState) {
+    history.pushState({ page: pageId }, '', '#' + pageId);
+  }
+
   if (pageId === 'page-profile') {
-    if(!auth.currentUser) {
-      toast('loginRequired', 'error');
-      showPage('page-login');
-      return;
-    }
     renderProfile();
     renderAchievements();
     updateProfileStats();
   }
   if (pageId === 'page-pr-course') {
     renderPrCurriculum();
+  }
+}
+
+// Bắt sự kiện ấn nút Back/Forward của trình duyệt
+window.addEventListener('popstate', function(e) {
+  if (e.state && e.state.page) {
+    showPage(e.state.page, false);
+  } else if (location.hash) {
+    showPage(location.hash.substring(1), false);
+  } else {
+    showPage('page-home', false);
+  }
+});
+
+// Điều hướng ban đầu khi người dùng ấn F5 hoặc gõ URL
+function initRoute() {
+  var hash = location.hash.substring(1);
+  if (hash) {
+    showPage(hash, false);
+  } else {
+    showPage('page-home', false);
   }
 }
 
@@ -2159,40 +2185,61 @@ function renderAchievements() {
 /* ═══════════════════════════════
    FIREBASE AUTH ACTIONS
 ═══════════════════════════════ */
+
+// Tính năng mới: Đăng nhập Google 1 chạm (Single Sign-On)
+function signInWithGoogle() {
+  var provider = new firebase.auth.GoogleAuthProvider();
+  auth.signInWithPopup(provider).then((result) => {
+    var user = result.user;
+    // Kiểm tra xem user này đã có profile trong Firestore chưa
+    db.collection('users').doc(user.uid).get().then((doc) => {
+      if (!doc.exists) {
+        // Tạo profile tự động lấy thông tin từ Google
+        db.collection('users').doc(user.uid).set({
+          fullname: user.displayName || 'Người dùng mới',
+          email: user.email,
+          phone: user.phoneNumber || '',
+          avatar: user.photoURL || null,
+          role: 'student', // Mặc định là sinh viên
+          createdAt: firebase.firestore.FieldValue.serverTimestamp()
+        });
+      }
+    });
+    toast('✅ Đăng nhập bằng Google thành công!', 'success');
+    // Router sẽ tự động xử lý chuyển hướng ở onAuthStateChanged
+  }).catch((error) => {
+    toast('❌ Lỗi Google Sign-In: ' + error.message, 'error');
+  });
+}
+
 function doRegister() {
   var name = document.getElementById('regFullname').value.trim();
   var email = document.getElementById('regEmail').value.trim();
-  var phone = document.getElementById('regPhone').value.trim();
   var pwd = document.getElementById('regPassword').value;
-  var conf = document.getElementById('regConfirm').value;
-  var role = document.getElementById('regRole').value;
   var terms = document.getElementById('regTerms').checked;
 
-  if(!name || !email || !pwd || !conf) return toast('errFill', 'error');
+  if(!name || !email || !pwd) return toast('errFill', 'error');
   if(pwd.length < 8) return toast('errPwdShort', 'error');
-  if(pwd !== conf) return toast('errPwdMatch', 'error');
   if(!terms) return toast('errTerms', 'error');
 
   auth.createUserWithEmailAndPassword(email, pwd)
     .then((userCredential) => {
       var user = userCredential.user;
-      // Gửi email xác thực
-      user.sendEmailVerification();
+      // Đã loại bỏ user.sendEmailVerification() để giảm ma sát UX
+      
       // Lưu thông tin vào Firestore
       return db.collection('users').doc(user.uid).set({
         fullname: name,
         email: email,
-        phone: phone,
-        role: role,
+        phone: '',
+        role: 'student', // Đã lược bỏ trường nhập, mặc định là sinh viên
         avatar: null,
         createdAt: firebase.firestore.FieldValue.serverTimestamp()
       });
     })
     .then(() => {
-      toast('✅ Đăng ký thành công! Vui lòng kiểm tra Email (kể cả hộp thư Spam) để kích hoạt tài khoản.', 'success');
-      document.getElementById('loginEmail').value = email;
-      auth.signOut(); // Bắt buộc đăng xuất để chờ xác nhận email
-      showPage('page-login');
+      toast('✅ Đăng ký thành công! Đang tự động đăng nhập...', 'success');
+      // Không cần signOut nữa, user đã đăng nhập luôn
     })
     .catch((error) => {
       toast('Lỗi: ' + error.message, 'error');
@@ -2207,14 +2254,9 @@ function doLogin() {
 
   auth.signInWithEmailAndPassword(email, pwd)
     .then((userCredential) => {
-      var user = userCredential.user;
-      if (!user.emailVerified) {
-        toast('⚠️ Tài khoản chưa kích hoạt! Vui lòng kiểm tra Email để xác thực.', 'error');
-        auth.signOut();
-      } else {
-        toast('toastLoginOk', 'success');
-        showPage('page-home');
-      }
+      // Đã loại bỏ check user.emailVerified để login trơn tru
+      toast('toastLoginOk', 'success');
+      // showPage('page-home'); // Sẽ được onAuthStateChanged xử lý tự động
     })
     .catch((error) => {
       toast('❌ Email hoặc mật khẩu không đúng!', 'error');
@@ -2286,20 +2328,21 @@ function doChangePw() {
 }
 
 /* ═══════════════════════════════
-   FIREBASE AUTH LISTENER
+   FIREBASE AUTH LISTENER (Update for Routing)
 ═══════════════════════════════ */
+let isFirstLoad = true;
+
 auth.onAuthStateChanged((user) => {
   var authArea = document.getElementById('homeAuthArea');
   var userBar = document.getElementById('homeUserBar');
   var smLogin = document.getElementById('smLoginLink');
   var smReg = document.getElementById('smRegLink');
   var smProf = document.getElementById('smProfileLink');
-  var smSet = document.getElementById('smSettingsLink');
 
   const urlParams = new URLSearchParams(window.location.search);
   const isResetting = (urlParams.get('mode') === 'resetPassword');
 
-  if (user && user.emailVerified) {
+  if (user) {
     db.collection('users').doc(user.uid).get().then((doc) => {
       if(doc.exists) {
         currentUserData = doc.data();
@@ -2327,8 +2370,15 @@ auth.onAuthStateChanged((user) => {
       }
     });
 
-    if(!isResetting && (document.getElementById('page-login').classList.contains('active') || document.getElementById('page-register').classList.contains('active'))){
-       showPage('page-home');
+    if (isFirstLoad) {
+       if(!isResetting) initRoute();
+       isFirstLoad = false;
+    } else {
+       // Điều hướng tự động khỏi login/register khi đã đăng nhập
+       let activePage = document.querySelector('.page.active');
+       if(activePage && !isResetting && ['page-login', 'page-register'].includes(activePage.id)){
+          showPage('page-home');
+       }
     }
   } else {
     currentUserData = null;
@@ -2343,9 +2393,15 @@ auth.onAuthStateChanged((user) => {
     if(smBottom) smBottom.style.display = 'none';
     if(smFooter) smFooter.style.display = 'block';
 
-    let activePage = document.querySelector('.page.active').id;
-    if(!isResetting && ['page-profile', 'page-settings', 'page-changepass'].includes(activePage)) {
-        showPage('page-login');
+    if (isFirstLoad) {
+       if(!isResetting) initRoute();
+       isFirstLoad = false;
+    } else {
+       let activePage = document.querySelector('.page.active');
+       let protectedPages = ['page-profile', 'page-settings', 'page-changepass', 'page-pr-course', 'page-mkt-course'];
+       if(activePage && !isResetting && protectedPages.includes(activePage.id)) {
+           showPage('page-login');
+       }
     }
   }
 });
@@ -2507,14 +2563,6 @@ document.addEventListener('DOMContentLoaded', function() {
   // Load Language
   const savedLang = localStorage.getItem('cep_lang') || 'vi';
   setLang(savedLang);
-
-  // Đảm bảo header ẩn trên auth pages khi init
-  var authPages = ['page-login','page-register','page-forgot','page-reset-password'];
-  var activePage = document.querySelector('.page.active');
-  var globalHeader = document.getElementById('globalHeader');
-  if(globalHeader && activePage && authPages.includes(activePage.id)) {
-    globalHeader.style.display = 'none';
-  }
 
   // Check URL for Reset Password from Firebase Email
   const urlParams = new URLSearchParams(window.location.search);
