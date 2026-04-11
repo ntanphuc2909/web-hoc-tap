@@ -129,6 +129,47 @@ body.dark-mode .header-nav .nav-active{background:rgba(126,206,202,.12);color:#7
 .home-big-header{background:#111827;box-shadow:0 2px 20px rgba(0,0,0,.3);position:sticky;top:0;z-index:1000;}
 body.dark-mode .home-big-header{background:#0d1020;}
 .home-hc{max-width:1400px;margin:0 auto;padding:0 28px;height:64px;display:flex;align-items:center;gap:0;}
+
+/* ── HOME NAV LINKS (desktop) ── */
+.home-nav-links{display:flex;align-items:center;gap:4px;margin:0 16px;flex-shrink:0;}
+@media(max-width:768px){.home-nav-links{display:none;}}
+.hnl-item{color:rgba(255,255,255,.78);font-size:13px;font-weight:500;padding:7px 13px;border-radius:8px;cursor:pointer;transition:all .2s;white-space:nowrap;user-select:none;}
+.hnl-item:hover,.hnl-item.hnl-active{background:rgba(255,255,255,.1);color:#fff;}
+/* Dropdown */
+.hnl-dropdown{position:relative;}
+.hnl-drop-trigger{display:flex;align-items:center;gap:2px;}
+.hnl-drop-menu{position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%);background:#1a2035;border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:10px;min-width:280px;box-shadow:0 20px 50px rgba(0,0,0,.5);opacity:0;visibility:hidden;transform:translateX(-50%) translateY(-6px);transition:all .22s cubic-bezier(.23,1,.32,1);z-index:3000;}
+body.dark-mode .hnl-drop-menu{background:#0d1020;border-color:rgba(255,255,255,.08);}
+.hnl-dropdown:hover .hnl-drop-menu{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);}
+.hnl-drop-header{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.35);padding:4px 10px 10px;border-bottom:1px solid rgba(255,255,255,.07);margin-bottom:8px;}
+.hnl-drop-item{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:10px;cursor:pointer;transition:background .18s;text-decoration:none;}
+.hnl-drop-item:hover{background:rgba(77,217,172,.1);}
+.hnl-drop-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+.hnl-drop-name{font-size:14px;font-weight:700;color:#fff;margin-bottom:2px;}
+.hnl-drop-desc{font-size:11px;color:rgba(255,255,255,.45);}
+
+/* ── SLIDE MENU: COURSES ACCORDION ── */
+.sm-courses-wrap{display:flex;flex-direction:column;}
+.sm-courses-trigger{display:flex;align-items:center;gap:12px;padding:12px 22px;color:rgba(255,255,255,.82);font-size:14px;font-weight:500;cursor:pointer;transition:all .22s;position:relative;}
+.sm-courses-trigger:hover{color:#4DD9AC;background:rgba(77,217,172,.08);}
+.sm-courses-trigger .sm-icon{width:18px;text-align:center;font-size:15px;flex-shrink:0;}
+.sm-arrow{margin-left:auto;flex-shrink:0;transition:transform .25s;}
+.sm-courses-trigger.open .sm-arrow{transform:rotate(180deg);}
+.sm-courses-trigger.open{color:#4DD9AC;}
+.sm-courses-list{max-height:0;overflow:hidden;transition:max-height .3s ease;}
+.sm-courses-list.open{max-height:200px;}
+.sm-sub-item{display:flex;align-items:center;gap:10px;padding:10px 22px 10px 52px;color:rgba(255,255,255,.65);font-size:13px;cursor:pointer;transition:all .2s;text-decoration:none;}
+.sm-sub-item:hover{color:#4DD9AC;background:rgba(77,217,172,.06);}
+
+/* ── SLIDE MENU BOTTOM BOX (Cài đặt + Đăng xuất) ── */
+.sm-bottom-box{margin:12px 16px;border-radius:14px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);overflow:hidden;flex-shrink:0;}
+.sm-bottom-label{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.3);padding:10px 16px 6px;}
+.sm-bottom-item{display:flex;align-items:center;gap:12px;padding:12px 16px;color:rgba(255,255,255,.78);font-size:14px;font-weight:500;cursor:pointer;transition:all .2s;text-decoration:none;border-top:1px solid rgba(255,255,255,.06);}
+.sm-bottom-item:first-of-type{border-top:none;}
+.sm-bottom-item:hover{background:rgba(77,217,172,.08);color:#4DD9AC;}
+.sm-logout-item:hover{background:rgba(231,111,81,.12);color:#E76F51;}
+.sbi-icon{font-size:16px;flex-shrink:0;}
+.sbi-arrow{margin-left:auto;color:rgba(255,255,255,.3);font-size:16px;}
 .home-logo{display:flex;align-items:center;gap:12px;flex-shrink:0;margin-right:10px;cursor:pointer;}
 .home-logo-circle{width:44px;height:44px;background:var(--gradient);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:900;font-size:16px;color:#fff;transition:transform .3s;}
 .home-logo-circle:hover{transform:rotate(360deg) scale(1.1);}
@@ -569,10 +610,6 @@ body.dark-mode .sec-info h3{color:#7ececa;}
 </div>
 
 <div class="page" id="page-home">
-  <div class="top-bar">
-    <span data-i18n="topBar">Giờ làm việc: 8:00 – 22:00 | Liên hệ: </span>
-    <a href="tel:0356348552">0356348552</a>
-  </div>
   <header class="home-big-header">
     <div class="home-hc">
       <div class="home-logo" onclick="showPage('page-home')">
@@ -580,6 +617,24 @@ body.dark-mode .sec-info h3{color:#7ececa;}
         <div class="home-logo-text">Career<br>Experience</div>
       </div>
       <button class="menu-toggle-btn" id="menuToggle"><span></span><span></span><span></span></button>
+      <!-- Nav links desktop -->
+      <nav class="home-nav-links">
+        <a class="hnl-item" onclick="showPage('page-home')">Trang chủ</a>
+        <div class="hnl-item hnl-dropdown">
+          <span class="hnl-drop-trigger">Các khóa học <svg width="10" height="6" viewBox="0 0 10 6" fill="none" style="vertical-align:middle;margin-left:4px;"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <div class="hnl-drop-menu">
+            <div class="hnl-drop-header">📚 Chọn ngành học</div>
+            <a class="hnl-drop-item" onclick="showPage('page-pr-course')">
+              <div class="hnl-drop-icon" style="background:linear-gradient(135deg,#1a4645,#2D5F5D);">📣</div>
+              <div><div class="hnl-drop-name">Public Relations</div><div class="hnl-drop-desc">Xử lý khủng hoảng, PR chiến lược</div></div>
+            </a>
+            <a class="hnl-drop-item" onclick="showPage('page-mkt-course')">
+              <div class="hnl-drop-icon" style="background:linear-gradient(135deg,#E76F51,#F4A261);">📈</div>
+              <div><div class="hnl-drop-name">Marketing</div><div class="hnl-drop-desc">Digital Marketing, Content Strategy</div></div>
+            </a>
+          </div>
+        </div>
+      </nav>
       <div class="home-search">
         <input type="text" id="searchInput" placeholder="Tìm kiếm...">
         <button class="home-search-btn" onclick="doSearch()">🔍</button>
@@ -599,16 +654,30 @@ body.dark-mode .sec-info h3{color:#7ececa;}
     <nav class="sm-nav">
       <div class="sm-label" data-i18n="smMain">Điều hướng chính</div>
       <a onclick="closeMenu();showPage('page-home')" class="sm-active"><span class="sm-icon">🏠</span><span data-i18n="navHome">Trang chủ</span></a>
-      <a onclick="closeMenu();scrollToId('dept-section')"><span class="sm-icon">📚</span><span data-i18n="smDepts">Ngành học</span></a>
-      <a onclick="closeMenu();scrollToId('why-section')"><span class="sm-icon">⭐</span><span data-i18n="smAbout">Về CEP</span></a>
+      <!-- Khóa học accordion -->
+      <div class="sm-courses-wrap">
+        <div class="sm-courses-trigger" onclick="toggleSmCourses(this)">
+          <span class="sm-icon">📚</span><span>Các khóa học</span>
+          <svg class="sm-arrow" width="12" height="7" viewBox="0 0 12 7" fill="none"><path d="M1 1l5 5 5-5" stroke="rgba(255,255,255,.6)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="sm-courses-list" id="smCoursesList">
+          <a onclick="closeMenu();showPage('page-pr-course')" class="sm-sub-item"><span>📣</span> Public Relations</a>
+          <a onclick="closeMenu();showPage('page-mkt-course')" class="sm-sub-item"><span>📈</span> Marketing</a>
+        </div>
+      </div>
       <div class="sm-divider"></div>
       <div class="sm-label" data-i18n="smAccount">Tài khoản</div>
       <a id="smLoginLink" onclick="closeMenu();showPage('page-login')"><span class="sm-icon">🔑</span><span data-i18n="navLogin">Đăng nhập</span></a>
       <a id="smRegLink" onclick="closeMenu();showPage('page-register')"><span class="sm-icon">✨</span><span data-i18n="navRegister">Đăng ký</span></a>
       <a id="smProfileLink" onclick="closeMenu();showPage('page-profile')" style="display:none"><span class="sm-icon">👤</span><span data-i18n="navProfile">Hồ sơ</span></a>
-      <a id="smSettingsLink" onclick="closeMenu();showPage('page-settings')" style="display:none"><span class="sm-icon">⚙️</span><span data-i18n="navSettings">Cài đặt</span></a>
     </nav>
-    <div class="sm-footer">
+    <!-- Box Cài đặt & Đăng xuất riêng biệt -->
+    <div class="sm-bottom-box" id="smBottomBox" style="display:none;">
+      <div class="sm-bottom-label">⚙️ Hệ thống</div>
+      <a class="sm-bottom-item" onclick="closeMenu();showPage('page-settings')"><span class="sbi-icon">⚙️</span><span>Cài đặt</span><span class="sbi-arrow">›</span></a>
+      <a class="sm-bottom-item sm-logout-item" onclick="closeMenu();doLogout()"><span class="sbi-icon">🚪</span><span data-i18n="navLogout">Đăng xuất</span><span class="sbi-arrow">›</span></a>
+    </div>
+    <div class="sm-footer" id="smFooterGuest">
       <div class="sm-cta" onclick="closeMenu();showPage('page-register')" data-i18n="smRegCta">🚀 Đăng ký ngay hôm nay</div>
       <div class="sm-cta-sec" onclick="closeMenu();scrollToId('footer-contact')" data-i18n="smContact">📩 Liên hệ tư vấn</div>
     </div>
@@ -654,30 +723,6 @@ body.dark-mode .sec-info h3{color:#7ececa;}
       <div class="feat-card"><div class="feat-icon">🤝</div><h3 data-i18n="f2h">Cộng đồng kết nối</h3><p data-i18n="f2p">Kết nối với các chuyên gia và học viên trong ngành</p></div>
       <div class="feat-card"><div class="feat-icon">📊</div><h3 data-i18n="f3h">Theo dõi tiến độ</h3><p data-i18n="f3p">Hệ thống theo dõi và đánh giá tiến độ học tập của bạn</p></div>
       <div class="feat-card"><div class="feat-icon">🏆</div><h3 data-i18n="f4h">Chứng nhận hoàn thành</h3><p data-i18n="f4p">Nhận chứng nhận sau khi hoàn thành các bài tập ngành</p></div>
-    </div>
-  </div>
-  <div class="section" id="dept-section">
-    <div class="sec-title" data-i18n="deptTitle">Ngành học</div>
-    <div class="sec-sub" data-i18n="deptSub">Chọn ngành bạn muốn phát triển — nội dung bài tập sẽ được cập nhật sớm</div>
-    <div class="dept-grid">
-      <div class="dept-card">
-        <div class="dept-banner pr">📣</div>
-        <div class="dept-body">
-          <div class="dept-badge badge-pr" data-i18n="prBadge">PR</div>
-          <h3 data-i18n="prTitle">Public Relations</h3>
-          <p data-i18n="prDesc">Phát triển kỹ năng quan hệ công chúng, xây dựng thương hiệu và quản lý truyền thông.</p>
-          <button class="dept-btn" onclick="showPage('page-pr-course')" data-i18n="navLearn">Vào Học</button>
-        </div>
-      </div>
-      <div class="dept-card">
-        <div class="dept-banner mkt">📈</div>
-        <div class="dept-body">
-          <div class="dept-badge badge-mkt" data-i18n="mktBadge">Marketing</div>
-          <h3 data-i18n="mktTitle">Marketing</h3>
-          <p data-i18n="mktDesc">Thực hành Digital Marketing, Content Strategy và Brand Management.</p>
-          <button class="dept-btn" onclick="showPage('page-mkt-course')" data-i18n="navLearn">Vào Học</button>
-        </div>
-      </div>
     </div>
   </div>
   <div class="why-bg" id="why-section">
@@ -2069,6 +2114,11 @@ function closeMenu() {
   overlay.classList.remove('active');
   menuToggle.classList.remove('open');
 }
+function toggleSmCourses(trigger) {
+  trigger.classList.toggle('open');
+  var list = document.getElementById('smCoursesList');
+  if(list) list.classList.toggle('open');
+}
 if(menuToggle) menuToggle.addEventListener('click', function(){ slideMenu.classList.contains('open') ? closeMenu() : openMenu(); });
 if(smClose) smClose.addEventListener('click', closeMenu);
 if(overlay) overlay.addEventListener('click', closeMenu);
@@ -2420,7 +2470,10 @@ auth.onAuthStateChanged((user) => {
         if(smLogin) smLogin.style.display = 'none';
         if(smReg) smReg.style.display = 'none';
         if(smProf) smProf.style.display = 'flex';
-        if(smSet) smSet.style.display = 'flex';
+        var smBottom = document.getElementById('smBottomBox');
+        var smFooter = document.getElementById('smFooterGuest');
+        if(smBottom) smBottom.style.display = 'block';
+        if(smFooter) smFooter.style.display = 'none';
         
         if(document.getElementById('page-profile').classList.contains('active')) {
           renderProfile();
@@ -2439,7 +2492,10 @@ auth.onAuthStateChanged((user) => {
     if(smLogin) smLogin.style.display = 'flex';
     if(smReg) smReg.style.display = 'flex';
     if(smProf) smProf.style.display = 'none';
-    if(smSet) smSet.style.display = 'none';
+    var smBottom = document.getElementById('smBottomBox');
+    var smFooter = document.getElementById('smFooterGuest');
+    if(smBottom) smBottom.style.display = 'none';
+    if(smFooter) smFooter.style.display = 'block';
 
     let activePage = document.querySelector('.page.active').id;
     if(!isResetting && ['page-profile', 'page-settings', 'page-changepass'].includes(activePage)) {
