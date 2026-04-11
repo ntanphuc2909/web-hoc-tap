@@ -190,15 +190,23 @@ body.dark-mode .hnl-drop-menu{background:#0d1020;border-color:rgba(255,255,255,.
 .home-right{display:flex;align-items:center;gap:6px;margin-left:auto;flex-shrink:0;}
 .home-divider{width:1px;height:28px;background:rgba(255,255,255,.12);margin:0 4px;}
 .home-auth{display:flex;align-items:center;gap:8px;padding:0 8px;}
+/* Đăng nhập – viền pill mỏng */
 .btn-hlogin{padding:8px 20px;background:transparent;color:rgba(255,255,255,.9);border:1.5px solid rgba(255,255,255,.28);border-radius:20px;font-weight:500;font-size:13px;cursor:pointer;transition:all .22s;font-family:'DM Sans',sans-serif;letter-spacing:.2px;}
 .btn-hlogin:hover{border-color:#4DD9AC;color:#4DD9AC;background:rgba(77,217,172,.07);}
+/* Đăng ký – gradient cam nổi bật */
 .btn-hreg{padding:8px 20px;background:linear-gradient(135deg,#F4A261,#E76F51);color:#fff;border:none;border-radius:20px;font-weight:700;font-size:13px;cursor:pointer;transition:all .22s;font-family:'DM Sans',sans-serif;box-shadow:0 3px 12px rgba(231,111,81,.38);letter-spacing:.2px;}
 .btn-hreg:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(231,111,81,.52);letter-spacing:.2px;}
+/* Nút Cài đặt nổi bật trên header */
 .header-settings-btn{
-  display:flex;align-items:center;gap:7px;padding:8px 18px;background:linear-gradient(135deg,#2D5F5D,#4DD9AC);
-  color:#fff;border:none;border-radius:20px;font-size:13px;font-weight:700;cursor:pointer;
-  font-family:'DM Sans',sans-serif;transition:all .25s;white-space:nowrap;flex-shrink:0;margin:0 4px;
-  box-shadow:0 0 0 0 rgba(77,217,172,.5);animation:settingsPulse 2.5s ease-in-out infinite;
+  display:flex;align-items:center;gap:7px;
+  padding:8px 18px;
+  background:linear-gradient(135deg,#2D5F5D,#4DD9AC);
+  color:#fff;border:none;border-radius:20px;
+  font-size:13px;font-weight:700;cursor:pointer;
+  font-family:'DM Sans',sans-serif;transition:all .25s;
+  white-space:nowrap;flex-shrink:0;margin:0 4px;
+  box-shadow:0 0 0 0 rgba(77,217,172,.5);
+  animation:settingsPulse 2.5s ease-in-out infinite;
 }
 .header-settings-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(77,217,172,.4);animation:none;}
 @keyframes settingsPulse{
@@ -309,7 +317,7 @@ body.dark-mode footer{background:#080b12;}
 .footer-sec h3{font-family:'Playfair Display',serif;font-size:20px;margin-bottom:18px;color:var(--secondary);}
 .footer-sec p,.footer-sec a{color:rgba(255,255,255,.75);font-size:14px;display:block;margin-bottom:10px;text-decoration:none;transition:color .2s;}
 .footer-sec a:hover{color:var(--secondary);}
-.footer-bottom{text-align:center;padding-top:24px;border-top:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.5);font-size:13px;}
+.footer-bottom{text-align:center;padding:24px;border-top:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.5);font-size:13px;}
 
 .home-user-bar{max-width:1200px;margin:0 auto;padding:20px 32px 0;}
 .hub-inner{background:var(--card);border-radius:14px;padding:18px 24px;display:flex;align-items:center;gap:16px;box-shadow:0 2px 12px rgba(0,0,0,.07);border:1px solid var(--border);}
@@ -838,10 +846,10 @@ body.auth-page #globalHeader { display: none; }
   </div>
   <div class="stats-strip">
     <div class="stats-inner">
-      <div class="stat-box"><div class="stat-num">2</div><div class="stat-lbl" data-i18n="statDepts">Ngành học</div></div>
-      <div class="stat-box"><div class="stat-num">500+</div><div class="stat-lbl" data-i18n="statStudents">Học viên</div></div>
-      <div class="stat-box"><div class="stat-num">50+</div><div class="stat-lbl" data-i18n="statTasks">Bài tập thực chiến</div></div>
-      <div class="stat-box"><div class="stat-num">98%</div><div class="stat-lbl" data-i18n="statSat">Hài lòng</div></div>
+      <div class="stat-box"><div class="stat-num" id="liveStatDepts">2</div><div class="stat-lbl" data-i18n="statDepts">Ngành học</div></div>
+      <div class="stat-box"><div class="stat-num" id="liveStatStudents">0</div><div class="stat-lbl" data-i18n="statStudents">Học viên</div></div>
+      <div class="stat-box"><div class="stat-num" id="liveStatTasks">0</div><div class="stat-lbl" data-i18n="statTasks">Bài tập thực chiến</div></div>
+      <div class="stat-box"><div class="stat-num" id="liveStatSat">100%</div><div class="stat-lbl" data-i18n="statSat">Hài lòng</div></div>
     </div>
   </div>
   <div class="section" id="dept-section">
@@ -1909,6 +1917,75 @@ function restartQuiz() {
 
 <script>
 /* ═══════════════════════════════
+   THỐNG KÊ THỜI GIAN THỰC (SỐ THẬT 100%)
+═══════════════════════════════ */
+function animateValue(id, start, end, duration, suffix = '') {
+  let obj = document.getElementById(id);
+  if (!obj) return;
+  // Xử lý trường hợp database trống (số 0)
+  if (start === end) {
+    obj.innerText = end + suffix;
+    return;
+  }
+  let range = end - start;
+  let current = start;
+  let increment = end > start ? 1 : -1;
+  let stepTime = Math.abs(Math.floor(duration / range));
+  
+  let timer = setInterval(function() {
+      current += increment;
+      obj.innerText = current + suffix;
+      if (current === end) {
+          clearInterval(timer);
+      }
+  }, stepTime);
+}
+
+let isStatsAnimated = false;
+
+function initRealtimeStats() {
+  // 1. Lấy ĐÚNG số lượng Học viên (Users) trên Firebase, không cộng thêm số ảo
+  db.collection('users').onSnapshot((snapshot) => {
+    let totalUsers = snapshot.size; 
+    
+    if (!isStatsAnimated) {
+      animateValue("liveStatStudents", 0, totalUsers, 1500, "");
+    } else {
+      document.getElementById("liveStatStudents").innerText = totalUsers;
+    }
+  });
+
+  // 2. Lấy ĐÚNG độ Hài lòng (Từ số sao Reviews) trên Firebase
+  db.collection('reviews').onSnapshot((snapshot) => {
+    let totalRating = 0;
+    let count = snapshot.size;
+    
+    snapshot.forEach(doc => {
+      let data = doc.data();
+      totalRating += (data.rating || 5);
+    });
+    
+    // Tính phần trăm hài lòng thực tế (không có mức tối thiểu ảo 90% nữa)
+    // Nếu chưa có review nào thì mặc định hiển thị 100%
+    let percentage = count === 0 ? 100 : Math.round((totalRating / count) / 5 * 100);
+
+    if (!isStatsAnimated) {
+      animateValue("liveStatSat", 0, percentage, 1500, "%");
+      
+      // Số ngành học thật đang có trên web là 2 (PR & Marketing)
+      animateValue("liveStatDepts", 0, 2, 1000, "");
+      
+      // Tổng số bài tập thật trên web (4 bài PR + 4 bài MKT = 8)
+      animateValue("liveStatTasks", 0, 8, 1500, "");
+      
+      isStatsAnimated = true; 
+    } else {
+      document.getElementById("liveStatSat").innerText = percentage + "%";
+    }
+  });
+}
+
+/* ═══════════════════════════════
    FIREBASE CONFIGURATION
 ═══════════════════════════════ */
 const firebaseConfig = {
@@ -2822,6 +2899,9 @@ function submitReview() {
    INITIALIZE
 ═══════════════════════════════ */
 document.addEventListener('DOMContentLoaded', function() {
+  // Kích hoạt thống kê thời gian thực
+  initRealtimeStats();
+
   const savedTheme = localStorage.getItem('cep_theme');
   if(savedTheme === 'dark') document.body.classList.add('dark-mode');
   updateThemeBtns();
