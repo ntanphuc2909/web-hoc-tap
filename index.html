@@ -831,10 +831,17 @@ body.dark-mode .sec-info h3{color:#7ececa;}
     <div class="pcard">
       <h3 style="font-family:'Playfair Display',serif;font-size:18px;color:var(--primary);margin-bottom:16px;" data-i18n="statsTitle">📊 Thống kê học tập</h3>
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
-        <div style="text-align:center;padding:16px;background:var(--bg);border-radius:10px;"><div style="font-size:28px;font-weight:700;color:var(--primary);">0</div><div style="font-size:13px;color:var(--text2);" data-i18n="statActive">Bài tập đang làm</div></div>
-        <div style="text-align:center;padding:16px;background:var(--bg);border-radius:10px;"><div style="font-size:28px;font-weight:700;color:var(--primary);">0</div><div style="font-size:13px;color:var(--text2);" data-i18n="statCerts">Chứng nhận</div></div>
-        <div style="text-align:center;padding:16px;background:var(--bg);border-radius:10px;"><div style="font-size:28px;font-weight:700;color:var(--primary);">0h</div><div style="font-size:13px;color:var(--text2);" data-i18n="statHours">Giờ học</div></div>
+        <div style="text-align:center;padding:16px;background:var(--bg);border-radius:10px;"><div style="font-size:28px;font-weight:700;color:var(--primary);" id="statActiveCount">0</div><div style="font-size:13px;color:var(--text2);" data-i18n="statActive">Bài tập đang làm</div></div>
+        <div style="text-align:center;padding:16px;background:var(--bg);border-radius:10px;"><div style="font-size:28px;font-weight:700;color:var(--primary);" id="statCertsCount">0</div><div style="font-size:13px;color:var(--text2);" data-i18n="statCerts">Chứng nhận</div></div>
+        <div style="text-align:center;padding:16px;background:var(--bg);border-radius:10px;"><div style="font-size:28px;font-weight:700;color:var(--primary);" id="statPointsTotal">0</div><div style="font-size:13px;color:var(--text2);">Tổng điểm</div></div>
       </div>
+    </div>
+    <div class="pcard">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;flex-wrap:wrap;gap:8px;">
+        <h3 style="font-family:'Playfair Display',serif;font-size:18px;color:var(--primary);">🏆 Thành tựu</h3>
+        <button onclick="showPage('page-pr-course')" style="padding:7px 16px;background:var(--gradient);color:#fff;border:none;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;">+ Làm thêm bài tập</button>
+      </div>
+      <div id="achievementContent"><!-- rendered by JS --></div>
     </div>
   </div>
 </div>
@@ -983,6 +990,80 @@ body.dark-mode .sec-info h3{color:#7ececa;}
 .lb-new{background:rgba(231,111,81,.15);color:#E76F51;}
 .lb-game{background:rgba(77,217,172,.15);color:#1a8a6e;}
 .lb-case{background:rgba(244,162,97,.15);color:#c97d1e;}
+.lb-done{background:rgba(76,175,80,.15);color:#2e7d32;}
+body.dark-mode .lb-done{color:#68d391;}
+
+/* ─── EXERCISE FRAME CARD ─── */
+.exercise-frame{background:var(--card);border-radius:18px;border:1.5px solid var(--border);overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.06);transition:all .3s;}
+body.dark-mode .exercise-frame{box-shadow:0 2px 12px rgba(0,0,0,.3);}
+.exercise-frame.ef-done{border-color:#4caf50;}
+.ef-header{display:flex;align-items:center;gap:14px;padding:16px 20px;border-bottom:1.5px solid var(--border);cursor:pointer;transition:background .2s;}
+.ef-header:hover{background:rgba(45,95,93,.04);}
+.ef-num{width:44px;height:44px;background:var(--gradient);border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;font-size:16px;flex-shrink:0;}
+.ef-done .ef-num{background:linear-gradient(135deg,#4caf50,#388e3c);}
+.ef-info{flex:1;}
+.ef-info h4{font-size:15px;font-weight:700;color:var(--text);margin-bottom:2px;}
+.ef-info p{font-size:12px;color:var(--text2);}
+.ef-status-badge{display:flex;align-items:center;gap:6px;flex-shrink:0;}
+.ef-badge{padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;}
+.ef-badge-done{background:rgba(76,175,80,.15);color:#2e7d32;}
+body.dark-mode .ef-badge-done{color:#68d391;}
+.ef-badge-todo{background:rgba(108,117,125,.12);color:var(--text2);}
+.ef-stats-row{display:flex;align-items:center;gap:10px;padding:10px 20px 10px;background:var(--bg);border-bottom:1.5px solid var(--border);}
+.ef-stat-pill{font-size:12px;color:var(--text2);background:var(--card);border:1.5px solid var(--border);border-radius:20px;padding:3px 12px;font-weight:600;}
+.ef-stat-pill.score{color:var(--primary);border-color:rgba(45,95,93,.25);}
+body.dark-mode .ef-stat-pill.score{color:#7ececa;}
+.ef-actions{display:flex;gap:8px;padding:12px 20px;}
+.ef-btn{padding:8px 20px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;border:none;transition:all .2s;}
+.ef-btn-start{background:var(--gradient);color:#fff;}
+.ef-btn-start:hover{transform:translateY(-1px);box-shadow:0 4px 14px rgba(45,95,93,.3);}
+.ef-btn-review{background:rgba(45,95,93,.1);color:var(--primary);border:1.5px solid rgba(45,95,93,.2);}
+body.dark-mode .ef-btn-review{background:rgba(126,206,202,.1);color:#7ececa;border-color:rgba(126,206,202,.2);}
+.ef-btn-review:hover{background:rgba(45,95,93,.18);}
+.ef-btn-redo{background:var(--bg);color:var(--text2);border:1.5px solid var(--border);}
+.ef-btn-redo:hover{border-color:var(--primary);}
+.ef-score-bar-wrap{padding:0 20px 14px;background:var(--bg);border-bottom:1.5px solid var(--border);}
+.ef-score-bar-label{font-size:11px;color:var(--text2);margin-bottom:5px;display:flex;justify-content:space-between;}
+.ef-score-bar{height:8px;background:var(--border);border-radius:4px;overflow:hidden;}
+.ef-score-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,#4caf50,#81c784);transition:width .6s ease;}
+
+/* ─── ACHIEVEMENT SECTION ─── */
+.achieve-tabs{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap;}
+.achieve-tab{padding:7px 18px;border-radius:20px;font-size:13px;font-weight:600;cursor:pointer;border:1.5px solid var(--border);background:var(--bg);color:var(--text2);transition:all .2s;}
+.achieve-tab.at-active{background:var(--gradient);color:#fff;border-color:transparent;}
+.achieve-list{display:flex;flex-direction:column;gap:12px;}
+.achieve-item{background:var(--bg);border-radius:14px;border:1.5px solid var(--border);padding:16px 18px;display:flex;align-items:center;gap:14px;transition:all .2s;}
+.achieve-item:hover{border-color:var(--primary);transform:translateX(4px);}
+.achieve-icon{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;}
+.ai-pr{background:linear-gradient(135deg,#1a4645,#2D5F5D);}
+.ai-mkt{background:linear-gradient(135deg,#E76F51,#F4A261);}
+.achieve-info{flex:1;}
+.achieve-info h4{font-size:14px;font-weight:700;color:var(--text);margin-bottom:3px;}
+.achieve-info p{font-size:12px;color:var(--text2);}
+.achieve-score-badge{text-align:right;flex-shrink:0;}
+.asb-points{font-size:22px;font-weight:800;color:var(--primary);font-family:'Playfair Display',serif;}
+body.dark-mode .asb-points{color:#7ececa;}
+.asb-lbl{font-size:10px;color:var(--text2);text-transform:uppercase;letter-spacing:.5px;}
+.achieve-score-bar{height:5px;background:var(--border);border-radius:3px;overflow:hidden;margin-top:6px;}
+.achieve-score-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--primary),#4DD9AC);}
+
+/* Score Calculator */
+.score-calc{background:linear-gradient(135deg,#1a4645,#2D5F5D);border-radius:18px;padding:24px;color:#fff;margin-bottom:20px;}
+.sc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px;}
+.sc-box{background:rgba(255,255,255,.12);border-radius:12px;padding:14px;text-align:center;}
+.sc-num{font-size:26px;font-weight:800;font-family:'Playfair Display',serif;}
+.sc-lbl{font-size:11px;opacity:.75;margin-top:2px;}
+.sc-total{font-size:36px;font-weight:900;font-family:'Playfair Display',serif;text-align:center;margin-top:12px;}
+.sc-title{font-size:16px;font-weight:700;opacity:.9;margin-bottom:4px;}
+.sc-sub{font-size:12px;opacity:.65;}
+.achieve-empty{text-align:center;padding:40px 20px;color:var(--text2);}
+.achieve-empty .ae-icon{font-size:48px;margin-bottom:12px;}
+.achieve-empty p{font-size:14px;}
+.achieve-date{font-size:11px;color:var(--text2);margin-top:2px;}
+.ef-new-score-badge{background:linear-gradient(135deg,#F4A261,#E76F51);color:#fff;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;margin-top:4px;display:inline-block;}
+/* Score pulse animation */
+@keyframes scorePop{0%{transform:scale(0.6);opacity:0}60%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
+.score-pop{animation:scorePop .4s ease both;}
 
 /* ─── STUDY CASE ─── */
 .case-card{background:var(--card);border-radius:20px;border:1.5px solid var(--border);overflow:hidden;margin-bottom:24px;}
@@ -1134,39 +1215,8 @@ body.dark-mode .qe-stat .qes-num{color:#7ececa;}
 
     <!-- TAB 1: CURRICULUM -->
     <div class="pr-section visible" id="pr-curriculum">
-      <div class="lesson-list">
-        <div class="lesson-item" onclick="switchPrTab('studycase',null)">
-          <div class="lesson-num">1</div>
-          <div class="lesson-info">
-            <h4>Xử lý khủng hoảng truyền thông</h4>
-            <p>Nhập vai PR Manager — quyết định từng bước xử lý khủng hoảng thực tế</p>
-          </div>
-          <div class="lesson-badge lb-case">Study Case</div>
-        </div>
-        <div class="lesson-item" onclick="switchPrTab('quizgame',null)">
-          <div class="lesson-num">2</div>
-          <div class="lesson-info">
-            <h4>Kiến thức PR nền tảng</h4>
-            <p>Trả lời nhanh 10 câu hỏi, tích điểm và xem xếp hạng hiệu suất của bạn</p>
-          </div>
-          <div class="lesson-badge lb-game">🎮 Quiz Game</div>
-        </div>
-        <div class="lesson-item" onclick="toast('Nội dung đang được cập nhật!','info')">
-          <div class="lesson-num">3</div>
-          <div class="lesson-info">
-            <h4>Viết thông cáo báo chí</h4>
-            <p>Kỹ năng soạn thảo press release chuyên nghiệp — sắp ra mắt</p>
-          </div>
-          <div class="lesson-badge lb-new">Sắp ra mắt</div>
-        </div>
-        <div class="lesson-item" onclick="toast('Nội dung đang được cập nhật!','info')">
-          <div class="lesson-num">4</div>
-          <div class="lesson-info">
-            <h4>Tổ chức sự kiện PR</h4>
-            <p>Lập kế hoạch và vận hành sự kiện thương hiệu — sắp ra mắt</p>
-          </div>
-          <div class="lesson-badge lb-new">Sắp ra mắt</div>
-        </div>
+      <div class="lesson-list" id="prCurriculumList">
+        <!-- Exercise frames rendered by JS -->
       </div>
     </div>
 
@@ -1471,6 +1521,10 @@ function showCaseResult() {
   document.getElementById('rbWrong').textContent = wrong;
   document.getElementById('rbPoints').textContent = points;
   document.getElementById('caseResult').classList.add('show');
+  
+  // Lưu điểm vào localStorage
+  saveExerciseScore('pr-studycase', 'Xử lý khủng hoảng truyền thông', '🔍 Study Case', 'pr', points, 100, correct, caseData.length);
+  renderPrCurriculum();
 }
 
 /* ════════════════════════════════════
@@ -1643,6 +1697,11 @@ function showQuizEnd() {
   document.getElementById('qStars').textContent = stars;
   document.getElementById('qeRankMsg').textContent = rank;
   document.getElementById('qProgFill').style.width = '100%';
+  
+  // Lưu điểm vào localStorage
+  var maxQuizScore = 175; // 10*10 + 10*5 bonus + 3*15 combo bonus approx
+  saveExerciseScore('pr-quiz', 'Kiến thức PR nền tảng', '🎮 Quiz Game', 'pr', qState.score, maxQuizScore, qState.correct, 10);
+  renderPrCurriculum();
 }
 
 function restartQuiz() {
@@ -1956,7 +2015,22 @@ function showPage(pageId) {
       return;
     }
     renderProfile();
+    renderAchievements();
+    updateProfileStats();
   }
+  if (pageId === 'page-pr-course') {
+    renderPrCurriculum();
+  }
+}
+
+function updateProfileStats() {
+  var stats = getTotalStats();
+  var activeEl = document.getElementById('statActiveCount');
+  var certsEl = document.getElementById('statCertsCount');
+  var pointsEl = document.getElementById('statPointsTotal');
+  if(activeEl) activeEl.textContent = stats.totalCompleted;
+  if(certsEl) certsEl.textContent = stats.totalCompleted;
+  if(pointsEl) pointsEl.textContent = stats.totalPoints;
 }
 
 function scrollToId(id) {
@@ -2028,6 +2102,162 @@ function checkMatch() {
   if(!c) { err.style.display = 'none'; ok.style.display = 'none'; return; }
   if(n !== c) { err.style.display = 'block'; ok.style.display = 'none'; }
   else { err.style.display = 'none'; ok.style.display = 'block'; }
+}
+
+/* ═══════════════════════════════
+   EXERCISE SCORE SYSTEM
+═══════════════════════════════ */
+function saveExerciseScore(id, name, type, dept, score, maxScore, correct, total) {
+  var scores = JSON.parse(localStorage.getItem('cep_exercise_scores') || '{}');
+  var existing = scores[id];
+  var isNew = !existing;
+  var isBetter = existing && score > existing.score;
+  
+  scores[id] = {
+    id: id,
+    name: name,
+    type: type,
+    dept: dept,
+    score: score,
+    maxScore: maxScore,
+    correct: correct,
+    total: total,
+    completedAt: new Date().toLocaleDateString('vi-VN'),
+    completedTimestamp: Date.now(),
+    bestScore: existing ? Math.max(score, existing.bestScore || existing.score) : score,
+    attempts: existing ? (existing.attempts || 1) + 1 : 1
+  };
+  localStorage.setItem('cep_exercise_scores', JSON.stringify(scores));
+  
+  // Toast thông báo
+  if(isNew) {
+    setTimeout(() => toast('🏆 Hoàn thành bài tập! Đạt ' + score + ' điểm — đã lưu vào Thành tựu!', 'success'), 800);
+  } else if(isBetter) {
+    setTimeout(() => toast('🎉 Kỷ lục mới! Điểm cao nhất: ' + score + ' điểm!', 'success'), 800);
+  }
+}
+
+function getExerciseScores() {
+  return JSON.parse(localStorage.getItem('cep_exercise_scores') || '{}');
+}
+
+function getTotalStats() {
+  var scores = getExerciseScores();
+  var list = Object.values(scores);
+  var totalPoints = list.reduce((s, e) => s + (e.bestScore || e.score), 0);
+  var totalCompleted = list.length;
+  var totalAttempts = list.reduce((s, e) => s + (e.attempts || 1), 0);
+  return { totalPoints, totalCompleted, totalAttempts };
+}
+
+/* ═══════════════════════════════
+   PR CURRICULUM RENDER
+═══════════════════════════════ */
+var prExercises = [
+  { id: 'pr-studycase', num: 1, name: 'Xử lý khủng hoảng truyền thông', desc: 'Nhập vai PR Manager — quyết định từng bước xử lý khủng hoảng thực tế', type: '🔍 Study Case', maxScore: 100, action: "switchPrTab('studycase',null)", available: true },
+  { id: 'pr-quiz', num: 2, name: 'Kiến thức PR nền tảng', desc: 'Trả lời nhanh 10 câu hỏi, tích điểm và xem xếp hạng hiệu suất của bạn', type: '🎮 Quiz Game', maxScore: 175, action: "switchPrTab('quizgame',null)", available: true },
+  { id: 'pr-press', num: 3, name: 'Viết thông cáo báo chí', desc: 'Kỹ năng soạn thảo press release chuyên nghiệp — sắp ra mắt', type: '📝 Bài viết', maxScore: 100, action: "toast('Nội dung đang được cập nhật!','info')", available: false },
+  { id: 'pr-event', num: 4, name: 'Tổ chức sự kiện PR', desc: 'Lập kế hoạch và vận hành sự kiện thương hiệu — sắp ra mắt', type: '📋 Dự án', maxScore: 100, action: "toast('Nội dung đang được cập nhật!','info')", available: false }
+];
+
+function renderPrCurriculum() {
+  var scores = getExerciseScores();
+  var container = document.getElementById('prCurriculumList');
+  if(!container) return;
+  
+  container.innerHTML = prExercises.map(function(ex) {
+    var result = scores[ex.id];
+    var isDone = !!result;
+    var pct = isDone ? Math.round((result.bestScore / ex.maxScore) * 100) : 0;
+    
+    var statusBadge = isDone 
+      ? '<span class="ef-badge ef-badge-done">✅ Đã hoàn thành</span>'
+      : (ex.available ? '<span class="ef-badge ef-badge-todo">⬜ Chưa làm</span>' : '<span class="ef-badge ef-badge-todo">🔜 Sắp ra mắt</span>');
+    
+    var statsRow = isDone ? `
+      <div class="ef-stats-row">
+        <span class="ef-stat-pill score">🏆 Cao nhất: ${result.bestScore}/${ex.maxScore} điểm</span>
+        <span class="ef-stat-pill">✅ ${result.correct}/${result.total} câu đúng</span>
+        <span class="ef-stat-pill">🔄 ${result.attempts} lần làm</span>
+        <span class="ef-stat-pill">📅 ${result.completedAt}</span>
+      </div>
+      <div class="ef-score-bar-wrap">
+        <div class="ef-score-bar-label"><span>Điểm</span><span>${pct}%</span></div>
+        <div class="ef-score-bar"><div class="ef-score-fill" style="width:${pct}%"></div></div>
+      </div>` : '';
+    
+    var actions = ex.available ? `
+      <div class="ef-actions">
+        ${isDone ? `<button class="ef-btn ef-btn-review" onclick="${ex.action}">👁 Xem lại bài</button>
+                    <button class="ef-btn ef-btn-redo" onclick="${ex.action}">🔄 Làm lại</button>` 
+                 : `<button class="ef-btn ef-btn-start" onclick="${ex.action}">🚀 Bắt đầu làm bài</button>`}
+      </div>` : '';
+    
+    return `<div class="exercise-frame ${isDone ? 'ef-done' : ''}">
+      <div class="ef-header" onclick="${ex.action}">
+        <div class="ef-num">${isDone ? '✓' : ex.num}</div>
+        <div class="ef-info">
+          <h4>${ex.name}</h4>
+          <p>${ex.desc}</p>
+        </div>
+        <div class="ef-status-badge">
+          <span class="ef-badge" style="background:rgba(45,95,93,.1);color:var(--primary);margin-right:6px;">${ex.type}</span>
+          ${statusBadge}
+        </div>
+      </div>
+      ${statsRow}
+      ${actions}
+    </div>`;
+  }).join('');
+}
+
+/* ═══════════════════════════════
+   ACHIEVEMENT RENDER
+═══════════════════════════════ */
+function renderAchievements() {
+  var scores = getExerciseScores();
+  var list = Object.values(scores).sort((a,b) => b.completedTimestamp - a.completedTimestamp);
+  var stats = getTotalStats();
+  
+  var calcHtml = `<div class="score-calc">
+    <div class="sc-title">🏆 Máy tính điểm thành tựu</div>
+    <div class="sc-sub">Tổng hợp kết quả tất cả bài tập đã hoàn thành</div>
+    <div class="sc-total score-pop">${stats.totalPoints}</div>
+    <div style="text-align:center;font-size:13px;opacity:.75;margin-bottom:4px;">điểm tổng</div>
+    <div class="sc-grid">
+      <div class="sc-box"><div class="sc-num">${stats.totalCompleted}</div><div class="sc-lbl">Bài đã hoàn thành</div></div>
+      <div class="sc-box"><div class="sc-num">${stats.totalAttempts}</div><div class="sc-lbl">Tổng lần làm</div></div>
+      <div class="sc-box"><div class="sc-num">${stats.totalCompleted > 0 ? Math.round(stats.totalPoints/stats.totalCompleted) : 0}</div><div class="sc-lbl">Điểm TB / bài</div></div>
+    </div>
+  </div>`;
+  
+  var achieveHtml = '';
+  if(list.length === 0) {
+    achieveHtml = `<div class="achieve-empty"><div class="ae-icon">🎯</div><p>Bạn chưa hoàn thành bài tập nào.<br>Hãy bắt đầu học ngay!</p></div>`;
+  } else {
+    achieveHtml = '<div class="achieve-list">' + list.map(function(r) {
+      var pct = Math.round((r.bestScore / r.maxScore) * 100);
+      var iconCls = r.dept === 'pr' ? 'ai-pr' : 'ai-mkt';
+      var icon = r.dept === 'pr' ? '📣' : '📈';
+      return `<div class="achieve-item">
+        <div class="achieve-icon ${iconCls}">${icon}</div>
+        <div class="achieve-info">
+          <h4>${r.name}</h4>
+          <p>${r.type} · ${r.correct}/${r.total} câu đúng · ${r.attempts} lần làm</p>
+          <div class="achieve-date">📅 Hoàn thành: ${r.completedAt}</div>
+          <div class="achieve-score-bar" style="margin-top:6px;"><div class="achieve-score-fill" style="width:${pct}%"></div></div>
+        </div>
+        <div class="achieve-score-badge">
+          <div class="asb-points">${r.bestScore}</div>
+          <div class="asb-lbl">/ ${r.maxScore} điểm</div>
+          <div class="ef-new-score-badge">${pct}%</div>
+        </div>
+      </div>`;
+    }).join('') + '</div>';
+  }
+  
+  var container = document.getElementById('achievementContent');
+  if(container) container.innerHTML = calcHtml + achieveHtml;
 }
 
 /* ═══════════════════════════════
