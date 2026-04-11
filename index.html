@@ -190,6 +190,33 @@ body.dark-mode .hnl-drop-menu{background:#0d1020;border-color:rgba(255,255,255,.
 .home-divider{width:1px;height:32px;background:rgba(255,255,255,.1);margin:0 4px;}
 .home-theme-btn{background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.2);color:#fff;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0;margin:0 4px;}
 .home-theme-btn:hover{background:rgba(255,255,255,.18);}
+.header-settings-btn{
+  display:flex;align-items:center;gap:7px;
+  padding:8px 16px;
+  background:linear-gradient(135deg,#2D5F5D,#4DD9AC);
+  color:#fff;
+  border:none;
+  border-radius:20px;
+  font-size:13px;
+  font-weight:700;
+  cursor:pointer;
+  font-family:'DM Sans',sans-serif;
+  transition:all .25s;
+  white-space:nowrap;
+  box-shadow:0 0 0 0 rgba(77,217,172,.5);
+  animation:settingsPulse 2.5s ease-in-out infinite;
+  flex-shrink:0;
+  margin:0 6px;
+}
+.header-settings-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 6px 20px rgba(77,217,172,.4);
+  animation:none;
+}
+@keyframes settingsPulse{
+  0%,100%{box-shadow:0 0 0 0 rgba(77,217,172,.45);}
+  50%{box-shadow:0 0 0 7px rgba(77,217,172,.0);}
+}
 .home-auth{display:flex;align-items:center;gap:8px;padding:0 12px;}
 .btn-hlogin{padding:8px 18px;background:transparent;color:rgba(255,255,255,.85);border:1.5px solid rgba(255,255,255,.2);border-radius:8px;font-weight:500;font-size:13px;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;}
 .btn-hlogin:hover{border-color:#4DD9AC;color:#4DD9AC;}
@@ -461,15 +488,13 @@ body.dark-mode .sec-info h3{color:#7ececa;}
           </a>
         </div>
       </div>
-      <a class="hnl-item" onclick="showPage('page-profile')">Hồ sơ</a>
-      <a class="hnl-item" onclick="showPage('page-settings')">Cài đặt</a>
     </nav>
     <div class="home-search">
       <input type="text" id="searchInput" placeholder="Tìm kiếm khóa học...">
       <button class="home-search-btn" onclick="doSearch()">🔍</button>
     </div>
     <div class="home-right">
-      <button id="homeThemeBtn" class="home-theme-btn" onclick="toggleThemeGlobal()">🌙</button>
+      <button class="header-settings-btn" onclick="showPage('page-settings')">⚙️ Cài đặt</button>
       <div class="home-divider"></div>
       <div class="home-auth" id="homeAuthArea"></div>
     </div>
@@ -2599,7 +2624,7 @@ function toggleDark(isDark) {
 function updateThemeBtns() {
   var isDark = document.body.classList.contains('dark-mode');
   var icon = isDark ? '☀️' : '🌙';
-  ['loginThemeBtn','registerThemeBtn','forgotThemeBtn','homeThemeBtn','profileThemeBtn','settingsThemeBtn','cpThemeBtn','prThemeBtn','mktThemeBtn'].forEach(function(id) {
+  ['loginThemeBtn','registerThemeBtn','forgotThemeBtn','profileThemeBtn','settingsThemeBtn','cpThemeBtn','prThemeBtn','mktThemeBtn'].forEach(function(id) {
     var el = document.getElementById(id);
     if(el) { el.innerText = icon; el.onclick = toggleThemeGlobal; }
   });
