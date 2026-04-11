@@ -221,7 +221,7 @@ body.dark-mode .slide-menu{background:#0d1020;}
 .sm-cta-sec:hover{border-color:#4DD9AC;color:#4DD9AC;}
 
 /* HERO SECTION */
-.hero-land{background:var(--gradient);position:relative;overflow:hidden;padding:100px 40px 80px; z-index: 1;}
+.hero-land{background:var(--gradient);position:relative;overflow:hidden;padding:60px 40px 80px; z-index: 1;}
 .hero-land::before{content:'';position:absolute;top:-50%;right:-5%;width:500px;height:500px;background:radial-gradient(circle,rgba(244,162,97,.15) 0%,transparent 70%);border-radius:50%;animation:floatAnim 18s ease-in-out infinite;}
 @keyframes floatAnim{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(-20px,25px) scale(1.08);}}
 .hero-content{max-width:1200px;margin:0 auto;position:relative;z-index:1;}
@@ -437,6 +437,91 @@ body.dark-mode .sec-info h3{color:#7ececa;}
 <body>
 <div id="_toast"></div>
 
+<!-- ════ GLOBAL HEADER (xuất hiện trên mọi trang) ════ -->
+<header class="home-big-header" id="globalHeader" style="position:fixed;top:0;left:0;right:0;z-index:1001;display:none;">
+  <div class="home-hc">
+    <div class="home-logo" onclick="showPage('page-home')">
+      <div class="home-logo-circle">CEP</div>
+      <div class="home-logo-text">Career<br>Experience</div>
+    </div>
+    <button class="menu-toggle-btn" id="menuToggle"><span></span><span></span><span></span></button>
+    <nav class="home-nav-links">
+      <a class="hnl-item" onclick="showPage('page-home')">Trang chủ</a>
+      <div class="hnl-item hnl-dropdown">
+        <span class="hnl-drop-trigger">Các khóa học <svg width="10" height="6" viewBox="0 0 10 6" fill="none" style="vertical-align:middle;margin-left:4px;"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <div class="hnl-drop-menu">
+          <div class="hnl-drop-header">📚 Chọn ngành học</div>
+          <a class="hnl-drop-item" onclick="showPage('page-pr-course')">
+            <div class="hnl-drop-icon" style="background:linear-gradient(135deg,#1a4645,#2D5F5D);">📣</div>
+            <div><div class="hnl-drop-name">Public Relations</div><div class="hnl-drop-desc">Xử lý khủng hoảng, PR chiến lược</div></div>
+          </a>
+          <a class="hnl-drop-item" onclick="showPage('page-mkt-course')">
+            <div class="hnl-drop-icon" style="background:linear-gradient(135deg,#E76F51,#F4A261);">📈</div>
+            <div><div class="hnl-drop-name">Marketing</div><div class="hnl-drop-desc">Digital Marketing, Content Strategy</div></div>
+          </a>
+        </div>
+      </div>
+      <a class="hnl-item" onclick="showPage('page-profile')">Hồ sơ</a>
+      <a class="hnl-item" onclick="showPage('page-settings')">Cài đặt</a>
+    </nav>
+    <div class="home-search">
+      <input type="text" id="searchInput" placeholder="Tìm kiếm khóa học...">
+      <button class="home-search-btn" onclick="doSearch()">🔍</button>
+    </div>
+    <div class="home-right">
+      <button id="homeThemeBtn" class="home-theme-btn" onclick="toggleThemeGlobal()">🌙</button>
+      <div class="home-divider"></div>
+      <div class="home-auth" id="homeAuthArea"></div>
+    </div>
+  </div>
+</header>
+
+<!-- Global Overlay & Slide Menu -->
+<div class="overlay" id="overlay"></div>
+<div class="slide-menu" id="slideMenu">
+  <div class="sm-header">
+    <div class="sm-brand"><div class="sm-circle">CEP</div><div class="sm-title">Danh mục<small>Career Experience</small></div></div>
+    <button class="sm-close" id="smClose">✕</button>
+  </div>
+  <nav class="sm-nav">
+    <div class="sm-label" data-i18n="smMain">Điều hướng chính</div>
+    <a onclick="closeMenu();showPage('page-home')" class="sm-active"><span class="sm-icon">🏠</span><span data-i18n="navHome">Trang chủ</span></a>
+    <div class="sm-courses-wrap">
+      <div class="sm-courses-trigger" onclick="toggleSmCourses(this)">
+        <span class="sm-icon">📚</span><span>Các khóa học</span>
+        <svg class="sm-arrow" width="12" height="7" viewBox="0 0 12 7" fill="none"><path d="M1 1l5 5 5-5" stroke="rgba(255,255,255,.6)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="sm-courses-list" id="smCoursesList">
+        <a onclick="closeMenu();showPage('page-pr-course')" class="sm-sub-item"><span>📣</span> Public Relations</a>
+        <a onclick="closeMenu();showPage('page-mkt-course')" class="sm-sub-item"><span>📈</span> Marketing</a>
+      </div>
+    </div>
+    <div class="sm-divider"></div>
+    <div class="sm-label" data-i18n="smAccount">Tài khoản</div>
+    <a id="smLoginLink" onclick="closeMenu();showPage('page-login')"><span class="sm-icon">🔑</span><span data-i18n="navLogin">Đăng nhập</span></a>
+    <a id="smRegLink" onclick="closeMenu();showPage('page-register')"><span class="sm-icon">✨</span><span data-i18n="navRegister">Đăng ký</span></a>
+    <a id="smProfileLink" onclick="closeMenu();showPage('page-profile')" style="display:none"><span class="sm-icon">👤</span><span data-i18n="navProfile">Hồ sơ</span></a>
+  </nav>
+  <div class="sm-bottom-box" id="smBottomBox" style="display:none;">
+    <div class="sm-bottom-label">⚙️ Hệ thống</div>
+    <a class="sm-bottom-item" onclick="closeMenu();showPage('page-settings')"><span class="sbi-icon">⚙️</span><span>Cài đặt</span><span class="sbi-arrow">›</span></a>
+    <a class="sm-bottom-item sm-logout-item" onclick="closeMenu();doLogout()"><span class="sbi-icon">🚪</span><span data-i18n="navLogout">Đăng xuất</span><span class="sbi-arrow">›</span></a>
+  </div>
+  <div class="sm-footer" id="smFooterGuest">
+    <div class="sm-cta" onclick="closeMenu();showPage('page-register')" data-i18n="smRegCta">🚀 Đăng ký ngay hôm nay</div>
+    <div class="sm-cta-sec" onclick="closeMenu();scrollToId('footer-contact')" data-i18n="smContact">📩 Liên hệ tư vấn</div>
+  </div>
+</div>
+
+<style>
+/* Đẩy nội dung xuống để không bị header che */
+.page { padding-top: 64px; }
+/* Auth pages không cần padding */
+#page-login, #page-register, #page-forgot, #page-reset-password { padding-top: 0; }
+/* Ẩn global header trên auth pages */
+body.auth-page #globalHeader { display: none; }
+</style>
+
 <div class="page active" id="page-login">
   <div class="auth-bg">
     <div class="auth-card">
@@ -469,8 +554,7 @@ body.dark-mode .sec-info h3{color:#7ececa;}
         </div>
         <button class="btn-main" onclick="doLogin()" data-i18n="loginBtn">Đăng nhập</button>
         <div class="divider"><span data-i18n="orWith">Hoặc đăng nhập với</span></div>
-        <div class="social-row">
-          <button class="btn-social" onclick="toast('Tính năng sắp ra mắt!','info')">🔵 Facebook</button>
+        <div class="social-row" style="grid-template-columns:1fr;">
           <button class="btn-social" onclick="toast('Tính năng sắp ra mắt!','info')">🔴 Google</button>
         </div>
         <div class="link-row" data-i18n-html="noAccountRow">Chưa có tài khoản? <a onclick="showPage('page-register')">Đăng ký ngay</a></div>
@@ -542,8 +626,7 @@ body.dark-mode .sec-info h3{color:#7ececa;}
         </div>
         <button class="btn-main" onclick="doRegister()" data-i18n="regBtn">Đăng ký</button>
         <div class="divider"><span data-i18n="orWith">Hoặc đăng ký với</span></div>
-        <div class="social-row">
-          <button class="btn-social" onclick="toast('Tính năng sắp ra mắt!','info')">🔵 Facebook</button>
+        <div class="social-row" style="grid-template-columns:1fr;">
           <button class="btn-social" onclick="toast('Tính năng sắp ra mắt!','info')">🔴 Google</button>
         </div>
         <div class="link-row" data-i18n-html="hasAccountRow">Đã có tài khoản? <a onclick="showPage('page-login')">Đăng nhập ngay</a></div>
@@ -610,78 +693,6 @@ body.dark-mode .sec-info h3{color:#7ececa;}
 </div>
 
 <div class="page" id="page-home">
-  <header class="home-big-header">
-    <div class="home-hc">
-      <div class="home-logo" onclick="showPage('page-home')">
-        <div class="home-logo-circle">CEP</div>
-        <div class="home-logo-text">Career<br>Experience</div>
-      </div>
-      <button class="menu-toggle-btn" id="menuToggle"><span></span><span></span><span></span></button>
-      <!-- Nav links desktop -->
-      <nav class="home-nav-links">
-        <a class="hnl-item" onclick="showPage('page-home')">Trang chủ</a>
-        <div class="hnl-item hnl-dropdown">
-          <span class="hnl-drop-trigger">Các khóa học <svg width="10" height="6" viewBox="0 0 10 6" fill="none" style="vertical-align:middle;margin-left:4px;"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          <div class="hnl-drop-menu">
-            <div class="hnl-drop-header">📚 Chọn ngành học</div>
-            <a class="hnl-drop-item" onclick="showPage('page-pr-course')">
-              <div class="hnl-drop-icon" style="background:linear-gradient(135deg,#1a4645,#2D5F5D);">📣</div>
-              <div><div class="hnl-drop-name">Public Relations</div><div class="hnl-drop-desc">Xử lý khủng hoảng, PR chiến lược</div></div>
-            </a>
-            <a class="hnl-drop-item" onclick="showPage('page-mkt-course')">
-              <div class="hnl-drop-icon" style="background:linear-gradient(135deg,#E76F51,#F4A261);">📈</div>
-              <div><div class="hnl-drop-name">Marketing</div><div class="hnl-drop-desc">Digital Marketing, Content Strategy</div></div>
-            </a>
-          </div>
-        </div>
-      </nav>
-      <div class="home-search">
-        <input type="text" id="searchInput" placeholder="Tìm kiếm...">
-        <button class="home-search-btn" onclick="doSearch()">🔍</button>
-      </div>
-      <div class="home-right">
-        <div class="home-divider"></div>
-        <div class="home-auth" id="homeAuthArea"></div>
-      </div>
-    </div>
-  </header>
-  <div class="overlay" id="overlay"></div>
-  <div class="slide-menu" id="slideMenu">
-    <div class="sm-header">
-      <div class="sm-brand"><div class="sm-circle">CEP</div><div class="sm-title">Danh mục<small>Career Experience</small></div></div>
-      <button class="sm-close" id="smClose">✕</button>
-    </div>
-    <nav class="sm-nav">
-      <div class="sm-label" data-i18n="smMain">Điều hướng chính</div>
-      <a onclick="closeMenu();showPage('page-home')" class="sm-active"><span class="sm-icon">🏠</span><span data-i18n="navHome">Trang chủ</span></a>
-      <!-- Khóa học accordion -->
-      <div class="sm-courses-wrap">
-        <div class="sm-courses-trigger" onclick="toggleSmCourses(this)">
-          <span class="sm-icon">📚</span><span>Các khóa học</span>
-          <svg class="sm-arrow" width="12" height="7" viewBox="0 0 12 7" fill="none"><path d="M1 1l5 5 5-5" stroke="rgba(255,255,255,.6)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <div class="sm-courses-list" id="smCoursesList">
-          <a onclick="closeMenu();showPage('page-pr-course')" class="sm-sub-item"><span>📣</span> Public Relations</a>
-          <a onclick="closeMenu();showPage('page-mkt-course')" class="sm-sub-item"><span>📈</span> Marketing</a>
-        </div>
-      </div>
-      <div class="sm-divider"></div>
-      <div class="sm-label" data-i18n="smAccount">Tài khoản</div>
-      <a id="smLoginLink" onclick="closeMenu();showPage('page-login')"><span class="sm-icon">🔑</span><span data-i18n="navLogin">Đăng nhập</span></a>
-      <a id="smRegLink" onclick="closeMenu();showPage('page-register')"><span class="sm-icon">✨</span><span data-i18n="navRegister">Đăng ký</span></a>
-      <a id="smProfileLink" onclick="closeMenu();showPage('page-profile')" style="display:none"><span class="sm-icon">👤</span><span data-i18n="navProfile">Hồ sơ</span></a>
-    </nav>
-    <!-- Box Cài đặt & Đăng xuất riêng biệt -->
-    <div class="sm-bottom-box" id="smBottomBox" style="display:none;">
-      <div class="sm-bottom-label">⚙️ Hệ thống</div>
-      <a class="sm-bottom-item" onclick="closeMenu();showPage('page-settings')"><span class="sbi-icon">⚙️</span><span>Cài đặt</span><span class="sbi-arrow">›</span></a>
-      <a class="sm-bottom-item sm-logout-item" onclick="closeMenu();doLogout()"><span class="sbi-icon">🚪</span><span data-i18n="navLogout">Đăng xuất</span><span class="sbi-arrow">›</span></a>
-    </div>
-    <div class="sm-footer" id="smFooterGuest">
-      <div class="sm-cta" onclick="closeMenu();showPage('page-register')" data-i18n="smRegCta">🚀 Đăng ký ngay hôm nay</div>
-      <div class="sm-cta-sec" onclick="closeMenu();scrollToId('footer-contact')" data-i18n="smContact">📩 Liên hệ tư vấn</div>
-    </div>
-  </div>
   <section class="hero-land">
     <div id="newPhoneBg">
       <img src="z7673677338583_4c44f8411415381a5c0f2ab71346a677.jpg" alt="background phone">
@@ -790,18 +801,6 @@ body.dark-mode .sec-info h3{color:#7ececa;}
 </div>
 
 <div class="page" id="page-profile">
-  <header class="inner-header">
-    <div class="hc">
-      <div class="logo" onclick="showPage('page-home')"><div class="logo-sm">CEP</div><span class="logo-text">Career Experience</span></div>
-      <nav class="header-nav">
-        <a onclick="showPage('page-home')" data-i18n="navHome">🏠 Trang chủ</a>
-        <a class="nav-active" data-i18n="navProfile">👤 Hồ sơ</a>
-        <a onclick="showPage('page-settings')" data-i18n="navSettings">⚙️ Cài đặt</a>
-        <a onclick="showPage('page-changepass')" data-i18n="navChangePwd">🔑 Đổi mật khẩu</a>
-        <button class="nav-btn nav-logout" onclick="doLogout()" data-i18n="navLogout">🚪 Đăng xuất</button>
-      </nav>
-    </div>
-  </header>
   <div class="inner-wrap" style="max-width:860px;">
     <div class="profile-banner"><div class="profile-avatar" id="profileAv"></div></div>
     <div class="pcard">
@@ -887,18 +886,6 @@ body.dark-mode .sec-info h3{color:#7ececa;}
 </div>
 
 <div class="page" id="page-settings">
-  <header class="inner-header">
-    <div class="hc">
-      <div class="logo" onclick="showPage('page-home')"><div class="logo-sm">CEP</div><span class="logo-text">Career Experience</span></div>
-      <nav class="header-nav">
-        <a onclick="showPage('page-home')" data-i18n="navHome">🏠 Trang chủ</a>
-        <a onclick="showPage('page-profile')" data-i18n="navProfile">👤 Hồ sơ</a>
-        <a class="nav-active" data-i18n="navSettings">⚙️ Cài đặt</a>
-        <a onclick="showPage('page-changepass')" data-i18n="navChangePwd">🔑 Đổi mật khẩu</a>
-        <button class="nav-btn nav-logout" onclick="doLogout()" data-i18n="navLogout">🚪 Đăng xuất</button>
-      </nav>
-    </div>
-  </header>
   <div class="inner-wrap">
     <div class="page-header"><h1 data-i18n="settingsH1">⚙️ Cài đặt</h1><p data-i18n="settingsSub">Tuỳ chỉnh trải nghiệm của bạn</p></div>
     <div class="settings-card">
@@ -955,18 +942,6 @@ body.dark-mode .sec-info h3{color:#7ececa;}
 </div>
 
 <div class="page" id="page-changepass">
-  <header class="inner-header">
-    <div class="hc">
-      <div class="logo" onclick="showPage('page-home')"><div class="logo-sm">CEP</div><span class="logo-text">Career Experience</span></div>
-      <nav class="header-nav">
-        <a onclick="showPage('page-home')" data-i18n="navHome">🏠 Trang chủ</a>
-        <a onclick="showPage('page-profile')" data-i18n="navProfile">👤 Hồ sơ</a>
-        <a onclick="showPage('page-settings')" data-i18n="navSettings">⚙️ Cài đặt</a>
-        <a class="nav-active" data-i18n="navChangePwd">🔑 Đổi mật khẩu</a>
-        <button class="nav-btn nav-logout" onclick="doLogout()" data-i18n="navLogout">🚪 Đăng xuất</button>
-      </nav>
-    </div>
-  </header>
   <div class="inner-wrap" style="max-width:560px;">
     <div class="page-header"><h1 data-i18n="cpH1">🔑 Đổi mật khẩu</h1><p data-i18n="cpSub">Bảo vệ tài khoản với mật khẩu mạnh</p></div>
     <div class="cp-card">
@@ -1225,17 +1200,6 @@ body.dark-mode .qe-stat .qes-num{color:#7ececa;}
 </style>
 
 <div class="page" id="page-pr-course">
-  <header class="inner-header">
-    <div class="hc">
-      <div class="logo" onclick="showPage('page-home')"><div class="logo-sm">CEP</div><span class="logo-text">Career Experience</span></div>
-      <nav class="header-nav">
-        <a onclick="showPage('page-home')" data-i18n="navHome">🏠 Trang chủ</a>
-        <a class="nav-active">📣 Khóa học PR</a>
-        <button class="nav-btn nav-logout" onclick="doLogout()" data-i18n="navLogout">🚪 Đăng xuất</button>
-      </nav>
-      <button id="prThemeBtn" class="theme-btn">🌙</button>
-    </div>
-  </header>
 
   <div class="pr-hero">
     <h1>📣 Public Relations</h1>
@@ -1747,16 +1711,6 @@ function restartQuiz() {
 </script>
 
 <div class="page" id="page-mkt-course">
-  <header class="inner-header">
-    <div class="hc">
-      <div class="logo" onclick="showPage('page-home')"><div class="logo-sm">CEP</div><span class="logo-text">Career Experience</span></div>
-      <nav class="header-nav">
-        <a onclick="showPage('page-home')" data-i18n="navHome">🏠 Trang chủ</a>
-        <a class="nav-active">📚 Khóa học Marketing</a>
-        <button class="nav-btn nav-logout" onclick="doLogout()" data-i18n="navLogout">🚪 Đăng xuất</button>
-      </nav>
-    </div>
-  </header>
   <div class="inner-wrap">
     <div class="page-header">
       <h1>Khóa học Marketing</h1>
@@ -1797,71 +1751,6 @@ function restartQuiz() {
         <b>🎯 Impact:</b> Thay vì dạy "Branding là gì?", app kể "Câu chuyện tái định vị thương hiệu của X" — kiến thức sống động, dễ áp dụng.<br>
         <b>📈 Chiến lược:</b> Sử dụng thế mạnh "ngành" để dạy "nghề", tạo tương thích tuyệt đối giữa phương pháp giảng dạy và tư duy người học.
       </div>
-    </div>
-  </div>
-</div>
-
-<!-- ════ STICKY PAYMENT BAR ════ -->
-<style>
-.payment-bar{
-  position:fixed;
-  bottom:0;left:0;right:0;
-  background:linear-gradient(90deg,#1a4645 0%,#2D5F5D 60%,#1a4645 100%);
-  color:#fff;
-  z-index:9999;
-  box-shadow:0 -4px 24px rgba(0,0,0,.22);
-  border-top:2px solid rgba(77,217,172,.35);
-}
-.pb-inner{
-  max-width:1200px;
-  margin:0 auto;
-  padding:10px 28px;
-  display:flex;
-  align-items:center;
-  gap:16px;
-  flex-wrap:wrap;
-  justify-content:space-between;
-}
-.pb-left{display:flex;align-items:center;gap:14px;}
-.pb-icon{font-size:26px;flex-shrink:0;}
-.pb-text h4{font-size:14px;font-weight:700;margin-bottom:1px;color:#fff;}
-.pb-text p{font-size:12px;color:rgba(255,255,255,.72);line-height:1.3;}
-.pb-badge{background:rgba(244,162,97,.25);border:1px solid rgba(244,162,97,.5);color:#F4A261;padding:3px 11px;border-radius:20px;font-size:11px;font-weight:700;white-space:nowrap;flex-shrink:0;}
-.pb-right{display:flex;align-items:center;gap:10px;flex-shrink:0;}
-.pb-price{text-align:right;}
-.pb-price .old{font-size:12px;color:rgba(255,255,255,.45);text-decoration:line-through;}
-.pb-price .new{font-size:18px;font-weight:800;color:#F4A261;font-family:'Playfair Display',serif;}
-.pb-btn{padding:10px 22px;background:linear-gradient(135deg,#F4A261,#E76F51);color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .25s;white-space:nowrap;box-shadow:0 4px 14px rgba(231,111,81,.35);}
-.pb-btn:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(231,111,81,.45);}
-.pb-close{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.6);width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s;}
-.pb-close:hover{background:rgba(255,255,255,.2);color:#fff;}
-/* Push page content above payment bar */
-body { padding-bottom: 70px; }
-@media(max-width:600px){
-  .pb-inner{padding:10px 16px;gap:10px;}
-  .pb-text p{display:none;}
-  .pb-price .old{display:none;}
-  body{padding-bottom:80px;}
-}
-</style>
-
-<div id="paymentBar" class="payment-bar">
-  <div class="pb-inner">
-    <div class="pb-left">
-      <div class="pb-icon">💳</div>
-      <div class="pb-text">
-        <h4>Nâng cấp lên CEP Premium</h4>
-        <p>Mở khóa toàn bộ bài tập, Study Case và chứng nhận hoàn thành</p>
-      </div>
-      <div class="pb-badge">🔥 Ưu đãi đặc biệt</div>
-    </div>
-    <div class="pb-right">
-      <div class="pb-price">
-        <div class="old">990.000 ₫/tháng</div>
-        <div class="new">490.000 ₫</div>
-      </div>
-      <button class="pb-btn" onclick="toast('Tính năng thanh toán sắp ra mắt!','info')">🚀 Đăng ký ngay</button>
-      <button class="pb-close" onclick="document.getElementById('paymentBar').style.display='none'; document.body.style.paddingBottom='0';" title="Đóng">✕</button>
     </div>
   </div>
 </div>
@@ -2135,7 +2024,18 @@ function showPage(pageId) {
   document.querySelectorAll('.page').forEach(function(p) { p.classList.remove('active'); });
   document.getElementById(pageId).classList.add('active');
   window.scrollTo({ top: 0, behavior: 'smooth' });
-  
+
+  // Ẩn/hiện global header: ẩn trên auth pages
+  var authPages = ['page-login','page-register','page-forgot','page-reset-password'];
+  var globalHeader = document.getElementById('globalHeader');
+  if(globalHeader) {
+    if(authPages.includes(pageId)) {
+      globalHeader.style.display = 'none';
+    } else {
+      globalHeader.style.display = '';
+    }
+  }
+
   if (pageId === 'page-profile') {
     if(!auth.currentUser) {
       toast('loginRequired', 'error');
@@ -2745,13 +2645,21 @@ document.addEventListener('DOMContentLoaded', function() {
   const savedLang = localStorage.getItem('cep_lang') || 'vi';
   setLang(savedLang);
 
+  // Đảm bảo header ẩn trên auth pages khi init
+  var authPages = ['page-login','page-register','page-forgot','page-reset-password'];
+  var activePage = document.querySelector('.page.active');
+  var globalHeader = document.getElementById('globalHeader');
+  if(globalHeader && activePage && authPages.includes(activePage.id)) {
+    globalHeader.style.display = 'none';
+  }
+
   // Check URL for Reset Password from Firebase Email
   const urlParams = new URLSearchParams(window.location.search);
   const mode = urlParams.get('mode');
   const actionCode = urlParams.get('oobCode');
 
   if (mode === 'resetPassword' && actionCode) {
-    window.resetActionCode = actionCode; // Lưu lại mã code để dùng xác nhận
+    window.resetActionCode = actionCode;
     showPage('page-reset-password');
   }
 });
