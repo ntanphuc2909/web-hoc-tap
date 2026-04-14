@@ -2714,383 +2714,274 @@ function renderProfile() {
 
 function toggleEdit() {
   var sec = document.getElementById('editSec');
-   sec.classList.toggle('show');
-
+  sec.classList.toggle('show');
 }
-
-
-
-var tempAvatar = '';
 
 function handleAv(input) {
-
   if (input.files && input.files[0]) {
-
     var reader = new FileReader();
-
     reader.onload = function(e) {
-
-      tempAvatar = e.target.result;
-
-      document.getElementById('avPreview').innerHTML = '<img src="'+tempAvatar+'">';
-
+      document.getElementById('avPreview').innerHTML = '<img src="' + e.target.result + '">';
     };
-
     reader.readAsDataURL(input.files[0]);
-
   }
-
 }
-
-
 
 function saveProfile() {
+  if(!currentUserData) return;
+  var btn = document.querySelector('.btn-save');
+  btn.innerText = 'Đang lưu...';
+  
+  var newFullname = document.getElementById('eFn').value.trim();
+  if(!newFullname) {
+    btn.innerText = t('saveBtn');
+    return toast('errNameEmpty', 'error');
+  }
 
-  var data = {
-
-    fullname: document.getElementById('eFn').value.trim(),
-
+  var updates = {
+    fullname: newFullname,
     phone: document.getElementById('ePh').value.trim(),
-
     occupation: document.getElementById('eOc').value.trim(),
-
     location: document.getElementById('eLc').value.trim(),
-
     website: document.getElementById('eWb').value.trim(),
-
     bio: document.getElementById('eBi').value.trim(),
-
     role: document.getElementById('eRl').value,
-
     dob: document.getElementById('eDob').value,
-
     gender: document.getElementById('eGen').value,
-
     facebook: document.getElementById('eFb').value.trim(),
-
     education: document.getElementById('eEdu').value.trim(),
-
     experience: document.getElementById('eExp').value.trim(),
-
     skills: document.getElementById('eSkills').value.trim()
-
   };
 
-  
-
-  if(!data.fullname) return toast('errNameEmpty', 'error');
-
-  if(tempAvatar) data.avatar = tempAvatar;
-
-
-
-  db.collection('users').doc(auth.currentUser.uid).update(data).then(() => {
-
-    toast('toastSaveProfile', 'success');
-
-    currentUserData = {...currentUserData, ...data};
-
-    toggleEdit();
-
-    renderProfile();
-
-    auth.onAuthStateChanged(auth.currentUser); 
-
-  }).catch((error) => {
-
-    toast('Lỗi cập nhật: ' + error.message, 'error');
-
-  });
-
+  var avInput = document.getElementById('avInput');
+  if(avInput.files && avInput.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      updates.avatar = e.target.result;
+      updateDb(updates, btn);
+    };
+    reader.readAsDataURL(avInput.files[0]);
+  } else {
+    updateDb(updates, btn);
+  }
 }
 
-
+function updateDb(updates, btn) {
+  var user = auth.currentUser;
+  db.collection('users').doc(user.uid).update(updates).then(() => {
+    Object.assign(currentUserData, updates);
+    if(updates.avatar) {
+      user.updateProfile({ photoURL: updates.avatar });
+    }
+    if(updates.fullname) {
+      user.updateProfile({ displayName: updates.fullname });
+    }
+    
+    renderProfile();
+    toggleEdit();
+    toast('✅ Cập nhật hồ sơ thành công!', 'success');
+    btn.innerText = t('saveBtn');
+    document.getElementById('hubName').innerText = t('welcomeBack') + ' ' + currentUserData.fullname + '!';
+    var avHtml = currentUserData.avatar ? '<img src="'+currentUserData.avatar+'">' : currentUserData.fullname.charAt(0).toUpperCase();
+    document.getElementById('hubAv').innerHTML = avHtml;
+    
+    var displayName = currentUserData.fullname.split(' ')[0];
+    document.getElementById('homeAuthArea').innerHTML = `<button style="display:flex;align-items:center;gap:8px;padding:7px 16px;background:rgba(77,217,172,.13);border:1.5px solid rgba(77,217,172,.4);color:#4DD9AC;border-radius:20px;font-weight:600;font-size:13px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .22s;" onmouseover="this.style.background='rgba(77,217,172,.22)'" onmouseout="this.style.background='rgba(77,217,172,.13)'" onclick="showPage('page-profile')">👤 ${displayName}</button>`;
+  }).catch((error) => {
+    toast('Lỗi cập nhật: ' + error.message, 'error');
+    btn.innerText = t('saveBtn');
+  });
+}
 
 /* ═══════════════════════════════
-
-   THEME & LANGUAGE SYNC
-
+   THEME & LANGUAGE
 ═══════════════════════════════ */
-
-function toggleThemeGlobal() {
-
-  var isDark = document.body.classList.contains('dark-mode');
-
-  toggleDark(!isDark);
-
+function toggleDark(checked) {
+  if(checked) {
+    document.body.classList.add('dark-mode');
+    localStorage.setItem('cep_theme', 'dark');
+  } else {
+    document.body.classList.remove('dark-mode');
+    localStorage.setItem('cep_theme', 'light');
+  }
 }
-
-
-
-function toggleDark(isDark) {
-
-  if(isDark) document.body.classList.add('dark-mode');
-
-  else document.body.classList.remove('dark-mode');
-
-  localStorage.setItem('cep_theme', isDark ? 'dark' : 'light');
-
-  updateThemeBtns();
-
-}
-
-
-
 function updateThemeBtns() {
-
   var isDark = document.body.classList.contains('dark-mode');
-
-  var icon = isDark ? '☀️' : '🌙';
-
-  ['loginThemeBtn','registerThemeBtn','forgotThemeBtn','profileThemeBtn','settingsThemeBtn','cpThemeBtn','prThemeBtn','mktThemeBtn'].forEach(function(id) {
-
-    var el = document.getElementById(id);
-
-    if(el) { el.innerText = icon; el.onclick = toggleThemeGlobal; }
-
-  });
-
-  var toggle = document.getElementById('darkToggle');
-
-  if(toggle) toggle.checked = isDark;
-
+  var dt = document.getElementById('darkToggle');
+  if(dt) dt.checked = isDark;
 }
-
-
-
-function setLang(lang) {
-
-  currentLang = lang;
-
-  localStorage.setItem('cep_lang', lang);
-
-  
-
-  document.querySelectorAll('.lang-opt').forEach(function(el){ el.classList.remove('active'); });
-
-  var activeOpt = document.querySelector('.lang-opt[data-lang="'+lang+'"]');
-
-  if(activeOpt) activeOpt.classList.add('active');
-
-  
+function setLang(code) {
+  currentLang = code;
+  localStorage.setItem('cep_lang', code);
+  document.querySelectorAll('.lang-opt').forEach(function(el) {
+    el.classList.remove('active');
+  });
+  var activeBtn = document.getElementById('lang-' + code);
+  if(activeBtn) activeBtn.classList.add('active');
 
   document.querySelectorAll('[data-i18n]').forEach(function(el) {
-
     var key = el.getAttribute('data-i18n');
-
-    if(I18N[lang] && I18N[lang][key]) {
-
-      if(el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') el.placeholder = I18N[lang][key];
-
-      else if (el.tagName === 'OPTION') el.innerText = I18N[lang][key];
-
-      else el.innerText = I18N[lang][key];
-
+    if(I18N[code][key]) {
+      if(el.tagName === 'INPUT' && el.type === 'button') el.value = I18N[code][key];
+      else el.innerText = I18N[code][key];
     }
-
   });
-
-  
-
   document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
-
     var key = el.getAttribute('data-i18n-html');
-
-    if(I18N[lang] && I18N[lang][key]) el.innerHTML = I18N[lang][key];
-
+    if(I18N[code][key]) el.innerHTML = I18N[code][key];
   });
-
-
-
-  if(document.getElementById('page-profile').classList.contains('active')) renderProfile();
-
-}
-
-
-
-/* ═══════════════════════════════
-
-   REALTIME REVIEWS LOGIC
-
-═══════════════════════════════ */
-
-let unsubscribeReviews = null;
-
-
-
-function initRealtimeReviews() {
-
-  const container = document.getElementById('allReviewsContainer');
-
-  if (!container) return;
-
-
-
-  if (unsubscribeReviews) unsubscribeReviews();
-
-
-
-  unsubscribeReviews = db.collection('reviews').orderBy('timestamp', 'desc').onSnapshot((snapshot) => {
-
-    if (snapshot.empty) {
-
-      container.innerHTML = '<p style="text-align:center; color:var(--text2);">Chưa có đánh giá nào trên hệ thống máy chủ.</p>';
-
-      return;
-
-    }
-
-    
-
-    let html = '';
-
-    snapshot.forEach((doc) => {
-
-      const data = doc.data();
-
-      
-
-      let dateStr = '';
-
-      if (data.timestamp) {
-
-        let date = data.timestamp.toDate();
-
-        dateStr = date.toLocaleDateString('vi-VN') + ' ' + date.toLocaleTimeString('vi-VN');
-
-      }
-
-
-
-      let avatarHtml = data.avatar 
-
-        ? `<img src="${data.avatar}" style="width:100%;height:100%;border-radius:50%;object-fit:cover;">` 
-
-        : (data.name ? data.name.charAt(0).toUpperCase() : 'U');
-
-
-
-      html += `
-
-        <div class="review-card" style="margin-bottom: 0;">
-
-          <div style="display:flex; justify-content:space-between; align-items:flex-start;">
-
-            <div class="review-stars" style="margin-bottom:10px; color:#FFD700; font-size:18px;">
-
-              ${'★'.repeat(data.rating || 5)}${'☆'.repeat(5 - (data.rating || 5))}
-
-            </div>
-
-            <span style="font-size:12px; color:var(--text2);">${dateStr}</span>
-
-          </div>
-
-          <div class="review-badge">${data.badge || 'Tuyệt vời!'}</div>
-
-          <p class="review-text">${data.content}</p>
-
-          <div class="reviewer" style="padding-top:14px; border-top:1px solid var(--border);">
-
-            <div class="reviewer-av">${avatarHtml}</div>
-
-            <div>
-
-              <h4 style="font-size:14px; color:var(--text); margin-bottom:2px;">${data.name || 'Học viên ẩn danh'}</h4>
-
-              <p style="font-size:12px; color:var(--text2);">${data.role || 'Học viên CEP'}</p>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      `;
-
-    });
-
-    container.innerHTML = html;
-
-  }, (error) => {
-
-    console.error("Lỗi khi tải đánh giá:", error);
-
-    container.innerHTML = '<p style="text-align:center; color:#f44336;">Lỗi kết nối cơ sở dữ liệu.</p>';
-
-  });
-
-}
-
-
-
-/* ═══════════════════════════════
-
-   LOGIC VIẾT ĐÁNH GIÁ & CHỌN SAO
-
-═══════════════════════════════ */
-
-document.addEventListener('DOMContentLoaded', function() {
-
-  const stars = document.querySelectorAll('#starRatingInput span');
-
-  const ratingInput = document.getElementById('reviewRatingVal');
-
   
+  if(currentUserData) {
+    document.getElementById('hubName').innerText = t('welcomeBack') + ' ' + currentUserData.fullname + '!';
+    renderProfile();
+  }
+}
 
-  if(stars) {
+/* ═══════════════════════════════
+   REVIEW SYSTEM LOGIC
+═══════════════════════════════ */
 
+// Script xử lý đánh giá sao (Star rating input)
+document.addEventListener('DOMContentLoaded', function() {
+  const stars = document.querySelectorAll('#starRatingInput span');
+  const ratingInput = document.getElementById('reviewRatingVal');
+  
+  if(stars.length > 0) {
     stars.forEach(star => {
-
       star.addEventListener('click', function() {
-
-        let val = this.getAttribute('data-val');
-
+        let val = parseInt(this.getAttribute('data-val'));
         ratingInput.value = val;
-
         stars.forEach(s => {
-
-          if(s.getAttribute('data-val') <= val) {
-
+          if (parseInt(s.getAttribute('data-val')) <= val) {
             s.classList.add('active');
-
+            s.style.color = '#FFD700';
           } else {
-
             s.classList.remove('active');
-
+            s.style.color = 'var(--border)';
           }
-
         });
-
       });
-
+      
+      // Hover effect
+      star.addEventListener('mouseover', function() {
+        let val = parseInt(this.getAttribute('data-val'));
+        stars.forEach(s => {
+          if (parseInt(s.getAttribute('data-val')) <= val) {
+            s.style.color = '#FFD700';
+          } else {
+            s.style.color = 'var(--border)';
+          }
+        });
+      });
+      
+      star.addEventListener('mouseout', function() {
+        let currentVal = parseInt(ratingInput.value);
+        stars.forEach(s => {
+          if (parseInt(s.getAttribute('data-val')) <= currentVal) {
+            s.style.color = '#FFD700';
+          } else {
+            s.style.color = 'var(--border)';
+          }
+        });
+      });
     });
   }
 });
+
+let isReviewListenerActive = false;
+
+function initRealtimeReviews() {
+  if (isReviewListenerActive) return;
+  isReviewListenerActive = true;
+  
+  const container = document.getElementById('allReviewsContainer');
+  
+  db.collection('reviews').orderBy('createdAt', 'desc').onSnapshot(snapshot => {
+    if (snapshot.empty) {
+      container.innerHTML = '<p style="text-align:center; color:var(--text2); padding: 40px;">Chưa có đánh giá nào. Hãy là người đầu tiên!</p>';
+      return;
+    }
+    
+    let html = '';
+    snapshot.forEach(doc => {
+      let data = doc.data();
+      let rating = data.rating || 5;
+      let starsHtml = '★'.repeat(rating) + '☆'.repeat(5 - rating);
+      
+      let dateStr = "Vừa xong";
+      if (data.createdAt) {
+        let date = data.createdAt.toDate();
+        dateStr = date.toLocaleDateString('vi-VN');
+      }
+
+      let roleText = "Học viên";
+      if(data.userRole === 'professional') roleText = "Người đi làm";
+      if(data.userRole === 'teacher') roleText = "Giáo viên";
+
+      html += `
+        <div class="review-card" style="display:flex; flex-direction:column;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+            <div class="review-stars" style="margin-bottom:0;">${starsHtml}</div>
+            <span style="font-size:12px; color:var(--text2);">${dateStr}</span>
+          </div>
+          <p class="review-text">${data.content}</p>
+          <div class="reviewer" style="margin-top:auto;">
+            <div class="reviewer-av">${data.userAvatar ? `<img src="${data.userAvatar}" style="width:100%;height:100%;border-radius:50%;object-fit:cover;">` : data.userName.charAt(0).toUpperCase()}</div>
+            <div>
+              <h4>${data.userName}</h4>
+              <p>${roleText}</p>
+            </div>
+          </div>
+        </div>
+      `;
+    });
+    
+    container.innerHTML = html;
+  }, error => {
+    console.error("Lỗi lấy đánh giá:", error);
+    container.innerHTML = '<p style="text-align:center; color:#f44336; padding: 40px;">Không thể tải dữ liệu đánh giá.</p>';
+  });
+}
+
 function submitReview() {
-  if(!auth.currentUser) {
+  if (!auth.currentUser) {
+    toast('⚠️ Vui lòng đăng nhập để gửi đánh giá!', 'error');
     showPage('page-login');
-    return toast('⚠️ Vui lòng đăng nhập để viết đánh giá!', 'error');
+    return;
   }
-  const rating = parseInt(document.getElementById('reviewRatingVal').value);
+
   const content = document.getElementById('reviewContentInput').value.trim();
-  if(!content) return toast('❌ Vui lòng nhập nội dung đánh giá!', 'error');
-  if(content.length < 10) return toast('❌ Đánh giá cần ít nhất 10 ký tự.', 'error');
+  const rating = parseInt(document.getElementById('reviewRatingVal').value);
+
+  if (!content) {
+    toast('❌ Vui lòng nhập nội dung đánh giá!', 'error');
+    return;
+  }
+  
+  if (content.length < 10) {
+    toast('❌ Đánh giá quá ngắn. Vui lòng nhập ít nhất 10 ký tự.', 'error');
+    return;
+  }
+
   const btn = document.querySelector('#writeReviewCard .btn-main');
   btn.innerText = 'Đang gửi...';
   btn.disabled = true;
+
+  // Lấy dữ liệu user hiện tại
   db.collection('users').doc(auth.currentUser.uid).get().then(doc => {
-    let userData = doc.exists ? doc.data() : {};
+    let uData = doc.data();
+    
     let reviewData = {
-      uid: auth.currentUser.uid,
-      name: userData.fullname || auth.currentUser.displayName || 'Học viên',
-      avatar: userData.avatar || auth.currentUser.photoURL || null,
-      role: (userData.role === 'student' ? 'Học viên CEP' : 'Thành viên CEP'),
+      userId: auth.currentUser.uid,
+      userName: uData.fullname || 'Người dùng',
+      userAvatar: uData.avatar || null,
+      userRole: uData.role || 'student',
       rating: rating,
-      badge: rating >= 4 ? 'Tuyệt vời!' : (rating === 3 ? 'Khá tốt' : 'Góp ý'),
       content: content,
-      timestamp: firebase.firestore.FieldValue.serverTimestamp()
+      createdAt: firebase.firestore.FieldValue.serverTimestamp()
     };
+
     db.collection('reviews').add(reviewData).then(() => {
       toast('✅ Gửi đánh giá thành công! Cảm ơn bạn.', 'success');
       document.getElementById('reviewContentInput').value = '';
@@ -3103,28 +2994,32 @@ function submitReview() {
     });
   });
 }
+
 /* ═══════════════════════════════
    INITIALIZE
 ═══════════════════════════════ */
 document.addEventListener('DOMContentLoaded', function() {
-
   // Kích hoạt thống kê thời gian thực
-
   initRealtimeStats();
+
   const savedTheme = localStorage.getItem('cep_theme');
   if(savedTheme === 'dark') document.body.classList.add('dark-mode');
   updateThemeBtns();
+
   const savedLang = localStorage.getItem('cep_lang') || 'vi';
   setLang(savedLang);
+
   var authPages = ['page-login','page-register','page-forgot','page-reset-password'];
   var activePage = document.querySelector('.page.active');
   var globalHeader = document.getElementById('globalHeader');
   if(globalHeader && activePage && authPages.includes(activePage.id)) {
     globalHeader.style.display = 'none';
   }
+
   const urlParams = new URLSearchParams(window.location.search);
   const mode = urlParams.get('mode');
   const actionCode = urlParams.get('oobCode');
+
   if (mode === 'resetPassword' && actionCode) {
     window.resetActionCode = actionCode;
     showPage('page-reset-password');
