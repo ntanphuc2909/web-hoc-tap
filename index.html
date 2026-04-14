@@ -1210,139 +1210,15 @@ body.dark-mode .asb-points{color:#7ececa;}
 /* Score pulse animation */
 @keyframes scorePop{0%{transform:scale(0.6);opacity:0}60%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
 .score-pop{animation:scorePop .4s ease both;}
-
-/* ─── STUDY CASE ─── */
-.case-card{background:var(--card);border-radius:20px;border:1.5px solid var(--border);overflow:hidden;margin-bottom:24px;}
-.case-header{background:linear-gradient(135deg,#1a4645,#2D5F5D);padding:28px 28px 20px;color:#fff;}
-.case-header .badge-row{display:flex;gap:8px;margin-bottom:12px;}
-.case-badge{padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;background:rgba(255,255,255,.2);color:#fff;}
-.case-header h2{font-family:'Helvetica Rounded Bold', sans-serif;font-size:24px;margin-bottom:8px;}
-.case-header p{font-size:14px;opacity:.85;line-height:1.6;}
-.case-body{padding:28px;}
-.case-story{background:var(--bg);border-radius:12px;padding:20px;margin-bottom:22px;border-left:4px solid var(--secondary);}
-.case-story h4{font-size:14px;font-weight:700;color:var(--primary);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px;}
-body.dark-mode .case-story h4{color:#7ececa;}
-.case-story p{font-size:14px;color:var(--text);line-height:1.7;}
-.case-question{margin-bottom:20px;}
-.case-question h4{font-size:15px;font-weight:700;color:var(--text);margin-bottom:12px;}
-.case-options{display:flex;flex-direction:column;gap:10px;}
-.case-opt{padding:14px 18px;border:2px solid var(--border);border-radius:12px;cursor:pointer;font-size:14px;color:var(--text);background:var(--card);transition:all .22s;text-align:left;font-family:'Helvetica Rounded Bold', sans-serif;display:flex;align-items:center;gap:12px;}
-.case-opt:hover:not(.answered){border-color:var(--primary);background:rgba(45,95,93,.05);}
-.case-opt.correct{border-color:#4caf50;background:rgba(76,175,80,.1);color:#2e7d32;}
-body.dark-mode .case-opt.correct{color:#68d391;}
-.case-opt.wrong{border-color:#f44336;background:rgba(244,67,54,.1);color:#c62828;}
-body.dark-mode .case-opt.wrong{color:#fc8181;}
-.case-opt .opt-icon{width:24px;height:24px;border-radius:50%;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;transition:all .2s;}
-.case-opt.correct .opt-icon{background:#4caf50;border-color:#4caf50;color:#fff;}
-.case-opt.wrong .opt-icon{background:#f44336;border-color:#f44336;color:#fff;}
-.case-feedback{display:none;padding:14px 18px;border-radius:12px;font-size:14px;line-height:1.6;margin-top:12px;}
-.case-feedback.show{display:block;}
-.cf-good{background:#e8f5e9;border-left:4px solid #4caf50;color:#1b5e20;}
-body.dark-mode .cf-good{background:#162516;color:#a5d6a7;}
-.cf-bad{background:#ffebee;border-left:4px solid #f44336;color:#b71c1c;}
-body.dark-mode .cf-bad{background:#2a1010;color:#ef9a9a;}
-.case-progress{display:flex;gap:8px;margin-bottom:22px;align-items:center;}
-.cp-step{width:32px;height:6px;border-radius:3px;background:var(--border);transition:background .3s;}
-.cp-step.done{background:#4caf50;}
-.cp-step.active{background:var(--primary);}
-.case-nav{display:flex;gap:12px;justify-content:flex-end;margin-top:20px;}
-.btn-case{padding:11px 26px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Helvetica Rounded Bold', sans-serif;border:none;transition:all .2s;}
-.btn-case-p{background:var(--gradient);color:#fff;}
-.btn-case-p:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(45,95,93,.3);}
-.btn-case-p:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none;}
-.btn-case-s{background:var(--bg);color:var(--text);border:1.5px solid var(--border);}
-.btn-case-s:hover{border-color:var(--primary);}
-.case-result{text-align:center;padding:32px;display:none;}
-.case-result.show{display:block;}
-.result-emoji{font-size:64px;margin-bottom:16px;}
-.result-score{font-size:48px;font-weight:900;color:var(--primary);font-family:'Helvetica Rounded Bold', sans-serif;}
-body.dark-mode .result-score{color:#7ececa;}
-.result-msg{font-size:16px;color:var(--text2);margin:8px 0 24px;}
-.result-breakdown{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:24px;}
-.rb-item{background:var(--bg);padding:14px 22px;border-radius:12px;text-align:center;min-width:100px;}
-.rb-num{font-size:24px;font-weight:700;color:var(--primary);}
-body.dark-mode .rb-num{color:#7ececa;}
-.rb-lbl{font-size:12px;color:var(--text2);}
-.btn-restart{padding:12px 32px;background:var(--gradient);color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Helvetica Rounded Bold', sans-serif;transition:all .25s;}
-.btn-restart:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(45,95,93,.3);}
-
-/* ─── QUIZ GAME ─── */
-.quiz-wrap{max-width:700px;margin:0 auto;}
-.quiz-start{text-align:center;padding:40px 20px;}
-.quiz-start .big-emoji{font-size:80px;margin-bottom:20px;animation:bounce 2s ease-in-out infinite;}
-@keyframes bounce{0%,100%{transform:translateY(0);}50%{transform:translateY(-14px);}}
-.quiz-start h2{font-family:'Helvetica Rounded Bold', sans-serif;font-size:30px;color:var(--text);margin-bottom:10px;}
-.quiz-start p{color:var(--text2);font-size:15px;margin-bottom:28px;line-height:1.6;}
-.quiz-rules{background:var(--bg);border-radius:14px;padding:20px;margin-bottom:28px;text-align:left;}
-.quiz-rules h4{font-size:14px;font-weight:700;color:var(--primary);margin-bottom:12px;}
-body.dark-mode .quiz-rules h4{color:#7ececa;}
-.quiz-rule{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--text);margin-bottom:8px;}
-.btn-start-quiz{padding:16px 40px;background:var(--gradient);color:#fff;border:none;border-radius:50px;font-size:16px;font-weight:700;cursor:pointer;font-family:'Helvetica Rounded Bold', sans-serif;box-shadow:0 8px 24px rgba(45,95,93,.3);transition:all .3s;}
-.btn-start-quiz:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(45,95,93,.4);}
-.quiz-game{display:none;}
-.quiz-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:10px;}
-.quiz-stat{background:var(--card);border-radius:10px;padding:10px 18px;display:flex;align-items:center;gap:8px;border:1.5px solid var(--border);}
-.quiz-stat span{font-size:13px;color:var(--text2);}
-.quiz-stat strong{font-size:18px;font-weight:700;color:var(--primary);}
-body.dark-mode .quiz-stat strong{color:#7ececa;}
-.qprog-bar{height:8px;background:var(--border);border-radius:4px;overflow:hidden;margin-bottom:24px;}
-.qprog-fill{height:100%;background:var(--gradient);border-radius:4px;transition:width .5s ease;}
-.timer-ring{width:52px;height:52px;position:relative;flex-shrink:0;}
-.timer-ring svg{transform:rotate(-90deg);}
-.timer-ring circle{fill:none;stroke-width:4;}
-.timer-bg{stroke:var(--border);}
-.timer-fill{stroke:var(--primary);stroke-linecap:round;transition:stroke-dashoffset .9s linear;}
-.timer-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:14px;font-weight:700;color:var(--primary);}
-body.dark-mode .timer-fill{stroke:#7ececa;}
-body.dark-mode .timer-text{color:#7ececa;}
-.q-card{background:var(--card);border-radius:20px;padding:28px;border:1.5px solid var(--border);margin-bottom:20px;}
-.q-num{font-size:12px;color:var(--text2);margin-bottom:10px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;}
-.q-text{font-size:18px;font-weight:700;color:var(--text);line-height:1.5;margin-bottom:22px;}
-.q-opts{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
-@media(max-width:560px){.q-opts{grid-template-columns:1fr;}}
-.q-opt{padding:14px 16px;border:2px solid var(--border);border-radius:12px;cursor:pointer;font-size:14px;font-weight:500;color:var(--text);background:var(--card);transition:all .22s;text-align:left;font-family:'Helvetica Rounded Bold', sans-serif;display:flex;align-items:center;gap:10px;}
-.q-opt:hover:not(.locked){border-color:var(--primary);background:rgba(45,95,93,.05);transform:translateY(-2px);}
-.q-opt .q-letter{width:26px;height:26px;border-radius:8px;background:var(--bg);border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;transition:all .2s;}
-.q-opt.selected .q-letter{background:var(--primary);border-color:var(--primary);color:#fff;}
-.q-opt.q-correct{border-color:#4caf50;background:rgba(76,175,80,.1);}
-.q-opt.q-correct .q-letter{background:#4caf50;border-color:#4caf50;color:#fff;}
-.q-opt.q-wrong{border-color:#f44336;background:rgba(244,67,54,.1);}
-.q-opt.q-wrong .q-letter{background:#f44336;border-color:#f44336;color:#fff;}
-.q-opt.q-reveal{border-color:#4caf50;background:rgba(76,175,80,.06);}
-.q-opt.q-reveal .q-letter{background:#4caf50;border-color:#4caf50;color:#fff;}
-.q-explain{display:none;padding:14px 18px;border-radius:12px;font-size:14px;line-height:1.6;margin-top:4px;background:var(--bg);border-left:4px solid var(--secondary);color:var(--text);}
-.q-explain.show{display:block;}
-.combo-bar{text-align:center;margin-bottom:14px;min-height:28px;}
-.combo-txt{display:inline-block;padding:5px 16px;border-radius:20px;font-size:13px;font-weight:700;background:linear-gradient(135deg,#F4A261,#E76F51);color:#fff;animation:popIn .3s ease;}
-@keyframes popIn{from{transform:scale(.6);opacity:0;}to{transform:scale(1);opacity:1;}}
-.quiz-end{display:none;text-align:center;padding:32px 20px;}
-.quiz-end.show{display:block;}
-.stars-row{font-size:44px;letter-spacing:4px;margin-bottom:16px;}
-.qe-score{font-family:'Helvetica Rounded Bold', sans-serif;font-size:54px;font-weight:900;color:var(--primary);line-height:1;}
-body.dark-mode .qe-score{color:#7ececa;}
-.qe-label{font-size:15px;color:var(--text2);margin:6px 0 24px;}
-.qe-stats{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:28px;}
-.qe-stat{background:var(--bg);padding:14px 20px;border-radius:12px;text-align:center;min-width:90px;}
-.qe-stat .qes-num{font-size:22px;font-weight:700;color:var(--primary);}
-body.dark-mode .qe-stat .qes-num{color:#7ececa;}
-.qe-stat .qes-lbl{font-size:11px;color:var(--text2);}
-.qe-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
-.btn-qe{padding:12px 28px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Helvetica Rounded Bold', sans-serif;border:none;transition:all .2s;}
-.btn-qe-p{background:var(--gradient);color:#fff;}
-.btn-qe-p:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(45,95,93,.3);}
-.btn-qe-s{background:var(--bg);color:var(--text);border:1.5px solid var(--border);}
-.btn-qe-s:hover{border-color:var(--primary);}
 </style>
 
 <div class="page" id="page-pr-course">
 
   <div class="pr-hero">
     <h1>📣 Public Relations</h1>
-    <p>Học PR qua tình huống thực tế và trò chơi tương tác — không nhàm, không chán!</p>
+    <p>Học PR qua bài viết thực tế — không nhàm, không chán!</p>
     <div class="pr-tabs">
       <button class="pr-tab active" onclick="switchPrTab('curriculum',this)">📚 Nội dung</button>
-      <button class="pr-tab" onclick="switchPrTab('studycase',this)">🔍 Study Case</button>
-      <button class="pr-tab" onclick="switchPrTab('quizgame',this)">🎮 Quiz Game</button>
     </div>
   </div>
 
@@ -1359,154 +1235,58 @@ body.dark-mode .qe-stat .qes-num{color:#7ececa;}
           <h2 style="font-family: 'Helvetica Rounded Bold', sans-serif; font-size: 22px; margin-bottom: 6px;">Mô hình truyền thông SMCRE</h2>
           <p style="font-size: 13px; opacity: 0.9;">Kiến trúc tương tác và hiệu quả thông tin</p>
         </div>
-        <div style="padding: 24px; color: var(--text); font-size: 14px; line-height: 1.6;">
-          <p style="margin-bottom: 16px;">Mô hình SMCRE là một bước tiến hóa của mô hình SMCR do David Berlo đề xuất năm 1960, tích hợp thêm yếu tố Hiệu quả (Effect) để tạo ra một cái nhìn toàn diện về tác động của truyền thông. Trong môi trường tổ chức, truyền thông không đơn thuần là việc gửi đi một thông báo; đó là một quy trình phức tạp chịu ảnh hưởng bởi kỹ năng, thái độ và nền tảng văn hóa của các bên tham gia.</p>
+        <div style="padding: 28px; color: var(--text); font-size: 14.5px; line-height: 1.7;">
+          <p style="margin-bottom: 20px;">Mô hình SMCRE là một bước tiến hóa của mô hình SMCR do David Berlo đề xuất năm 1960, tích hợp thêm yếu tố Hiệu quả (Effect) để tạo ra một cái nhìn toàn diện về tác động của truyền thông. Trong môi trường tổ chức, truyền thông không đơn thuần là việc gửi đi một thông báo; đó là một quy trình phức tạp chịu ảnh hưởng bởi kỹ năng, thái độ và nền tảng văn hóa của các bên tham gia.</p>
 
-          <h4 style="font-size: 15px; font-weight: 700; color: #1e4544; margin-bottom: 12px;">Giải phẫu các thành phần của SMCRE</h4>
-          <p style="margin-bottom: 16px;">Mỗi mắt xích trong mô hình SMCRE đều đóng vai trò quyết định đến độ trung thực (fidelity) của thông điệp.</p>
+          <h4 style="font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 14px;">Giải phẫu các thành phần của SMCRE</h4>
+          <p style="margin-bottom: 20px;">Mỗi mắt xích trong mô hình SMCRE đều đóng vai trò quyết định đến độ trung thực (fidelity) của thông điệp.</p>
 
-          <table style="width: 100%; border-collapse: collapse; margin-bottom: 24px; font-size: 13.5px;">
+          <table style="width: 100%; border-collapse: collapse; margin-bottom: 28px; font-size: 14px;">
             <thead>
-              <tr style="background: #f1f5f9; border: 1px solid var(--border);">
-                <th style="padding: 14px; border: 1px solid var(--border); text-align: left; width: 20%; color: var(--text);">Thành phần</th>
-                <th style="padding: 14px; border: 1px solid var(--border); text-align: left; width: 35%; color: var(--text);">Các yếu tố tác động</th>
-                <th style="padding: 14px; border: 1px solid var(--border); text-align: left; width: 45%; color: var(--text);">Vai trò chiến lược</th>
+              <tr style="background: #f8f9fa; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+                <th style="padding: 16px; border-right: 1px solid var(--border); text-align: left; width: 22%; color: var(--text);">Thành phần</th>
+                <th style="padding: 16px; border-right: 1px solid var(--border); text-align: left; width: 38%; color: var(--text);">Các yếu tố tác động</th>
+                <th style="padding: 16px; text-align: left; width: 40%; color: var(--text);">Vai trò chiến lược</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td style="padding: 14px; border: 1px solid var(--border); font-weight: 700; color: var(--text);">Nguồn - Source (S)</td>
-                <td style="padding: 14px; border: 1px solid var(--border);">Kỹ năng giao tiếp, Thái độ, Kiến thức, Hệ thống xã hội, Văn hóa</td>
-                <td style="padding: 14px; border: 1px solid var(--border);">Người khởi tạo ý tưởng, chịu trách nhiệm mã hóa thông tin. Uy tín và sự thấu cảm của nguồn quyết định 50% thành công của quá trình.</td>
+              <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 16px; border-right: 1px solid var(--border); font-weight: 700; color: var(--text);">Nguồn - Source (S)</td>
+                <td style="padding: 16px; border-right: 1px solid var(--border);">Kỹ năng giao tiếp, Thái độ, Kiến thức, Hệ thống xã hội, Văn hóa</td>
+                <td style="padding: 16px;">Người khởi tạo ý tưởng, chịu trách nhiệm mã hóa thông tin. Uy tín và sự thấu cảm của nguồn quyết định 50% thành công của quá trình.</td>
               </tr>
-              <tr>
-                <td style="padding: 14px; border: 1px solid var(--border); font-weight: 700; color: var(--text);">Thông điệp - Message (M)</td>
-                <td style="padding: 14px; border: 1px solid var(--border);">Nội dung, Yếu tố, Cách xử lý (Treatment), Cấu trúc, Mã hóa</td>
-                <td style="padding: 14px; border: 1px solid var(--border);">Thực thể thông tin được truyền đi. Cách xử lý thông điệp cần phù hợp với đối tượng mục tiêu.</td>
+              <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 16px; border-right: 1px solid var(--border); font-weight: 700; color: var(--text);">Thông điệp - Message (M)</td>
+                <td style="padding: 16px; border-right: 1px solid var(--border);">Nội dung, Yếu tố, Cách xử lý (Treatment), Cấu trúc, Mã hóa</td>
+                <td style="padding: 16px;">Thực thể thông tin được truyền đi. Cách xử lý thông điệp cần phù hợp với đối tượng mục tiêu.</td>
               </tr>
-              <tr>
-                <td style="padding: 14px; border: 1px solid var(--border); font-weight: 700; color: var(--text);">Kênh - Channel (C)</td>
-                <td style="padding: 14px; border: 1px solid var(--border);">Năm giác quan (Nghe, Nhìn, Chạm, Ngửi, Nếm)</td>
-                <td style="padding: 14px; border: 1px solid var(--border);">Phương tiện chuyển tải. Trong thời đại số, kênh còn bao gồm các nền tảng công nghệ, mạng xã hội, email.</td>
+              <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 16px; border-right: 1px solid var(--border); font-weight: 700; color: var(--text);">Kênh - Channel (C)</td>
+                <td style="padding: 16px; border-right: 1px solid var(--border);">Năm giác quan (Nghe, Nhìn, Chạm, Ngửi, Nếm)</td>
+                <td style="padding: 16px;">Phương tiện chuyển tải. Trong thời đại số, kênh còn bao gồm các nền tảng công nghệ, mạng xã hội, email.</td>
               </tr>
-              <tr>
-                <td style="padding: 14px; border: 1px solid var(--border); font-weight: 700; color: var(--text);">Người nhận - Receiver (R)</td>
-                <td style="padding: 14px; border: 1px solid var(--border);">Kỹ năng giao tiếp, Thái độ, Kiến thức, Hệ thống xã hội, Văn hóa</td>
-                <td style="padding: 14px; border: 1px solid var(--border);">Người giải mã thông tin. Hiệu quả đạt được cao nhất khi có sự đối xứng về đặc điểm giữa Nguồn và Người nhận.</td>
+              <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 16px; border-right: 1px solid var(--border); font-weight: 700; color: var(--text);">Người nhận - Receiver (R)</td>
+                <td style="padding: 16px; border-right: 1px solid var(--border);">Kỹ năng giao tiếp, Thái độ, Kiến thức, Hệ thống xã hội, Văn hóa</td>
+                <td style="padding: 16px;">Người giải mã thông tin. Hiệu quả đạt được cao nhất khi có sự đối xứng về đặc điểm giữa Nguồn và Người nhận.</td>
               </tr>
-              <tr>
-                <td style="padding: 14px; border: 1px solid var(--border); font-weight: 700; color: var(--text);">Hiệu quả - Effect (E)</td>
-                <td style="padding: 14px; border: 1px solid var(--border);">Thay đổi nhận thức, cảm xúc hoặc hành vi</td>
-                <td style="padding: 14px; border: 1px solid var(--border);">Kết quả cuối cùng đo lường được. Hiệu quả là mục tiêu tối thượng của mọi hành vi truyền thông.</td>
+              <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 16px; border-right: 1px solid var(--border); font-weight: 700; color: var(--text);">Hiệu quả - Effect (E)</td>
+                <td style="padding: 16px; border-right: 1px solid var(--border);">Thay đổi nhận thức, cảm xúc hoặc hành vi</td>
+                <td style="padding: 16px;">Kết quả cuối cùng đo lường được. Hiệu quả là mục tiêu tối thượng của mọi hành vi truyền thông.</td>
               </tr>
             </tbody>
           </table>
 
-          <h4 style="font-size: 15px; font-weight: 700; color: #1e4544; margin-bottom: 12px;">Tác động của Nhiễu và Độ trung thực trong truyền thông tổ chức</h4>
+          <h4 style="font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 14px;">Tác động của Nhiễu và Độ trung thực trong truyền thông tổ chức</h4>
           <p style="margin-bottom: 16px;">Độ trung thực (fidelity) trong truyền thông là mức độ tương đồng giữa ý định của người gửi và sự hiểu biết của người nhận. Tuy nhiên, quá trình này thường xuyên bị tấn công bởi "Nhiễu" (Noise) – các rào cản làm biến dạng thông điệp. Nhiễu có thể tồn tại dưới nhiều hình thức: nhiễu vật lý (âm thanh môi trường), nhiễu tâm lý (định kiến, căng thẳng), nhiễu ngữ nghĩa (thuật ngữ chuyên môn quá khó) và nhiễu sinh lý (mệt mỏi, bệnh tật).</p>
-          <p style="margin-bottom: 24px;">Để tối ưu hóa hiệu quả, nhà quản trị cần thực hiện chiến lược "Symmetry" – sự đối xứng. Nếu nguồn phát sử dụng một hệ thống mã hóa quá phức tạp (như thuật ngữ chuyên môn sâu) cho một người nhận có kiến thức nền tảng khác biệt, thông điệp sẽ bị "nhiễu ngữ nghĩa" triệt tiêu. Mô hình SMCRE hiện đại nhấn mạnh việc người gửi phải nghiên cứu kỹ đặc điểm của người nhận trước khi thiết kế thông điệp (Message) và chọn kênh (Channel).</p>
+          <p style="margin-bottom: 28px;">Để tối ưu hóa hiệu quả, nhà quản trị cần thực hiện chiến lược "Symmetry" – sự đối xứng. Nếu nguồn phát sử dụng một hệ thống mã hóa quá phức tạp (như thuật ngữ chuyên môn sâu) cho một người nhận có kiến thức nền tảng khác biệt, thông điệp sẽ bị "nhiễu ngữ nghĩa" triệt tiêu. Mô hình SMCRE hiện đại nhấn mạnh việc người gửi phải nghiên cứu kỹ đặc điểm của người nhận trước khi thiết kế thông điệp (Message) và chọn kênh (Channel).</p>
 
           <button style="padding: 10px 20px; background: #376a68; color: #fff; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 13px;" onclick="switchPrTab('curriculum', null)">← Quay lại danh sách bài</button>
         </div>
       </div>
     </div>
-    <div class="pr-section" id="pr-studycase">
-      <div class="case-card" id="caseMainCard">
-        <div class="case-header">
-          <div class="badge-row">
-            <span class="case-badge">🔍 Study Case</span>
-            <span class="case-badge">⚡ Tình huống thực</span>
-          </div>
-          <h2>Khủng hoảng truyền thông: Thức uống bị lỗi!</h2>
-          <p>Bạn là PR Manager của thương hiệu nước giải khát <strong>ClearDrop</strong>. Hãy đưa ra quyết định đúng trong 4 bước xử lý khủng hoảng.</p>
-        </div>
-        <div class="case-body">
-          <div class="case-progress" id="caseProgressBar">
-            <span style="font-size:12px;color:var(--text2);margin-right:6px;">Tiến độ:</span>
-          </div>
-
-          <div id="caseQuestions"></div>
-
-          <div class="case-result" id="caseResult">
-            <div class="result-emoji" id="resultEmoji"></div>
-            <div class="result-score" id="resultScore"></div>
-            <div class="result-msg" id="resultMsg"></div>
-            <div class="result-breakdown">
-              <div class="rb-item"><div class="rb-num" id="rbCorrect">0</div><div class="rb-lbl">Đúng</div></div>
-              <div class="rb-item"><div class="rb-num" id="rbWrong">0</div><div class="rb-lbl">Sai</div></div>
-              <div class="rb-item"><div class="rb-num" id="rbPoints">0</div><div class="rb-lbl">Điểm</div></div>
-            </div>
-            <button class="btn-restart" onclick="initCase()">🔄 Làm lại từ đầu</button>
-          </div>
-
-          <div class="case-nav" id="caseNav">
-            <button class="btn-case btn-case-s" onclick="prevCaseQ()">← Trước</button>
-            <button class="btn-case btn-case-p" id="caseNextBtn" onclick="nextCaseQ()" disabled>Tiếp theo →</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="pr-section" id="pr-quizgame">
-      <div class="quiz-wrap">
-        <div class="quiz-start" id="quizStart">
-          <div class="big-emoji">🎮</div>
-          <h2>PR Quiz Challenge!</h2>
-          <p>10 câu hỏi — 15 giây mỗi câu — ghi càng nhiều điểm càng tốt!<br>Trả lời nhanh để nhân đôi điểm thưởng.</p>
-          <div class="quiz-rules">
-            <h4>📋 Luật chơi:</h4>
-            <div class="quiz-rule">⚡ Mỗi câu có <strong>15 giây</strong> để trả lời</div>
-            <div class="quiz-rule">🎯 Trả lời đúng: +<strong>10 điểm</strong></div>
-            <div class="quiz-rule">⚡ Trả lời nhanh (dưới 5 giây): +<strong>5 điểm bonus</strong></div>
-            <div class="quiz-rule">🔥 Combo 3 câu đúng liên tiếp: +<strong>15 điểm thưởng</strong></div>
-          </div>
-          <button class="btn-start-quiz" onclick="startQuiz()">🚀 Bắt đầu chơi!</button>
-        </div>
-
-        <div class="quiz-game" id="quizGame">
-          <div class="quiz-top">
-            <div class="quiz-stat">💰 Điểm: <strong id="qScore">0</strong></div>
-            <div class="timer-ring" id="timerRing">
-              <svg width="52" height="52" viewBox="0 0 52 52">
-                <circle class="timer-bg" cx="26" cy="26" r="22"/>
-                <circle class="timer-fill" id="timerCircle" cx="26" cy="26" r="22" stroke-dasharray="138.2" stroke-dashoffset="0"/>
-              </svg>
-              <div class="timer-text" id="timerText">15</div>
-            </div>
-            <div class="quiz-stat">📝 Câu: <strong id="qNum">1</strong>/10</div>
-          </div>
-          <div class="qprog-bar"><div class="qprog-fill" id="qProgFill" style="width:0%"></div></div>
-          <div class="combo-bar" id="comboBar"></div>
-          <div class="q-card">
-            <div class="q-num" id="qNumLabel">Câu hỏi 1/10</div>
-            <div class="q-text" id="qText"></div>
-            <div class="q-opts" id="qOpts"></div>
-            <div class="q-explain" id="qExplain"></div>
-          </div>
-        </div>
-
-        <div class="quiz-end" id="quizEnd">
-          <div class="stars-row" id="qStars"></div>
-          <div class="qe-score" id="qFinalScore"></div>
-          <div class="qe-label">điểm</div>
-          <div class="qe-stats">
-            <div class="qe-stat"><div class="qes-num" id="qeCorrect">0</div><div class="qes-lbl">✅ Đúng</div></div>
-            <div class="qe-stat"><div class="qes-num" id="qeWrong">0</div><div class="qes-lbl">❌ Sai</div></div>
-            <div class="qe-stat"><div class="qes-num" id="qeBonus">0</div><div class="qes-lbl">⚡ Bonus</div></div>
-            <div class="qe-stat"><div class="qes-num" id="qeCombo">0</div><div class="qes-lbl">🔥 Combo max</div></div>
-          </div>
-          <div id="qeRankMsg" style="font-size:15px;color:var(--text2);margin-bottom:22px;"></div>
-          <div class="qe-btns">
-            <button class="btn-qe btn-qe-p" onclick="restartQuiz()">🔄 Chơi lại</button>
-            <button class="btn-qe btn-qe-s" onclick="switchPrTab('curriculum',null)">📚 Về khóa học</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div></div>
-
-<script>
+    </div></div><script>
 /* ════════════════════════════════════
    PR COURSE — Tab Switch
 ════════════════════════════════════ */
@@ -1516,379 +1296,10 @@ function switchPrTab(id, btn) {
   document.querySelectorAll('.pr-tab').forEach(t => t.classList.remove('active'));
   if (btn) btn.classList.add('active');
   else {
-    var map = {curriculum:0, studycase:1, quizgame:2, 'smcr-article':0};
+    var map = {curriculum:0, 'smcr-article':0};
     var tabs = document.querySelectorAll('.pr-tab');
     if (tabs[map[id]]) tabs[map[id]].classList.add('active');
   }
-  if (id === 'studycase' && !caseInitialized) initCase();
-  if (id === 'quizgame') resetQuizView();
-}
-
-/* ════════════════════════════════════
-   STUDY CASE DATA & LOGIC
-════════════════════════════════════ */
-var caseInitialized = false;
-var caseData = [
-  {
-    step: "Bước 1 — Phát hiện khủng hoảng",
-    story: "📱 Buổi sáng thứ Hai, bạn mở điện thoại và thấy hàng loạt bài đăng trên mạng xã hội tố cáo sản phẩm ClearDrop bị đổi màu lạ sau khi uống. Hashtag #ClearDropLỗi đang có 50.000 lượt đề cập trong vòng 2 giờ. Báo chí bắt đầu liên hệ. Giám đốc gọi điện hỏi bạn phải làm gì ngay bây giờ.",
-    question: "Hành động ĐẦU TIÊN nào bạn nên thực hiện ngay lập tức?",
-    opts: [
-      { text: "Đăng ngay thông cáo báo chí lên tất cả kênh để trấn an dư luận", correct: false },
-      { text: "Xác minh thông tin nội bộ và triệu tập nhóm xử lý khủng hoảng", correct: true },
-      { text: "Liên hệ các tờ báo lớn để yêu cầu gỡ bài và im lặng tạm thời", correct: false },
-      { text: "Đăng bài phủ nhận thẳng thắn trên fanpage và đổ lỗi cho người dùng", correct: false }
-    ],
-    feedback_ok: "✅ Đúng! Nguyên tắc vàng trong PR: không hành động khi chưa có đủ thông tin. Việc xác minh nội bộ trước giúp bạn tránh đưa ra tuyên bố sai lầm — điều này còn tệ hơn im lặng tạm thời. Nhóm xử lý khủng hoảng cần được kích hoạt ngay để phối hợp đồng bộ.",
-    feedback_bad: "❌ Không hợp lý! Hành động thiếu thông tin có thể làm tình hình tệ hơn. Tuyên bố sai, yêu cầu gỡ bài, hay đổ lỗi cho khách hàng đều sẽ bị mạng xã hội 'vùi dập' ngay lập tức."
-  },
-  {
-    step: "Bước 2 — Định vị thông điệp",
-    story: "🔬 Sau 2 giờ kiểm tra, bộ phận kỹ thuật xác nhận: một lô sản phẩm (~5.000 chai) bị lỗi thật do lỗi từ nhà cung cấp nguyên liệu. Chưa có báo cáo về ảnh hưởng sức khỏe nghiêm trọng. Ban lãnh đạo yêu cầu bạn soạn thông điệp chính thức đầu tiên trong vòng 1 giờ.",
-    question: "Thông điệp nào phù hợp nhất cho thông cáo đầu tiên?",
-    opts: [
-      { text: "\"Chúng tôi bác bỏ mọi cáo buộc vô căn cứ. Sản phẩm ClearDrop đạt chuẩn chất lượng đầy đủ.\"", correct: false },
-      { text: "\"Chúng tôi xác nhận có vấn đề ở một lô hàng, đang điều tra tích cực và sẽ cập nhật sau 4 giờ.\"", correct: true },
-      { text: "\"Sự cố này là do người dùng bảo quản sai cách. Chúng tôi không chịu trách nhiệm.\"", correct: false },
-      { text: "Không cần thông cáo — đợi dư luận tự lắng xuống sau vài ngày", correct: false }
-    ],
-    feedback_ok: "✅ Xuất sắc! Thông điệp khủng hoảng hiệu quả cần: (1) Thừa nhận vấn đề có tồn tại, (2) Cam kết hành động, (3) Đặt mốc thời gian cụ thể. Việc đặt mốc '4 giờ' tạo cảm giác kiểm soát tình huống và cho báo chí một lý do để chờ thay vì tự đưa ra kết luận.",
-    feedback_bad: "❌ Thông điệp này sẽ phản tác dụng! Phủ nhận khi bằng chứng rõ ràng, đổ lỗi khách hàng, hay im lặng đều khiến mạng xã hội càng phẫn nộ hơn và báo chí sẽ viết theo hướng tệ nhất."
-  },
-  {
-    step: "Bước 3 — Hành động khắc phục",
-    story: "📣 Thông cáo đầu tiên nhận được phản ứng tích cực hơn dự kiến. Nhưng một influencer lớn (2M followers) vừa đăng video thử sản phẩm bị lỗi và nói sẽ 'tẩy chay ClearDrop vĩnh viễn'. Video đã 500K views và đang viral. Bạn phải hành động trong 30 phút.",
-    question: "Chiến lược tốt nhất để xử lý influencer này là gì?",
-    opts: [
-      { text: "Nhờ luật sư gửi thư yêu cầu gỡ video vì ảnh hưởng uy tín thương hiệu", correct: false },
-      { text: "Liên hệ trực tiếp qua DM, xin lỗi chân thành, mời hợp tác kiểm tra chất lượng", correct: true },
-      { text: "Bỏ qua — tự đăng nội dung tích cực để đẩy video kia xuống bảng feed", correct: false },
-      { text: "Nhờ các influencer khác phản bác và chỉ trích người đó công khai", correct: false }
-    ],
-    feedback_ok: "✅ Rất chuyên nghiệp! Tiếp cận cá nhân, chân thành là chiến lược hiệu quả nhất. Mời influencer tham gia quá trình kiểm tra thể hiện sự minh bạch. Nhiều thương hiệu đã biến 'kẻ phản đối' thành 'đại sứ thiện chí' nhờ cách xử lý này — và đây là PR tốt nhất.",
-    feedback_bad: "❌ Sai chiến lược! Kiện tụng influencer sẽ tạo 'Streisand Effect' — thu hút càng nhiều người xem. Bỏ qua hoặc nhờ người khác phản bác đều thiếu chân thành và sẽ bị mạng xã hội nhận ra ngay."
-  },
-  {
-    step: "Bước 4 — Phục hồi thương hiệu",
-    story: "🌱 Một tuần sau: lô hàng lỗi đã thu hồi 100%. Influencer đã đăng video mới khen ngợi cách xử lý của ClearDrop. Dư luận đang trở nên trung tính. Đây là cơ hội để bạn thực hiện bước cuối — biến khủng hoảng thành cơ hội xây dựng hình ảnh thương hiệu dài hạn.",
-    question: "Chiến lược phục hồi thương hiệu dài hạn nào HIỆU QUẢ NHẤT?",
-    opts: [
-      { text: "Tung chiến dịch quảng cáo lớn phủ sóng khắp nơi để người dân quên đi sự cố", correct: false },
-      { text: "Ra mắt 'Chương trình Chất lượng ClearDrop' — minh bạch hóa quy trình sản xuất cho công chúng", correct: true },
-      { text: "Thay đổi hoàn toàn tên thương hiệu để bắt đầu lại từ đầu", correct: false },
-      { text: "Tặng voucher giảm giá 50% cho tất cả khách hàng trong 1 tháng", correct: false }
-    ],
-    feedback_ok: "🏆 Xuất sắc! Minh bạch hóa quy trình là chiến lược PR bền vững nhất. Johnson & Johnson (Tylenol 1982), Samsung (Note 7 2016) đều phục hồi nhờ cách tiếp cận tương tự — biến cuộc khủng hoảng thành bằng chứng rằng thương hiệu có trách nhiệm và đáng tin cậy hơn trước.",
-    feedback_bad: "❌ Chưa tối ưu! Quảng cáo ồ ạt khi người dùng còn hoài nghi sẽ phản tác dụng. Đổi tên thương hiệu là giải pháp tốn kém và mất hết vốn nhận diện đã xây. Giảm giá chỉ là giải pháp ngắn hạn, không xây dựng lòng tin thực sự."
-  }
-];
-var caseCurrentQ = 0;
-var caseAnswers = [];
-
-function initCase() {
-  caseInitialized = true;
-  caseCurrentQ = 0;
-  caseAnswers = [];
-  document.getElementById('caseResult').classList.remove('show');
-  document.getElementById('caseNav').style.display = 'flex';
-  
-  // Build progress bar
-  var pb = document.getElementById('caseProgressBar');
-  pb.innerHTML = '<span style="font-size:12px;color:var(--text2);margin-right:6px;">Tiến độ:</span>';
-  caseData.forEach(function(_, i) {
-    var s = document.createElement('div');
-    s.className = 'cp-step' + (i === 0 ? ' active' : '');
-    s.id = 'cpStep' + i;
-    pb.appendChild(s);
-  });
-
-  renderCaseQ(0);
-}
-
-function renderCaseQ(idx) {
-  var q = caseData[idx];
-  var answered = caseAnswers[idx] !== undefined;
-  var letters = ['A','B','C','D'];
-  
-  var html = '<div class="case-story"><h4>📋 ' + q.step + '</h4><p>' + q.story + '</p></div>';
-  html += '<div class="case-question"><h4>❓ ' + q.question + '</h4>';
-  html += '<div class="case-options">';
-  q.opts.forEach(function(opt, i) {
-    var cls = 'case-opt';
-    var icon = letters[i];
-    if (answered) {
-      cls += ' answered';
-      if (caseAnswers[idx] === i) {
-        cls += opt.correct ? ' correct' : ' wrong';
-        icon = opt.correct ? '✓' : '✗';
-      } else if (opt.correct) {
-        cls += ' correct';
-        icon = '✓';
-      }
-    }
-    html += '<button class="' + cls + '" onclick="answerCase(' + idx + ',' + i + ')">';
-    html += '<span class="opt-icon">' + icon + '</span>' + opt.text + '</button>';
-  });
-  html += '</div>';
-  
-  if (answered) {
-    var chosen = caseAnswers[idx];
-    var isCorrect = q.opts[chosen].correct;
-    html += '<div class="case-feedback show ' + (isCorrect ? 'cf-good' : 'cf-bad') + '">' + (isCorrect ? q.feedback_ok : q.feedback_bad) + '</div>';
-  }
-  
-  html += '</div>';
-  document.getElementById('caseQuestions').innerHTML = html;
-  
-  // Update nav
-  var nextBtn = document.getElementById('caseNextBtn');
-  if (idx < caseData.length - 1) {
-    nextBtn.textContent = 'Tiếp theo →';
-    nextBtn.onclick = nextCaseQ;
-  } else {
-    nextBtn.textContent = '🏁 Xem kết quả';
-    nextBtn.onclick = showCaseResult;
-  }
-  nextBtn.disabled = !answered;
-  document.querySelector('.btn-case-s').style.display = idx === 0 ? 'none' : '';
-  
-  // Update progress
-  document.querySelectorAll('.cp-step').forEach(function(s,i) {
-    s.className = 'cp-step' + (i < idx ? ' done' : (i === idx ? ' active' : ''));
-  });
-}
-
-function answerCase(qIdx, optIdx) {
-  if (caseAnswers[qIdx] !== undefined) return;
-  caseAnswers[qIdx] = optIdx;
-  renderCaseQ(qIdx);
-}
-
-function nextCaseQ() {
-  if (caseCurrentQ < caseData.length - 1) {
-    caseCurrentQ++;
-    renderCaseQ(caseCurrentQ);
-  }
-}
-
-function prevCaseQ() {
-  if (caseCurrentQ > 0) {
-    caseCurrentQ--;
-    renderCaseQ(caseCurrentQ);
-  }
-}
-
-function showCaseResult() {
-  document.getElementById('caseQuestions').innerHTML = '';
-  document.getElementById('caseNav').style.display = 'none';
-  document.getElementById('caseProgressBar').style.display = 'none';
-  
-  var correct = 0;
-  caseAnswers.forEach(function(ans, i) {
-    if (caseData[i].opts[ans] && caseData[i].opts[ans].correct) correct++;
-  });
-  var wrong = caseData.length - correct;
-  var points = correct * 25;
-  
-  var emoji = correct === 4 ? '🏆' : correct === 3 ? '🎉' : correct === 2 ? '😊' : '📚';
-  var msg = correct === 4 ? 'Xuất sắc! Bạn là PR Manager hoàn hảo!' :
-            correct === 3 ? 'Rất tốt! Còn một điểm cần cải thiện.' :
-            correct === 2 ? 'Khá ổn! Hãy đọc lại lý thuyết và thử lại.' : 
-            'Cần cố gắng thêm! Đọc lại feedback và làm lại nhé.';
-
-  document.getElementById('resultEmoji').textContent = emoji;
-  document.getElementById('resultScore').textContent = points + '/100';
-  document.getElementById('resultMsg').textContent = msg;
-  document.getElementById('rbCorrect').textContent = correct;
-  document.getElementById('rbWrong').textContent = wrong;
-  document.getElementById('rbPoints').textContent = points;
-  document.getElementById('caseResult').classList.add('show');
-  
-  // Lưu điểm vào localStorage
-  saveExerciseScore('pr-studycase', 'Xử lý khủng hoảng truyền thông', '🔍 Study Case', 'pr', points, 100, correct, caseData.length);
-  renderPrCurriculum();
-}
-
-/* ════════════════════════════════════
-   QUIZ GAME DATA & LOGIC
-════════════════════════════════════ */
-var quizData = [
-  { q: "PR là viết tắt của?", opts: ["Public Report","Public Relations","Press Release","Personal Relations"], ans: 1, explain: "PR = Public Relations (Quan hệ công chúng) — ngành quản lý hình ảnh và mối quan hệ giữa tổ chức với công chúng." },
-  { q: "Khi xảy ra khủng hoảng truyền thông, điều quan trọng NHẤT cần làm đầu tiên là?", opts: ["Đăng thông cáo báo chí ngay lập tức","Tắt mọi tài khoản mạng xã hội","Xác minh thông tin và triệu tập nhóm xử lý","Liên hệ luật sư để kiện tụng"], ans: 2, explain: "Xác minh thông tin trước khi hành động tránh đưa ra tuyên bố sai, có thể gây tổn hại thêm." },
-  { q: "Thông cáo báo chí (Press Release) thường được gửi cho đối tượng nào?", opts: ["Nhân viên nội bộ","Phóng viên và biên tập viên báo chí","Khách hàng trực tiếp","Nhà đầu tư chứng khoán"], ans: 1, explain: "Press Release là tài liệu gửi cho giới báo chí để đưa tin. Nhân viên nội bộ dùng Memo; Khách hàng dùng Email marketing." },
-  { q: "Nguyên tắc nào KHÔNG thuộc mô hình PESO trong PR?", opts: ["Paid Media","Earned Media","Social Media","Owned Media"], ans: 2, explain: "PESO = Paid, Earned, Shared, Owned. 'Social Media' không phải là tên riêng trong PESO — Shared Media mới là tên đúng (bao gồm cả mạng xã hội)." },
-  { q: "Stakeholder trong PR là gì?", opts: ["Cổ đông nắm giữ cổ phần công ty","Tất cả các bên có liên quan đến tổ chức","Chỉ gồm khách hàng và báo chí","Nhà quản lý cấp cao"], ans: 1, explain: "Stakeholder = tất cả bên liên quan: khách hàng, nhân viên, nhà đầu tư, cộng đồng, chính phủ, báo chí..." },
-  { q: "Earned Media trong PR là gì?", opts: ["Quảng cáo trả phí trên Google","Nội dung do thương hiệu tự đăng","Bài viết báo chí và chia sẻ tự nhiên từ công chúng","Video đăng trên YouTube chính thức"], ans: 2, explain: "Earned Media là truyền thông 'được kiếm' — báo chí tự đưa tin, người dùng tự chia sẻ mà không tốn chi phí quảng cáo trực tiếp." },
-  { q: "Đâu là ví dụ điển hình về 'Streisand Effect'?", opts: ["Một thương hiệu tăng nhận diện nhờ chiến dịch viral","Việc cố gắng che bảo thông tin lại khiến thông tin đó lan rộng hơn","Báo chí tự nguyện gỡ bài xấu về thương hiệu","Chiến dịch PR tạo ra làn sóng hashtag tích cực"], ans: 1, explain: "Streisand Effect: ca sĩ Barbra Streisand kiện gỡ ảnh nhà mình khỏi internet nhưng vô tình khiến hàng triệu người tìm xem. Trong PR, cố ngăn thông tin thường làm nó lan nhanh hơn." },
-  { q: "Mục tiêu chính của Crisis Communication là gì?", opts: ["Xóa bỏ hoàn toàn thông tin xấu trên mạng","Bảo vệ và phục hồi uy tín của tổ chức","Tạo ra câu chuyện hoàn toàn mới để đánh lạc hướng","Trừng phạt những người lan truyền tin xấu"], ans: 1, explain: "Crisis Communication nhằm bảo vệ uy tín, giữ niềm tin của các bên liên quan và phục hồi hình ảnh tổ chức sau khủng hoảng." },
-  { q: "Công cụ nào thường được dùng để đo lường hiệu quả chiến dịch PR?", opts: ["ROI và doanh thu bán hàng","Media Reach, Sentiment Analysis và Share of Voice","Số lượng nhân viên tham gia","Chi phí quảng cáo tiết kiệm được"], ans: 1, explain: "PR đo bằng: Media Reach (độ phủ), Sentiment (tông độ tích cực/tiêu cực), Share of Voice (thị phần truyền thông so với đối thủ)." },
-  { q: "Trong PR, 'Key Message' là gì?", opts: ["Tin nhắn quan trọng gửi cho CEO","Thông điệp cốt lõi nhất thương hiệu muốn công chúng ghi nhớ","Mật khẩu hệ thống quản lý PR","Bộ câu hỏi dành cho phóng viên"], ans: 1, explain: "Key Message = 2-3 thông điệp cốt lõi mà thương hiệu muốn công chúng nhớ đến. Mọi hoạt động truyền thông đều phải hướng về Key Message này." }
-];
-
-var qState = { cur: 0, score: 0, correct: 0, wrong: 0, bonus: 0, combo: 0, maxCombo: 0, timer: null, startTime: 0, answered: false };
-
-function resetQuizView() {
-  document.getElementById('quizStart').style.display = 'block';
-  document.getElementById('quizGame').style.display = 'none';
-  document.getElementById('quizEnd').classList.remove('show');
-  clearInterval(qState.timer);
-}
-
-function startQuiz() {
-  qState = { cur: 0, score: 0, correct: 0, wrong: 0, bonus: 0, combo: 0, maxCombo: 0, timer: null, startTime: 0, answered: false };
-  document.getElementById('quizStart').style.display = 'none';
-  document.getElementById('quizGame').style.display = 'block';
-  document.getElementById('quizEnd').classList.remove('show');
-  renderQ();
-}
-
-function renderQ() {
-  var q = quizData[qState.cur];
-  var letters = ['A','B','C','D'];
-  qState.answered = false;
-  
-  document.getElementById('qNumLabel').textContent = 'Câu hỏi ' + (qState.cur+1) + '/10';
-  document.getElementById('qNum').textContent = qState.cur+1;
-  document.getElementById('qText').textContent = q.q;
-  document.getElementById('qExplain').textContent = '';
-  document.getElementById('qExplain').classList.remove('show');
-  document.getElementById('comboBar').innerHTML = '';
-  document.getElementById('qProgFill').style.width = (qState.cur/10*100) + '%';
-  
-  var html = '';
-  q.opts.forEach(function(opt, i) {
-    html += '<button class="q-opt" id="qOpt'+i+'" onclick="answerQ('+i+')">';
-    html += '<span class="q-letter">'+letters[i]+'</span>' + opt + '</button>';
-  });
-  document.getElementById('qOpts').innerHTML = html;
-  
-  startTimer();
-}
-
-function startTimer() {
-  var timeLeft = 15;
-  qState.startTime = Date.now();
-  clearInterval(qState.timer);
-  updateTimerRing(15);
-  
-  qState.timer = setInterval(function() {
-    timeLeft--;
-    updateTimerRing(timeLeft);
-    if (timeLeft <= 0) {
-      clearInterval(qState.timer);
-      if (!qState.answered) timeUp();
-    }
-  }, 1000);
-}
-
-function updateTimerRing(t) {
-  document.getElementById('timerText').textContent = t;
-  var pct = t / 15;
-  var circumference = 138.2;
-  document.getElementById('timerCircle').style.strokeDashoffset = circumference * (1-pct);
-  document.getElementById('timerCircle').style.stroke = t <= 5 ? '#f44336' : (t <= 8 ? '#ff9800' : '');
-  document.getElementById('timerText').style.color = t <= 5 ? '#f44336' : '';
-}
-
-function timeUp() {
-  qState.answered = true;
-  qState.wrong++;
-  qState.combo = 0;
-  
-  var q = quizData[qState.cur];
-  document.querySelectorAll('.q-opt').forEach(function(el, i) {
-    el.classList.add('locked');
-    if (i === q.ans) el.classList.add('q-reveal');
-  });
-  document.getElementById('qExplain').textContent = '⏰ Hết giờ! ' + q.explain;
-  document.getElementById('qExplain').classList.add('show');
-  
-  setTimeout(goNextQ, 2500);
-}
-
-function answerQ(idx) {
-  if (qState.answered) return;
-  qState.answered = true;
-  clearInterval(qState.timer);
-  
-  var q = quizData[qState.cur];
-  var elapsed = (Date.now() - qState.startTime) / 1000;
-  var isCorrect = idx === q.ans;
-  var letters = ['A','B','C','D'];
-  
-  document.querySelectorAll('.q-opt').forEach(function(el, i) {
-    el.classList.add('locked');
-    if (i === q.ans) el.classList.add('q-correct');
-    else if (i === idx && !isCorrect) el.classList.add('q-wrong');
-  });
-  
-  var bonusThisTurn = 0;
-  if (isCorrect) {
-    qState.score += 10;
-    qState.correct++;
-    qState.combo++;
-    if (qState.combo > qState.maxCombo) qState.maxCombo = qState.combo;
-    
-    if (elapsed < 5) { qState.score += 5; qState.bonus += 5; bonusThisTurn += 5; }
-    if (qState.combo > 0 && qState.combo % 3 === 0) { qState.score += 15; qState.bonus += 15; bonusThisTurn += 15; }
-    
-    var comboTxt = '';
-    if (qState.combo >= 3 && qState.combo % 3 === 0) comboTxt = '🔥 COMBO x' + qState.combo + '! +15 điểm!';
-    else if (bonusThisTurn > 0) comboTxt = '⚡ Nhanh! +' + bonusThisTurn + ' điểm bonus!';
-    else if (qState.combo >= 2) comboTxt = '🔥 Combo ' + qState.combo + ' câu!';
-    if (comboTxt) document.getElementById('comboBar').innerHTML = '<span class="combo-txt">'+comboTxt+'</span>';
-  } else {
-    qState.wrong++;
-    qState.combo = 0;
-  }
-  
-  document.getElementById('qScore').textContent = qState.score;
-  document.getElementById('qExplain').textContent = (isCorrect ? '✅ ' : '❌ ') + q.explain;
-  document.getElementById('qExplain').classList.add('show');
-  
-  setTimeout(goNextQ, 2200);
-}
-
-function goNextQ() {
-  if (qState.cur < quizData.length - 1) {
-    qState.cur++;
-    renderQ();
-  } else {
-    showQuizEnd();
-  }
-}
-
-function showQuizEnd() {
-  document.getElementById('quizGame').style.display = 'none';
-  var end = document.getElementById('quizEnd');
-  end.classList.add('show');
-  
-  document.getElementById('qFinalScore').textContent = qState.score;
-  document.getElementById('qeCorrect').textContent = qState.correct;
-  document.getElementById('qeWrong').textContent = qState.wrong;
-  document.getElementById('qeBonus').textContent = qState.bonus;
-  document.getElementById('qeCombo').textContent = qState.maxCombo;
-  
-  var pct = qState.correct / 10;
-  var stars = pct >= 0.9 ? '⭐⭐⭐' : pct >= 0.6 ? '⭐⭐' : '⭐';
-  var rank = pct >= 0.9 ? '🏆 PR Expert — Xuất sắc! Bạn nắm vững kiến thức nền tảng PR.' :
-             pct >= 0.7 ? '🎓 PR Professional — Rất tốt! Chỉ còn vài điểm cần ôn lại.' :
-             pct >= 0.5 ? '📚 PR Learner — Ổn! Xem lại giải thích và thử lại nhé.' :
-             '🌱 PR Rookie — Mới bắt đầu! Đừng nản, học lại và thử lại!';
-  
-  document.getElementById('qStars').textContent = stars;
-  document.getElementById('qeRankMsg').textContent = rank;
-  document.getElementById('qProgFill').style.width = '100%';
-  
-  // Lưu điểm vào localStorage
-  var maxQuizScore = 175; // 10*10 + 10*5 bonus + 3*15 combo bonus approx
-  saveExerciseScore('pr-quiz', 'Kiến thức PR nền tảng', '🎮 Quiz Game', 'pr', qState.score, maxQuizScore, qState.correct, 10);
-  renderPrCurriculum();
-}
-
-function restartQuiz() {
-  document.getElementById('quizEnd').classList.remove('show');
-  startQuiz();
 }
 </script>
 
@@ -1978,7 +1389,6 @@ function restartQuiz() {
 function animateValue(id, start, end, duration, suffix = '') {
   let obj = document.getElementById(id);
   if (!obj) return;
-  // Xử lý trường hợp database trống (số 0)
   if (start === end) {
     obj.innerText = end + suffix;
     return;
@@ -2000,10 +1410,8 @@ function animateValue(id, start, end, duration, suffix = '') {
 let isStatsAnimated = false;
 
 function initRealtimeStats() {
-  // 1. Lấy ĐÚNG số lượng Học viên (Users) trên Firebase, không cộng thêm số ảo
   db.collection('users').onSnapshot((snapshot) => {
     let totalUsers = snapshot.size; 
-    
     if (!isStatsAnimated) {
       animateValue("liveStatStudents", 0, totalUsers, 1500, "");
     } else {
@@ -2011,7 +1419,6 @@ function initRealtimeStats() {
     }
   });
 
-  // 2. Lấy ĐÚNG độ Hài lòng (Từ số sao Reviews) trên Firebase
   db.collection('reviews').onSnapshot((snapshot) => {
     let totalRating = 0;
     let count = snapshot.size;
@@ -2021,19 +1428,12 @@ function initRealtimeStats() {
       totalRating += (data.rating || 5);
     });
     
-    // Tính phần trăm hài lòng thực tế (không có mức tối thiểu ảo 90% nữa)
-    // Nếu chưa có review nào thì mặc định hiển thị 100%
     let percentage = count === 0 ? 100 : Math.round((totalRating / count) / 5 * 100);
 
     if (!isStatsAnimated) {
       animateValue("liveStatSat", 0, percentage, 1500, "%");
-      
-      // Số ngành học thật đang có trên web là 2 (PR & Marketing)
       animateValue("liveStatDepts", 0, 2, 1000, "");
-      
-      // Tổng số bài tập thật trên web (4 bài PR + 4 bài MKT = 8)
-      animateValue("liveStatTasks", 0, 8, 1500, "");
-      
+      animateValue("liveStatTasks", 0, 1, 1500, ""); // Chỉ còn 1 bài tập
       isStatsAnimated = true; 
     } else {
       document.getElementById("liveStatSat").innerText = percentage + "%";
@@ -2099,42 +1499,6 @@ var I18N = {
     cpCurLbl:'Mật khẩu hiện tại *',cpCurErr:'Mật khẩu hiện tại không đúng',cpNewLbl:'Mật khẩu mới *',cpNewErr:'Mật khẩu phải có ít nhất 8 ký tự',cpConLbl:'Xác nhận mật khẩu mới *',cpConErr:'Mật khẩu không khớp',cpConOk:'✓ Mật khẩu khớp',cpSaveBtn:'✅ Cập nhật',
     strengthWeak:'⚠️ Yếu',strengthMed:'👍 Trung bình',strengthStrong:'💪 Mạnh',confirmLogout:'Bạn có chắc muốn đăng xuất?',
     errFill:'❌ Vui lòng điền đầy đủ thông tin!',errPwdShort:'❌ Mật khẩu phải ít nhất 8 ký tự!',errPwdMatch:'❌ Mật khẩu xác nhận không khớp!',errTerms:'❌ Vui lòng đồng ý điều khoản!',errFpFill:'❌ Vui lòng nhập email!',errNameEmpty:'❌ Họ và tên không được trống!',loginRequired:'⚠️ Vui lòng đăng nhập!'
-  },
-  en: {
-    navHome:'🏠 Home',navProfile:'👤 Profile',navSettings:'⚙️ Settings',navChangePwd:'🔑 Change Password',navLogout:'🚪 Logout',navLogin:'Login',navRegister:'Register',
-    loginWelcome:'Welcome Back!',loginSubLeft:'Explore PR & Marketing learning opportunities',loginH2:'Login',loginSub:'Sign in to continue your journey',
-    emailLbl:'Email',pwLbl:'Password',rememberMe:'Remember me',forgotLink:'Forgot password?',loginBtn:'Login',orWith:'Or login with',
-    noAccountRow:'No account? <a onclick="showPage(\'page-register\')" style="cursor:pointer;">Sign up</a>',
-    regWelcome:'Join Us!',regSubLeft:'Start your professional PR & Marketing journey',regH2:'Create Account',regSub:'Create a free account to get started',
-    b1:'PR Practical Tasks',b2:'Marketing Practical Tasks',b3:'24/7 Support',b4:'Student Community',
-    fullnameLbl:'Full Name *',phoneLbl:'Phone Number',confirmPwLbl:'Confirm Password *',roleLbl:'You are',
-    roleDefault:'Select role',roleStudent:'Student',rolePro:'Professional',roleTeacher:'Teacher',roleOther:'Other',
-    termsLabel:'I agree to the <a onclick="showPage(\'page-terms\')">Terms</a> and <a onclick="showPage(\'page-privacy\')">Privacy Policy</a>',regBtn:'Register Now',
-    hasAccountRow:'Already have an account? <a onclick="showPage(\'page-login\')" style="cursor:pointer;">Login now</a>',
-    fpTitle:'Forgot Password?',fpSub:"Don't worry! We'll help you recover your account",fp1h:'Enter email',fp1p:'Registered email',fp2h:'Get new password',fp2p:'Check your inbox',fp3h:'Login again',fp3p:'Use the new password',
-    fpH2:'Password Recovery',fpSubRight:'Enter your email to get a new password',fpNote:'The reset link will be sent to your email.',fpBtn:'Recover Password',fpBackLink:'← Back to Login',
-    topBar:'Working hours: 8:00–22:00 | Contact: ',smMain:'Main Navigation',smDepts:'Departments',smAbout:'About CEP',smAccount:'Account',smRegCta:'🚀 Register Today',smContact:'📩 Contact Us',
-    heroH1:'Start Your Career<br>Journey Today',heroP:'Explore and develop professional PR & Marketing skills with Career Experience',heroExplore:'🚀 Explore Now',heroLearn:'📖 Learn More',
-    statDepts:'Departments',statStudents:'Students',statTasks:'Practical Tasks',statSat:'Satisfied',featTitle:'Why Choose CEP?',featSub:'The practical learning platform designed for PR & Marketing',
-    f1h:'Practical Tasks',f1p:'Create and practice tasks aligned with real PR & Marketing industry needs',f2h:'Community',f2p:'Connect with professionals and fellow students',f3h:'Track Progress',f3p:'System to monitor and evaluate your learning progress',f4h:'Completion Certificate',f4p:'Earn a certificate upon completing departmental tasks',
-    deptTitle:'Departments',deptSub:'Choose your field — task content will be added soon',prBadge:'PR',prTitle:'Public Relations',prDesc:'Develop public relations, brand building and media management skills.',
-    mktBadge:'Marketing',mktTitle:'Marketing',mktDesc:'Practice Digital Marketing, Content Strategy and Brand Management.',deptBtnSoon:'🔜 Coming Soon',
-    whyTitle:'Why Choose Career Experience?',whyDesc:"CEP isn't just where you learn — it's a platform where you connect with your passion and build your dream career.",
-    why1:'Tasks designed by real-world professionals in PR & Marketing.',why2:'Quality is always our top priority.',why3:'Dynamic student community, supporting each other.',
-    reviewTitle:'Reviews About CEP',reviewSub:'What students say about us',reviewBadge:'Excellent!',
-    r1:'CEP has very practical content. Friendly and easy-to-use interface.',r1role:'PR Student',r2:"CEP's Marketing section is very structured. Tasks are realistic.",r2role:'Marketing Student',r3:"CEP's student community is very enthusiastic. I've learned a lot.",r3role:'PR & Marketing Student',
-    footerAbout:'Professional PR & Marketing skills development platform.',footerLinks:'Quick Links',footerContact:'Contact',footerAddr:'Van Lang University, HCMC',footerHours:'Working Hours',fh1:'Mon–Fri: 8:00–22:00',fh2:'Sat: 8:00–20:00',fh3:'Sun: 9:00–18:00',
-    continueLearning:'▶ Continue Learning',editBtn:'✏️ Edit',editTitle:'Edit Profile',avatarLbl:'Profile Photo',choosePhoto:'Choose Photo',occLbl:'Occupation',locLbl:'Location',webLbl:'Website / LinkedIn',bioLbl:'About Me',saveBtn:'💾 Save',cancelBtn:'Cancel',
-    dobLbl:'Date of Birth',genderLbl:'Gender',fbLbl:'Facebook Link',eduLbl:'Education',expLbl:'Experience',skillsLbl:'Skills',male:'Male',female:'Female',otherGender:'Other',
-    statsTitle:'📊 Learning Stats',statActive:'Active Tasks',statCerts:'Certificates',statHours:'Study Hours',noIntro:'No introduction yet. Add a few lines about yourself!',roleLblMap:{student:'Student',professional:'Professional',teacher:'Teacher',other:'Other'},joinedDate:'Joined',welcomeBack:'Welcome back,',
-    settingsH1:'⚙️ Settings',settingsSub:'Customize your experience',sApp:'🎨 Appearance',sDarkH:'Dark Mode',sDarkP:'Enable to protect your eyes at night',sLangH:'🌐 Language',sLangTitle:'Display Language',sLangDesc:'Applies to the entire app interface',
-    sNotif:'🔔 Notifications',sSysN:'System Notifications',sSysNd:'Get updates about tasks',sEmailN:'Email Notifications',sEmailNd:'Get emails about your progress',
-    sSec:'🔐 Security',sCpH:'Change Password',sCpP:'Update password periodically',sCpBtn:'Change Password',s2fH:'2-Factor Auth',s2fP:'Enhance security',s2fBtn:'Setup',
-    sAccH:'⚠️ Account',sExH:'Export Data',sExP:'Download all your data',sExBtn:'📥 Export',sLoH:'Logout',sLoP:'Logout from this device',sLoBtn:'🚪 Logout',
-    cpH1:'🔑 Change Password',cpSub:'Protect your account with a strong password',cpTipsTitle:'🔐 A strong password should have:',cpT1:'At least 8 characters',cpT2:'Uppercase and lowercase letters',cpT3:'Numbers and special characters',cpT4:'No personal info',
-    cpCurLbl:'Current Password *',cpCurErr:'Current password is incorrect',cpNewLbl:'New Password *',cpNewErr:'Password must be at least 8 characters',cpConLbl:'Confirm New Password *',cpConErr:'Passwords do not match',cpConOk:'✓ Passwords match',cpSaveBtn:'✅ Update',
-    strengthWeak:'⚠️ Weak',strengthMed:'👍 Medium',strengthStrong:'💪 Strong',confirmLogout:'Are you sure you want to logout?',
-    errFill:'❌ Please fill all fields!',errPwdShort:'❌ Password must be at least 8 characters!',errPwdMatch:'❌ Passwords do not match!',errTerms:'❌ You must agree to the terms!',errFpFill:'❌ Please enter email!',errNameEmpty:'❌ Name cannot be empty!',loginRequired:'⚠️ Please login first!'
   }
 };
 
@@ -2156,9 +1520,7 @@ function toast(msgKey, type) {
   setTimeout(() => tst.classList.remove('show'), 3000);
 }
 
-// Hàm showPage mới hỗ trợ history.pushState để dùng nút Back và F5
 function showPage(pageId, pushState = true) {
-  // Xác định các trang cần đăng nhập
   const protectedPages = ['page-profile', 'page-settings', 'page-changepass', 'page-pr-course', 'page-mkt-course'];
   
   if (protectedPages.includes(pageId) && !auth.currentUser) {
@@ -2177,7 +1539,6 @@ function showPage(pageId, pushState = true) {
   
   window.scrollTo({ top: 0, behavior: 'smooth' });
 
-  // Ẩn/hiện global header: ẩn trên auth pages
   var authPages = ['page-login','page-register','page-forgot','page-reset-password'];
   var globalHeader = document.getElementById('globalHeader');
   if(globalHeader) {
@@ -2188,7 +1549,6 @@ function showPage(pageId, pushState = true) {
     }
   }
 
-  // Cập nhật URL History
   if (pushState) {
     history.pushState({ page: pageId }, '', '#' + pageId);
   }
@@ -2206,7 +1566,6 @@ function showPage(pageId, pushState = true) {
   }
 }
 
-// Bắt sự kiện ấn nút Back/Forward của trình duyệt
 window.addEventListener('popstate', function(e) {
   if (e.state && e.state.page) {
     showPage(e.state.page, false);
@@ -2217,7 +1576,6 @@ window.addEventListener('popstate', function(e) {
   }
 });
 
-// Điều hướng ban đầu khi người dùng ấn F5 hoặc gõ URL
 function initRoute() {
   var hash = location.hash.substring(1);
   if (hash) {
@@ -2257,7 +1615,6 @@ function exportData() {
   toast('toastExport', 'success');
 }
 
-/* Menu Toggle */
 var menuToggle = document.getElementById('menuToggle');
 var slideMenu = document.getElementById('slideMenu');
 var overlay = document.getElementById('overlay');
@@ -2282,9 +1639,6 @@ if(menuToggle) menuToggle.addEventListener('click', function(){ slideMenu.classL
 if(smClose) smClose.addEventListener('click', closeMenu);
 if(overlay) overlay.addEventListener('click', closeMenu);
 
-/* ═══════════════════════════════
-   PASSWORD STRENGTH & MATCH
-═══════════════════════════════ */
 function togglePw(id, icon) {
   var input = document.getElementById(id);
   if(input.type === 'password') { input.type = 'text'; icon.innerText = '🙈'; }
@@ -2313,9 +1667,6 @@ function checkMatch() {
   else { err.style.display = 'none'; ok.style.display = 'block'; }
 }
 
-/* ═══════════════════════════════
-   EXERCISE SCORE SYSTEM
-═══════════════════════════════ */
 function saveExerciseScore(id, name, type, dept, score, maxScore, correct, total) {
   var scores = JSON.parse(localStorage.getItem('cep_exercise_scores') || '{}');
   var existing = scores[id];
@@ -2338,7 +1689,6 @@ function saveExerciseScore(id, name, type, dept, score, maxScore, correct, total
   };
   localStorage.setItem('cep_exercise_scores', JSON.stringify(scores));
   
-  // Toast thông báo
   if(isNew) {
     setTimeout(() => toast('🏆 Hoàn thành bài tập! Đạt ' + score + ' điểm — đã lưu vào Thành tựu!', 'success'), 800);
   } else if(isBetter) {
@@ -2362,12 +1712,9 @@ function getTotalStats() {
 /* ═══════════════════════════════
    PR CURRICULUM RENDER
 ═══════════════════════════════ */
+// CHỈ GIỮ LẠI BÀI SMCRE
 var prExercises = [
-  { id: 'pr-smcr', num: 1, name: 'Mô hình truyền thông SMCRE', desc: 'Kiến trúc tương tác và hiệu quả thông tin', type: '📖 Lý thuyết', maxScore: 100, action: "switchPrTab('smcr-article',null)", available: true },
-  { id: 'pr-studycase', num: 2, name: 'Xử lý khủng hoảng truyền thông', desc: 'Nhập vai PR Manager — quyết định từng bước xử lý khủng hoảng thực tế', type: '🔍 Study Case', maxScore: 100, action: "switchPrTab('studycase',null)", available: true },
-  { id: 'pr-quiz', num: 3, name: 'Kiến thức PR nền tảng', desc: 'Trả lời nhanh 10 câu hỏi, tích điểm và xem xếp hạng hiệu suất của bạn', type: '🎮 Quiz Game', maxScore: 175, action: "switchPrTab('quizgame',null)", available: true },
-  { id: 'pr-press', num: 4, name: 'Viết thông cáo báo chí', desc: 'Kỹ năng soạn thảo press release chuyên nghiệp — sắp ra mắt', type: '📝 Bài viết', maxScore: 100, action: "toast('Nội dung đang được cập nhật!','info')", available: false },
-  { id: 'pr-event', num: 5, name: 'Tổ chức sự kiện PR', desc: 'Lập kế hoạch và vận hành sự kiện thương hiệu — sắp ra mắt', type: '📋 Dự án', maxScore: 100, action: "toast('Nội dung đang được cập nhật!','info')", available: false }
+  { id: 'pr-smcr', num: 1, name: 'Mô hình truyền thông SMCRE', desc: 'Kiến trúc tương tác và hiệu quả thông tin', type: '📖 Lý thuyết', maxScore: 100, action: "switchPrTab('smcr-article',null)", available: true }
 ];
 
 function renderPrCurriculum() {
@@ -2399,8 +1746,8 @@ function renderPrCurriculum() {
     var actions = ex.available ? `
       <div class="ef-actions">
         ${isDone ? `<button class="ef-btn ef-btn-review" onclick="${ex.action}">👁 Xem lại bài</button>
-                    <button class="ef-btn ef-btn-redo" onclick="${ex.action}">🔄 Làm lại</button>` 
-                 : `<button class="ef-btn ef-btn-start" onclick="${ex.action}">🚀 Bắt đầu làm bài</button>`}
+                    <button class="ef-btn ef-btn-redo" onclick="${ex.action}">🔄 Xem lại</button>` 
+                 : `<button class="ef-btn ef-btn-start" onclick="${ex.action}">🚀 Bắt đầu xem bài</button>`}
       </div>` : '';
     
     return `<div class="exercise-frame ${isDone ? 'ef-done' : ''}">
@@ -2421,9 +1768,6 @@ function renderPrCurriculum() {
   }).join('');
 }
 
-/* ═══════════════════════════════
-   ACHIEVEMENT RENDER
-═══════════════════════════════ */
 function renderAchievements() {
   var scores = getExerciseScores();
   var list = Object.values(scores).sort((a,b) => b.completedTimestamp - a.completedTimestamp);
@@ -2469,10 +1813,6 @@ function renderAchievements() {
   var container = document.getElementById('achievementContent');
   if(container) container.innerHTML = calcHtml + achieveHtml;
 }
-
-/* ═══════════════════════════════
-   FIREBASE AUTH ACTIONS
-═══════════════════════════════ */
 
 function signInWithGoogle() {
   var provider = new firebase.auth.GoogleAuthProvider();
@@ -2605,9 +1945,6 @@ function doChangePw() {
   });
 }
 
-/* ═══════════════════════════════
-   FIREBASE AUTH LISTENER
-═══════════════════════════════ */
 let isFirstLoad = true;
 
 auth.onAuthStateChanged((user) => {
@@ -2683,9 +2020,6 @@ auth.onAuthStateChanged((user) => {
   }
 });
 
-/* ═══════════════════════════════
-   PROFILE LOGIC (FIRESTORE)
-═══════════════════════════════ */
 function renderProfile() {
   if(!currentUserData) return;
 
@@ -2777,9 +2111,6 @@ function saveProfile() {
   });
 }
 
-/* ═══════════════════════════════
-   THEME & LANGUAGE SYNC
-═══════════════════════════════ */
 function toggleThemeGlobal() {
   var isDark = document.body.classList.contains('dark-mode');
   toggleDark(!isDark);
@@ -2828,9 +2159,6 @@ function setLang(lang) {
   if(document.getElementById('page-profile').classList.contains('active')) renderProfile();
 }
 
-/* ═══════════════════════════════
-   REALTIME REVIEWS LOGIC
-═══════════════════════════════ */
 let unsubscribeReviews = null;
 
 function initRealtimeReviews() {
@@ -2873,7 +2201,7 @@ function initRealtimeReviews() {
             <div class="reviewer-av">${avatarHtml}</div>
             <div>
               <h4 style="font-size:14px; color:var(--text); margin-bottom:2px;">${data.name || 'Học viên ẩn danh'}</h4>
-              <p style="font-size:12px; color:var(--text2); margin:0;">${data.role || 'Học viên'}</p>
+              <p style="font-size:12px; color:var(--text2); margin:0;">${data.role || 'Học viên CEP'}</p>
             </div>
           </div>
         </div>`;
@@ -2886,42 +2214,54 @@ function initRealtimeReviews() {
   });
 }
 
-function submitReview() {
-  if (!auth.currentUser) {
-    toast('⚠️ Vui lòng đăng nhập để gửi đánh giá!', 'error');
-    showPage('page-login');
-    return;
+document.addEventListener('DOMContentLoaded', function() {
+  const stars = document.querySelectorAll('#starRatingInput span');
+  const ratingInput = document.getElementById('reviewRatingVal');
+  
+  if(stars) {
+    stars.forEach(star => {
+      star.addEventListener('click', function() {
+        let val = this.getAttribute('data-val');
+        ratingInput.value = val;
+        stars.forEach(s => {
+          if(s.getAttribute('data-val') <= val) {
+            s.classList.add('active');
+          } else {
+            s.classList.remove('active');
+          }
+        });
+      });
+    });
   }
+});
 
-  const content = document.getElementById('reviewContentInput').value.trim();
-  const rating = parseInt(document.getElementById('reviewRatingVal').value);
-
-  if (!content) {
-    toast('❌ Vui lòng nhập nội dung đánh giá!', 'error');
-    return;
+function submitReview() {
+  if(!auth.currentUser) {
+    showPage('page-login');
+    return toast('⚠️ Vui lòng đăng nhập để viết đánh giá!', 'error');
   }
   
-  if (content.length < 10) {
-    toast('❌ Đánh giá quá ngắn. Vui lòng nhập ít nhất 10 ký tự.', 'error');
-    return;
-  }
+  const rating = parseInt(document.getElementById('reviewRatingVal').value);
+  const content = document.getElementById('reviewContentInput').value.trim();
+  
+  if(!content) return toast('❌ Vui lòng nhập nội dung đánh giá!', 'error');
+  if(content.length < 10) return toast('❌ Đánh giá cần ít nhất 10 ký tự.', 'error');
 
   const btn = document.querySelector('#writeReviewCard .btn-main');
   btn.innerText = 'Đang gửi...';
   btn.disabled = true;
 
-  // Lấy dữ liệu user hiện tại
   db.collection('users').doc(auth.currentUser.uid).get().then(doc => {
-    let uData = doc.data();
-    
+    let userData = doc.exists ? doc.data() : {};
     let reviewData = {
-      userId: auth.currentUser.uid,
-      userName: uData.fullname || 'Người dùng',
-      userAvatar: uData.avatar || null,
-      userRole: uData.role || 'student',
+      uid: auth.currentUser.uid,
+      name: userData.fullname || auth.currentUser.displayName || 'Học viên',
+      avatar: userData.avatar || auth.currentUser.photoURL || null,
+      role: (userData.role === 'student' ? 'Học viên CEP' : 'Thành viên CEP'),
       rating: rating,
+      badge: rating >= 4 ? 'Tuyệt vời!' : (rating === 3 ? 'Khá tốt' : 'Góp ý'),
       content: content,
-      createdAt: firebase.firestore.FieldValue.serverTimestamp()
+      timestamp: firebase.firestore.FieldValue.serverTimestamp()
     };
 
     db.collection('reviews').add(reviewData).then(() => {
@@ -2937,11 +2277,7 @@ function submitReview() {
   });
 }
 
-/* ═══════════════════════════════
-   INITIALIZE
-═══════════════════════════════ */
 document.addEventListener('DOMContentLoaded', function() {
-  // Kích hoạt thống kê thời gian thực
   initRealtimeStats();
 
   const savedTheme = localStorage.getItem('cep_theme');
