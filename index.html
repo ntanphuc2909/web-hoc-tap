@@ -1354,6 +1354,49 @@ body.dark-mode .qe-stat .qes-num{color:#7ececa;}
         </div>
     </div>
 
+    <div class="pr-section" id="pr-smcr-article">
+      <div class="case-card">
+        <div class="case-header" style="background: linear-gradient(135deg,#2D5F5D,#1a4645);">
+          <h2>Mô hình truyền thông SMCRE</h2>
+          <p>Kiến trúc tương tác và hiệu quả thông tin</p>
+        </div>
+        <div class="case-body" style="color: var(--text);">
+          <p style="margin-bottom: 15px; line-height: 1.6;">Mô hình SMCRE là một bước tiến hóa của mô hình SMCR do David Berlo đề xuất năm 1960, tích hợp thêm yếu tố Hiệu quả (Effect) để tạo ra một cái nhìn toàn diện về tác động của truyền thông. Trong môi trường tổ chức, truyền thông không đơn thuần là việc gửi đi một thông báo; đó là một quy trình phức tạp chịu ảnh hưởng bởi kỹ năng, thái độ và nền tảng văn hóa của các bên tham gia.</p>
+
+          <h4 style="font-size: 16px; font-weight: bold; margin-bottom: 10px; color: var(--primary);">Giải phẫu các thành phần của SMCRE</h4>
+          <p style="margin-bottom: 15px;">Mỗi mắt xích trong mô hình SMCRE đều đóng vai trò quyết định đến độ trung thực (fidelity) của thông điệp.</p>
+
+          <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px; font-size: 14px;">
+            <thead>
+              <tr style="background: rgba(45,95,93,0.1); border: 1px solid var(--border);">
+                <th style="padding: 12px; border: 1px solid var(--border); text-align: left;">Thành phần</th>
+                <th style="padding: 12px; border: 1px solid var(--border); text-align: left;">Các yếu tố tác động</th>
+                <th style="padding: 12px; border: 1px solid var(--border); text-align: left;">Vai trò chiến lược</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding: 12px; border: 1px solid var(--border);"><b>Nguồn - Source (S)</b></td>
+                <td style="padding: 12px; border: 1px solid var(--border);">Kỹ năng giao tiếp, Thái độ, Kiến thức, Hệ thống xã hội, Văn hóa</td>
+                <td style="padding: 12px; border: 1px solid var(--border);">Người khởi tạo ý tưởng, chịu trách nhiệm mã hóa thông tin. Uy tín và sự thấu cảm của nguồn quyết định 50% thành công của quá trình.</td>
+              </tr>
+              <tr>
+                <td style="padding: 12px; border: 1px solid var(--border);"><b>Thông điệp - Message (M)</b></td>
+                <td style="padding: 12px; border: 1px solid var(--border);">Nội dung, Yếu tố, Cách xử lý (Treatment), Cấu trúc, Mã hóa</td>
+                <td style="padding: 12px; border: 1px solid var(--border);">Thực thể thông tin được truyền đi. Cách xử lý thông điệp cần phù hợp với đối tượng mục tiêu.</td>
+              </tr>
+              <tr>
+                <td style="padding: 12px; border: 1px solid var(--border);"><b>Kênh - Channel (C)</b></td>
+                <td style="padding: 12px; border: 1px solid var(--border);">Năm giác quan (Nghe, Nhìn, Chạm, Ngửi, Nếm)</td>
+                <td style="padding: 12px; border: 1px solid var(--border);">Phương tiện chuyển tải. Trong thời đại số, kênh còn bao gồm các nền tảng công nghệ, mạng xã hội, email.</td>
+              </tr>
+            </tbody>
+          </table>
+          <button class="btn-main" style="width: auto; padding: 10px 24px;" onclick="switchPrTab('curriculum', null)">← Quay lại danh sách bài</button>
+        </div>
+      </div>
+    </div>
+
     <div class="pr-section" id="pr-studycase">
       <div class="case-card" id="caseMainCard">
         <div class="case-header">
@@ -1460,7 +1503,7 @@ function switchPrTab(id, btn) {
   document.querySelectorAll('.pr-tab').forEach(t => t.classList.remove('active'));
   if (btn) btn.classList.add('active');
   else {
-    var map = {curriculum:0, studycase:1, quizgame:2};
+    var map = {curriculum:0, studycase:1, quizgame:2, 'smcr-article':0};
     var tabs = document.querySelectorAll('.pr-tab');
     if (tabs[map[id]]) tabs[map[id]].classList.add('active');
   }
@@ -2307,10 +2350,7 @@ function getTotalStats() {
    PR CURRICULUM RENDER
 ═══════════════════════════════ */
 var prExercises = [
-  { id: 'pr-studycase', num: 1, name: 'Xử lý khủng hoảng truyền thông', desc: 'Nhập vai PR Manager — quyết định từng bước xử lý khủng hoảng thực tế', type: '🔍 Study Case', maxScore: 100, action: "switchPrTab('studycase',null)", available: true },
-  { id: 'pr-quiz', num: 2, name: 'Kiến thức PR nền tảng', desc: 'Trả lời nhanh 10 câu hỏi, tích điểm và xem xếp hạng hiệu suất của bạn', type: '🎮 Quiz Game', maxScore: 175, action: "switchPrTab('quizgame',null)", available: true },
-  { id: 'pr-press', num: 3, name: 'Viết thông cáo báo chí', desc: 'Kỹ năng soạn thảo press release chuyên nghiệp — sắp ra mắt', type: '📝 Bài viết', maxScore: 100, action: "toast('Nội dung đang được cập nhật!','info')", available: false },
-  { id: 'pr-event', num: 4, name: 'Tổ chức sự kiện PR', desc: 'Lập kế hoạch và vận hành sự kiện thương hiệu — sắp ra mắt', type: '📋 Dự án', maxScore: 100, action: "toast('Nội dung đang được cập nhật!','info')", available: false }
+  { id: 'pr-smcr', num: 1, name: 'Mô hình truyền thông SMCRE', desc: 'Kiến trúc tương tác và hiệu quả thông tin', type: '📖 Lý thuyết', maxScore: 100, action: "switchPrTab('smcr-article',null)", available: true }
 ];
 
 function renderPrCurriculum() {
@@ -2325,7 +2365,7 @@ function renderPrCurriculum() {
     
     var statusBadge = isDone 
       ? '<span class="ef-badge ef-badge-done">✅ Đã hoàn thành</span>'
-      : (ex.available ? '<span class="ef-badge ef-badge-todo">⬜ Chưa làm</span>' : '<span class="ef-badge ef-badge-todo">🔜 Sắp ra mắt</span>');
+      : (ex.available ? '<span class="ef-badge ef-badge-todo">⬜ Chưa xem</span>' : '<span class="ef-badge ef-badge-todo">🔜 Sắp ra mắt</span>');
     
     var statsRow = isDone ? `
       <div class="ef-stats-row">
@@ -2342,8 +2382,8 @@ function renderPrCurriculum() {
     var actions = ex.available ? `
       <div class="ef-actions">
         ${isDone ? `<button class="ef-btn ef-btn-review" onclick="${ex.action}">👁 Xem lại bài</button>
-                    <button class="ef-btn ef-btn-redo" onclick="${ex.action}">🔄 Làm lại</button>` 
-                 : `<button class="ef-btn ef-btn-start" onclick="${ex.action}">🚀 Bắt đầu làm bài</button>`}
+                    <button class="ef-btn ef-btn-redo" onclick="${ex.action}">🔄 Xem lại</button>` 
+                 : `<button class="ef-btn ef-btn-start" onclick="${ex.action}">🚀 Bắt đầu học</button>`}
       </div>` : '';
     
     return `<div class="exercise-frame ${isDone ? 'ef-done' : ''}">
@@ -2674,201 +2714,371 @@ function renderProfile() {
 
 function toggleEdit() {
   var sec = document.getElementById('editSec');
-  sec.classList.toggle('show');
+   sec.classList.toggle('show');
+
 }
+
+
 
 var tempAvatar = '';
+
 function handleAv(input) {
+
   if (input.files && input.files[0]) {
+
     var reader = new FileReader();
+
     reader.onload = function(e) {
+
       tempAvatar = e.target.result;
+
       document.getElementById('avPreview').innerHTML = '<img src="'+tempAvatar+'">';
+
     };
+
     reader.readAsDataURL(input.files[0]);
+
   }
+
 }
+
+
 
 function saveProfile() {
+
   var data = {
+
     fullname: document.getElementById('eFn').value.trim(),
+
     phone: document.getElementById('ePh').value.trim(),
+
     occupation: document.getElementById('eOc').value.trim(),
+
     location: document.getElementById('eLc').value.trim(),
+
     website: document.getElementById('eWb').value.trim(),
+
     bio: document.getElementById('eBi').value.trim(),
+
     role: document.getElementById('eRl').value,
+
     dob: document.getElementById('eDob').value,
+
     gender: document.getElementById('eGen').value,
+
     facebook: document.getElementById('eFb').value.trim(),
+
     education: document.getElementById('eEdu').value.trim(),
+
     experience: document.getElementById('eExp').value.trim(),
+
     skills: document.getElementById('eSkills').value.trim()
+
   };
+
   
+
   if(!data.fullname) return toast('errNameEmpty', 'error');
+
   if(tempAvatar) data.avatar = tempAvatar;
 
+
+
   db.collection('users').doc(auth.currentUser.uid).update(data).then(() => {
+
     toast('toastSaveProfile', 'success');
+
     currentUserData = {...currentUserData, ...data};
+
     toggleEdit();
+
     renderProfile();
+
     auth.onAuthStateChanged(auth.currentUser); 
+
   }).catch((error) => {
+
     toast('Lỗi cập nhật: ' + error.message, 'error');
+
   });
+
 }
 
+
+
 /* ═══════════════════════════════
+
    THEME & LANGUAGE SYNC
+
 ═══════════════════════════════ */
+
 function toggleThemeGlobal() {
+
   var isDark = document.body.classList.contains('dark-mode');
+
   toggleDark(!isDark);
+
 }
+
+
 
 function toggleDark(isDark) {
+
   if(isDark) document.body.classList.add('dark-mode');
+
   else document.body.classList.remove('dark-mode');
+
   localStorage.setItem('cep_theme', isDark ? 'dark' : 'light');
+
   updateThemeBtns();
+
 }
+
+
 
 function updateThemeBtns() {
+
   var isDark = document.body.classList.contains('dark-mode');
+
   var icon = isDark ? '☀️' : '🌙';
+
   ['loginThemeBtn','registerThemeBtn','forgotThemeBtn','profileThemeBtn','settingsThemeBtn','cpThemeBtn','prThemeBtn','mktThemeBtn'].forEach(function(id) {
+
     var el = document.getElementById(id);
+
     if(el) { el.innerText = icon; el.onclick = toggleThemeGlobal; }
+
   });
+
   var toggle = document.getElementById('darkToggle');
+
   if(toggle) toggle.checked = isDark;
+
 }
+
+
 
 function setLang(lang) {
+
   currentLang = lang;
+
   localStorage.setItem('cep_lang', lang);
+
   
+
   document.querySelectorAll('.lang-opt').forEach(function(el){ el.classList.remove('active'); });
+
   var activeOpt = document.querySelector('.lang-opt[data-lang="'+lang+'"]');
+
   if(activeOpt) activeOpt.classList.add('active');
+
   
+
   document.querySelectorAll('[data-i18n]').forEach(function(el) {
+
     var key = el.getAttribute('data-i18n');
+
     if(I18N[lang] && I18N[lang][key]) {
+
       if(el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') el.placeholder = I18N[lang][key];
+
       else if (el.tagName === 'OPTION') el.innerText = I18N[lang][key];
+
       else el.innerText = I18N[lang][key];
+
     }
+
   });
+
   
+
   document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
+
     var key = el.getAttribute('data-i18n-html');
+
     if(I18N[lang] && I18N[lang][key]) el.innerHTML = I18N[lang][key];
+
   });
+
+
 
   if(document.getElementById('page-profile').classList.contains('active')) renderProfile();
+
 }
 
+
+
 /* ═══════════════════════════════
+
    REALTIME REVIEWS LOGIC
+
 ═══════════════════════════════ */
+
 let unsubscribeReviews = null;
 
+
+
 function initRealtimeReviews() {
+
   const container = document.getElementById('allReviewsContainer');
+
   if (!container) return;
+
+
 
   if (unsubscribeReviews) unsubscribeReviews();
 
+
+
   unsubscribeReviews = db.collection('reviews').orderBy('timestamp', 'desc').onSnapshot((snapshot) => {
+
     if (snapshot.empty) {
+
       container.innerHTML = '<p style="text-align:center; color:var(--text2);">Chưa có đánh giá nào trên hệ thống máy chủ.</p>';
+
       return;
+
     }
+
     
+
     let html = '';
+
     snapshot.forEach((doc) => {
+
       const data = doc.data();
+
       
+
       let dateStr = '';
+
       if (data.timestamp) {
+
         let date = data.timestamp.toDate();
+
         dateStr = date.toLocaleDateString('vi-VN') + ' ' + date.toLocaleTimeString('vi-VN');
+
       }
 
+
+
       let avatarHtml = data.avatar 
+
         ? `<img src="${data.avatar}" style="width:100%;height:100%;border-radius:50%;object-fit:cover;">` 
+
         : (data.name ? data.name.charAt(0).toUpperCase() : 'U');
 
+
+
       html += `
+
         <div class="review-card" style="margin-bottom: 0;">
+
           <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+
             <div class="review-stars" style="margin-bottom:10px; color:#FFD700; font-size:18px;">
+
               ${'★'.repeat(data.rating || 5)}${'☆'.repeat(5 - (data.rating || 5))}
+
             </div>
+
             <span style="font-size:12px; color:var(--text2);">${dateStr}</span>
+
           </div>
+
           <div class="review-badge">${data.badge || 'Tuyệt vời!'}</div>
+
           <p class="review-text">${data.content}</p>
+
           <div class="reviewer" style="padding-top:14px; border-top:1px solid var(--border);">
+
             <div class="reviewer-av">${avatarHtml}</div>
+
             <div>
+
               <h4 style="font-size:14px; color:var(--text); margin-bottom:2px;">${data.name || 'Học viên ẩn danh'}</h4>
+
               <p style="font-size:12px; color:var(--text2);">${data.role || 'Học viên CEP'}</p>
+
             </div>
+
           </div>
+
         </div>
+
       `;
+
     });
+
     container.innerHTML = html;
+
   }, (error) => {
+
     console.error("Lỗi khi tải đánh giá:", error);
+
     container.innerHTML = '<p style="text-align:center; color:#f44336;">Lỗi kết nối cơ sở dữ liệu.</p>';
+
   });
+
 }
 
+
+
 /* ═══════════════════════════════
+
    LOGIC VIẾT ĐÁNH GIÁ & CHỌN SAO
+
 ═══════════════════════════════ */
+
 document.addEventListener('DOMContentLoaded', function() {
+
   const stars = document.querySelectorAll('#starRatingInput span');
+
   const ratingInput = document.getElementById('reviewRatingVal');
+
   
+
   if(stars) {
+
     stars.forEach(star => {
+
       star.addEventListener('click', function() {
+
         let val = this.getAttribute('data-val');
+
         ratingInput.value = val;
+
         stars.forEach(s => {
+
           if(s.getAttribute('data-val') <= val) {
+
             s.classList.add('active');
+
           } else {
+
             s.classList.remove('active');
+
           }
+
         });
+
       });
+
     });
   }
 });
-
 function submitReview() {
   if(!auth.currentUser) {
     showPage('page-login');
     return toast('⚠️ Vui lòng đăng nhập để viết đánh giá!', 'error');
   }
-  
   const rating = parseInt(document.getElementById('reviewRatingVal').value);
   const content = document.getElementById('reviewContentInput').value.trim();
-  
   if(!content) return toast('❌ Vui lòng nhập nội dung đánh giá!', 'error');
   if(content.length < 10) return toast('❌ Đánh giá cần ít nhất 10 ký tự.', 'error');
-
   const btn = document.querySelector('#writeReviewCard .btn-main');
   btn.innerText = 'Đang gửi...';
   btn.disabled = true;
-
   db.collection('users').doc(auth.currentUser.uid).get().then(doc => {
     let userData = doc.exists ? doc.data() : {};
     let reviewData = {
@@ -2881,7 +3091,6 @@ function submitReview() {
       content: content,
       timestamp: firebase.firestore.FieldValue.serverTimestamp()
     };
-
     db.collection('reviews').add(reviewData).then(() => {
       toast('✅ Gửi đánh giá thành công! Cảm ơn bạn.', 'success');
       document.getElementById('reviewContentInput').value = '';
@@ -2894,32 +3103,28 @@ function submitReview() {
     });
   });
 }
-
 /* ═══════════════════════════════
    INITIALIZE
 ═══════════════════════════════ */
 document.addEventListener('DOMContentLoaded', function() {
-  // Kích hoạt thống kê thời gian thực
-  initRealtimeStats();
 
+  // Kích hoạt thống kê thời gian thực
+
+  initRealtimeStats();
   const savedTheme = localStorage.getItem('cep_theme');
   if(savedTheme === 'dark') document.body.classList.add('dark-mode');
   updateThemeBtns();
-
   const savedLang = localStorage.getItem('cep_lang') || 'vi';
   setLang(savedLang);
-
   var authPages = ['page-login','page-register','page-forgot','page-reset-password'];
   var activePage = document.querySelector('.page.active');
   var globalHeader = document.getElementById('globalHeader');
   if(globalHeader && activePage && authPages.includes(activePage.id)) {
     globalHeader.style.display = 'none';
   }
-
   const urlParams = new URLSearchParams(window.location.search);
   const mode = urlParams.get('mode');
   const actionCode = urlParams.get('oobCode');
-
   if (mode === 'resetPassword' && actionCode) {
     window.resetActionCode = actionCode;
     showPage('page-reset-password');
