@@ -1611,67 +1611,254 @@ body.auth-page #globalHeader { display: none; }
           </div>
           <div style="display: flex; gap: 10px;">
             <button style="padding: 10px 20px; background: #376a68; color: #fff; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 13px;" onclick="switchPrTab('curriculum', null)">← Quay lại danh sách bài</button>
-            <button style="padding: 10px 20px; background: var(--accent); color: #fff; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 13px;" onclick="switchPrTab('crisis-game', document.querySelectorAll('.pr-tab')[1]); startCrisisGame();">🚀 Làm bài tập thực chiến →</button>
+            <button style="padding: 10px 20px; background: var(--accent); color: #fff; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 13px;" onclick="switchPrTab('crisis-game', document.querySelectorAll('.pr-tab')[1]); updateExSelectionBadges();">🚀 Làm bài tập thực chiến →</button>
           </div>
         </div>
       </div>
     </div>
     
+    <!-- ══ EXERCISE SELECTION SCREEN ══ -->
     <div class="pr-section" id="pr-crisis-game">
-      <div class="case-card" style="border-radius: 12px; overflow: hidden; border: 1px solid var(--border); box-shadow: 0 4px 15px rgba(0,0,0,0.05); background: var(--card);">
-        <div style="background: linear-gradient(135deg, #e76f51, #c92a2a); padding: 24px; color: #fff; display: flex; justify-content: space-between; align-items: center;">
-          <div>
-            <h2 style="font-family: 'Helvetica Rounded Bold', sans-serif; font-size: 22px; margin-bottom: 6px;">⚠️ KHẨN CẤP: Khủng hoảng & Lý thuyết</h2>
-            <p style="font-size: 13px; opacity: 0.9;">Tình huống: Kiểm tra kiến thức và xử lý khủng hoảng truyền thông.</p>
-          </div>
-          <div id="crisisTimer" style="font-size: 24px; font-weight: bold; background: rgba(0,0,0,0.3); padding: 10px 20px; border-radius: 8px;">01:00</div>
+      <div style="margin-bottom: 24px;">
+        <div style="background: linear-gradient(135deg,#1e4544,#2D5F5D); border-radius: 14px; padding: 28px 28px 20px; color:#fff; margin-bottom:24px; position:relative; overflow:hidden;">
+          <div style="position:absolute;top:-30px;right:-30px;width:160px;height:160px;background:radial-gradient(circle,rgba(77,217,172,.18) 0%,transparent 70%);border-radius:50%;pointer-events:none;"></div>
+          <h2 style="font-family:'Helvetica Rounded Bold',sans-serif;font-size:22px;margin-bottom:8px;position:relative;">🎯 Bài tập thực chiến SMCRE</h2>
+          <p style="font-size:13.5px;opacity:.85;position:relative;">Chọn 1 trong 3 bài tập bên dưới để bắt đầu. Mỗi bài gồm <strong>2 câu trắc nghiệm</strong> và <strong>2 câu soạn thảo thông điệp</strong>.</p>
         </div>
-        
-        <div style="padding: 28px; color: var(--text);">
-          
-          <h3 style="margin-bottom: 15px; color: var(--primary);">Phần 1: Trắc nghiệm lý thuyết (30 điểm)</h3>
 
-          <div class="mcq-question" style="margin-bottom: 20px;">
-            <p><strong>Câu 1:</strong> Trong mô hình SMCRE, yếu tố nào quyết định 50% thành công của quá trình truyền thông?</p>
-            <label><input type="radio" name="q1" value="A"> A. Nguồn (Source)</label><br>
-            <label><input type="radio" name="q1" value="B"> B. Kênh (Channel)</label><br>
-            <label><input type="radio" name="q1" value="C"> C. Người nhận (Receiver)</label><br>
-            <label><input type="radio" name="q1" value="D"> D. Thông điệp (Message)</label>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;">
+          <!-- Card Bài 1 -->
+          <div id="ex-select-card-1" style="background:var(--card);border:2px solid var(--border);border-radius:14px;padding:22px;cursor:pointer;transition:all .25s;box-shadow:0 3px 14px rgba(0,0,0,.06);" 
+               onmouseover="this.style.borderColor='#2D5F5D';this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 28px rgba(45,95,93,.18)';"
+               onmouseout="this.style.borderColor='var(--border)';this.style.transform='';this.style.boxShadow='0 3px 14px rgba(0,0,0,.06)';"
+               onclick="startExercise(1)">
+            <div style="width:48px;height:48px;background:linear-gradient(135deg,#2D5F5D,#4DD9AC);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:14px;box-shadow:0 4px 12px rgba(45,95,93,.3);">📡</div>
+            <h4 style="font-family:'Helvetica Rounded Bold',sans-serif;font-size:15px;color:var(--text);margin-bottom:6px;">Bài 1: SMCRE & Nguồn – Thông điệp</h4>
+            <p style="font-size:12.5px;color:var(--text2);line-height:1.5;margin-bottom:14px;">Kiểm tra hiểu biết về 5 thành phần SMCRE và vai trò chiến lược của Nguồn, Thông điệp.</p>
+            <div style="display:flex;align-items:center;justify-content:space-between;">
+              <div style="display:flex;gap:6px;flex-wrap:wrap;">
+                <span style="background:rgba(45,95,93,.1);color:var(--primary);padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;">2 MCQ</span>
+                <span style="background:rgba(244,162,97,.12);color:#c97c30;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;">2 Tự luận</span>
+              </div>
+              <span id="ex1-badge" style="font-size:12px;color:var(--text2);font-weight:600;">⬜ Chưa làm</span>
+            </div>
           </div>
 
-          <div class="mcq-question" style="margin-bottom: 20px;">
-            <p><strong>Câu 2:</strong> Theo lý thuyết Dependency, khi xã hội càng có nhiều biến động, sự phụ thuộc của con người vào truyền thông sẽ:</p>
-            <label><input type="radio" name="q2" value="A"> A. Giảm đi</label><br>
-            <label><input type="radio" name="q2" value="B"> B. Không đổi</label><br>
-            <label><input type="radio" name="q2" value="C"> C. Tăng cao</label><br>
-            <label><input type="radio" name="q2" value="D"> D. Biến mất</label>
+          <!-- Card Bài 2 -->
+          <div id="ex-select-card-2" style="background:var(--card);border:2px solid var(--border);border-radius:14px;padding:22px;cursor:pointer;transition:all .25s;box-shadow:0 3px 14px rgba(0,0,0,.06);"
+               onmouseover="this.style.borderColor='#e76f51';this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 28px rgba(231,111,81,.18)';"
+               onmouseout="this.style.borderColor='var(--border)';this.style.transform='';this.style.boxShadow='0 3px 14px rgba(0,0,0,.06)';"
+               onclick="startExercise(2)">
+            <div style="width:48px;height:48px;background:linear-gradient(135deg,#e76f51,#c92a2a);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:14px;box-shadow:0 4px 12px rgba(231,111,81,.3);">🔗</div>
+            <h4 style="font-family:'Helvetica Rounded Bold',sans-serif;font-size:15px;color:var(--text);margin-bottom:6px;">Bài 2: Lý thuyết Dependency & Tam giác tương tác</h4>
+            <p style="font-size:12.5px;color:var(--text2);line-height:1.5;margin-bottom:14px;">Phân tích mối quan hệ Xã hội – Truyền thông – Khán giả và tác động của sự phụ thuộc truyền thông.</p>
+            <div style="display:flex;align-items:center;justify-content:space-between;">
+              <div style="display:flex;gap:6px;flex-wrap:wrap;">
+                <span style="background:rgba(231,111,81,.1);color:#e76f51;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;">2 MCQ</span>
+                <span style="background:rgba(244,162,97,.12);color:#c97c30;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;">2 Tự luận</span>
+              </div>
+              <span id="ex2-badge" style="font-size:12px;color:var(--text2);font-weight:600;">⬜ Chưa làm</span>
+            </div>
           </div>
 
-          <div class="mcq-question" style="margin-bottom: 30px;">
-            <p><strong>Câu 3:</strong> Giải pháp tốt nhất để tránh "Nhiễu ngữ nghĩa" (Semantic Noise) là gì?</p>
-            <label><input type="radio" name="q3" value="A"> A. Nói thật to</label><br>
-            <label><input type="radio" name="q3" value="B"> B. Sử dụng chiến lược "Symmetry" - sự đối xứng giữa nguồn và người nhận</label><br>
-            <label><input type="radio" name="q3" value="C"> C. Gửi tin nhắn qua nhiều kênh khác nhau</label><br>
-            <label><input type="radio" name="q3" value="D"> D. Phớt lờ phản hồi của khán giả</label>
+          <!-- Card Bài 3 -->
+          <div id="ex-select-card-3" style="background:var(--card);border:2px solid var(--border);border-radius:14px;padding:22px;cursor:pointer;transition:all .25s;box-shadow:0 3px 14px rgba(0,0,0,.06);"
+               onmouseover="this.style.borderColor='#7c3aed';this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 28px rgba(124,58,237,.18)';"
+               onmouseout="this.style.borderColor='var(--border)';this.style.transform='';this.style.boxShadow='0 3px 14px rgba(0,0,0,.06)';"
+               onclick="startExercise(3)">
+            <div style="width:48px;height:48px;background:linear-gradient(135deg,#7c3aed,#4f46e5);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:14px;box-shadow:0 4px 12px rgba(124,58,237,.3);">🔊</div>
+            <h4 style="font-family:'Helvetica Rounded Bold',sans-serif;font-size:15px;color:var(--text);margin-bottom:6px;">Bài 3: Nhiễu, Độ trung thực & Symmetry</h4>
+            <p style="font-size:12.5px;color:var(--text2);line-height:1.5;margin-bottom:14px;">Ứng dụng chiến lược Symmetry để tối ưu hóa fidelity và loại bỏ các dạng nhiễu truyền thông.</p>
+            <div style="display:flex;align-items:center;justify-content:space-between;">
+              <div style="display:flex;gap:6px;flex-wrap:wrap;">
+                <span style="background:rgba(124,58,237,.1);color:#7c3aed;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;">2 MCQ</span>
+                <span style="background:rgba(244,162,97,.12);color:#c97c30;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;">2 Tự luận</span>
+              </div>
+              <span id="ex3-badge" style="font-size:12px;color:var(--text2);font-weight:600;">⬜ Chưa làm</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ BÀI TẬP 1 ══ -->
+    <div class="pr-section" id="pr-exercise-1">
+      <div class="case-card" style="border-radius:12px;overflow:hidden;border:1px solid var(--border);box-shadow:0 4px 15px rgba(0,0,0,.05);background:var(--card);">
+        <div style="background:linear-gradient(135deg,#2D5F5D,#4DD9AC);padding:22px 24px;color:#fff;display:flex;justify-content:space-between;align-items:center;">
+          <div>
+            <h2 style="font-family:'Helvetica Rounded Bold',sans-serif;font-size:20px;margin-bottom:4px;">📡 Bài 1: SMCRE & Nguồn – Thông điệp</h2>
+            <p style="font-size:13px;opacity:.9;">2 câu trắc nghiệm + 2 câu soạn thảo thông điệp</p>
+          </div>
+          <div id="ex1Timer" style="font-size:22px;font-weight:bold;background:rgba(0,0,0,.25);padding:8px 18px;border-radius:8px;min-width:80px;text-align:center;">01:30</div>
+        </div>
+        <div style="padding:28px;color:var(--text);">
+          <h3 style="margin-bottom:16px;color:var(--primary);font-size:16px;">Phần 1: Trắc nghiệm (30 điểm)</h3>
+
+          <div class="mcq-question" style="background:var(--bg);border-radius:10px;padding:18px;margin-bottom:16px;border:1px solid var(--border);">
+            <p style="margin-bottom:12px;font-weight:600;line-height:1.5;"><span style="background:var(--primary);color:#fff;padding:2px 10px;border-radius:20px;font-size:12px;margin-right:8px;">Câu 1</span> Trong mô hình SMCRE, yếu tố nào quyết định 50% thành công của quá trình truyền thông?</p>
+            <label style="display:flex;align-items:center;gap:8px;padding:9px 12px;border-radius:8px;cursor:pointer;margin-bottom:6px;border:1.5px solid var(--border);background:var(--card);transition:all .18s;" onmouseover="this.style.borderColor='#2D5F5D'" onmouseout="this.style.borderColor='var(--border)'"><input type="radio" name="ex1q1" value="A" style="accent-color:var(--primary)"> <b>A.</b> Nguồn (Source) – Uy tín và sự thấu cảm</label>
+            <label style="display:flex;align-items:center;gap:8px;padding:9px 12px;border-radius:8px;cursor:pointer;margin-bottom:6px;border:1.5px solid var(--border);background:var(--card);transition:all .18s;" onmouseover="this.style.borderColor='#2D5F5D'" onmouseout="this.style.borderColor='var(--border)'"><input type="radio" name="ex1q1" value="B" style="accent-color:var(--primary)"> <b>B.</b> Kênh (Channel)</label>
+            <label style="display:flex;align-items:center;gap:8px;padding:9px 12px;border-radius:8px;cursor:pointer;margin-bottom:6px;border:1.5px solid var(--border);background:var(--card);transition:all .18s;" onmouseover="this.style.borderColor='#2D5F5D'" onmouseout="this.style.borderColor='var(--border)'"><input type="radio" name="ex1q1" value="C" style="accent-color:var(--primary)"> <b>C.</b> Người nhận (Receiver)</label>
+            <label style="display:flex;align-items:center;gap:8px;padding:9px 12px;border-radius:8px;cursor:pointer;border:1.5px solid var(--border);background:var(--card);transition:all .18s;" onmouseover="this.style.borderColor='#2D5F5D'" onmouseout="this.style.borderColor='var(--border)'"><input type="radio" name="ex1q1" value="D" style="accent-color:var(--primary)"> <b>D.</b> Thông điệp (Message)</label>
           </div>
 
-          <hr style="border-top: 1px solid var(--border); margin-bottom: 30px;">
+          <div class="mcq-question" style="background:var(--bg);border-radius:10px;padding:18px;margin-bottom:24px;border:1px solid var(--border);">
+            <p style="margin-bottom:12px;font-weight:600;line-height:1.5;"><span style="background:var(--primary);color:#fff;padding:2px 10px;border-radius:20px;font-size:12px;margin-right:8px;">Câu 2</span> Theo mô hình SMCRE, "Hiệu quả" (Effect) được hiểu là gì?</p>
+            <label style="display:flex;align-items:center;gap:8px;padding:9px 12px;border-radius:8px;cursor:pointer;margin-bottom:6px;border:1.5px solid var(--border);background:var(--card);transition:all .18s;" onmouseover="this.style.borderColor='#2D5F5D'" onmouseout="this.style.borderColor='var(--border)'"><input type="radio" name="ex1q2" value="A" style="accent-color:var(--primary)"> <b>A.</b> Kênh phân phối thông tin đến nhiều người nhất</label>
+            <label style="display:flex;align-items:center;gap:8px;padding:9px 12px;border-radius:8px;cursor:pointer;margin-bottom:6px;border:1.5px solid var(--border);background:var(--card);transition:all .18s;" onmouseover="this.style.borderColor='#2D5F5D'" onmouseout="this.style.borderColor='var(--border)'"><input type="radio" name="ex1q2" value="B" style="accent-color:var(--primary)"> <b>B.</b> Sự thay đổi nhận thức, cảm xúc hoặc hành vi của người nhận</label>
+            <label style="display:flex;align-items:center;gap:8px;padding:9px 12px;border-radius:8px;cursor:pointer;margin-bottom:6px;border:1.5px solid var(--border);background:var(--card);transition:all .18s;" onmouseover="this.style.borderColor='#2D5F5D'" onmouseout="this.style.borderColor='var(--border)'"><input type="radio" name="ex1q2" value="C" style="accent-color:var(--primary)"> <b>C.</b> Phương pháp mã hóa thông điệp</label>
+            <label style="display:flex;align-items:center;gap:8px;padding:9px 12px;border-radius:8px;cursor:pointer;border:1.5px solid var(--border);background:var(--card);transition:all .18s;" onmouseover="this.style.borderColor='#2D5F5D'" onmouseout="this.style.borderColor='var(--border)'"><input type="radio" name="ex1q2" value="D" style="accent-color:var(--primary)"> <b>D.</b> Trình độ học vấn của người gửi</label>
+          </div>
 
-          <h3 style="margin-bottom: 15px; color: var(--accent);">Phần 2: Xử lý khủng hoảng (70 điểm)</h3>
-          <div style="background: var(--bg); border-left: 4px solid #e76f51; padding: 16px; margin-bottom: 20px; border-radius: 4px;">
-            <strong>Nhiệm vụ của bạn:</strong> Với vai trò Trưởng phòng PR, hãy soạn thảo NHANH một thông điệp phản hồi để xoa dịu dư luận trước vụ việc "Sản phẩm ClearDrop bị tố gây kích ứng da nghiêm trọng trên mạng xã hội". Bạn có tổng thời gian 60 giây cho cả 2 phần!
+          <hr style="border:none;border-top:1.5px solid var(--border);margin-bottom:24px;">
+          <h3 style="margin-bottom:8px;color:var(--accent);font-size:16px;">Phần 2: Soạn thảo thông điệp (70 điểm)</h3>
+          <p style="font-size:13px;color:var(--text2);margin-bottom:20px;">Hãy viết câu trả lời <strong>thể hiện cảm nhận, quan điểm cá nhân</strong> của bạn. Bài viết càng chi tiết và có chiều sâu càng đạt điểm cao.</p>
+
+          <div style="background:rgba(45,95,93,.06);border-left:4px solid var(--primary);padding:14px 16px;border-radius:0 8px 8px 0;margin-bottom:12px;">
+            <p style="font-weight:600;font-size:14px;margin-bottom:4px;">📝 Câu 3 – Tình huống xử lý khủng hoảng</p>
+            <p style="font-size:13px;color:var(--text2);line-height:1.5;">Bạn là PR Manager của thương hiệu mỹ phẩm vừa bị lan truyền thông tin sai lệch về thành phần độc hại. Dựa vào vai trò của <strong>Nguồn (Source)</strong> trong SMCRE, hãy soạn thảo một thông điệp phản hồi công khai thể hiện uy tín và sự thấu cảm.</p>
           </div>
-          <textarea id="crisisResponse" placeholder="Soạn thảo thông điệp của bạn tại đây..." style="width: 100%; height: 150px; padding: 15px; border: 2px solid var(--border); border-radius: 8px; font-family: inherit; font-size: 14px; resize: vertical; margin-bottom: 20px;"></textarea>
-          
-          <div style="display: flex; gap: 10px;">
-            <button onclick="submitCrisisResponse()" style="padding: 12px 24px; background: var(--primary); color: #fff; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; font-family: 'Helvetica Rounded Bold', sans-serif;">📤 Gửi bài làm</button>
-            <button onclick="switchPrTab('curriculum', null); clearInterval(crisisInterval);" style="padding: 12px 24px; background: var(--bg); color: var(--text); border: 1px solid var(--border); border-radius: 8px; font-weight: bold; cursor: pointer;">Hủy bỏ</button>
+          <textarea id="ex1Text1" placeholder="Soạn thảo thông điệp phản hồi của bạn tại đây..." style="width:100%;height:130px;padding:14px;border:2px solid var(--border);border-radius:8px;font-family:inherit;font-size:14px;resize:vertical;margin-bottom:20px;background:var(--card);color:var(--text);transition:border-color .2s;" onfocus="this.style.borderColor='var(--primary)'" onblur="this.style.borderColor='var(--border)'"></textarea>
+
+          <div style="background:rgba(244,162,97,.08);border-left:4px solid var(--secondary);padding:14px 16px;border-radius:0 8px 8px 0;margin-bottom:12px;">
+            <p style="font-weight:600;font-size:14px;margin-bottom:4px;">💬 Câu 4 – Cảm nhận cá nhân</p>
+            <p style="font-size:13px;color:var(--text2);line-height:1.5;">Sau khi học xong mô hình SMCRE, bạn thấy điều gì <strong>hữu ích nhất</strong> để ứng dụng vào công việc PR thực tế? Chia sẻ cảm nhận chân thực của bạn.</p>
           </div>
-          
-          <div id="crisisResult" style="display: none; margin-top: 20px; padding: 20px; border-radius: 8px; background: #e8f5e9; border: 1px solid #4caf50;">
-             <h3 style="color: #2e7d32; margin-bottom: 10px;">📊 Kết quả đánh giá</h3>
-             <p id="crisisFeedback" style="font-size: 14px; line-height: 1.6;"></p>
-             <button onclick="switchPrTab('curriculum', null)" style="margin-top: 15px; padding: 8px 16px; background: #2e7d32; color: #fff; border: none; border-radius: 6px; cursor: pointer; font-weight: 600;">Quay lại danh sách</button>
+          <textarea id="ex1Text2" placeholder="Chia sẻ cảm nhận chân thực của bạn tại đây..." style="width:100%;height:110px;padding:14px;border:2px solid var(--border);border-radius:8px;font-family:inherit;font-size:14px;resize:vertical;margin-bottom:24px;background:var(--card);color:var(--text);transition:border-color .2s;" onfocus="this.style.borderColor='var(--secondary)'" onblur="this.style.borderColor='var(--border)'"></textarea>
+
+          <div style="display:flex;gap:10px;flex-wrap:wrap;">
+            <button onclick="submitExercise(1)" style="padding:12px 28px;background:var(--gradient);color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-family:'Helvetica Rounded Bold',sans-serif;box-shadow:0 4px 14px rgba(45,95,93,.3);">📤 Nộp bài</button>
+            <button onclick="switchPrTab('crisis-game',null);clearExInterval(1);" style="padding:12px 20px;background:var(--bg);color:var(--text);border:1.5px solid var(--border);border-radius:8px;font-weight:600;cursor:pointer;">← Chọn bài khác</button>
+          </div>
+          <div id="ex1Result" style="display:none;margin-top:24px;padding:22px;border-radius:10px;background:#e8f5e9;border:1px solid #4caf50;">
+            <h3 style="color:#2e7d32;margin-bottom:12px;font-size:17px;">📊 Kết quả đánh giá</h3>
+            <p id="ex1Feedback" style="font-size:14px;line-height:1.7;"></p>
+            <div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap;">
+              <button onclick="switchPrTab('curriculum',null)" style="padding:9px 18px;background:#2e7d32;color:#fff;border:none;border-radius:7px;cursor:pointer;font-weight:600;">📚 Xem danh sách bài</button>
+              <button onclick="startExercise(1)" style="padding:9px 18px;background:var(--card);color:var(--text);border:1.5px solid var(--border);border-radius:7px;cursor:pointer;font-weight:600;">🔄 Làm lại</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ BÀI TẬP 2 ══ -->
+    <div class="pr-section" id="pr-exercise-2">
+      <div class="case-card" style="border-radius:12px;overflow:hidden;border:1px solid var(--border);box-shadow:0 4px 15px rgba(0,0,0,.05);background:var(--card);">
+        <div style="background:linear-gradient(135deg,#e76f51,#c92a2a);padding:22px 24px;color:#fff;display:flex;justify-content:space-between;align-items:center;">
+          <div>
+            <h2 style="font-family:'Helvetica Rounded Bold',sans-serif;font-size:20px;margin-bottom:4px;">🔗 Bài 2: Lý thuyết Dependency & Tam giác tương tác</h2>
+            <p style="font-size:13px;opacity:.9;">2 câu trắc nghiệm + 2 câu soạn thảo thông điệp</p>
+          </div>
+          <div id="ex2Timer" style="font-size:22px;font-weight:bold;background:rgba(0,0,0,.25);padding:8px 18px;border-radius:8px;min-width:80px;text-align:center;">01:30</div>
+        </div>
+        <div style="padding:28px;color:var(--text);">
+          <h3 style="margin-bottom:16px;color:#e76f51;font-size:16px;">Phần 1: Trắc nghiệm (30 điểm)</h3>
+
+          <div class="mcq-question" style="background:var(--bg);border-radius:10px;padding:18px;margin-bottom:16px;border:1px solid var(--border);">
+            <p style="margin-bottom:12px;font-weight:600;line-height:1.5;"><span style="background:#e76f51;color:#fff;padding:2px 10px;border-radius:20px;font-size:12px;margin-right:8px;">Câu 1</span> Theo lý thuyết Dependency, khi xã hội càng có nhiều biến động, sự phụ thuộc của con người vào truyền thông sẽ:</p>
+            <label style="display:flex;align-items:center;gap:8px;padding:9px 12px;border-radius:8px;cursor:pointer;margin-bottom:6px;border:1.5px solid var(--border);background:var(--card);transition:all .18s;" onmouseover="this.style.borderColor='#e76f51'" onmouseout="this.style.borderColor='var(--border)'"><input type="radio" name="ex2q1" value="A" style="accent-color:#e76f51"> <b>A.</b> Giảm đi vì mọi người mất niềm tin vào truyền thông</label>
+            <label style="display:flex;align-items:center;gap:8px;padding:9px 12px;border-radius:8px;cursor:pointer;margin-bottom:6px;border:1.5px solid var(--border);background:var(--card);transition:all .18s;" onmouseover="this.style.borderColor='#e76f51'" onmouseout="this.style.borderColor='var(--border)'"><input type="radio" name="ex2q1" value="B" style="accent-color:#e76f51"> <b>B.</b> Không thay đổi</label>
+            <label style="display:flex;align-items:center;gap:8px;padding:9px 12px;border-radius:8px;cursor:pointer;margin-bottom:6px;border:1.5px solid var(--border);background:var(--card);transition:all .18s;" onmouseover="this.style.borderColor='#e76f51'" onmouseout="this.style.borderColor='var(--border)'"><input type="radio" name="ex2q1" value="C" style="accent-color:#e76f51"> <b>C.</b> Tăng cao vì nhu cầu tìm kiếm thông tin tăng mạnh</label>
+            <label style="display:flex;align-items:center;gap:8px;padding:9px 12px;border-radius:8px;cursor:pointer;border:1.5px solid var(--border);background:var(--card);transition:all .18s;" onmouseover="this.style.borderColor='#e76f51'" onmouseout="this.style.borderColor='var(--border)'"><input type="radio" name="ex2q1" value="D" style="accent-color:#e76f51"> <b>D.</b> Biến mất do khủng hoảng thông tin</label>
+          </div>
+
+          <div class="mcq-question" style="background:var(--bg);border-radius:10px;padding:18px;margin-bottom:24px;border:1px solid var(--border);">
+            <p style="margin-bottom:12px;font-weight:600;line-height:1.5;"><span style="background:#e76f51;color:#fff;padding:2px 10px;border-radius:20px;font-size:12px;margin-right:8px;">Câu 2</span> Trong "Tam giác tương tác" của lý thuyết Dependency, 3 nhân tố tương tác với nhau là gì?</p>
+            <label style="display:flex;align-items:center;gap:8px;padding:9px 12px;border-radius:8px;cursor:pointer;margin-bottom:6px;border:1.5px solid var(--border);background:var(--card);transition:all .18s;" onmouseover="this.style.borderColor='#e76f51'" onmouseout="this.style.borderColor='var(--border)'"><input type="radio" name="ex2q2" value="A" style="accent-color:#e76f51"> <b>A.</b> Nguồn – Thông điệp – Kênh</label>
+            <label style="display:flex;align-items:center;gap:8px;padding:9px 12px;border-radius:8px;cursor:pointer;margin-bottom:6px;border:1.5px solid var(--border);background:var(--card);transition:all .18s;" onmouseover="this.style.borderColor='#e76f51'" onmouseout="this.style.borderColor='var(--border)'"><input type="radio" name="ex2q2" value="B" style="accent-color:#e76f51"> <b>B.</b> Xã hội – Truyền thông – Khán giả</label>
+            <label style="display:flex;align-items:center;gap:8px;padding:9px 12px;border-radius:8px;cursor:pointer;margin-bottom:6px;border:1.5px solid var(--border);background:var(--card);transition:all .18s;" onmouseover="this.style.borderColor='#e76f51'" onmouseout="this.style.borderColor='var(--border)'"><input type="radio" name="ex2q2" value="C" style="accent-color:#e76f51"> <b>C.</b> PR – Marketing – Branding</label>
+            <label style="display:flex;align-items:center;gap:8px;padding:9px 12px;border-radius:8px;cursor:pointer;border:1.5px solid var(--border);background:var(--card);transition:all .18s;" onmouseover="this.style.borderColor='#e76f51'" onmouseout="this.style.borderColor='var(--border)'"><input type="radio" name="ex2q2" value="D" style="accent-color:#e76f51"> <b>D.</b> Cảm xúc – Lý trí – Hành vi</label>
+          </div>
+
+          <hr style="border:none;border-top:1.5px solid var(--border);margin-bottom:24px;">
+          <h3 style="margin-bottom:8px;color:var(--accent);font-size:16px;">Phần 2: Soạn thảo thông điệp (70 điểm)</h3>
+          <p style="font-size:13px;color:var(--text2);margin-bottom:20px;">Thể hiện <strong>quan điểm cá nhân</strong> sâu sắc và khả năng phân tích của bạn về lý thuyết Dependency.</p>
+
+          <div style="background:rgba(231,111,81,.07);border-left:4px solid #e76f51;padding:14px 16px;border-radius:0 8px 8px 0;margin-bottom:12px;">
+            <p style="font-weight:600;font-size:14px;margin-bottom:4px;">📝 Câu 3 – Phân tích tam giác tương tác</p>
+            <p style="font-size:13px;color:var(--text2);line-height:1.5;">Dựa vào mô hình <strong>Tam giác tương tác</strong> (Xã hội ↔ Truyền thông ↔ Khán giả), hãy phân tích một chiến dịch truyền thông thực tế mà bạn biết (có thể là chiến dịch của Biti's, Vinamilk, hoặc bất kỳ thương hiệu nào) — giải thích cách 3 yếu tố này tác động lẫn nhau trong chiến dịch đó.</p>
+          </div>
+          <textarea id="ex2Text1" placeholder="Phân tích chiến dịch truyền thông của bạn tại đây..." style="width:100%;height:130px;padding:14px;border:2px solid var(--border);border-radius:8px;font-family:inherit;font-size:14px;resize:vertical;margin-bottom:20px;background:var(--card);color:var(--text);transition:border-color .2s;" onfocus="this.style.borderColor='#e76f51'" onblur="this.style.borderColor='var(--border)'"></textarea>
+
+          <div style="background:rgba(244,162,97,.08);border-left:4px solid var(--secondary);padding:14px 16px;border-radius:0 8px 8px 0;margin-bottom:12px;">
+            <p style="font-weight:600;font-size:14px;margin-bottom:4px;">💬 Câu 4 – Cảm nhận cá nhân về sự phụ thuộc</p>
+            <p style="font-size:13px;color:var(--text2);line-height:1.5;">Sau khi tìm hiểu lý thuyết Dependency, bạn nhận ra điều gì về <strong>thói quen tiêu thụ truyền thông của bản thân</strong>? Bạn đã từng "phụ thuộc" vào truyền thông trong một quyết định quan trọng nào chưa? Cảm xúc và suy nghĩ của bạn lúc đó?</p>
+          </div>
+          <textarea id="ex2Text2" placeholder="Chia sẻ cảm nhận và trải nghiệm cá nhân của bạn..." style="width:100%;height:110px;padding:14px;border:2px solid var(--border);border-radius:8px;font-family:inherit;font-size:14px;resize:vertical;margin-bottom:24px;background:var(--card);color:var(--text);transition:border-color .2s;" onfocus="this.style.borderColor='var(--secondary)'" onblur="this.style.borderColor='var(--border)'"></textarea>
+
+          <div style="display:flex;gap:10px;flex-wrap:wrap;">
+            <button onclick="submitExercise(2)" style="padding:12px 28px;background:linear-gradient(135deg,#e76f51,#c92a2a);color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-family:'Helvetica Rounded Bold',sans-serif;box-shadow:0 4px 14px rgba(231,111,81,.3);">📤 Nộp bài</button>
+            <button onclick="switchPrTab('crisis-game',null);clearExInterval(2);" style="padding:12px 20px;background:var(--bg);color:var(--text);border:1.5px solid var(--border);border-radius:8px;font-weight:600;cursor:pointer;">← Chọn bài khác</button>
+          </div>
+          <div id="ex2Result" style="display:none;margin-top:24px;padding:22px;border-radius:10px;background:#fff3e0;border:1px solid #ff9800;">
+            <h3 style="color:#e65100;margin-bottom:12px;font-size:17px;">📊 Kết quả đánh giá</h3>
+            <p id="ex2Feedback" style="font-size:14px;line-height:1.7;"></p>
+            <div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap;">
+              <button onclick="switchPrTab('curriculum',null)" style="padding:9px 18px;background:#e65100;color:#fff;border:none;border-radius:7px;cursor:pointer;font-weight:600;">📚 Xem danh sách bài</button>
+              <button onclick="startExercise(2)" style="padding:9px 18px;background:var(--card);color:var(--text);border:1.5px solid var(--border);border-radius:7px;cursor:pointer;font-weight:600;">🔄 Làm lại</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ BÀI TẬP 3 ══ -->
+    <div class="pr-section" id="pr-exercise-3">
+      <div class="case-card" style="border-radius:12px;overflow:hidden;border:1px solid var(--border);box-shadow:0 4px 15px rgba(0,0,0,.05);background:var(--card);">
+        <div style="background:linear-gradient(135deg,#7c3aed,#4f46e5);padding:22px 24px;color:#fff;display:flex;justify-content:space-between;align-items:center;">
+          <div>
+            <h2 style="font-family:'Helvetica Rounded Bold',sans-serif;font-size:20px;margin-bottom:4px;">🔊 Bài 3: Nhiễu, Độ trung thực & Symmetry</h2>
+            <p style="font-size:13px;opacity:.9;">2 câu trắc nghiệm + 2 câu soạn thảo thông điệp</p>
+          </div>
+          <div id="ex3Timer" style="font-size:22px;font-weight:bold;background:rgba(0,0,0,.25);padding:8px 18px;border-radius:8px;min-width:80px;text-align:center;">01:30</div>
+        </div>
+        <div style="padding:28px;color:var(--text);">
+          <h3 style="margin-bottom:16px;color:#7c3aed;font-size:16px;">Phần 1: Trắc nghiệm (30 điểm)</h3>
+
+          <div class="mcq-question" style="background:var(--bg);border-radius:10px;padding:18px;margin-bottom:16px;border:1px solid var(--border);">
+            <p style="margin-bottom:12px;font-weight:600;line-height:1.5;"><span style="background:#7c3aed;color:#fff;padding:2px 10px;border-radius:20px;font-size:12px;margin-right:8px;">Câu 1</span> Giải pháp tốt nhất để tránh "Nhiễu ngữ nghĩa" (Semantic Noise) trong tổ chức là gì?</p>
+            <label style="display:flex;align-items:center;gap:8px;padding:9px 12px;border-radius:8px;cursor:pointer;margin-bottom:6px;border:1.5px solid var(--border);background:var(--card);transition:all .18s;" onmouseover="this.style.borderColor='#7c3aed'" onmouseout="this.style.borderColor='var(--border)'"><input type="radio" name="ex3q1" value="A" style="accent-color:#7c3aed"> <b>A.</b> Nói to và rõ ràng hơn</label>
+            <label style="display:flex;align-items:center;gap:8px;padding:9px 12px;border-radius:8px;cursor:pointer;margin-bottom:6px;border:1.5px solid var(--border);background:var(--card);transition:all .18s;" onmouseover="this.style.borderColor='#7c3aed'" onmouseout="this.style.borderColor='var(--border)'"><input type="radio" name="ex3q1" value="B" style="accent-color:#7c3aed"> <b>B.</b> Sử dụng chiến lược "Symmetry" – nghiên cứu đặc điểm người nhận trước khi thiết kế thông điệp</label>
+            <label style="display:flex;align-items:center;gap:8px;padding:9px 12px;border-radius:8px;cursor:pointer;margin-bottom:6px;border:1.5px solid var(--border);background:var(--card);transition:all .18s;" onmouseover="this.style.borderColor='#7c3aed'" onmouseout="this.style.borderColor='var(--border)'"><input type="radio" name="ex3q1" value="C" style="accent-color:#7c3aed"> <b>C.</b> Gửi thông điệp qua nhiều kênh cùng lúc</label>
+            <label style="display:flex;align-items:center;gap:8px;padding:9px 12px;border-radius:8px;cursor:pointer;border:1.5px solid var(--border);background:var(--card);transition:all .18s;" onmouseover="this.style.borderColor='#7c3aed'" onmouseout="this.style.borderColor='var(--border)'"><input type="radio" name="ex3q1" value="D" style="accent-color:#7c3aed"> <b>D.</b> Phớt lờ phản hồi để tránh bị ảnh hưởng</label>
+          </div>
+
+          <div class="mcq-question" style="background:var(--bg);border-radius:10px;padding:18px;margin-bottom:24px;border:1px solid var(--border);">
+            <p style="margin-bottom:12px;font-weight:600;line-height:1.5;"><span style="background:#7c3aed;color:#fff;padding:2px 10px;border-radius:20px;font-size:12px;margin-right:8px;">Câu 2</span> "Độ trung thực (fidelity)" trong truyền thông là gì?</p>
+            <label style="display:flex;align-items:center;gap:8px;padding:9px 12px;border-radius:8px;cursor:pointer;margin-bottom:6px;border:1.5px solid var(--border);background:var(--card);transition:all .18s;" onmouseover="this.style.borderColor='#7c3aed'" onmouseout="this.style.borderColor='var(--border)'"><input type="radio" name="ex3q2" value="A" style="accent-color:#7c3aed"> <b>A.</b> Tần suất gửi thông điệp trong một đơn vị thời gian</label>
+            <label style="display:flex;align-items:center;gap:8px;padding:9px 12px;border-radius:8px;cursor:pointer;margin-bottom:6px;border:1.5px solid var(--border);background:var(--card);transition:all .18s;" onmouseover="this.style.borderColor='#7c3aed'" onmouseout="this.style.borderColor='var(--border)'"><input type="radio" name="ex3q2" value="B" style="accent-color:#7c3aed"> <b>B.</b> Mức độ tương đồng giữa ý định của người gửi và sự hiểu biết của người nhận</label>
+            <label style="display:flex;align-items:center;gap:8px;padding:9px 12px;border-radius:8px;cursor:pointer;margin-bottom:6px;border:1.5px solid var(--border);background:var(--card);transition:all .18s;" onmouseover="this.style.borderColor='#7c3aed'" onmouseout="this.style.borderColor='var(--border)'"><input type="radio" name="ex3q2" value="C" style="accent-color:#7c3aed"> <b>C.</b> Số lượng kênh truyền thông được sử dụng</label>
+            <label style="display:flex;align-items:center;gap:8px;padding:9px 12px;border-radius:8px;cursor:pointer;border:1.5px solid var(--border);background:var(--card);transition:all .18s;" onmouseover="this.style.borderColor='#7c3aed'" onmouseout="this.style.borderColor='var(--border)'"><input type="radio" name="ex3q2" value="D" style="accent-color:#7c3aed"> <b>D.</b> Tốc độ lan truyền của thông tin</label>
+          </div>
+
+          <hr style="border:none;border-top:1.5px solid var(--border);margin-bottom:24px;">
+          <h3 style="margin-bottom:8px;color:var(--accent);font-size:16px;">Phần 2: Soạn thảo thông điệp (70 điểm)</h3>
+          <p style="font-size:13px;color:var(--text2);margin-bottom:20px;">Vận dụng kiến thức về <strong>Nhiễu và chiến lược Symmetry</strong> vào tình huống thực tế.</p>
+
+          <div style="background:rgba(124,58,237,.07);border-left:4px solid #7c3aed;padding:14px 16px;border-radius:0 8px 8px 0;margin-bottom:12px;">
+            <p style="font-weight:600;font-size:14px;margin-bottom:4px;">📝 Câu 3 – Ứng dụng chiến lược Symmetry</p>
+            <p style="font-size:13px;color:var(--text2);line-height:1.5;">Bạn cần truyền đạt thông tin kỹ thuật phức tạp về sản phẩm công nghệ mới đến nhóm <strong>khách hàng lớn tuổi, ít am hiểu công nghệ</strong>. Dựa vào chiến lược <strong>Symmetry</strong>, hãy soạn thảo một thông điệp quảng bá phù hợp — giải thích cách bạn điều chỉnh ngôn ngữ để giảm thiểu nhiễu ngữ nghĩa.</p>
+          </div>
+          <textarea id="ex3Text1" placeholder="Soạn thảo thông điệp và giải thích chiến lược Symmetry của bạn..." style="width:100%;height:130px;padding:14px;border:2px solid var(--border);border-radius:8px;font-family:inherit;font-size:14px;resize:vertical;margin-bottom:20px;background:var(--card);color:var(--text);transition:border-color .2s;" onfocus="this.style.borderColor='#7c3aed'" onblur="this.style.borderColor='var(--border)'"></textarea>
+
+          <div style="background:rgba(244,162,97,.08);border-left:4px solid var(--secondary);padding:14px 16px;border-radius:0 8px 8px 0;margin-bottom:12px;">
+            <p style="font-weight:600;font-size:14px;margin-bottom:4px;">💬 Câu 4 – Cảm nhận về "Nhiễu" trong cuộc sống</p>
+            <p style="font-size:13px;color:var(--text2);line-height:1.5;">Hãy kể lại một tình huống <strong>thực tế trong cuộc sống hoặc công việc</strong> mà bạn đã gặp phải "Nhiễu" trong giao tiếp (có thể là nhiễu tâm lý, nhiễu ngữ nghĩa, hoặc nhiễu vật lý). Cảm xúc bạn lúc đó ra sao và bạn đã xử lý như thế nào?</p>
+          </div>
+          <textarea id="ex3Text2" placeholder="Chia sẻ trải nghiệm cá nhân về 'Nhiễu' trong cuộc sống..." style="width:100%;height:110px;padding:14px;border:2px solid var(--border);border-radius:8px;font-family:inherit;font-size:14px;resize:vertical;margin-bottom:24px;background:var(--card);color:var(--text);transition:border-color .2s;" onfocus="this.style.borderColor='var(--secondary)'" onblur="this.style.borderColor='var(--border)'"></textarea>
+
+          <div style="display:flex;gap:10px;flex-wrap:wrap;">
+            <button onclick="submitExercise(3)" style="padding:12px 28px;background:linear-gradient(135deg,#7c3aed,#4f46e5);color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-family:'Helvetica Rounded Bold',sans-serif;box-shadow:0 4px 14px rgba(124,58,237,.3);">📤 Nộp bài</button>
+            <button onclick="switchPrTab('crisis-game',null);clearExInterval(3);" style="padding:12px 20px;background:var(--bg);color:var(--text);border:1.5px solid var(--border);border-radius:8px;font-weight:600;cursor:pointer;">← Chọn bài khác</button>
+          </div>
+          <div id="ex3Result" style="display:none;margin-top:24px;padding:22px;border-radius:10px;background:#f3e8ff;border:1px solid #9f5fff;">
+            <h3 style="color:#5b21b6;margin-bottom:12px;font-size:17px;">📊 Kết quả đánh giá</h3>
+            <p id="ex3Feedback" style="font-size:14px;line-height:1.7;"></p>
+            <div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap;">
+              <button onclick="switchPrTab('curriculum',null)" style="padding:9px 18px;background:#5b21b6;color:#fff;border:none;border-radius:7px;cursor:pointer;font-weight:600;">📚 Xem danh sách bài</button>
+              <button onclick="startExercise(3)" style="padding:9px 18px;background:var(--card);color:var(--text);border:1.5px solid var(--border);border-radius:7px;cursor:pointer;font-weight:600;">🔄 Làm lại</button>
+            </div>
           </div>
         </div>
       </div>
@@ -1691,90 +1878,212 @@ function switchPrTab(id, btn) {
   document.querySelectorAll('.pr-tab').forEach(t => t.classList.remove('active'));
   if (btn) btn.classList.add('active');
   else {
-    var map = {curriculum:0, 'smcr-article':0, 'crisis-game':1};
+    var map = {curriculum:0, 'smcr-article':0, 'crisis-game':1, 'exercise-1':1, 'exercise-2':1, 'exercise-3':1};
     var tabs = document.querySelectorAll('.pr-tab');
-    if (tabs[map[id]]) tabs[map[id]].classList.add('active');
+    if (tabs[map[id]] !== undefined) tabs[map[id]].classList.add('active');
   }
+  // Update selection badges when returning to selection screen
+  if(id === 'crisis-game') updateExSelectionBadges();
 }
 
-let crisisInterval;
-let crisisTimeLeft = 60;
+/* ══════════════════════════════════════
+   EXERCISE SELECTION & MULTI-EXERCISE JS
+══════════════════════════════════════ */
+let exIntervals = { 1: null, 2: null, 3: null };
+let exTimeLeft  = { 1: 90,   2: 90,   3: 90  };
 
-function startCrisisGame() {
-  document.getElementById('crisisResponse').value = '';
-  document.getElementById('crisisResponse').disabled = false;
-  let radios = document.querySelectorAll('#pr-crisis-game input[type="radio"]');
-  radios.forEach(r => { r.checked = false; r.disabled = false; });
-  document.getElementById('crisisResult').style.display = 'none';
+const EX_CONFIG = {
+  1: {
+    id: 'pr-smcre-1', name: 'Bài 1: SMCRE & Nguồn – Thông điệp',
+    type: '🎯 Thực chiến', dept: 'pr', maxScore: 100,
+    answers: { q1: 'A', q2: 'B' },
+    textIds: ['ex1Text1', 'ex1Text2'],
+    keywords1: ['xin lỗi','xác nhận','điều tra','cam kết','kiểm định','phòng thí nghiệm','an toàn','sức khỏe','khách hàng'],
+    keywords2: ['nguồn','uy tín','thấu cảm','thông điệp','smcre','truyền thông','pr','áp dụng','kỹ năng','hữu ích']
+  },
+  2: {
+    id: 'pr-dependency-1', name: 'Bài 2: Dependency & Tam giác tương tác',
+    type: '🎯 Thực chiến', dept: 'pr', maxScore: 100,
+    answers: { q1: 'C', q2: 'B' },
+    textIds: ['ex2Text1', 'ex2Text2'],
+    keywords1: ['xã hội','truyền thông','khán giả','chiến dịch','tương tác','ảnh hưởng','thương hiệu','lan tỏa','xu hướng'],
+    keywords2: ['phụ thuộc','quyết định','cảm nhận','nhận ra','thay đổi','thói quen','ảnh hưởng','bản thân','dependency']
+  },
+  3: {
+    id: 'pr-noise-1', name: 'Bài 3: Nhiễu, Độ trung thực & Symmetry',
+    type: '🎯 Thực chiến', dept: 'pr', maxScore: 100,
+    answers: { q1: 'B', q2: 'B' },
+    textIds: ['ex3Text1', 'ex3Text2'],
+    keywords1: ['đơn giản','dễ hiểu','ngôn ngữ','symmetry','khách hàng','lớn tuổi','hình ảnh','minh họa','thân thiện'],
+    keywords2: ['nhiễu','giao tiếp','hiểu lầm','cảm xúc','xử lý','tình huống','kinh nghiệm','bài học','thực tế']
+  }
+};
 
-  crisisTimeLeft = 60;
-  document.getElementById('crisisTimer').innerText = "01:00";
-  document.getElementById('crisisTimer').style.color = "#fff";
-  clearInterval(crisisInterval);
-
-  crisisInterval = setInterval(() => {
-    crisisTimeLeft--;
-    let m = Math.floor(crisisTimeLeft / 60).toString().padStart(2, '0');
-    let s = (crisisTimeLeft % 60).toString().padStart(2, '0');
-    document.getElementById('crisisTimer').innerText = m + ":" + s;
-
-    if (crisisTimeLeft <= 10) {
-      document.getElementById('crisisTimer').style.color = "#ffcccc";
+function updateExSelectionBadges() {
+  var scores = getExerciseScores();
+  [1,2,3].forEach(i => {
+    var cfg = EX_CONFIG[i];
+    var el = document.getElementById('ex'+i+'-badge');
+    if(!el) return;
+    var r = scores[cfg.id];
+    if(r) {
+      el.innerHTML = '✅ ' + r.bestScore + '/' + r.maxScore + ' điểm';
+      el.style.color = '#2D5F5D';
     }
+  });
+}
 
-    if (crisisTimeLeft <= 0) {
-      clearInterval(crisisInterval);
-      document.getElementById('crisisResponse').disabled = true;
-      document.querySelectorAll('#pr-crisis-game input[type="radio"]').forEach(r => r.disabled = true);
-      submitCrisisResponse(true);
+function startExercise(num) {
+  var cfg = EX_CONFIG[num];
+  // reset inputs
+  document.querySelectorAll('#pr-exercise-'+num+' input[type="radio"]').forEach(r=>{ r.checked=false; r.disabled=false; });
+  cfg.textIds.forEach(id => {
+    var el = document.getElementById(id);
+    if(el){ el.value=''; el.disabled=false; }
+  });
+  document.getElementById('ex'+num+'Result').style.display = 'none';
+  // reset timer
+  clearExInterval(num);
+  exTimeLeft[num] = 90;
+  var timerEl = document.getElementById('ex'+num+'Timer');
+  timerEl.innerText = '01:30';
+  timerEl.style.color = '#fff';
+  // show section
+  switchPrTab('exercise-'+num, null);
+  // start countdown
+  exIntervals[num] = setInterval(function(){
+    exTimeLeft[num]--;
+    var m = Math.floor(exTimeLeft[num]/60).toString().padStart(2,'0');
+    var s = (exTimeLeft[num]%60).toString().padStart(2,'0');
+    timerEl.innerText = m+':'+s;
+    if(exTimeLeft[num] <= 15) timerEl.style.color = '#ffcccc';
+    if(exTimeLeft[num] <= 0) {
+      clearExInterval(num);
+      document.querySelectorAll('#pr-exercise-'+num+' input[type="radio"]').forEach(r=>r.disabled=true);
+      cfg.textIds.forEach(id=>{ var el=document.getElementById(id); if(el) el.disabled=true; });
+      submitExercise(num, true);
     }
   }, 1000);
 }
 
-function submitCrisisResponse(isTimeout = false) {
-  clearInterval(crisisInterval);
-  document.getElementById('crisisResponse').disabled = true;
-  document.querySelectorAll('#pr-crisis-game input[type="radio"]').forEach(r => r.disabled = true);
+function clearExInterval(num) {
+  if(exIntervals[num]) { clearInterval(exIntervals[num]); exIntervals[num]=null; }
+}
 
-  let mcqScore = 0;
-  let correctCount = 0;
-  let q1 = document.querySelector('input[name="q1"]:checked');
-  let q2 = document.querySelector('input[name="q2"]:checked');
-  let q3 = document.querySelector('input[name="q3"]:checked');
+function submitExercise(num, isTimeout) {
+  clearExInterval(num);
+  var cfg = EX_CONFIG[num];
+  document.querySelectorAll('#pr-exercise-'+num+' input[type="radio"]').forEach(r=>r.disabled=true);
+  cfg.textIds.forEach(id=>{ var el=document.getElementById(id); if(el) el.disabled=true; });
 
-  if(q1 && q1.value === 'A') { mcqScore += 10; correctCount++; }
-  if(q2 && q2.value === 'C') { mcqScore += 10; correctCount++; }
-  if(q3 && q3.value === 'B') { mcqScore += 10; correctCount++; }
+  // Score MCQ (15 pts each)
+  var mcqScore = 0; var correct = 0;
+  var q1 = document.querySelector('input[name="ex'+num+'q1"]:checked');
+  var q2 = document.querySelector('input[name="ex'+num+'q2"]:checked');
+  if(q1 && q1.value === cfg.answers.q1) { mcqScore+=15; correct++; }
+  if(q2 && q2.value === cfg.answers.q2) { mcqScore+=15; correct++; }
 
-  let responseText = document.getElementById('crisisResponse').value.trim();
-  let textScore = 0;
-  let textFeedback = "";
+  // Score text (35 pts each) with keyword matching
+  var t1 = (document.getElementById(cfg.textIds[0])||{}).value||'';
+  var t2 = (document.getElementById(cfg.textIds[1])||{}).value||'';
+  var score1 = scoreText(t1.toLowerCase(), cfg.keywords1, 35);
+  var score2 = scoreText(t2.toLowerCase(), cfg.keywords2, 35);
+  var textScore = score1 + score2;
+  var totalScore = mcqScore + textScore;
 
-  if (responseText.length < 20) {
-    textScore = 20;
-    textFeedback = isTimeout ? "Hết thời gian! Thông điệp quá ngắn, khách hàng cảm thấy bạn đang trốn tránh trách nhiệm." : "Thông điệp quá ngắn và hời hợt. Khủng hoảng có nguy cơ bùng phát mạnh hơn.";
-  } else if (responseText.toLowerCase().includes("xin lỗi") || responseText.toLowerCase().includes("chân thành") || responseText.toLowerCase().includes("điều tra") || responseText.toLowerCase().includes("làm rõ")) {
-    textScore = 70;
-    textFeedback = "Tuyệt vời! Bạn đã có thái độ cầu thị, nhận trách nhiệm hoặc hứa hẹn điều tra rõ ràng. Cổ phiếu công ty đã giữ được sự ổn định!";
-  } else {
-    textScore = 40;
-    textFeedback = "Tạm ổn. Bạn đã phản hồi nhưng thiếu các từ khóa xoa dịu cảm xúc (xin lỗi, cam kết điều tra). Dư luận vẫn còn nhiều nghi ngờ.";
-  }
+  // Feedback
+  var fb1 = getFeedback1(num, q1, cfg.answers.q1);
+  var fb2 = getFeedback1(num, q2, cfg.answers.q2);
+  var tf1 = getTextFeedback(t1, cfg.keywords1, score1, 35, num, 3, isTimeout);
+  var tf2 = getTextFeedback(t2, cfg.keywords2, score2, 35, num, 4, isTimeout);
+  var medal = totalScore >= 90 ? '🥇' : totalScore >= 70 ? '🥈' : totalScore >= 50 ? '🥉' : '📝';
 
-  let totalScore = mcqScore + textScore;
-
-  document.getElementById('crisisResult').style.display = 'block';
-  document.getElementById('crisisFeedback').innerHTML = `
-    <strong>Phần trắc nghiệm: ${mcqScore}/30 điểm (${correctCount}/3 câu đúng)</strong><br>
-    <strong>Phần tự luận: ${textScore}/70 điểm</strong><br>
-    <em>Nhận xét tự luận:</em> ${textFeedback}<br><br>
-    <strong style="font-size:16px; color:var(--primary);">Tổng điểm: ${totalScore}/100</strong>
+  var html = `
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;">
+      <div style="background:rgba(255,255,255,.6);border-radius:8px;padding:12px;text-align:center;">
+        <div style="font-size:22px;font-weight:900;color:var(--primary);">${mcqScore}/30</div>
+        <div style="font-size:11px;color:var(--text2);font-weight:600;">Trắc nghiệm</div>
+        <div style="font-size:12px;margin-top:2px;">${correct}/2 câu đúng</div>
+      </div>
+      <div style="background:rgba(255,255,255,.6);border-radius:8px;padding:12px;text-align:center;">
+        <div style="font-size:22px;font-weight:900;color:var(--accent);">${textScore}/70</div>
+        <div style="font-size:11px;color:var(--text2);font-weight:600;">Tự luận</div>
+      </div>
+    </div>
+    <div style="text-align:center;font-size:28px;font-weight:900;color:var(--primary);margin-bottom:8px;">${medal} ${totalScore}/100 điểm</div>
+    <hr style="border:none;border-top:1px solid rgba(0,0,0,.1);margin:12px 0;">
+    <p style="font-size:13px;margin-bottom:6px;"><b>Câu 1:</b> ${fb1}</p>
+    <p style="font-size:13px;margin-bottom:6px;"><b>Câu 2:</b> ${fb2}</p>
+    <p style="font-size:13px;margin-bottom:6px;"><b>Câu 3 (${score1}/35):</b> ${tf1}</p>
+    <p style="font-size:13px;"><b>Câu 4 (${score2}/35):</b> ${tf2}</p>
   `;
+  document.getElementById('ex'+num+'Feedback').innerHTML = html;
+  document.getElementById('ex'+num+'Result').style.display = 'block';
 
-  saveExerciseScore('pr-crisis-1', 'Bài tập: Lý thuyết & Xử lý khủng hoảng', '🎮 Thực chiến', 'pr', totalScore, 100, correctCount, 3);
+  saveExerciseScore(cfg.id, cfg.name, cfg.type, cfg.dept, totalScore, cfg.maxScore, correct, 2);
+  updateExSelectionBadges();
   renderPrCurriculum();
   renderAchievements();
   updateProfileStats();
+}
+
+function scoreText(text, keywords, max) {
+  if(!text || text.length < 15) return Math.floor(max * 0.2);
+  var hits = keywords.filter(k => text.includes(k)).length;
+  var lengthBonus = text.length > 200 ? 1 : text.length > 100 ? 0.5 : 0;
+  var base = Math.min(hits / Math.max(keywords.length * 0.4, 1), 1);
+  return Math.round(Math.min(max, Math.floor(max * 0.3 + base * max * 0.6 + lengthBonus * max * 0.1)));
+}
+
+function getFeedback1(num, selected, correct) {
+  if(!selected) return '⚠️ Chưa chọn đáp án.';
+  if(selected.value === correct) return '✅ Chính xác!';
+  return '❌ Sai. Đáp án đúng là <strong>' + correct + '</strong>.';
+}
+
+function getTextFeedback(text, keywords, score, max, num, qNum, isTimeout) {
+  if(isTimeout && (!text || text.length < 15)) return '⏰ Hết thời gian, chưa kịp hoàn thành câu này.';
+  if(!text || text.length < 15) return '⚠️ Câu trả lời quá ngắn hoặc để trống.';
+  var hits = keywords.filter(k => text.toLowerCase().includes(k)).length;
+  if(score >= max * 0.8) return '🌟 Xuất sắc! Câu trả lời rất sâu sắc và đúng trọng tâm.';
+  if(score >= max * 0.6) return '👍 Tốt! Bạn đã nắm được ý chính. Có thể bổ sung thêm từ khóa: <em>' + keywords.slice(0,3).join(', ') + '</em>.';
+  return '💡 Cần cải thiện. Hãy đề cập đến các khái niệm: <em>' + keywords.slice(0,4).join(', ') + '</em> để bài viết thuyết phục hơn.';
+}
+
+// ── Legacy crisis game (kept for backward compat) ──
+let crisisInterval;
+let crisisTimeLeft = 60;
+
+function startCrisisGame() {
+  switchPrTab('crisis-game', null);
+  updateExSelectionBadges();
+}
+
+/* kept so old saveExerciseScore call doesn't break */
+function submitCrisisResponse(isTimeout = false) {
+  // no-op, replaced by submitExercise
+}
+
+// ── keep old section references for switchPrTab ──
+// (crisis-game now shows exercise selection)
+
+let _legacyCrisisTimeLeft = 60;
+// dummy vars to prevent ReferenceErrors from old inline onclick
+let _dummy = 0;
+
+// ── expose for inline buttons ──
+window.startExercise = startExercise;
+window.submitExercise = submitExercise;
+window.clearExInterval = clearExInterval;
+
+if(false){ // dead code block — prevent errors
+  clearInterval(crisisInterval);
+  crisisTimeLeft = 0;
+  _legacyCrisisTimeLeft--;
+  let _d2 = crisisInterval;
+  if (_legacyCrisisTimeLeft <= 0) {
+      // dead code end
+  }
 }
 </script>
 
@@ -1908,7 +2217,7 @@ function initRealtimeStats() {
     if (!isStatsAnimated) {
       animateValue("liveStatSat", 0, percentage, 1500, "%");
       animateValue("liveStatDepts", 0, 2, 1000, "");
-      animateValue("liveStatTasks", 0, 1, 1500, ""); // Chỉ còn 1 bài tập
+      animateValue("liveStatTasks", 0, 3, 1500, ""); // 3 bài tập thực chiến
       isStatsAnimated = true; 
     } else {
       document.getElementById("liveStatSat").innerText = percentage + "%";
@@ -2188,7 +2497,10 @@ function getTotalStats() {
    PR CURRICULUM RENDER
 ═══════════════════════════════ */
 var prExercises = [
-  { id: 'pr-smcr', num: 1, name: 'Mô hình truyền thông SMCRE', desc: 'Kiến trúc tương tác và hiệu quả thông tin', type: '📖 Lý thuyết', maxScore: 100, action: "switchPrTab('smcr-article',null)", available: true }
+  { id: 'pr-smcr', num: 1, name: 'Mô hình truyền thông SMCRE', desc: 'Kiến trúc tương tác và hiệu quả thông tin', type: '📖 Lý thuyết', maxScore: 100, action: "switchPrTab('smcr-article',null)", available: true },
+  { id: 'pr-smcre-1', num: 2, name: 'Bài 1: SMCRE & Nguồn – Thông điệp', desc: '2 câu trắc nghiệm + 2 câu soạn thảo về SMCRE và vai trò Nguồn, Hiệu quả', type: '🎯 Thực chiến', maxScore: 100, action: "startExercise(1)", available: true },
+  { id: 'pr-dependency-1', num: 3, name: 'Bài 2: Dependency & Tam giác tương tác', desc: '2 câu trắc nghiệm + 2 câu soạn thảo về lý thuyết Dependency', type: '🎯 Thực chiến', maxScore: 100, action: "startExercise(2)", available: true },
+  { id: 'pr-noise-1', num: 4, name: 'Bài 3: Nhiễu, Độ trung thực & Symmetry', desc: '2 câu trắc nghiệm + 2 câu soạn thảo về Noise, Fidelity và Symmetry', type: '🎯 Thực chiến', maxScore: 100, action: "startExercise(3)", available: true }
 ];
 
 function renderPrCurriculum() {
