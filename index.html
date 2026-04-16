@@ -1324,27 +1324,117 @@ body.dark-mode .asb-points{color:#7ececa;}
 
             <div style="border-left: 4px solid var(--primary); padding-left: 16px; margin-bottom: 28px;">
                 <h4 style="font-size: 16px; font-weight: 700; color: var(--primary); margin-bottom: 8px;">💡 Tóm lại (Kết luận)</h4>
-                <p style="font-style: italic; font-size: 14px; line-height: 1.6;">Con người và truyền thông hiện nay đang "sống dựa" vào nhau. Nắm được luật chơi này không phải để né tránh truyền thông, mà để chúng ta <b>biết tự phản biện</b>, rèn luyện cách chọn lọc thông tin và làm chủ suy nghĩ của mình giữa một thế giới đang bị bủa vây bởi dữ liệu.</p>
+                <p style="font-style: italic; font-size: 14px; line-height: 1.6;">Con người và truyền thông hiện nay đang "sống dựa" vào nhau. Nắm được luật chơi này không phải để né tránh truyền thông, mà để chúng bản <b>biết tự phản biện</b>, rèn luyện cách chọn lọc thông tin và làm chủ suy nghĩ của mình giữa một thế giới đang bị bủa vây bởi dữ liệu.</p>
             </div>
           </div>
           <button style="padding: 10px 20px; background: #376a68; color: #fff; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 13px;" onclick="switchPrTab('curriculum', null)">← Quay lại danh sách bài</button>
         </div>
       </div>
     </div>
-    </div></div><script>
+    
+    <div class="pr-section" id="pr-crisis-game">
+      <div class="case-card" style="border-radius: 12px; overflow: hidden; border: 1px solid var(--border); box-shadow: 0 4px 15px rgba(0,0,0,0.05); background: var(--card);">
+        <div style="background: linear-gradient(135deg, #e76f51, #c92a2a); padding: 24px; color: #fff; display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <h2 style="font-family: 'Helvetica Rounded Bold', sans-serif; font-size: 22px; margin-bottom: 6px;">⚠️ KHẨN CẤP: Khủng hoảng ClearDrop</h2>
+            <p style="font-size: 13px; opacity: 0.9;">Tình huống: Sản phẩm bị tố gây kích ứng da nghiêm trọng trên TikTok.</p>
+          </div>
+          <div id="crisisTimer" style="font-size: 24px; font-weight: bold; background: rgba(0,0,0,0.3); padding: 10px 20px; border-radius: 8px;">01:00</div>
+        </div>
+        <div style="padding: 28px; color: var(--text);">
+          <div style="background: var(--bg); border-left: 4px solid #e76f51; padding: 16px; margin-bottom: 20px; border-radius: 4px;">
+            <strong>Nhiệm vụ của bạn:</strong> Với vai trò Trưởng phòng PR, hãy soạn thảo NHANH một thông điệp phản hồi (Thông cáo báo chí ngắn hoặc Bài đăng đính chính) để xoa dịu dư luận trước khi báo chí chính thống vào cuộc. Bạn chỉ có 60 giây!
+          </div>
+          <textarea id="crisisResponse" placeholder="Soạn thảo thông điệp của bạn tại đây..." style="width: 100%; height: 150px; padding: 15px; border: 2px solid var(--border); border-radius: 8px; font-family: inherit; font-size: 14px; resize: vertical; margin-bottom: 20px;"></textarea>
+          <div style="display: flex; gap: 10px;">
+            <button onclick="submitCrisisResponse()" style="padding: 12px 24px; background: var(--primary); color: #fff; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; font-family: 'Helvetica Rounded Bold', sans-serif;">📤 Gửi thông điệp</button>
+            <button onclick="switchPrTab('curriculum', null); clearInterval(crisisInterval);" style="padding: 12px 24px; background: var(--bg); color: var(--text); border: 1px solid var(--border); border-radius: 8px; font-weight: bold; cursor: pointer;">Hủy bỏ</button>
+          </div>
+          <div id="crisisResult" style="display: none; margin-top: 20px; padding: 20px; border-radius: 8px; background: #e8f5e9; border: 1px solid #4caf50;">
+             <h3 style="color: #2e7d32; margin-bottom: 10px;">📊 Kết quả đánh giá</h3>
+             <p id="crisisFeedback" style="font-size: 14px; line-height: 1.6;"></p>
+             <button onclick="switchPrTab('curriculum', null)" style="margin-top: 15px; padding: 8px 16px; background: #2e7d32; color: #fff; border: none; border-radius: 6px; cursor: pointer; font-weight: 600;">Quay lại danh sách</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
 /* ════════════════════════════════════
    PR COURSE — Tab Switch
 ════════════════════════════════════ */
 function switchPrTab(id, btn) {
   document.querySelectorAll('.pr-section').forEach(s => s.classList.remove('visible'));
-  document.getElementById('pr-' + id).classList.add('visible');
+  let target = document.getElementById('pr-' + id);
+  if (target) target.classList.add('visible');
   document.querySelectorAll('.pr-tab').forEach(t => t.classList.remove('active'));
   if (btn) btn.classList.add('active');
   else {
-    var map = {curriculum:0, 'smcr-article':0};
+    var map = {curriculum:0, 'smcr-article':0, 'crisis-game':0};
     var tabs = document.querySelectorAll('.pr-tab');
     if (tabs[map[id]]) tabs[map[id]].classList.add('active');
   }
+}
+
+let crisisInterval;
+let crisisTimeLeft = 60;
+
+function startCrisisGame() {
+  switchPrTab('crisis-game', null);
+  document.getElementById('crisisResponse').value = '';
+  document.getElementById('crisisResponse').disabled = false;
+  document.getElementById('crisisResult').style.display = 'none';
+  crisisTimeLeft = 60;
+  document.getElementById('crisisTimer').innerText = "01:00";
+  document.getElementById('crisisTimer').style.color = "#fff";
+  clearInterval(crisisInterval);
+
+  crisisInterval = setInterval(() => {
+    crisisTimeLeft--;
+    let m = Math.floor(crisisTimeLeft / 60).toString().padStart(2, '0');
+    let s = (crisisTimeLeft % 60).toString().padStart(2, '0');
+    document.getElementById('crisisTimer').innerText = m + ":" + s;
+
+    if (crisisTimeLeft <= 10) {
+      document.getElementById('crisisTimer').style.color = "#ffcccc";
+    }
+
+    if (crisisTimeLeft <= 0) {
+      clearInterval(crisisInterval);
+      document.getElementById('crisisResponse').disabled = true;
+      submitCrisisResponse(true);
+    }
+  }, 1000);
+}
+
+function submitCrisisResponse(isTimeout = false) {
+  clearInterval(crisisInterval);
+  document.getElementById('crisisResponse').disabled = true;
+  let responseText = document.getElementById('crisisResponse').value.trim();
+  let score = 0;
+  let feedback = "";
+
+  if (responseText.length < 20) {
+    score = 30;
+    feedback = isTimeout ? "Hết thời gian! Thông điệp quá ngắn, khách hàng cảm thấy bạn không nghiêm túc và đang trốn tránh trách nhiệm." : "Thông điệp quá ngắn và hời hợt. Khủng hoảng có nguy cơ bùng phát mạnh hơn.";
+  } else if (responseText.toLowerCase().includes("xin lỗi") || responseText.toLowerCase().includes("chân thành") || responseText.toLowerCase().includes("điều tra") || responseText.toLowerCase().includes("làm rõ")) {
+    score = 95;
+    feedback = "Tuyệt vời! Bạn đã có thái độ cầu thị, nhận trách nhiệm hoặc hứa hẹn điều tra rõ ràng. Cổ phiếu công ty đã giữ được sự ổn định!";
+  } else {
+    score = 65;
+    feedback = "Tạm ổn. Bạn đã phản hồi nhưng thiếu các từ khóa xoa dịu cảm xúc (xin lỗi, cam kết điều tra). Dư luận vẫn còn nhiều nghi ngờ.";
+  }
+
+  document.getElementById('crisisResult').style.display = 'block';
+  document.getElementById('crisisFeedback').innerHTML = `<strong>Điểm của bạn: ${score}/100</strong><br><br>${feedback}`;
+
+  saveExerciseScore('pr-crisis-1', 'Giả lập: Xử lý khủng hoảng ClearDrop', '🎮 Thực chiến', 'pr', score, 100, score >= 60 ? 1 : 0, 1);
+  renderPrCurriculum();
+  renderAchievements();
+  updateProfileStats();
 }
 </script>
 
@@ -1757,9 +1847,10 @@ function getTotalStats() {
 /* ═══════════════════════════════
    PR CURRICULUM RENDER
 ═══════════════════════════════ */
-// CHỈ GIỮ LẠI BÀI SMCRE
+// CHỈ GIỮ LẠI BÀI SMCRE VÀ GAME GIẢ LẬP MỚI
 var prExercises = [
-  { id: 'pr-smcr', num: 1, name: 'Mô hình truyền thông SMCRE', desc: 'Kiến trúc tương tác và hiệu quả thông tin', type: '📖 Lý thuyết', maxScore: 100, action: "switchPrTab('smcr-article',null)", available: true }
+  { id: 'pr-smcr', num: 1, name: 'Mô hình truyền thông SMCRE', desc: 'Kiến trúc tương tác và hiệu quả thông tin', type: '📖 Lý thuyết', maxScore: 100, action: "switchPrTab('smcr-article',null)", available: true },
+  { id: 'pr-crisis-1', num: 2, name: 'Giả lập: Xử lý khủng hoảng ClearDrop', desc: 'Soạn thảo thông điệp phản hồi khách hàng dưới áp lực thời gian', type: '🎮 Thực chiến', maxScore: 100, action: "startCrisisGame()", available: true }
 ];
 
 function renderPrCurriculum() {
