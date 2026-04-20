@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CEP - Career Experience</title>
+<title>PRX - PR Experience</title>
 <style>
 /* ════════════════════════════════════════
    CSS VARIABLES & RESET
@@ -889,29 +889,16 @@ body.dark-mode .asb-points { color: #7ececa; }
 <header class="home-big-header" id="globalHeader" style="position:fixed;top:0;left:0;right:0;z-index:1001;display:none;">
   <div class="home-hc">
     <div class="home-logo" onclick="showPage('page-home')">
-      <div class="home-logo-circle">CEP</div>
-      <div class="home-logo-text">Career<br>Experience</div>
+      <div class="home-logo-circle">PRX</div>
+      <div class="home-logo-text">PR<br>Experience</div>
     </div>
     <button class="menu-toggle-btn" id="menuToggle"><span></span><span></span><span></span></button>
     <nav class="home-nav-links">
       <a class="hnl-item" onclick="showPage('page-home')">Trang chủ</a>
-      <div class="hnl-item hnl-dropdown">
-        <span class="hnl-drop-trigger">Các khóa học <svg width="10" height="6" viewBox="0 0 10 6" fill="none" style="vertical-align:middle;margin-left:4px;"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        <div class="hnl-drop-menu">
-          <div class="hnl-drop-header">📚 Chọn ngành học</div>
-          <a class="hnl-drop-item" onclick="showPage('page-pr-course')">
-            <div class="hnl-drop-icon" style="background:linear-gradient(135deg,#1a4645,#2D5F5D);">📣</div>
-            <div><div class="hnl-drop-name">Public Relations</div><div class="hnl-drop-desc">Xử lý khủng hoảng, PR chiến lược</div></div>
-          </a>
-          <a class="hnl-drop-item" onclick="showPage('page-mkt-course')">
-            <div class="hnl-drop-icon" style="background:linear-gradient(135deg,#E76F51,#F4A261);">📈</div>
-            <div><div class="hnl-drop-name">Marketing</div><div class="hnl-drop-desc">Digital Marketing, Content Strategy</div></div>
-          </a>
-        </div>
-      </div>
+      <a class="hnl-item" onclick="showPage('page-pr-course')">📣 Public Relations</a>
     </nav>
     <div class="home-search">
-      <input type="text" id="searchInput" placeholder="Tìm kiếm khóa học...">
+      <input type="text" id="searchInput" placeholder="Tìm kiếm nội dung PR...">
       <button class="home-search-btn" onclick="doSearch()">🔍</button>
     </div>
     <div class="home-right">
@@ -925,22 +912,13 @@ body.dark-mode .asb-points { color: #7ececa; }
 <div class="overlay" id="overlay"></div>
 <div class="slide-menu" id="slideMenu">
   <div class="sm-header">
-    <div class="sm-brand"><div class="sm-circle">CEP</div><div class="sm-title">Danh mục<small>Career Experience</small></div></div>
+    <div class="sm-brand"><div class="sm-circle">PRX</div><div class="sm-title">Danh mục<small>Public Relations</small></div></div>
     <button class="sm-close" id="smClose">✕</button>
   </div>
   <nav class="sm-nav">
     <div class="sm-label" data-i18n="smMain">Điều hướng chính</div>
     <a onclick="closeMenu();showPage('page-home')" class="sm-active"><span class="sm-icon">🏠</span><span data-i18n="navHome">Trang chủ</span></a>
-    <div class="sm-courses-wrap">
-      <div class="sm-courses-trigger" onclick="toggleSmCourses(this)">
-        <span class="sm-icon">📚</span><span>Các khóa học</span>
-        <svg class="sm-arrow" width="12" height="7" viewBox="0 0 12 7" fill="none"><path d="M1 1l5 5 5-5" stroke="rgba(255,255,255,.6)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </div>
-      <div class="sm-courses-list" id="smCoursesList">
-        <a onclick="closeMenu();showPage('page-pr-course')" class="sm-sub-item"><span>📣</span> Public Relations</a>
-        <a onclick="closeMenu();showPage('page-mkt-course')" class="sm-sub-item"><span>📈</span> Marketing</a>
-      </div>
-    </div>
+    <a onclick="closeMenu();showPage('page-pr-course')"><span class="sm-icon">📣</span><span>Public Relations</span></a>
     <div class="sm-divider"></div>
     <div class="sm-label" data-i18n="smAccount">Tài khoản</div>
     <a id="smLoginLink" onclick="closeMenu();showPage('page-login')"><span class="sm-icon">🔑</span><span data-i18n="navLogin">Đăng nhập</span></a>
@@ -971,9 +949,9 @@ body.auth-page #globalHeader { display: none; }
   <div class="auth-bg">
     <div class="auth-card">
       <div class="auth-left">
-        <div class="logo-circle" onclick="showPage('page-home')">CEP</div>
+        <div class="logo-circle" onclick="showPage('page-home')">PRX</div>
         <h1 data-i18n="loginWelcome">Chào mừng trở lại!</h1>
-        <p data-i18n="loginSubLeft">Khám phá hàng ngàn cơ hội học tập về PR & Marketing</p>
+        <p data-i18n="loginSubLeft">Khám phá hàng ngàn cơ hội học tập về Public Relations</p>
       </div>
       <div class="auth-right">
         <div class="auth-header">
@@ -1015,12 +993,12 @@ body.auth-page #globalHeader { display: none; }
   <div class="auth-bg">
     <div class="auth-card" style="max-width:960px;">
       <div class="auth-left">
-        <div class="logo-circle" onclick="showPage('page-home')">CEP</div>
+        <div class="logo-circle" onclick="showPage('page-home')">PRX</div>
         <h1 data-i18n="regWelcome">Tham gia cùng chúng tôi!</h1>
-        <p data-i18n="regSubLeft">Bắt đầu hành trình với PR & Marketing chuyên nghiệp</p>
+        <p data-i18n="regSubLeft">Bắt đầu hành trình với Public Relations chuyên nghiệp</p>
         <div class="benefits">
           <div class="benefit-item">✅ <span data-i18n="b1">Bài tập thực chiến PR</span></div>
-          <div class="benefit-item">✅ <span data-i18n="b2">Bài tập thực chiến Marketing</span></div>
+          <div class="benefit-item">✅ <span data-i18n="b2">Xử lý khủng hoảng truyền thông</span></div>
           <div class="benefit-item">✅ <span data-i18n="b3">Hỗ trợ 24/7</span></div>
           <div class="benefit-item">✅ <span data-i18n="b4">Cộng đồng học viên</span></div>
         </div>
@@ -1135,23 +1113,23 @@ body.auth-page #globalHeader { display: none; }
     </div>
     <div class="legal-card legal-content">
       <h3>1. Chấp thuận Điều khoản</h3>
-      <p>Chào mừng bạn đến với Career Experience (CEP) - Nền tảng học tập thực chiến dành cho lĩnh vực PR & Marketing. Bằng việc truy cập, đăng ký tài khoản thông qua Email hoặc Single Sign-On (Google), và sử dụng các tính năng giả lập tình huống, bạn đồng ý tuân thủ toàn bộ các điều khoản được quy định dưới đây. Nếu bạn không đồng ý, vui lòng ngừng sử dụng dịch vụ.</p>
+      <p>Chào mừng bạn đến với PR Experience (PRX) - Nền tảng học tập thực chiến dành cho lĩnh vực Public Relations. Bằng việc truy cập, đăng ký tài khoản thông qua Email hoặc Single Sign-On (Google), và sử dụng các tính năng giả lập tình huống, bạn đồng ý tuân thủ toàn bộ các điều khoản được quy định dưới đây. Nếu bạn không đồng ý, vui lòng ngừng sử dụng dịch vụ.</p>
       
       <h3>2. Tài khoản và Bảo mật</h3>
       <ul>
         <li>Bạn có thể tạo tài khoản qua phương thức "Đăng nhập bằng Google" (Single Sign-On) để có trải nghiệm nhanh chóng nhất. Khi sử dụng phương thức này, hệ thống sẽ tự động cập nhật Tên, Email và Ảnh đại diện của bạn.</li>
         <li>Bạn chịu trách nhiệm hoàn toàn về việc bảo mật thông tin đăng nhập của mình và mọi hoạt động diễn ra dưới tài khoản đó.</li>
-        <li>CEP có quyền vô hiệu hóa tài khoản của bạn nếu phát hiện hành vi vi phạm hoặc lạm dụng nền tảng.</li>
+        <li>PRX có quyền vô hiệu hóa tài khoản của bạn nếu phát hiện hành vi vi phạm hoặc lạm dụng nền tảng.</li>
       </ul>
 
       <h3>3. Quyền sở hữu trí tuệ</h3>
-      <p>Toàn bộ nội dung học tập, bài kiểm tra (Quiz Game), kịch bản giả lập xử lý khủng hoảng truyền thông (như Study Case: ClearDrop) và mã nguồn giao diện thuộc bản quyền của Career Experience (CEP). Bạn không được sao chép, phân phối hoặc sử dụng vào mục đích thương mại mà không có sự cho phép bằng văn bản.</p>
+      <p>Toàn bộ nội dung học tập, bài kiểm tra (Quiz Game), kịch bản giả lập xử lý khủng hoảng truyền thông (như Study Case: ClearDrop) và mã nguồn giao diện thuộc bản quyền của PR Experience (PRX). Bạn không được sao chép, phân phối hoặc sử dụng vào mục đích thương mại mà không có sự cho phép bằng văn bản.</p>
 
       <h3>4. Tính chất học thuật của Nội dung</h3>
       <p>Tất cả các case study, tên thương hiệu, cá nhân, hoặc tình huống được đề cập trong các bài tập (Ví dụ: Sự cố lỗi sản phẩm ClearDrop) đều hoàn toàn là <b>hư cấu và phục vụ mục đích giáo dục</b>. Bất kỳ sự trùng hợp nào với các tổ chức hoặc cá nhân có thật đều là ngẫu nhiên.</p>
 
       <h3>5. Giới hạn trách nhiệm</h3>
-      <p>Hệ thống CEP cung cấp các công cụ và kiến thức mang tính chất tham khảo học thuật. Chúng tôi không chịu trách nhiệm pháp lý nếu bạn áp dụng các chiến lược PR/Marketing này vào thực tế kinh doanh và gây ra tổn thất tài chính hay uy tín cho doanh nghiệp của bạn.</p>
+      <p>Hệ thống PRX cung cấp các công cụ và kiến thức mang tính chất tham khảo học thuật. Chúng tôi không chịu trách nhiệm pháp lý nếu bạn áp dụng các chiến lược PR này vào thực tế kinh doanh và gây ra tổn thất tài chính hay uy tín cho doanh nghiệp của bạn.</p>
 
       <p style="margin-top:30px; text-align:center;"><i>Mọi thắc mắc liên quan đến Điều khoản sử dụng, vui lòng liên hệ với chúng tôi qua chức năng Hỗ trợ ở phần Chân trang.</i></p>
     </div>
@@ -1167,7 +1145,7 @@ body.auth-page #globalHeader { display: none; }
     </div>
     <div class="legal-card legal-content">
       <h3>1. Thu thập dữ liệu</h3>
-      <p>Khi bạn tạo tài khoản trên Career Experience (CEP), đặc biệt là qua tính năng <b>Đăng nhập bằng Google</b>, chúng tôi sẽ thu thập các thông tin công khai cơ bản để tối ưu trải nghiệm của bạn (Seamless UX), bao gồm:</p>
+      <p>Khi bạn tạo tài khoản trên PR Experience (PRX), đặc biệt là qua tính năng <b>Đăng nhập bằng Google</b>, chúng tôi sẽ thu thập các thông tin công khai cơ bản để tối ưu trải nghiệm của bạn (Seamless UX), bao gồm:</p>
       <ul>
         <li>Họ và tên, Địa chỉ Email, và Ảnh đại diện (Avatar).</li>
         <li>Các thông tin cá nhân khác mà bạn tự nguyện bổ sung vào "Hồ sơ" (Profile) như: Chuyên ngành, Ngày sinh, Bio, Kỹ năng, v.v.</li>
@@ -1190,7 +1168,7 @@ body.auth-page #globalHeader { display: none; }
       <ul>
         <li><b>Xuất dữ liệu (Export Data):</b> Tải xuống toàn bộ hồ sơ và lịch sử học tập của bạn dưới định dạng JSON.</li>
         <li><b>Chỉnh sửa thông tin:</b> Cập nhật avatar, đổi mật khẩu và thay đổi thông liên hệ.</li>
-        <li>Yêu cầu xóa toàn bộ tài khoản và dữ liệu hệ thống bằng cách liên hệ với ban quản trị CEP.</li>
+        <li>Yêu cầu xóa toàn bộ tài khoản và dữ liệu hệ thống bằng cách liên hệ với ban quản trị PRX.</li>
       </ul>
       
       <p style="margin-top:30px; text-align:center;"><i>Bằng cách sử dụng nền tảng, bạn xác nhận rằng bạn đã đọc, hiểu và đồng ý với việc chúng tôi xử lý dữ liệu như mô tả trong Chính sách bảo mật này.</i></p>
@@ -1205,7 +1183,7 @@ body.auth-page #globalHeader { display: none; }
     </div>
     <div class="hero-content">
       <h1 data-i18n-html="heroH1">Khởi đầu sự nghiệp<br>của bạn ngay hôm nay</h1>
-      <p data-i18n="heroP">Khám phá và phát triển kỹ năng PR & Marketing chuyên nghiệp cùng Career Experience</p>
+      <p data-i18n="heroP">Khám phá và phát triển kỹ năng Public Relations chuyên nghiệp cùng PR Experience</p>
       <div class="hero-btns">
         <button class="btn-cta" onclick="scrollToId('dept-section')" data-i18n="heroExplore">🚀 Khám phá ngay</button>
         <button class="btn-cta-out" onclick="scrollToId('why-section')" data-i18n="heroLearn">📖 Tìm hiểu thêm</button>
@@ -1226,17 +1204,17 @@ body.auth-page #globalHeader { display: none; }
   </div>
   <div class="stats-strip">
     <div class="stats-inner">
-      <div class="stat-box"><div class="stat-num" id="liveStatDepts">2</div><div class="stat-lbl" data-i18n="statDepts">Ngành học</div></div>
+      <div class="stat-box"><div class="stat-num" id="liveStatDepts">1</div><div class="stat-lbl" data-i18n="statDepts">Ngành học</div></div>
       <div class="stat-box"><div class="stat-num" id="liveStatStudents">0</div><div class="stat-lbl" data-i18n="statStudents">Học viên</div></div>
       <div class="stat-box"><div class="stat-num" id="liveStatTasks">0</div><div class="stat-lbl" data-i18n="statTasks">Bài tập thực chiến</div></div>
       <div class="stat-box"><div class="stat-num" id="liveStatSat">100%</div><div class="stat-lbl" data-i18n="statSat">Hài lòng</div></div>
     </div>
   </div>
   <div class="section" id="dept-section">
-    <div class="sec-title" data-i18n="featTitle">Tại sao chọn CEP?</div>
-    <div class="sec-sub" data-i18n="featSub">Nền tảng học tập thực chiến dành riêng cho PR & Marketing</div>
+    <div class="sec-title" data-i18n="featTitle">Tại sao chọn PR Experience?</div>
+    <div class="sec-sub" data-i18n="featSub">Nền tảng học tập thực chiến dành riêng cho Public Relations</div>
     <div class="features-grid" style="grid-template-columns:repeat(3,1fr);">
-      <div class="feat-card"><div class="feat-icon">🎯</div><h3 data-i18n="f1h">Bài tập thực chiến</h3><p data-i18n="f1p">Tự tạo và thực hành bài tập sát với thực tế ngành PR & Marketing</p></div>
+      <div class="feat-card"><div class="feat-icon">🎯</div><h3 data-i18n="f1h">Bài tập thực chiến</h3><p data-i18n="f1p">Tự tạo và thực hành bài tập sát với thực tế ngành Public Relations</p></div>
       <div class="feat-card"><div class="feat-icon">🤝</div><h3 data-i18n="f2h">Cộng đồng kết nối</h3><p data-i18n="f2p">Kết nối với các chuyên gia và học viên trong ngành</p></div>
       <div class="feat-card"><div class="feat-icon">📊</div><h3 data-i18n="f3h">Theo dõi tiến độ</h3><p data-i18n="f3p">Hệ thống theo dõi và đánh giá tiến độ học tập của bạn</p></div>
     </div>
@@ -1247,9 +1225,9 @@ body.auth-page #globalHeader { display: none; }
         <img src="z7673677338583_4c44f8411415381a5c0f2ab71346a677.jpg" alt="Fox Icon" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">
       </div>
       <div class="why-text">
-        <h2 data-i18n="whyTitle">Tại sao nên chọn Career Experience?</h2>
-        <p data-i18n="whyDesc">CEP không chỉ là nơi bạn học — đây là nền tảng nơi bạn kết nối với đam mê, khám phá tiềm năng và xây dựng sự nghiệp mơ ước trong lĩnh vực PR & Marketing.</p>
-        <div class="why-point"><div class="why-dot">✓</div><p data-i18n="why1">Bài tập được thiết kế bởi các chuyên gia thực chiến trong ngành PR & Marketing.</p></div>
+        <h2 data-i18n="whyTitle">Tại sao nên chọn PR Experience?</h2>
+        <p data-i18n="whyDesc">PRX không chỉ là nơi bạn học — đây là nền tảng nơi bạn kết nối với đam mê, khám phá tiềm năng và xây dựng sự nghiệp mơ ước trong lĩnh vực Public Relations.</p>
+        <div class="why-point"><div class="why-dot">✓</div><p data-i18n="why1">Bài tập được thiết kế bởi các chuyên gia thực chiến trong ngành Public Relations.</p></div>
         <div class="why-point"><div class="why-dot">✓</div><p data-i18n="why2">Chất lượng luôn được đặt lên hàng đầu để người học tiếp nhận kiến thức hiệu quả nhất.</p></div>
         <div class="why-point"><div class="why-dot">✓</div><p data-i18n="why3">Cộng đồng học viên năng động, hỗ trợ nhau trong suốt quá trình học tập.</p></div>
       </div>
@@ -1257,27 +1235,27 @@ body.auth-page #globalHeader { display: none; }
   </div>
   <div class="reviews-bg">
     <div class="section" style="padding-top:0;padding-bottom:0;">
-      <div class="sec-title" data-i18n="reviewTitle">Review về CEP</div>
+      <div class="sec-title" data-i18n="reviewTitle">Review về PR Experience</div>
       <div class="sec-sub" data-i18n="reviewSub">Học viên nói gì về chúng tôi</div>
     </div>
     <div class="reviews-grid">
       <div class="review-card">
         <div class="review-stars">★★★★★</div>
         <div class="review-badge" data-i18n="reviewBadge">Tuyệt vời!</div>
-        <p class="review-text" data-i18n="r1">CEP có nội dung rất thực tế, giúp mình áp dụng ngay vào công việc PR. Giao diện thân thiện, dễ dùng.</p>
+        <p class="review-text" data-i18n="r1">PRX có nội dung rất thực tế, giúp mình áp dụng ngay vào công việc PR. Giao diện thân thiện, dễ dùng.</p>
         <div class="reviewer"><div class="reviewer-av">MT</div><div><h4>Ms. Trang Đồng</h4><p data-i18n="r1role">Học viên PR</p></div></div>
       </div>
       <div class="review-card">
         <div class="review-stars">★★★★★</div>
         <div class="review-badge" data-i18n="reviewBadge">Tuyệt vời!</div>
-        <p class="review-text" data-i18n="r2">Mảng Marketing ở CEP rất bài bản. Bài tập sát thực tế, giúp mình hiểu sâu hơn về Digital Marketing.</p>
-        <div class="reviewer"><div class="reviewer-av">TB</div><div><h4>Mr. Tùng Bùi</h4><p data-i18n="r2role">Học viên Marketing</p></div></div>
+        <p class="review-text" data-i18n="r2">PR Experience giúp mình hiểu sâu về cách xây dựng hình ảnh thương hiệu và xử lý truyền thông hiệu quả.</p>
+        <div class="reviewer"><div class="reviewer-av">TB</div><div><h4>Mr. Tùng Bùi</h4><p data-i18n="r2role">Học viên PR</p></div></div>
       </div>
       <div class="review-card">
         <div class="review-stars">★★★★★</div>
         <div class="review-badge" data-i18n="reviewBadge">Tuyệt vời!</div>
-        <p class="review-text" data-i18n="r3">Cộng đồng học viên CEP rất nhiệt tình. Mình học được rất nhiều từ các bạn cùng ngành PR & Marketing.</p>
-        <div class="reviewer"><div class="reviewer-av">LA</div><div><h4>Ms. Lan Anh</h4><p data-i18n="r3role">Học viên PR & Marketing</p></div></div>
+        <p class="review-text" data-i18n="r3">Cộng đồng học viên PRX rất nhiệt tình. Mình học được rất nhiều từ các bạn cùng ngành Public Relations.</p>
+        <div class="reviewer"><div class="reviewer-av">LA</div><div><h4>Ms. Lan Anh</h4><p data-i18n="r3role">Học viên Public Relations</p></div></div>
       </div>
     </div>
     
@@ -1289,13 +1267,13 @@ body.auth-page #globalHeader { display: none; }
   <footer id="footer-contact">
     <div class="footer-inner">
       <div class="footer-sec">
-        <h3>Career Experience</h3>
-        <p data-i18n="footerAbout">Nền tảng phát triển kỹ năng PR & Marketing chuyên nghiệp dành cho sinh viên và người đi làm.</p>
+        <h3>PR Experience</h3>
+        <p data-i18n="footerAbout">Nền tảng phát triển kỹ năng Public Relations chuyên nghiệp dành cho sinh viên và người đi làm.</p>
       </div>
       <div class="footer-sec">
         <h3 data-i18n="footerLinks">Liên kết nhanh</h3>
         <a onclick="scrollToId('dept-section')" data-i18n="smDepts">Ngành học</a>
-        <a onclick="scrollToId('why-section')" data-i18n="smAbout">Về CEP</a>
+        <a onclick="scrollToId('why-section')" data-i18n="smAbout">Về PR Experience</a>
         <a onclick="showPage('page-terms')">Điều khoản sử dụng</a>
         <a onclick="showPage('page-privacy')">Chính sách bảo mật</a>
       </div>
@@ -1307,7 +1285,7 @@ body.auth-page #globalHeader { display: none; }
       </div>
 
     </div>
-    <div class="footer-bottom">© 2026 Career Experience (CEP). All rights reserved.</div>
+    <div class="footer-bottom">© 2026 PR Experience (PRX). All rights reserved.</div>
   </footer>
 </div>
 
@@ -2106,7 +2084,7 @@ if(false){ // dead code block — prevent errors
       <h3 style="color:var(--primary); font-family:'Helvetica Rounded Bold', sans-serif; margin-bottom:6px;">🔄 S – Thay thế (Substitute)</h3>
       <p style="font-size:13px;color:var(--text2);margin-bottom:14px;">Thay thế bài kiểm tra trắc nghiệm bằng "Giả lập tình huống xử lý khủng hoảng"</p>
       <div style="background:var(--bg);border-radius:10px;padding:14px;font-size:13.5px;color:var(--text);line-height:1.8;">
-        <b>👤 Insight:</b> Sinh viên PR/Marketing sợ sự khô khan — họ muốn biết "nếu làm sai thì hậu quả thực tế là gì?"<br>
+        <b>👤 Insight:</b> Sinh viên PR sợ sự khô khan — họ muốn biết "nếu làm sai thì hậu quả thực tế là gì?"<br>
         <b>🎯 Impact:</b> Biến việc học thành trò chơi nhập vai. Thay vì chọn A/B/C, sinh viên phải soạn thảo thông điệp dưới áp lực thời gian.<br>
         <b>📈 Chiến lược:</b> Tăng Engagement và rèn luyện tư duy phản biện — kỹ năng sống còn trong PR.
       </div>
@@ -2115,7 +2093,7 @@ if(false){ // dead code block — prevent errors
       <h3 style="color:var(--primary); font-family:'Helvetica Rounded Bold', sans-serif; margin-bottom:6px;">🔗 C – Kết hợp (Combine)</h3>
       <p style="font-size:13px;color:var(--text2);margin-bottom:14px;">Kết hợp học tập với công cụ "Theo dõi Trending thời gian thực" (Live Trend Tracker)</p>
       <div style="background:var(--bg);border-radius:10px;padding:14px;font-size:13.5px;color:var(--text);line-height:1.8;">
-        <b>👤 Insight:</b> Sinh viên Marketing phải "bơi" giữa hàng tá ứng dụng (TikTok, Facebook, Google Trends) — việc tách biệt học và xem xu hướng làm quy trình sáng tạo đứt gãy.<br>
+        <b>👤 Insight:</b> Sinh viên PR phải "bơi" giữa hàng tá ứng dụng (TikTok, Facebook, Google Trends) — việc tách biệt học và xem xu hướng làm quy trình sáng tạo đứt gãy.<br>
         <b>🎯 Impact:</b> Tạo ra quy trình khép kín: vừa học cách viết Content vừa nhìn thấy ngay từ khóa đang "nóng" nhất tại giao diện soạn thảo.<br>
         <b>📈 Chiến lược:</b> Biến app từ công cụ học tập thành công cụ hỗ trợ công việc hàng ngày.
       </div>
@@ -2124,7 +2102,7 @@ if(false){ // dead code block — prevent errors
       <h3 style="color:var(--primary); font-family:'Helvetica Rounded Bold', sans-serif; margin-bottom:6px;">🔀 A – Thích nghi (Adapt)</h3>
       <p style="font-size:13px;color:var(--text2);margin-bottom:14px;">Thích nghi hình thức học qua "Case-study hóa" — biến mỗi kỹ năng thành câu chuyện thực tế</p>
       <div style="background:var(--bg);border-radius:10px;padding:14px;font-size:13.5px;color:var(--text);line-height:1.8;">
-        <b>👤 Insight:</b> Dân PR/Marketing thích kể chuyện và nghe chuyện — họ ghi nhớ qua ví dụ thực tế (Vinamilk, Coca-Cola, Biti's...) nhanh hơn khái niệm học thuật.<br>
+        <b>👤 Insight:</b> Dân PR thích kể chuyện và nghe chuyện — họ ghi nhớ qua ví dụ thực tế (Vinamilk, Coca-Cola, Biti's...) nhanh hơn khái niệm học thuật.<br>
         <b>🎯 Impact:</b> Thay vì dạy "Branding là gì?", app kể "Câu chuyện tái định vị thương hiệu của X" — kiến thức sống động, dễ áp dụng.<br>
         <b>📈 Chiến lược:</b> Sử dụng thế mạnh "ngành" để dạy "nghề", tạo tương thích tuyệt đối giữa phương pháp giảng dạy và tư duy người học.
       </div>
@@ -2250,28 +2228,28 @@ let currentUserData = null;
 var I18N = {
   vi: {
     navHome:'🏠 Trang chủ',navProfile:'👤 Hồ sơ',navSettings:'⚙️ Cài đặt',navChangePwd:'🔑 Đổi mật khẩu',navLogout:'🚪 Đăng xuất',navLogin:'Đăng nhập',navRegister:'Đăng ký',
-    loginWelcome:'Chào mừng trở lại!',loginSubLeft:'Khám phá cơ hội học tập về PR & Marketing',loginH2:'Đăng nhập',loginSub:'Đăng nhập để tiếp tục hành trình học tập',
+    loginWelcome:'Chào mừng trở lại!',loginSubLeft:'Khám phá cơ hội học tập về Public Relations',loginH2:'Đăng nhập',loginSub:'Đăng nhập để tiếp tục hành trình học tập',
     emailLbl:'Email',pwLbl:'Mật khẩu',rememberMe:'Ghi nhớ đăng nhập',forgotLink:'Quên mật khẩu?',loginBtn:'Đăng nhập',orWith:'Hoặc đăng nhập với',
     noAccountRow:'Chưa có tài khoản? <a onclick="showPage(\'page-register\')" style="cursor:pointer;">Đăng ký ngay</a>',
-    regWelcome:'Tham gia cùng chúng tôi!',regSubLeft:'Bắt đầu hành trình PR & Marketing chuyên nghiệp',regH2:'Đăng ký tài khoản',regSub:'Tạo tài khoản miễn phí để bắt đầu',
-    b1:'Bài tập thực chiến PR',b2:'Bài tập thực chiến Marketing',b3:'Hỗ trợ 24/7',b4:'Cộng đồng học viên',
+    regWelcome:'Tham gia cùng chúng tôi!',regSubLeft:'Bắt đầu hành trình Public Relations chuyên nghiệp',regH2:'Đăng ký tài khoản',regSub:'Tạo tài khoản miễn phí để bắt đầu',
+    b1:'Bài tập thực chiến PR',b2:'Xử lý khủng hoảng truyền thông',b3:'Hỗ trợ 24/7',b4:'Cộng đồng học viên',
     fullnameLbl:'Họ và tên *',phoneLbl:'Số điện thoại',confirmPwLbl:'Xác nhận mật khẩu *',roleLbl:'Bạn là',
     roleDefault:'Chọn vai trò',roleStudent:'Học sinh / Sinh viên',rolePro:'Người đi làm',roleTeacher:'Giáo viên',roleOther:'Khác',
     termsLabel:'Tôi đồng ý với <a onclick="showPage(\'page-terms\')">Điều khoản</a> và <a onclick="showPage(\'page-privacy\')">Chính sách bảo mật</a>',regBtn:'Đăng ký ngay',
     hasAccountRow:'Đã có tài khoản? <a onclick="showPage(\'page-login\')" style="cursor:pointer;">Đăng nhập ngay</a>',
     fpTitle:'Quên mật khẩu?',fpSub:'Đừng lo! Chúng tôi sẽ giúp bạn khôi phục tài khoản',fp1h:'Nhập email',fp1p:'Email đã đăng ký',fp2h:'Nhận mật khẩu mới',fp2p:'Kiểm tra hộp thư email',fp3h:'Đăng nhập lại',fp3p:'Dùng mật khẩu mới',
     fpH2:'Khôi phục mật khẩu',fpSubRight:'Nhập email để nhận link đặt lại mật khẩu',fpNote:'Link khôi phục mật khẩu sẽ được gửi vào email của bạn.',fpBtn:'Khôi phục mật khẩu',fpBackLink:'← Quay lại đăng nhập',
-    topBar:'Giờ làm việc: 8:00 – 22:00 | Liên hệ: ',smMain:'Điều hướng chính',smDepts:'Ngành học',smAbout:'Về CEP',smAccount:'Tài khoản',smRegCta:'🚀 Đăng ký ngay hôm nay',smContact:'📩 Liên hệ tư vấn',
-    heroH1:'Khởi đầu sự nghiệp<br>của bạn ngay hôm nay',heroP:'Khám phá và phát triển kỹ năng PR & Marketing chuyên nghiệp cùng Career Experience',heroExplore:'🚀 Khám phá ngay',heroLearn:'📖 Tìm hiểu thêm',
-    statDepts:'Ngành học',statStudents:'Học viên',statTasks:'Bài tập thực chiến',statSat:'Hài lòng',featTitle:'Tại sao chọn CEP?',featSub:'Nền tảng học tập thực chiến dành riêng cho PR & Marketing',
-    f1h:'Bài tập thực chiến',f1p:'Tự tạo và thực hành bài tập sát thực tế ngành PR & Marketing',f2h:'Cộng đồng kết nối',f2p:'Kết nối với các chuyên gia và học viên trong ngành',f3h:'Theo dõi tiến độ',f3p:'Hệ thống theo dõi và đánh giá tiến độ học tập của bạn',f4h:'Chứng nhận hoàn thành',f4p:'Nhận chứng nhận sau khi hoàn thành các bài tập ngành',
+    topBar:'Giờ làm việc: 8:00 – 22:00 | Liên hệ: ',smMain:'Điều hướng chính',smDepts:'Ngành học',smAbout:'Về PR Experience',smAccount:'Tài khoản',smRegCta:'🚀 Đăng ký ngay hôm nay',smContact:'📩 Liên hệ tư vấn',
+    heroH1:'Khởi đầu sự nghiệp<br>của bạn ngay hôm nay',heroP:'Khám phá và phát triển kỹ năng Public Relations chuyên nghiệp cùng PR Experience',heroExplore:'🚀 Khám phá ngay',heroLearn:'📖 Tìm hiểu thêm',
+    statDepts:'Ngành học',statStudents:'Học viên',statTasks:'Bài tập thực chiến',statSat:'Hài lòng',featTitle:'Tại sao chọn PR Experience?',featSub:'Nền tảng học tập thực chiến dành riêng cho Public Relations',
+    f1h:'Bài tập thực chiến',f1p:'Tự tạo và thực hành bài tập sát thực tế ngành Public Relations',f2h:'Cộng đồng kết nối',f2p:'Kết nối với các chuyên gia và học viên trong ngành',f3h:'Theo dõi tiến độ',f3p:'Hệ thống theo dõi và đánh giá tiến độ học tập của bạn',f4h:'Chứng nhận hoàn thành',f4p:'Nhận chứng nhận sau khi hoàn thành các bài tập ngành',
     deptTitle:'Ngành học',deptSub:'Chọn ngành bạn muốn phát triển — nội dung bài tập sẽ được cập nhật sớm',prBadge:'PR',prTitle:'Public Relations',prDesc:'Phát triển kỹ năng quan hệ công chúng, xây dựng thương hiệu và quản lý truyền thông.',
     mktBadge:'Marketing',mktTitle:'Marketing',mktDesc:'Thực hành Digital Marketing, Content Strategy và Brand Management.',deptBtnSoon:'🔜 Sắp ra mắt',
-    whyTitle:'Tại sao nên chọn Career Experience?',whyDesc:'CEP không chỉ là nơi bạn học — đây là nền tảng nơi bạn kết nối với đam mê, khám phá tiềm năng và xây dựng sự nghiệp mơ ước trong PR & Marketing.',
-    why1:'Bài tập được thiết kế bởi các chuyên gia thực chiến trong ngành PR & Marketing.',why2:'Chất lượng luôn được đặt lên hàng đầu để người học tiếp nhận kiến thức hiệu quả nhất.',why3:'Cộng đồng học viên năng động, hỗ trợ nhau trong suốt quá trình học tập.',
-    reviewTitle:'Review về CEP',reviewSub:'Học viên nói gì về chúng tôi',reviewBadge:'Tuyệt vời!',
-    r1:'CEP có nội dung rất thực tế, giúp mình áp dụng ngay vào công việc PR. Giao diện thân thiện, dễ dùng.',r1role:'Học viên PR',r2:'Mảng Marketing ở CEP rất bài bản. Bài tập sát thực tế.',r2role:'Học viên Marketing',r3:'Cộng đồng học viên CEP rất nhiệt tình. Mình học được rất nhiều.',r3role:'Học viên PR & Marketing',
-    footerAbout:'Nền tảng phát triển kỹ năng PR & Marketing dành cho sinh viên và người đi làm.',footerLinks:'Liên kết nhanh',footerContact:'Liên hệ',footerAddr:'Trường ĐH Văn Lang, TP. HCM',footerHours:'Giờ làm việc',fh1:'T2–T6: 8:00 – 22:00',fh2:'T7: 8:00 – 20:00',fh3:'CN: 9:00 – 18:00',
+    whyTitle:'Tại sao nên chọn PR Experience?',whyDesc:'PRX không chỉ là nơi bạn học — đây là nền tảng nơi bạn kết nối với đam mê, khám phá tiềm năng và xây dựng sự nghiệp mơ ước trong Public Relations.',
+    why1:'Bài tập được thiết kế bởi các chuyên gia thực chiến trong ngành Public Relations.',why2:'Chất lượng luôn được đặt lên hàng đầu để người học tiếp nhận kiến thức hiệu quả nhất.',why3:'Cộng đồng học viên năng động, hỗ trợ nhau trong suốt quá trình học tập.',
+    reviewTitle:'Review về PR Experience',reviewSub:'Học viên nói gì về chúng tôi',reviewBadge:'Tuyệt vời!',
+    r1:'PRX có nội dung rất thực tế, giúp mình áp dụng ngay vào công việc PR. Giao diện thân thiện, dễ dùng.',r1role:'Học viên PR',r2:'Nội dung PR rất sâu sắc, mình học được nhiều kỹ năng xử lý truyền thông thực tế.',r2role:'Học viên PR',r3:'Cộng đồng học viên PRX rất nhiệt tình. Mình học được rất nhiều.',r3role:'Học viên Public Relations',
+    footerAbout:'Nền tảng phát triển kỹ năng Public Relations dành cho sinh viên và người đi làm.',footerLinks:'Liên kết nhanh',footerContact:'Liên hệ',footerAddr:'Trường ĐH Văn Lang, TP. HCM',footerHours:'Giờ làm việc',fh1:'T2–T6: 8:00 – 22:00',fh2:'T7: 8:00 – 20:00',fh3:'CN: 9:00 – 18:00',
     continueLearning:'▶ Tiếp tục học',editBtn:'✏️ Chỉnh sửa',editTitle:'Chỉnh sửa hồ sơ',avatarLbl:'Ảnh đại diện',choosePhoto:'Chọn ảnh',occLbl:'Nghề nghiệp',locLbl:'Địa điểm',webLbl:'Website / LinkedIn',bioLbl:'Giới thiệu',saveBtn:'💾 Lưu thay đổi',cancelBtn:'Hủy',
     dobLbl:'Ngày sinh',genderLbl:'Giới tính',fbLbl:'Link Facebook',eduLbl:'Học vấn',expLbl:'Kinh nghiệm',skillsLbl:'Kỹ năng',male:'Nam',female:'Nữ',otherGender:'Khác',
     statsTitle:'📊 Thống kê học tập',statActive:'Bài tập đang làm',statCerts:'Chứng nhận',statHours:'Giờ học',noIntro:'Chưa có giới thiệu. Hãy thêm vài dòng về bản thân!',roleLblMap:{student:'Học sinh / Sinh viên',professional:'Người đi làm',teacher:'Giáo viên',other:'Khác'},joinedDate:'Tham gia',welcomeBack:'Chào mừng trở lại,',
@@ -2394,7 +2372,7 @@ function exportData() {
   var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(currentUserData));
   var dlAnchorElem = document.createElement('a');
   dlAnchorElem.setAttribute("href", dataStr);
-  dlAnchorElem.setAttribute("download", "cep_my_data.json");
+  dlAnchorElem.setAttribute("download", "prx_my_data.json");
   dlAnchorElem.click();
   toast('toastExport', 'success');
 }
@@ -2452,7 +2430,7 @@ function checkMatch() {
 }
 
 function saveExerciseScore(id, name, type, dept, score, maxScore, correct, total) {
-  var scores = JSON.parse(localStorage.getItem('cep_exercise_scores') || '{}');
+  var scores = JSON.parse(localStorage.getItem('prx_exercise_scores') || '{}');
   var existing = scores[id];
   var isNew = !existing;
   var isBetter = existing && score > existing.score;
@@ -2471,7 +2449,7 @@ function saveExerciseScore(id, name, type, dept, score, maxScore, correct, total
     bestScore: existing ? Math.max(score, existing.bestScore || existing.score) : score,
     attempts: existing ? (existing.attempts || 1) + 1 : 1
   };
-  localStorage.setItem('cep_exercise_scores', JSON.stringify(scores));
+  localStorage.setItem('prx_exercise_scores', JSON.stringify(scores));
   
   if(isNew) {
     setTimeout(() => toast('🏆 Hoàn thành bài tập! Đạt ' + score + ' điểm — đã lưu vào Thành tựu!', 'success'), 800);
@@ -2481,7 +2459,7 @@ function saveExerciseScore(id, name, type, dept, score, maxScore, correct, total
 }
 
 function getExerciseScores() {
-  return JSON.parse(localStorage.getItem('cep_exercise_scores') || '{}');
+  return JSON.parse(localStorage.getItem('prx_exercise_scores') || '{}');
 }
 
 function getTotalStats() {
@@ -2905,7 +2883,7 @@ function toggleThemeGlobal() {
 function toggleDark(isDark) {
   if(isDark) document.body.classList.add('dark-mode');
   else document.body.classList.remove('dark-mode');
-  localStorage.setItem('cep_theme', isDark ? 'dark' : 'light');
+  localStorage.setItem('prx_theme', isDark ? 'dark' : 'light');
   updateThemeBtns();
 }
 
@@ -2922,7 +2900,7 @@ function updateThemeBtns() {
 
 function setLang(lang) {
   currentLang = lang;
-  localStorage.setItem('cep_lang', lang);
+  localStorage.setItem('prx_lang', lang);
   
   document.querySelectorAll('.lang-opt').forEach(function(el){ el.classList.remove('active'); });
   var activeOpt = document.querySelector('.lang-opt[data-lang="'+lang+'"]');
@@ -2987,7 +2965,7 @@ function initRealtimeReviews() {
             <div class="reviewer-av">${avatarHtml}</div>
             <div>
               <h4 style="font-size:14px; color:var(--text); margin-bottom:2px;">${data.name || 'Học viên ẩn danh'}</h4>
-              <p style="font-size:12px; color:var(--text2); margin:0;">${data.role || 'Học viên CEP'}</p>
+              <p style="font-size:12px; color:var(--text2); margin:0;">${data.role || 'Học viên PRX'}</p>
             </div>
           </div>
         </div>`;
@@ -3043,7 +3021,7 @@ function submitReview() {
       uid: auth.currentUser.uid,
       name: userData.fullname || auth.currentUser.displayName || 'Học viên',
       avatar: userData.avatar || auth.currentUser.photoURL || null,
-      role: (userData.role === 'student' ? 'Học viên CEP' : 'Thành viên CEP'),
+      role: (userData.role === 'student' ? 'Học viên PRX' : 'Thành viên PRX'),
       rating: rating,
       badge: rating >= 4 ? 'Tuyệt vời!' : (rating === 3 ? 'Khá tốt' : 'Góp ý'),
       content: content,
@@ -3066,11 +3044,11 @@ function submitReview() {
 document.addEventListener('DOMContentLoaded', function() {
   initRealtimeStats();
 
-  const savedTheme = localStorage.getItem('cep_theme');
+  const savedTheme = localStorage.getItem('prx_theme');
   if(savedTheme === 'dark') document.body.classList.add('dark-mode');
   updateThemeBtns();
 
-  const savedLang = localStorage.getItem('cep_lang') || 'vi';
+  const savedLang = localStorage.getItem('prx_lang') || 'vi';
   setLang(savedLang);
 
   var authPages = ['page-login','page-register','page-forgot','page-reset-password'];
