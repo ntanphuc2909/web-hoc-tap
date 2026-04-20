@@ -1476,14 +1476,193 @@ body.auth-page #globalHeader { display: none; }
     <h1>📣 Public Relations</h1>
     <p>Học PR qua bài viết thực tế — không nhàm, không chán!</p>
     <div class="pr-tabs">
-      <button class="pr-tab active" onclick="switchPrTab('curriculum',this)">📚 Nội dung</button>
+      <button class="pr-tab active" onclick="switchPrTab('casestudy',this)">📋 Case Study</button>
+      <button class="pr-tab" onclick="switchPrTab('curriculum',this)">📚 Nội dung</button>
       <button class="pr-tab" onclick="switchPrTab('crisis-game',this)">🎮 Bài tập thực chiến</button>
     </div>
   </div>
 
   <div class="pr-content">
 
-    <div class="pr-section visible" id="pr-curriculum">
+    <div class="pr-section visible" id="pr-casestudy">
+      <!-- ══ CASE STUDY HEADER ══ -->
+      <div style="background:linear-gradient(135deg,#3b1f1a 0%,#7a3e2e 60%,#a05a3e 100%);border-radius:16px;padding:32px 28px 24px;color:#fff;margin-bottom:28px;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:-40px;right:-40px;width:200px;height:200px;background:radial-gradient(circle,rgba(255,255,255,.1) 0%,transparent 70%);border-radius:50%;pointer-events:none;"></div>
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px;">
+          <div style="width:52px;height:52px;background:rgba(255,255,255,.15);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0;">🗳️</div>
+          <div>
+            <span style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;opacity:.7;display:block;margin-bottom:4px;">CASE STUDY · CHÍNH TRỊ & TRUYỀN THÔNG</span>
+            <h2 style="font-family:'Helvetica Rounded Bold',sans-serif;font-size:22px;margin:0;">Chiến dịch "Drain the Swamp" — Donald Trump 2016</h2>
+          </div>
+        </div>
+        <p style="font-size:14px;opacity:.88;line-height:1.6;margin:0;">Phân tích ứng dụng mô hình <strong>SMCR</strong> trong chiến dịch truyền thông chính trị gây chấn động nhất thế kỷ 21. Đây là minh chứng điển hình cho cách một thông điệp đơn giản, kênh truyền thông phi truyền thống và đối tượng mục tiêu được phân khúc sắc bén có thể thay đổi cục diện bầu cử.</p>
+      </div>
+
+      <!-- ══ ẢNH CASE STUDY TỪ GITHUB ══ -->
+      <div style="background:var(--card);border-radius:14px;border:1px solid var(--border);overflow:hidden;margin-bottom:28px;box-shadow:0 4px 18px rgba(0,0,0,.07);">
+        <div style="padding:16px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;">
+          <span style="font-size:16px;">🖼️</span>
+          <span style="font-weight:700;font-size:14px;color:var(--text);">Sơ đồ SMCR — Case Study Gốc</span>
+          <span style="margin-left:auto;font-size:12px;color:var(--text2);">Nguồn: CaseStudy.jpg</span>
+        </div>
+        <div style="padding:20px;text-align:center;background:#f5f0eb;">
+          <img src="https://raw.githubusercontent.com/ntanphuc2909/web-hoc-tap/main/CaseStudy.jpg" 
+               alt="SMCR Model - Drain the Swamp Case Study"
+               onerror="this.style.display='none';document.getElementById('cs-fallback').style.display='block';"
+               style="max-width:100%;border-radius:10px;box-shadow:0 4px 14px rgba(0,0,0,.15);">
+          <div id="cs-fallback" style="display:none;padding:20px;color:var(--text2);font-size:13px;">⚠️ Không tải được ảnh từ GitHub. Xem bảng phân tích HTML bên dưới.</div>
+        </div>
+      </div>
+
+      <!-- ══ BẢNG SMCR HTML (giống hình upload) ══ -->
+      <div style="background:var(--card);border-radius:14px;border:1px solid var(--border);padding:28px;margin-bottom:28px;box-shadow:0 4px 18px rgba(0,0,0,.07);overflow-x:auto;">
+        <h3 style="font-family:'Helvetica Rounded Bold',sans-serif;font-size:18px;color:var(--text);margin-bottom:6px;text-align:center;letter-spacing:1px;text-transform:uppercase;">SMCR MODEL OF COMMUNICATION</h3>
+        <p style="text-align:center;color:var(--text2);font-size:13px;margin-bottom:28px;">Ứng dụng vào chiến dịch tranh cử Trump 2016</p>
+
+        <!-- Header row -->
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:0;">
+          <div style="text-align:center;">
+            <div style="background:#7a3e2e;color:#fff;padding:11px 8px;border-radius:8px;font-weight:800;font-size:13px;letter-spacing:1px;">SOURCE</div>
+            <div style="height:32px;display:flex;align-items:center;justify-content:center;">
+              <div style="display:flex;align-items:center;gap:4px;color:var(--text2);">
+                <div style="width:40px;height:2px;background:var(--text2);"></div>
+                <span style="font-size:16px;">↔</span>
+                <div style="width:40px;height:2px;background:var(--text2);"></div>
+              </div>
+            </div>
+          </div>
+          <div style="text-align:center;">
+            <div style="background:#7a3e2e;color:#fff;padding:11px 8px;border-radius:8px;font-weight:800;font-size:13px;letter-spacing:1px;">MESSAGE</div>
+            <div style="height:32px;display:flex;align-items:center;justify-content:center;">
+              <div style="display:flex;align-items:center;gap:4px;color:var(--text2);">
+                <div style="width:40px;height:2px;background:var(--text2);"></div>
+                <span style="font-size:16px;">↔</span>
+                <div style="width:40px;height:2px;background:var(--text2);"></div>
+              </div>
+            </div>
+          </div>
+          <div style="text-align:center;">
+            <div style="background:#7a3e2e;color:#fff;padding:11px 8px;border-radius:8px;font-weight:800;font-size:13px;letter-spacing:1px;">CHANNEL</div>
+            <div style="height:32px;display:flex;align-items:center;justify-content:center;">
+              <div style="display:flex;align-items:center;gap:4px;color:var(--text2);">
+                <div style="width:40px;height:2px;background:var(--text2);"></div>
+                <span style="font-size:16px;">↔</span>
+                <div style="width:40px;height:2px;background:var(--text2);"></div>
+              </div>
+            </div>
+          </div>
+          <div style="text-align:center;">
+            <div style="background:#7a3e2e;color:#fff;padding:11px 8px;border-radius:8px;font-weight:800;font-size:13px;letter-spacing:1px;">RECEIVER</div>
+            <div style="height:32px;"></div>
+          </div>
+        </div>
+
+        <!-- Arrow down row -->
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:12px;">
+          <div style="text-align:center;font-size:22px;color:var(--text2);line-height:1;">↓</div>
+          <div style="text-align:center;font-size:22px;color:var(--text2);line-height:1;">↓</div>
+          <div style="text-align:center;font-size:22px;color:var(--text2);line-height:1;">↓</div>
+          <div style="text-align:center;font-size:22px;color:var(--text2);line-height:1;">↓</div>
+        </div>
+
+        <!-- Items grid -->
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;">
+          <!-- SOURCE items -->
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <div style="border:1.5px solid #c4a086;border-radius:8px;padding:10px 12px;text-align:center;font-size:12px;font-weight:700;color:var(--text);background:#fdf6f0;text-transform:uppercase;letter-spacing:.3px;">Donald Trump</div>
+            <div style="border:1.5px solid #c4a086;border-radius:8px;padding:10px 12px;text-align:center;font-size:12px;font-weight:700;color:var(--text);background:#fdf6f0;text-transform:uppercase;letter-spacing:.3px;">Fox News</div>
+            <div style="border:1.5px solid #c4a086;border-radius:8px;padding:10px 12px;text-align:center;font-size:12px;font-weight:700;color:var(--text);background:#fdf6f0;text-transform:uppercase;letter-spacing:.3px;">Conservative<br>News Sites</div>
+            <div style="border:1.5px solid #c4a086;border-radius:8px;padding:10px 12px;text-align:center;font-size:12px;font-weight:700;color:var(--text);background:#fdf6f0;text-transform:uppercase;letter-spacing:.3px;">Facebook Groups</div>
+          </div>
+          <!-- MESSAGE items -->
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <div style="border:1.5px solid #c4a086;border-radius:8px;padding:10px 12px;text-align:center;font-size:12px;font-weight:700;color:var(--text);background:#fdf6f0;text-transform:uppercase;letter-spacing:.3px;">"Drain the Swamp"</div>
+            <div style="border:1.5px solid #c4a086;border-radius:8px;padding:10px 12px;text-align:center;font-size:12px;font-weight:700;color:var(--text);background:#fdf6f0;text-transform:uppercase;letter-spacing:.3px;">Understanding</div>
+            <div style="border:1.5px solid #c4a086;border-radius:8px;padding:10px 12px;text-align:center;font-size:12px;font-weight:700;color:var(--text);background:#fdf6f0;text-transform:uppercase;letter-spacing:.3px;">Orientation</div>
+            <div style="border:1.5px solid #c4a086;border-radius:8px;padding:10px 12px;text-align:center;font-size:12px;font-weight:700;color:var(--text);background:#fdf6f0;text-transform:uppercase;letter-spacing:.3px;">Recognition</div>
+          </div>
+          <!-- CHANNEL items -->
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <div style="border:1.5px solid #c4a086;border-radius:8px;padding:10px 12px;text-align:center;font-size:12px;font-weight:700;color:var(--text);background:#fdf6f0;text-transform:uppercase;letter-spacing:.3px;">Facebook</div>
+            <div style="border:1.5px solid #c4a086;border-radius:8px;padding:10px 12px;text-align:center;font-size:12px;font-weight:700;color:var(--text);background:#fdf6f0;text-transform:uppercase;letter-spacing:.3px;">Private Closed Groups</div>
+            <div style="border:1.5px solid #c4a086;border-radius:8px;padding:10px 12px;text-align:center;font-size:12px;font-weight:700;color:var(--text);background:#fdf6f0;text-transform:uppercase;letter-spacing:.3px;">Create an<br>"Echo Chamber" Effect</div>
+          </div>
+          <!-- RECEIVER items -->
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <div style="border:1.5px solid #c4a086;border-radius:8px;padding:10px 12px;text-align:center;font-size:12px;font-weight:700;color:var(--text);background:#fdf6f0;text-transform:uppercase;letter-spacing:.3px;">White Voters</div>
+            <div style="border:1.5px solid #c4a086;border-radius:8px;padding:10px 12px;text-align:center;font-size:12px;font-weight:700;color:var(--text);background:#fdf6f0;text-transform:uppercase;letter-spacing:.3px;">Rust Belt</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ PHÂN TÍCH CHI TIẾT ══ -->
+      <div style="background:var(--card);border-radius:14px;border:1px solid var(--border);padding:28px;margin-bottom:28px;box-shadow:0 4px 18px rgba(0,0,0,.07);">
+        <h3 style="font-family:'Helvetica Rounded Bold',sans-serif;font-size:18px;color:var(--text);margin-bottom:20px;">🔍 Phân tích chi tiết từng thành phần</h3>
+
+        <!-- SOURCE -->
+        <div style="display:flex;gap:14px;margin-bottom:20px;padding:16px;background:var(--bg);border-radius:10px;border-left:4px solid #7a3e2e;">
+          <div style="width:44px;height:44px;background:#7a3e2e;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;">🎙️</div>
+          <div>
+            <h4 style="font-weight:800;font-size:14px;color:#7a3e2e;margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px;">Source — Nguồn phát</h4>
+            <p style="font-size:13.5px;color:var(--text);line-height:1.65;margin:0;">Trump đóng vai trò nguồn chính, nhưng hệ sinh thái truyền thông bảo thủ (Fox News, Breitbart, các nhóm Facebook) khuếch đại thông điệp với tốc độ chưa từng có. Uy tín "outsider không thuộc hệ thống" chính là lợi thế cạnh tranh khác biệt của nguồn.</p>
+          </div>
+        </div>
+
+        <!-- MESSAGE -->
+        <div style="display:flex;gap:14px;margin-bottom:20px;padding:16px;background:var(--bg);border-radius:10px;border-left:4px solid #c97c30;">
+          <div style="width:44px;height:44px;background:#c97c30;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;">💬</div>
+          <div>
+            <h4 style="font-weight:800;font-size:14px;color:#c97c30;margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px;">Message — Thông điệp</h4>
+            <p style="font-size:13.5px;color:var(--text);line-height:1.65;margin:0;">"Drain the Swamp" là thông điệp 3 từ nhưng chứa đủ 3 tầng: <strong>nhận diện</strong> (Recognition) — tôi thấy vấn đề; <strong>định hướng</strong> (Orientation) — đây là giải pháp; <strong>thấu hiểu</strong> (Understanding) — tôi hiểu bạn đang bức xúc điều gì. Sức mạnh nằm ở tính đơn giản, dễ nhớ, dễ lan truyền.</p>
+          </div>
+        </div>
+
+        <!-- CHANNEL -->
+        <div style="display:flex;gap:14px;margin-bottom:20px;padding:16px;background:var(--bg);border-radius:10px;border-left:4px solid #1877f2;">
+          <div style="width:44px;height:44px;background:#1877f2;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;">📡</div>
+          <div>
+            <h4 style="font-weight:800;font-size:14px;color:#1877f2;margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px;">Channel — Kênh truyền thông</h4>
+            <p style="font-size:13.5px;color:var(--text);line-height:1.65;margin:0;">Facebook Groups kín tạo ra "Echo Chamber" — buồng vang — nơi người dùng chỉ nghe những gì họ đã tin. Thuật toán Facebook ưu tiên nội dung cảm xúc mạnh, vô tình tiếp tay khuếch đại thông điệp bảo thủ đến đúng nhóm cử tri mục tiêu một cách tự động.</p>
+          </div>
+        </div>
+
+        <!-- RECEIVER -->
+        <div style="display:flex;gap:14px;padding:16px;background:var(--bg);border-radius:10px;border-left:4px solid #2D5F5D;">
+          <div style="width:44px;height:44px;background:#2D5F5D;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;">👥</div>
+          <div>
+            <h4 style="font-weight:800;font-size:14px;color:var(--primary);margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px;">Receiver — Người nhận</h4>
+            <p style="font-size:13.5px;color:var(--text);line-height:1.65;margin:0;">Cử tri da trắng tại "Rust Belt" (Vành đai Rỉ sét — các bang công nghiệp cũ như Michigan, Pennsylvania, Wisconsin) là đối tượng bị bỏ quên bởi truyền thông chính thống. Sự đồng nhất về đặc điểm giữa Nguồn và Người nhận — theo đúng lý thuyết SMCR — tạo ra hiệu quả lan truyền tối đa.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ KẾT LUẬN PR ══ -->
+      <div style="background:linear-gradient(135deg,#1a4645 0%,#2D5F5D 100%);border-radius:14px;padding:24px 28px;margin-bottom:28px;color:#fff;">
+        <h3 style="font-family:'Helvetica Rounded Bold',sans-serif;font-size:17px;margin-bottom:12px;">💡 Bài học PR rút ra từ Case Study</h3>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+          <div style="background:rgba(255,255,255,.1);border-radius:10px;padding:14px;">
+            <p style="font-size:13px;margin:0;line-height:1.6;"><strong>1. Symmetry là chìa khóa:</strong> Thông điệp hiệu quả khi đặc điểm Nguồn và Người nhận tương đồng. Trump "nói tiếng" của cử tri Rust Belt.</p>
+          </div>
+          <div style="background:rgba(255,255,255,.1);border-radius:10px;padding:14px;">
+            <p style="font-size:13px;margin:0;line-height:1.6;"><strong>2. Kênh tạo ra bong bóng:</strong> Echo Chamber là "nhiễu có chủ đích" — loại bỏ thông tin phản biện, khuếch đại thông điệp mục tiêu.</p>
+          </div>
+          <div style="background:rgba(255,255,255,.1);border-radius:10px;padding:14px;">
+            <p style="font-size:13px;margin:0;line-height:1.6;"><strong>3. Đơn giản thắng phức tạp:</strong> 3 từ "Drain the Swamp" hiệu quả hơn mọi chính sách 50 trang của đối thủ.</p>
+          </div>
+          <div style="background:rgba(255,255,255,.1);border-radius:10px;padding:14px;">
+            <p style="font-size:13px;margin:0;line-height:1.6;"><strong>4. Effect là thước đo:</strong> Chiến thắng bầu cử là minh chứng cuối cùng cho độ Hiệu quả (E) trong mô hình SMCRE.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ ĐIỀU HƯỚNG ══ -->
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <button onclick="switchPrTab('curriculum',null)" style="padding:11px 24px;background:var(--gradient);color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-family:'Helvetica Rounded Bold',sans-serif;font-size:14px;">📚 Đọc Nội dung lý thuyết →</button>
+        <button onclick="switchPrTab('crisis-game',null);updateExSelectionBadges();" style="padding:11px 24px;background:linear-gradient(135deg,#F4A261,#E76F51);color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-family:'Helvetica Rounded Bold',sans-serif;font-size:14px;">🎮 Làm bài tập thực chiến →</button>
+      </div>
+    </div>
+
+    <div class="pr-section" id="pr-curriculum">
       <div class="lesson-list" id="prCurriculumList">
         </div>
     </div>
@@ -1855,7 +2034,7 @@ function switchPrTab(id, btn) {
   document.querySelectorAll('.pr-tab').forEach(t => t.classList.remove('active'));
   if (btn) btn.classList.add('active');
   else {
-    var map = {curriculum:0, 'smcr-article':0, 'crisis-game':1, 'exercise-1':1, 'exercise-2':1, 'exercise-3':1};
+    var map = {casestudy:0, curriculum:1, 'smcr-article':1, 'crisis-game':2, 'exercise-1':2, 'exercise-2':2, 'exercise-3':2};
     var tabs = document.querySelectorAll('.pr-tab');
     if (tabs[map[id]] !== undefined) tabs[map[id]].classList.add('active');
   }
