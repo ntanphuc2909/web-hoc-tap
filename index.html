@@ -1203,8 +1203,7 @@ body.auth-page #globalHeader { display: none; }
     </div>
   </div>
   <div class="stats-strip">
-    <div class="stats-inner">
-      <div class="stat-box"><div class="stat-num" id="liveStatDepts">1</div><div class="stat-lbl" data-i18n="statDepts">Ngành học</div></div>
+    <div class="stats-inner" style="grid-template-columns:repeat(3,1fr);max-width:780px;">
       <div class="stat-box"><div class="stat-num" id="liveStatStudents">0</div><div class="stat-lbl" data-i18n="statStudents">Học viên</div></div>
       <div class="stat-box"><div class="stat-num" id="liveStatTasks">0</div><div class="stat-lbl" data-i18n="statTasks">Bài tập thực chiến</div></div>
       <div class="stat-box"><div class="stat-num" id="liveStatSat">100%</div><div class="stat-lbl" data-i18n="statSat">Hài lòng</div></div>
@@ -2486,7 +2485,7 @@ function renderPrCurriculum() {
   var container = document.getElementById('prCurriculumList');
   if(!container) return;
   
-  container.innerHTML = prExercises.map(function(ex) {
+  container.innerHTML = prExercises.filter(function(ex){ return ex.type !== '🎯 Thực chiến'; }).map(function(ex) {
     var result = scores[ex.id];
     var isDone = !!result;
     var pct = isDone ? Math.round((result.bestScore / ex.maxScore) * 100) : 0;
