@@ -883,36 +883,116 @@ body.dark-mode .asb-points { color: #7ececa; }
 }
 
 /* ════════════════════════════════════════
-   PR — DARK MODE FIXES FOR HARDCODED COLORS
+   SMCR TABLE — pixel-perfect vs reference image
 ════════════════════════════════════════ */
+.smcr-table-wrap {
+  background: var(--card);
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  padding: 32px 28px 36px;
+  margin-bottom: 28px;
+  box-shadow: 0 4px 18px rgba(0,0,0,.07);
+  overflow-x: auto;
+}
+body.dark-mode .smcr-table-wrap { box-shadow: 0 4px 18px rgba(0,0,0,.3); }
 
-/* Bảng SMCR: ô items nền kem #fdf6f0 */
+/* Big display title like the image (large, light gray, bold) */
+.smcr-big-title {
+  font-family: 'Helvetica Rounded Bold', sans-serif;
+  font-size: clamp(20px, 3.5vw, 34px);
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-align: center;
+  color: #c8c8c8;
+  margin-bottom: 28px;
+  line-height: 1.2;
+}
+body.dark-mode .smcr-big-title { color: rgba(255,255,255,.18); }
+
+/* Layout: 7-col grid  col arrow col arrow col arrow col */
+.smcr-header-row,
+.smcr-down-row,
+.smcr-items-row {
+  display: grid;
+  grid-template-columns: 1fr 60px 1fr 60px 1fr 60px 1fr;
+  align-items: start;
+  min-width: 560px;
+}
+.smcr-header-row { align-items: center; margin-bottom: 0; }
+.smcr-down-row   { margin-bottom: 10px; }
+
+/* Content columns */
+.smcr-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Arrow spacer columns */
+.smcr-arrow-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Horizontal ↔ arrow */
+.smcr-h-arrow {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text2);
+  line-height: 1;
+  letter-spacing: -2px;
+}
+
+/* Vertical ↓ arrow */
+.smcr-v-arrow {
+  font-size: 24px;
+  color: var(--text2);
+  line-height: 1;
+  padding: 6px 0;
+}
+
+/* Header labels: nâu đỏ, chữ trắng, bo góc */
+.smcr-header-label {
+  background: #7a3e2e;
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-weight: 900;
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  text-align: center;
+  width: 100%;
+  text-transform: uppercase;
+  font-family: 'Helvetica Rounded Bold', sans-serif;
+}
+body.dark-mode .smcr-header-label {
+  background: #5c2d20;
+  border: 1px solid rgba(196,160,134,.3);
+}
+
+/* Item boxes: viền nâu nhạt, nền kem, chữ in hoa đậm */
 .smcr-item-box {
   border: 1.5px solid #c4a086;
-  border-radius: 8px;
-  padding: 10px 12px;
+  border-radius: 5px;
+  padding: 10px 14px;
   text-align: center;
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--text);
-  background: #fdf6f0;
+  font-size: 11.5px;
+  font-weight: 800;
+  color: #3a2a1a;
+  background: #f5ede4;
   text-transform: uppercase;
-  letter-spacing: .3px;
+  letter-spacing: .5px;
+  width: 100%;
+  line-height: 1.4;
+  font-family: 'Helvetica Rounded Bold', sans-serif;
 }
 body.dark-mode .smcr-item-box {
   background: rgba(196,160,134,.1);
   border-color: rgba(196,160,134,.4);
   color: var(--text);
-}
-
-/* Bảng SMCR: thead nền #f8f9fa */
-.pr-table-head {
-  background: #f8f9fa;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-}
-body.dark-mode .pr-table-head {
-  background: rgba(255,255,255,.05);
 }
 
 /* Context box bài tập: nền nâu nhạt */
@@ -1055,21 +1135,6 @@ body.dark-mode .pr-heading-green { color: #34d399; }
 /* Context label override for blue/green variants */
 body.dark-mode .pr-context-label[style*="#0369a1"] { color: #38bdf8 !important; }
 body.dark-mode .pr-context-label[style*="#047857"] { color: #34d399 !important; }
-
-/* SMCR model header labels (SOURCE, MESSAGE, CHANNEL, RECEIVER) */
-.smcr-header-label {
-  background: #7a3e2e;
-  color: #fff;
-  padding: 11px 8px;
-  border-radius: 8px;
-  font-weight: 800;
-  font-size: 13px;
-  letter-spacing: 1px;
-}
-body.dark-mode .smcr-header-label {
-  background: #5c2d20;
-  border: 1px solid rgba(196,160,134,.3);
-}
 
 /* Result box after exercise completion */
 .pr-result-box {
@@ -1846,84 +1911,95 @@ body.auth-page #globalHeader { display: none; }
 
 
       <!-- ══ BẢNG SMCR HTML (giống hình upload) ══ -->
-      <div style="background:var(--card);border-radius:14px;border:1px solid var(--border);padding:28px;margin-bottom:28px;box-shadow:0 4px 18px rgba(0,0,0,.07);overflow-x:auto;">
-        <h3 style="font-family:'Helvetica Rounded Bold',sans-serif;font-size:18px;color:var(--text);margin-bottom:6px;text-align:center;letter-spacing:1px;text-transform:uppercase;">SMCR MODEL OF COMMUNICATION</h3>
-        <p style="text-align:center;color:var(--text2);font-size:13px;margin-bottom:28px;">Ứng dụng vào chiến dịch tranh cử Trump 2016</p>
+      <div class="smcr-table-wrap">
 
-        <!-- Header row -->
-        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:0;">
-          <div style="text-align:center;">
+        <!-- Big title like the image -->
+        <h2 class="smcr-big-title">SMCR MODEL OF COMMUNICATION</h2>
+
+        <!-- Header row: labels + arrows between them -->
+        <div class="smcr-header-row">
+
+          <div class="smcr-col">
             <div class="smcr-header-label">SOURCE</div>
-            <div style="height:32px;display:flex;align-items:center;justify-content:center;">
-              <div style="display:flex;align-items:center;gap:4px;color:var(--text2);">
-                <div style="width:40px;height:2px;background:var(--text2);"></div>
-                <span style="font-size:16px;">↔</span>
-                <div style="width:40px;height:2px;background:var(--text2);"></div>
-              </div>
-            </div>
           </div>
-          <div style="text-align:center;">
+
+          <div class="smcr-arrow-col">
+            <div class="smcr-h-arrow">↔</div>
+          </div>
+
+          <div class="smcr-col">
             <div class="smcr-header-label">MESSAGE</div>
-            <div style="height:32px;display:flex;align-items:center;justify-content:center;">
-              <div style="display:flex;align-items:center;gap:4px;color:var(--text2);">
-                <div style="width:40px;height:2px;background:var(--text2);"></div>
-                <span style="font-size:16px;">↔</span>
-                <div style="width:40px;height:2px;background:var(--text2);"></div>
-              </div>
-            </div>
           </div>
-          <div style="text-align:center;">
+
+          <div class="smcr-arrow-col">
+            <div class="smcr-h-arrow">↔</div>
+          </div>
+
+          <div class="smcr-col">
             <div class="smcr-header-label">CHANNEL</div>
-            <div style="height:32px;display:flex;align-items:center;justify-content:center;">
-              <div style="display:flex;align-items:center;gap:4px;color:var(--text2);">
-                <div style="width:40px;height:2px;background:var(--text2);"></div>
-                <span style="font-size:16px;">↔</span>
-                <div style="width:40px;height:2px;background:var(--text2);"></div>
-              </div>
-            </div>
           </div>
-          <div style="text-align:center;">
+
+          <div class="smcr-arrow-col">
+            <div class="smcr-h-arrow">↔</div>
+          </div>
+
+          <div class="smcr-col">
             <div class="smcr-header-label">RECEIVER</div>
-            <div style="height:32px;"></div>
           </div>
+
         </div>
 
-        <!-- Arrow down row -->
-        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:12px;">
-          <div style="text-align:center;font-size:22px;color:var(--text2);line-height:1;">↓</div>
-          <div style="text-align:center;font-size:22px;color:var(--text2);line-height:1;">↓</div>
-          <div style="text-align:center;font-size:22px;color:var(--text2);line-height:1;">↓</div>
-          <div style="text-align:center;font-size:22px;color:var(--text2);line-height:1;">↓</div>
+        <!-- Down arrows row -->
+        <div class="smcr-down-row">
+          <div class="smcr-col"><div class="smcr-v-arrow">↓</div></div>
+          <div class="smcr-arrow-col"></div>
+          <div class="smcr-col"><div class="smcr-v-arrow">↓</div></div>
+          <div class="smcr-arrow-col"></div>
+          <div class="smcr-col"><div class="smcr-v-arrow">↓</div></div>
+          <div class="smcr-arrow-col"></div>
+          <div class="smcr-col"><div class="smcr-v-arrow">↓</div></div>
         </div>
 
-        <!-- Items grid -->
-        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;">
-          <!-- SOURCE items -->
-          <div style="display:flex;flex-direction:column;gap:10px;">
+        <!-- Items row -->
+        <div class="smcr-items-row">
+
+          <!-- SOURCE -->
+          <div class="smcr-col">
             <div class="smcr-item-box">Donald Trump</div>
             <div class="smcr-item-box">Fox News</div>
             <div class="smcr-item-box">Conservative<br>News Sites</div>
             <div class="smcr-item-box">Facebook Groups</div>
           </div>
-          <!-- MESSAGE items -->
-          <div style="display:flex;flex-direction:column;gap:10px;">
+
+          <div class="smcr-arrow-col"></div>
+
+          <!-- MESSAGE -->
+          <div class="smcr-col">
             <div class="smcr-item-box">"Drain the Swamp"</div>
             <div class="smcr-item-box">Understanding</div>
             <div class="smcr-item-box">Orientation</div>
             <div class="smcr-item-box">Recognition</div>
           </div>
-          <!-- CHANNEL items -->
-          <div style="display:flex;flex-direction:column;gap:10px;">
+
+          <div class="smcr-arrow-col"></div>
+
+          <!-- CHANNEL -->
+          <div class="smcr-col">
             <div class="smcr-item-box">Facebook</div>
             <div class="smcr-item-box">Private Closed Groups</div>
             <div class="smcr-item-box">Create an<br>"Echo Chamber" Effect</div>
           </div>
-          <!-- RECEIVER items -->
-          <div style="display:flex;flex-direction:column;gap:10px;">
+
+          <div class="smcr-arrow-col"></div>
+
+          <!-- RECEIVER -->
+          <div class="smcr-col">
             <div class="smcr-item-box">White Voters</div>
             <div class="smcr-item-box">Rust Belt</div>
           </div>
+
         </div>
+
       </div>
 
       <!-- ══ PHÂN TÍCH CHI TIẾT ══ -->
