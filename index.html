@@ -1476,17 +1476,39 @@ body.auth-page #globalHeader { display: none; }
     <h1>📣 Public Relations</h1>
     <p>Học PR qua bài viết thực tế — không nhàm, không chán!</p>
     <div class="pr-tabs">
-      <button class="pr-tab active" onclick="switchPrTab('curriculum',this)">📚 Nội dung</button>
+      <button class="pr-tab active" onclick="switchPrTab('casestudy',this)">📋 Case Study</button>
+      <button class="pr-tab" onclick="switchPrTab('curriculum',this)">📚 Nội dung</button>
       <button class="pr-tab" onclick="switchPrTab('crisis-game',this)">🎮 Bài tập thực chiến</button>
     </div>
   </div>
 
   <div class="pr-content">
 
+    <div class="pr-section visible" id="pr-casestudy">
+      <div class="lesson-list">
+        <div class="exercise-frame" style="border-color:#c4a086;" onclick="switchPrTab('casestudy-detail',null)" >
+          <div class="ef-header">
+            <div class="ef-num" style="background:linear-gradient(135deg,#7a3e2e,#a05a3e);box-shadow:0 3px 10px rgba(122,62,46,.3);">1</div>
+            <div class="ef-info">
+              <h4>Chiến dịch "Drain the Swamp" — Donald Trump 2016</h4>
+              <p>Phân tích ứng dụng mô hình SMCR trong chiến dịch truyền thông chính trị gây chấn động nhất thế kỷ 21</p>
+            </div>
+            <div class="ef-status-badge">
+              <span class="ef-badge" style="background:rgba(122,62,46,.12);color:#7a3e2e;">📋 Case Study</span>
+              <span class="ef-badge" style="background:rgba(45,95,93,.08);color:var(--primary);">CHÍNH TRỊ & TRUYỀN THÔNG</span>
+            </div>
+          </div>
+          <div class="ef-actions">
+            <button class="ef-btn ef-btn-start" onclick="switchPrTab('casestudy-detail',null)">📋 Xem Case Study</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="pr-section" id="pr-casestudy-detail">
       <!-- ══ BACK BUTTON ══ -->
       <div style="margin-bottom:18px;">
-        <button onclick="switchPrTab('curriculum',null)" style="padding:9px 18px;background:var(--card);color:var(--text);border:1.5px solid var(--border);border-radius:8px;font-weight:600;cursor:pointer;font-size:13px;font-family:'Helvetica Rounded Bold',sans-serif;display:inline-flex;align-items:center;gap:6px;transition:all .2s;" onmouseover="this.style.borderColor='var(--primary)'" onmouseout="this.style.borderColor='var(--border)'">← Quay lại danh sách bài</button>
+        <button onclick="switchPrTab('casestudy',null)" style="padding:9px 18px;background:var(--card);color:var(--text);border:1.5px solid var(--border);border-radius:8px;font-weight:600;cursor:pointer;font-size:13px;font-family:'Helvetica Rounded Bold',sans-serif;display:inline-flex;align-items:center;gap:6px;transition:all .2s;" onmouseover="this.style.borderColor='var(--primary)'" onmouseout="this.style.borderColor='var(--border)'">← Quay lại Case Study</button>
       </div>
       <!-- ══ CASE STUDY HEADER ══ -->
       <div style="background:linear-gradient(135deg,#3b1f1a 0%,#7a3e2e 60%,#a05a3e 100%);border-radius:16px;padding:32px 28px 24px;color:#fff;margin-bottom:28px;position:relative;overflow:hidden;">
@@ -1650,7 +1672,7 @@ body.auth-page #globalHeader { display: none; }
       </div>
     </div>
 
-    <div class="pr-section visible" id="pr-curriculum">
+    <div class="pr-section" id="pr-curriculum">
       <div class="lesson-list" id="prCurriculumList">
         </div>
     </div>
@@ -2022,7 +2044,7 @@ function switchPrTab(id, btn) {
   document.querySelectorAll('.pr-tab').forEach(t => t.classList.remove('active'));
   if (btn) btn.classList.add('active');
   else {
-    var map = {'casestudy-detail':0, curriculum:0, 'smcr-article':0, 'crisis-game':1, 'exercise-1':1, 'exercise-2':1, 'exercise-3':1};
+    var map = {casestudy:0, 'casestudy-detail':0, curriculum:1, 'smcr-article':1, 'crisis-game':2, 'exercise-1':2, 'exercise-2':2, 'exercise-3':2};
     var tabs = document.querySelectorAll('.pr-tab');
     if (tabs[map[id]] !== undefined) tabs[map[id]].classList.add('active');
   }
@@ -2641,11 +2663,10 @@ function getTotalStats() {
    PR CURRICULUM RENDER
 ═══════════════════════════════ */
 var prExercises = [
-  { id: 'pr-casestudy', num: 1, name: 'Case Study: "Drain the Swamp" — Trump 2016', desc: 'Phân tích ứng dụng mô hình SMCR trong chiến dịch truyền thông chính trị gây chấn động nhất thế kỷ 21', type: '📋 Case Study', maxScore: null, action: "switchPrTab('casestudy-detail',null)", available: true },
-  { id: 'pr-smcr', num: 2, name: 'Mô hình truyền thông SMCRE', desc: 'Kiến trúc tương tác và hiệu quả thông tin', type: '📖 Lý thuyết', maxScore: 100, action: "switchPrTab('smcr-article',null)", available: true },
-  { id: 'pr-smcre-1', num: 3, name: 'Bài 1: SMCRE & Nguồn – Thông điệp', desc: '2 câu trắc nghiệm + 2 câu soạn thảo về SMCRE và vai trò Nguồn, Hiệu quả', type: '🎯 Thực chiến', maxScore: 100, action: "startExercise(1)", available: true },
-  { id: 'pr-dependency-1', num: 4, name: 'Bài 2: Dependency & Tam giác tương tác', desc: '2 câu trắc nghiệm + 2 câu soạn thảo về lý thuyết Dependency', type: '🎯 Thực chiến', maxScore: 100, action: "startExercise(2)", available: true },
-  { id: 'pr-noise-1', num: 5, name: 'Bài 3: Nhiễu, Độ trung thực & Symmetry', desc: '2 câu trắc nghiệm + 2 câu soạn thảo về Noise, Fidelity và Symmetry', type: '🎯 Thực chiến', maxScore: 100, action: "startExercise(3)", available: true }
+  { id: 'pr-smcr', num: 1, name: 'Mô hình truyền thông SMCRE', desc: 'Kiến trúc tương tác và hiệu quả thông tin', type: '📖 Lý thuyết', maxScore: 100, action: "switchPrTab('smcr-article',null)", available: true },
+  { id: 'pr-smcre-1', num: 2, name: 'Bài 1: SMCRE & Nguồn – Thông điệp', desc: '2 câu trắc nghiệm + 2 câu soạn thảo về SMCRE và vai trò Nguồn, Hiệu quả', type: '🎯 Thực chiến', maxScore: 100, action: "startExercise(1)", available: true },
+  { id: 'pr-dependency-1', num: 3, name: 'Bài 2: Dependency & Tam giác tương tác', desc: '2 câu trắc nghiệm + 2 câu soạn thảo về lý thuyết Dependency', type: '🎯 Thực chiến', maxScore: 100, action: "startExercise(2)", available: true },
+  { id: 'pr-noise-1', num: 4, name: 'Bài 3: Nhiễu, Độ trung thực & Symmetry', desc: '2 câu trắc nghiệm + 2 câu soạn thảo về Noise, Fidelity và Symmetry', type: '🎯 Thực chiến', maxScore: 100, action: "startExercise(3)", available: true }
 ];
 
 function renderPrCurriculum() {
@@ -2654,18 +2675,15 @@ function renderPrCurriculum() {
   if(!container) return;
   
   container.innerHTML = prExercises.filter(function(ex){ return ex.type !== '🎯 Thực chiến'; }).map(function(ex) {
-    var isCS = ex.type === '📋 Case Study';
     var result = scores[ex.id];
     var isDone = !!result;
     var pct = isDone ? Math.round((result.bestScore / ex.maxScore) * 100) : 0;
     
-    var statusBadge = isCS
-      ? '<span class="ef-badge" style="background:rgba(122,62,46,.12);color:#7a3e2e;">📖 Đọc ngay</span>'
-      : (isDone 
-        ? '<span class="ef-badge ef-badge-done">✅ Đã hoàn thành</span>'
-        : (ex.available ? '<span class="ef-badge ef-badge-todo">⬜ Chưa làm</span>' : '<span class="ef-badge ef-badge-todo">🔜 Sắp ra mắt</span>'));
+    var statusBadge = isDone 
+      ? '<span class="ef-badge ef-badge-done">✅ Đã hoàn thành</span>'
+      : (ex.available ? '<span class="ef-badge ef-badge-todo">⬜ Chưa làm</span>' : '<span class="ef-badge ef-badge-todo">🔜 Sắp ra mắt</span>');
     
-    var statsRow = (!isCS && isDone) ? `
+    var statsRow = isDone ? `
       <div class="ef-stats-row">
         <span class="ef-stat-pill score">🏆 Cao nhất: ${result.bestScore}/${ex.maxScore} điểm</span>
         <span class="ef-stat-pill">✅ ${result.correct}/${result.total} câu đúng</span>
@@ -2677,19 +2695,16 @@ function renderPrCurriculum() {
         <div class="ef-score-bar"><div class="ef-score-fill" style="width:${pct}%"></div></div>
       </div>` : '';
     
-    var btnLabel = isCS ? '📋 Xem Case Study' : (isDone ? '🚀 Bắt đầu xem bài' : '🚀 Bắt đầu xem bài');
     var actions = ex.available ? `
       <div class="ef-actions">
-        ${isDone && !isCS
-          ? `<button class="ef-btn ef-btn-review" onclick="${ex.action}">👁 Xem lại bài</button>
-             <button class="ef-btn ef-btn-redo" onclick="${ex.action}">🔄 Xem lại</button>` 
-          : `<button class="ef-btn ef-btn-start" onclick="${ex.action}">${btnLabel}</button>`}
+        ${isDone ? `<button class="ef-btn ef-btn-review" onclick="${ex.action}">👁 Xem lại bài</button>
+                    <button class="ef-btn ef-btn-redo" onclick="${ex.action}">🔄 Xem lại</button>` 
+                 : `<button class="ef-btn ef-btn-start" onclick="${ex.action}">🚀 Bắt đầu xem bài</button>`}
       </div>` : '';
     
-    var csAccent = isCS ? 'border-color:#c4a086;' : '';
-    return `<div class="exercise-frame ${isDone && !isCS ? 'ef-done' : ''}" style="${csAccent}">
+    return `<div class="exercise-frame ${isDone ? 'ef-done' : ''}">
       <div class="ef-header" onclick="${ex.action}">
-        <div class="ef-num" style="${isCS ? 'background:linear-gradient(135deg,#7a3e2e,#a05a3e);box-shadow:0 3px 10px rgba(122,62,46,.3);' : ''}">${isDone && !isCS ? '✓' : ex.num}</div>
+        <div class="ef-num">${isDone ? '✓' : ex.num}</div>
         <div class="ef-info">
           <h4>${ex.name}</h4>
           <p>${ex.desc}</p>
