@@ -1479,6 +1479,7 @@ body.auth-page #globalHeader { display: none; }
       <button class="pr-tab active" onclick="switchPrTab('casestudy',this)">📋 Case Study</button>
       <button class="pr-tab" onclick="switchPrTab('curriculum',this)">📚 Nội dung</button>
       <button class="pr-tab" onclick="switchPrTab('crisis-game',this)">🎮 Bài tập thực chiến</button>
+      <button class="pr-tab" onclick="switchPrTab('quiz-infinite',this);startInfiniteQuiz();">⚡ Quiz Vô tận</button>
     </div>
   </div>
 
@@ -2524,6 +2525,78 @@ body.auth-page #globalHeader { display: none; }
       </div>
     </div>
 
+    <!-- ══ QUIZ VÔ TẬN ══ -->
+    <div class="pr-section" id="pr-quiz-infinite">
+      <!-- Header banner -->
+      <div style="background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 50%,#0ea5e9 100%);border-radius:16px;padding:28px 28px 22px;color:#fff;margin-bottom:24px;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:-40px;right:-40px;width:200px;height:200px;background:radial-gradient(circle,rgba(77,217,172,.2) 0%,transparent 70%);border-radius:50%;pointer-events:none;"></div>
+        <div style="position:absolute;bottom:-30px;left:60px;width:140px;height:140px;background:radial-gradient(circle,rgba(244,162,97,.12) 0%,transparent 70%);border-radius:50%;pointer-events:none;"></div>
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px;position:relative;">
+          <div style="width:52px;height:52px;background:rgba(255,255,255,.15);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0;backdrop-filter:blur(4px);">⚡</div>
+          <div>
+            <h2 style="font-family:'Helvetica Rounded Bold',sans-serif;font-size:22px;margin:0 0 4px;">Quiz Vô Tận — Không Điểm Dừng</h2>
+            <p style="font-size:13px;opacity:.8;margin:0;">Câu hỏi xáo ngẫu nhiên từ toàn bộ nội dung SMCRE · Dependency · Case Study · Lý thuyết</p>
+          </div>
+        </div>
+        <!-- Live scoreboard -->
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;position:relative;">
+          <div style="background:rgba(255,255,255,.12);border-radius:10px;padding:12px 8px;text-align:center;backdrop-filter:blur(4px);">
+            <div id="qz-total" style="font-family:'Helvetica Rounded Bold',sans-serif;font-size:26px;font-weight:900;line-height:1;">0</div>
+            <div style="font-size:11px;opacity:.75;margin-top:2px;">Đã trả lời</div>
+          </div>
+          <div style="background:rgba(76,175,80,.25);border-radius:10px;padding:12px 8px;text-align:center;backdrop-filter:blur(4px);">
+            <div id="qz-correct" style="font-family:'Helvetica Rounded Bold',sans-serif;font-size:26px;font-weight:900;color:#a5f3a8;line-height:1;">0</div>
+            <div style="font-size:11px;opacity:.75;margin-top:2px;">Đúng</div>
+          </div>
+          <div style="background:rgba(231,111,81,.25);border-radius:10px;padding:12px 8px;text-align:center;backdrop-filter:blur(4px);">
+            <div id="qz-wrong" style="font-family:'Helvetica Rounded Bold',sans-serif;font-size:26px;font-weight:900;color:#fca5a5;line-height:1;">0</div>
+            <div style="font-size:11px;opacity:.75;margin-top:2px;">Sai</div>
+          </div>
+          <div style="background:rgba(244,162,97,.25);border-radius:10px;padding:12px 8px;text-align:center;backdrop-filter:blur(4px);">
+            <div id="qz-streak" style="font-family:'Helvetica Rounded Bold',sans-serif;font-size:26px;font-weight:900;color:#fde68a;line-height:1;">0</div>
+            <div style="font-size:11px;opacity:.75;margin-top:2px;">🔥 Streak</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Accuracy bar -->
+      <div style="background:var(--card);border-radius:12px;padding:14px 18px;margin-bottom:18px;border:1px solid var(--border);display:flex;align-items:center;gap:14px;">
+        <span style="font-size:13px;font-weight:700;color:var(--text);white-space:nowrap;">Độ chính xác</span>
+        <div style="flex:1;height:10px;background:var(--border);border-radius:5px;overflow:hidden;">
+          <div id="qz-acc-bar" style="height:100%;width:0%;background:linear-gradient(90deg,#10b981,#4DD9AC);border-radius:5px;transition:width .5s ease;"></div>
+        </div>
+        <span id="qz-acc-pct" style="font-size:14px;font-weight:900;color:var(--primary);min-width:38px;text-align:right;">0%</span>
+      </div>
+
+      <!-- Question card -->
+      <div id="qz-card" style="background:var(--card);border-radius:16px;border:1.5px solid var(--border);overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.07);min-height:320px;">
+        <!-- Question header -->
+        <div id="qz-card-header" style="background:linear-gradient(135deg,#1e3a5f,#0ea5e9);padding:18px 22px 16px;color:#fff;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+            <span id="qz-tag" style="font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;opacity:.8;background:rgba(255,255,255,.15);padding:3px 10px;border-radius:20px;">SMCRE</span>
+            <span id="qz-num-label" style="font-size:12px;opacity:.7;">Câu #1</span>
+          </div>
+          <p id="qz-question" style="font-size:15px;font-weight:700;line-height:1.55;margin:0;"></p>
+        </div>
+        <!-- Options -->
+        <div id="qz-options" style="padding:18px 18px 8px;display:flex;flex-direction:column;gap:10px;"></div>
+        <!-- Explanation -->
+        <div id="qz-explain" style="display:none;margin:0 18px 18px;padding:14px 16px;border-radius:10px;font-size:13.5px;line-height:1.65;"></div>
+        <!-- Next button -->
+        <div id="qz-next-wrap" style="display:none;padding:0 18px 20px;">
+          <button id="qz-next-btn" onclick="quizNext()" style="width:100%;padding:13px;background:linear-gradient(135deg,#1e3a5f,#0ea5e9);color:#fff;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Helvetica Rounded Bold',sans-serif;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:8px;">
+            Câu tiếp theo →
+          </button>
+        </div>
+      </div>
+
+      <!-- Milestone badge -->
+      <div id="qz-milestone" style="display:none;text-align:center;margin-top:18px;padding:18px;background:linear-gradient(135deg,#fef3c7,#fde68a);border-radius:14px;border:1.5px solid #f59e0b;animation:fadeIn .4s ease;">
+        <div style="font-size:36px;margin-bottom:6px;" id="qz-milestone-icon">🏆</div>
+        <p id="qz-milestone-text" style="font-family:'Helvetica Rounded Bold',sans-serif;font-size:16px;color:#92400e;margin:0;font-weight:700;"></p>
+      </div>
+    </div>
+
   </div>
 </div>
 
@@ -2538,7 +2611,7 @@ function switchPrTab(id, btn) {
   document.querySelectorAll('.pr-tab').forEach(t => t.classList.remove('active'));
   if (btn) btn.classList.add('active');
   else {
-    var map = {casestudy:0, 'casestudy-detail':0, curriculum:1, 'smcr-article':1, 'crisis-game':2, 'exercise-1':2, 'exercise-2':2, 'exercise-3':2, 'exercise-4':2, 'exercise-5':2};
+    var map = {casestudy:0, 'casestudy-detail':0, curriculum:1, 'smcr-article':1, 'crisis-game':2, 'exercise-1':2, 'exercise-2':2, 'exercise-3':2, 'exercise-4':2, 'exercise-5':2, 'quiz-infinite':3};
     var tabs = document.querySelectorAll('.pr-tab');
     if (tabs[map[id]] !== undefined) tabs[map[id]].classList.add('active');
   }
@@ -2744,6 +2817,408 @@ if(false){ // dead code block — prevent errors
       // dead code end
   }
 }
+
+/* ═══════════════════════════════════════════════════════
+   ⚡ INFINITE QUIZ ENGINE
+   Câu hỏi xáo ngẫu nhiên, không điểm dừng, kèm giải thích
+═══════════════════════════════════════════════════════ */
+
+const QUIZ_BANK = [
+  /* ── SMCRE · NGUỒN & THÔNG ĐIỆP ── */
+  {
+    tag:'SMCRE', color:'#2D5F5D',
+    q:'Theo mô hình SMCRE, uy tín và sự thấu cảm của Nguồn (Source) quyết định bao nhiêu % thành công của quá trình truyền thông?',
+    opts:['A. 20%','B. 50%','C. 75%','D. 100%'], ans:1,
+    explain:'Trong SMCRE, Nguồn là mắt xích đầu tiên và uy tín/thấu cảm của nguồn được xác định quyết định đến 50% thành công. Đây là lý do Trump — dù không có kinh nghiệm chính trị — vẫn thắng nhờ "uy tín outsider" đồng nhất với cử tri Rust Belt.'
+  },
+  {
+    tag:'SMCRE', color:'#2D5F5D',
+    q:'Tầng "Understanding" (Thấu hiểu) trong thiết kế Thông điệp SMCRE có nghĩa là gì?',
+    opts:['A. Người nhận nhận ra tên thương hiệu','B. Người nhận biết mình đang bị thuyết phục','C. Người nhận hiểu sâu ý nghĩa, bối cảnh và ý định của thông điệp','D. Người nhận ngay lập tức thay đổi hành vi'], ans:2,
+    explain:'"Understanding" là tầng sâu nhất trong 3 tầng ROI: Recognition (nhận dạng) → Orientation (định hướng) → Understanding (thấu hiểu). Chỉ khi đạt tầng này, thông điệp mới thực sự tạo ra hiệu quả lâu dài và thay đổi thái độ bền vững.'
+  },
+  {
+    tag:'SMCRE', color:'#2D5F5D',
+    q:'Trong mô hình SMCRE, yếu tố "Văn hóa" thuộc về thành phần nào?',
+    opts:['A. Chỉ Nguồn (Source)','B. Chỉ Người nhận (Receiver)','C. Cả Nguồn và Người nhận','D. Kênh (Channel)'], ans:2,
+    explain:'Theo SMCRE, cả Nguồn và Người nhận đều chịu tác động bởi 5 yếu tố giống nhau: Kỹ năng giao tiếp, Thái độ, Kiến thức, Hệ thống xã hội và Văn hóa. Đây chính là cơ sở của lý thuyết Symmetry — khi hai bên có văn hóa tương đồng, fidelity đạt cao nhất.'
+  },
+  {
+    tag:'SMCRE', color:'#2D5F5D',
+    q:'Vì sao "Drain the Swamp" (3 từ) hiệu quả hơn hàng chục chính sách chi tiết của đối thủ?',
+    opts:['A. Vì 3 từ dễ in lên mũ và áo phông','B. Vì nó kích hoạt cả 3 tầng Recognition–Orientation–Understanding đồng thời và dễ lan truyền','C. Vì truyền thông bảo thủ ưu tiên tin tức ngắn','D. Vì ứng viên đối thủ không có ngân sách truyền thông'], ans:1,
+    explain:'Sức mạnh nằm ở tính đơn giản dễ nhớ (Recognition), lập trường rõ ràng chống "hệ thống" (Orientation) và đánh trúng tâm lý bức xúc của cử tri bị bỏ quên (Understanding). Đây là thiết kế thông điệp tối ưu theo SMCRE.'
+  },
+  {
+    tag:'SMCRE', color:'#2D5F5D',
+    q:'Kênh (Channel) trong SMCRE được xác định dựa trên điều gì?',
+    opts:['A. Chi phí phổ biến nhất trên thị trường','B. Kênh mà nhóm mục tiêu sử dụng để tiếp nhận thông tin','C. Kênh mà ban lãnh đạo doanh nghiệp ưa thích','D. Kênh có nhiều người dùng nhất toàn cầu'], ans:1,
+    explain:'Chọn kênh đúng là xác định xem nhóm Người nhận (Receiver) đang nghe, nhìn, đọc ở đâu. Kênh không phù hợp = thông điệp không bao giờ tới đích, dù Source và Message hoàn hảo đến đâu.'
+  },
+  {
+    tag:'SMCRE', color:'#2D5F5D',
+    q:'Hiệu quả (Effect) trong SMCRE là thước đo cuối cùng. Hiệu quả bao gồm mấy loại thay đổi?',
+    opts:['A. 1 loại — chỉ thay đổi hành vi','B. 2 loại — nhận thức và hành vi','C. 3 loại — nhận thức, cảm xúc và hành vi','D. 4 loại — nhận thức, cảm xúc, hành vi và doanh thu'], ans:2,
+    explain:'Effect trong SMCRE đo bằng 3 tầng: (1) Nhận thức — người nhận biết/hiểu điều gì đó mới; (2) Cảm xúc — thái độ, cảm giác thay đổi; (3) Hành vi — hành động thực tế thay đổi. PR hiệu quả nhất khi đạt cả 3 tầng.'
+  },
+  {
+    tag:'SMCRE', color:'#2D5F5D',
+    q:'Mô hình SMCRE là sự phát triển của mô hình SMCR của David Berlo (1960). Yếu tố nào được bổ sung thêm?',
+    opts:['A. Source (Nguồn)','B. Message (Thông điệp)','C. Effect (Hiệu quả)','D. Channel (Kênh)'], ans:2,
+    explain:'David Berlo đề xuất SMCR năm 1960. Phiên bản SMCRE hiện đại bổ sung thêm E — Effect (Hiệu quả) để nhấn mạnh rằng mục đích cuối cùng của mọi hành vi truyền thông là tạo ra sự thay đổi có thể đo lường được.'
+  },
+  {
+    tag:'SMCRE', color:'#2D5F5D',
+    q:'Trong Case Study Trump 2016, Fox News và các nhóm Facebook Groups đóng vai trò gì trong mô hình SMCRE?',
+    opts:['A. Nguồn chính (Primary Source)','B. Kênh khuếch đại (Amplified Channel)','C. Người nhận mục tiêu (Target Receiver)','D. Hiệu quả thứ cấp (Secondary Effect)'], ans:1,
+    explain:'Fox News và Facebook Groups là kênh — nhưng đặc biệt là kênh có tính khuếch đại tự động. Thuật toán Facebook ưu tiên nội dung cảm xúc mạnh, vô tình tiếp tay đẩy thông điệp "Drain the Swamp" đến đúng nhóm cử tri mục tiêu.'
+  },
+
+  /* ── NHIỄU · FIDELITY · SYMMETRY ── */
+  {
+    tag:'Nhiễu & Fidelity', color:'#7c3aed',
+    q:'Độ trung thực (Fidelity) trong truyền thông được định nghĩa là gì?',
+    opts:['A. Số lượng thông điệp được gửi đi trong một chiến dịch','B. Mức độ tương đồng giữa ý định của người gửi và sự hiểu biết của người nhận','C. Tốc độ truyền tải thông điệp qua kênh','D. Mức độ sáng tạo của nội dung thông điệp'], ans:1,
+    explain:'Fidelity = "độ trung thực" hay "độ nguyên vẹn" — đo xem thông điệp đến tay người nhận có giữ nguyên ý nghĩa ban đầu không. Nhiễu (Noise) là kẻ thù số 1 của fidelity.'
+  },
+  {
+    tag:'Nhiễu & Fidelity', color:'#7c3aed',
+    q:'Nhiễu ngữ nghĩa (Semantic Noise) xảy ra khi nào?',
+    opts:['A. Khi có âm thanh ồn ào xung quanh trong khi nghe','B. Người nhận bị đau đầu hoặc mệt mỏi','C. Người gửi dùng thuật ngữ chuyên môn quá khó với người nhận','D. Kết nối internet không ổn định'], ans:2,
+    explain:'Nhiễu ngữ nghĩa = khoảng cách về ngôn ngữ, thuật ngữ, định nghĩa. Ví dụ: một bác sĩ nói "myocardial infarction" với bệnh nhân thay vì "nhồi máu cơ tim" — thông điệp bị "nhiễu" ngay dù kênh hoàn toàn rõ ràng.'
+  },
+  {
+    tag:'Nhiễu & Fidelity', color:'#7c3aed',
+    q:'Chiến lược "Symmetry" trong SMCRE yêu cầu nhà PR phải làm gì trước tiên?',
+    opts:['A. Chọn kênh truyền thông có nhiều người dùng nhất','B. Nghiên cứu kỹ đặc điểm của Người nhận trước khi thiết kế Message và chọn Channel','C. Thuê nguồn phát (KOL) nổi tiếng nhất trong ngành','D. Tối ưu hóa ngân sách quảng cáo'], ans:1,
+    explain:'Symmetry = sự đối xứng. Khi đặc điểm của Nguồn và Người nhận tương đồng (văn hóa, kiến thức, thái độ), fidelity đạt cực đại. Đây là lý do Trump "nói tiếng" của cử tri Rust Belt — đồng cảnh ngộ, đồng ngôn ngữ bình dân.'
+  },
+  {
+    tag:'Nhiễu & Fidelity', color:'#7c3aed',
+    q:'Trong 4 loại nhiễu, "nhiễu vật lý" khác với các loại khác ở điểm gì?',
+    opts:['A. Nó xuất phát từ bên trong tâm trí người nhận','B. Nó là loại nhiễu duy nhất có thể loại bỏ hoàn toàn','C. Nó đến từ môi trường bên ngoài như âm thanh, ánh sáng, không gian','D. Nó chỉ ảnh hưởng đến kênh kỹ thuật số'], ans:2,
+    explain:'4 loại nhiễu: (1) Vật lý — môi trường bên ngoài; (2) Tâm lý — định kiến, căng thẳng; (3) Ngữ nghĩa — thuật ngữ khó; (4) Sinh lý — mệt mỏi, bệnh tật. Nhiễu vật lý thường dễ kiểm soát nhất (chọn địa điểm phù hợp, âm thanh rõ).'
+  },
+  {
+    tag:'Nhiễu & Fidelity', color:'#7c3aed',
+    q:'Echo Chamber trong Case Study Trump 2016 hoạt động như loại nhiễu nào trong SMCRE?',
+    opts:['A. Nhiễu vật lý — internet tắt chậm','B. Nhiễu sinh lý — người dùng lướt điện thoại quá lâu','C. Nhiễu tâm lý có hệ thống — thuật toán khuếch đại định kiến, triệt tiêu thông tin phản biện','D. Nhiễu ngữ nghĩa — slogan quá khó hiểu'], ans:2,
+    explain:'Echo Chamber là dạng nhiễu tâm lý được thuật toán "công nghiệp hóa" — thay vì nhiễu ngẫu nhiên, nó có chủ đích lọc bỏ mọi thông tin mâu thuẫn với niềm tin sẵn có của người dùng, tạo ra "bong bóng thông tin" kín.'
+  },
+
+  /* ── DEPENDENCY THEORY ── */
+  {
+    tag:'Dependency', color:'#0369a1',
+    q:'Lý thuyết Dependency (Ball-Rokeach & DeFleur, 1976) phát biểu rằng quyền lực của truyền thông đến từ đâu?',
+    opts:['A. Số lượng phóng viên và tòa soạn','B. Ngân sách sản xuất nội dung','C. Mức độ mà khán giả phụ thuộc vào truyền thông để thỏa mãn các nhu cầu thông tin, giải trí, ra quyết định','D. Sự kiểm soát của nhà nước đối với nội dung'], ans:2,
+    explain:'Dependency Theory: quyền lực tỷ lệ thuận với sự phụ thuộc. Khi bạn cần truyền thông để ra quyết định (mua hàng, bầu cử, định hướng giá trị), truyền thông có khả năng định hướng bạn mà bạn thậm chí không nhận ra.'
+  },
+  {
+    tag:'Dependency', color:'#0369a1',
+    q:'Trong "Tam giác tương tác" của Dependency Theory, ba đỉnh của tam giác là gì?',
+    opts:['A. Nguồn – Thông điệp – Kênh','B. Xã hội – Truyền thông – Khán giả','C. Người gửi – Người nhận – Phản hồi','D. Chính phủ – Doanh nghiệp – Công chúng'], ans:1,
+    explain:'Tam giác tương tác Dependency: Xã hội ↔ Truyền thông ↔ Khán giả. Ba đỉnh này liên tục tác động qua lại, không bên nào hoàn toàn chủ động hay thụ động — đây là điểm khác biệt so với mô hình truyền thông một chiều cũ.'
+  },
+  {
+    tag:'Dependency', color:'#0369a1',
+    q:'Khi Facebook ra mắt Reels vì xu hướng video ngắn của người dùng, đây là ví dụ của mối quan hệ nào trong Dependency?',
+    opts:['A. Xã hội kiểm soát truyền thông','B. Khán giả (Cầu) buộc truyền thông (Cung) phải thay đổi','C. Truyền thông định hướng xã hội','D. Chính phủ quy định nội dung nền tảng'], ans:1,
+    explain:'Đây là chiều "Khán giả → Truyền thông" trong Tam giác Dependency. Sở thích người dùng (Cầu) tạo áp lực buộc nền tảng (Cung) phải đổi hình thức. TikTok thắng vì biết đọc "Cầu" sớm hơn Facebook và YouTube.'
+  },
+  {
+    tag:'Dependency', color:'#0369a1',
+    q:'Vì sao người ta "phụ thuộc" vào review YouTube/diễn đàn trước khi mua điện thoại đắt tiền?',
+    opts:['A. Vì các trang review được tài trợ bởi nhà sản xuất','B. Vì bộ nhớ con người hữu hạn nên phải tham khảo bên ngoài','C. Vì nhu cầu giảm thiểu rủi ro quyết định cao-cược khiến người ta tìm đến truyền thông như nguồn thông tin đáng tin cậy','D. Vì đó là thói quen tiêu dùng mới nảy sinh sau đại dịch'], ans:2,
+    explain:'Dependency Theory giải thích: khi cược của quyết định càng cao (tiền nhiều, sai khó sửa), sự phụ thuộc vào truyền thông càng lớn. Nhà PR giỏi sẽ đặt mình vào đúng "điểm phụ thuộc" này để ảnh hưởng quyết định.'
+  },
+  {
+    tag:'Dependency', color:'#0369a1',
+    q:'Chiến dịch "#SayNoToPlastic" buộc doanh nghiệp và nhà nước phải hành động. Điều này thể hiện điều gì trong Dependency Theory?',
+    opts:['A. Truyền thông có quyền năng tuyệt đối','B. Khán giả là "trạm tiếp sóng" — khi tụ tập đủ đông, họ có thể tạo áp lực ngược lại xã hội và hệ thống','C. Hashtag là công cụ PR hiệu quả nhất','D. Nhà nước phụ thuộc vào mạng xã hội để biết ý kiến công dân'], ans:1,
+    explain:'Đây là ví dụ điển hình của vòng phản hồi trong Dependency: Khán giả → (khuếch đại hashtag) → Truyền thông → (tạo áp lực dư luận) → Xã hội/Chính phủ → (ban hành chính sách). Khán giả không thụ động — họ là tác nhân thay đổi.'
+  },
+  {
+    tag:'Dependency', color:'#0369a1',
+    q:'Trong bối cảnh bầu cử 2016, tại sao cử tri Rust Belt "phụ thuộc" vào Facebook Groups thay vì CNN hay NYT?',
+    opts:['A. Vì Facebook miễn phí còn báo phải mua','B. Vì CNN và NYT không đưa tin về Rust Belt','C. Vì Facebook Groups tạo cộng đồng đồng thuận — người nhận thấy thông tin từ nguồn "giống mình" đáng tin hơn nguồn chính thống xa lạ','D. Vì giao diện Facebook dễ dùng hơn'], ans:2,
+    explain:'Dependency mạnh nhất khi kênh phụ thuộc là kênh "đồng nhóm" — người trong cộng đồng tin nhau hơn tin báo chí "của giới tinh hoa". Facebook Groups kín tạo ra vòng lặp tin tưởng: mọi người chia sẻ, mọi người tin, mọi người chia sẻ tiếp.'
+  },
+  {
+    tag:'Dependency', color:'#0369a1',
+    q:'Khi xã hội ban hành Luật An ninh mạng buộc các nền tảng kiểm soát nội dung, đây là chiều tương tác nào?',
+    opts:['A. Truyền thông → Xã hội','B. Khán giả → Truyền thông','C. Xã hội → Truyền thông (xã hội đặt luật chơi)','D. Khán giả → Xã hội'], ans:2,
+    explain:'Chiều "Xã hội → Truyền thông": xã hội/nhà nước tạo ra khung pháp lý (Luật An ninh mạng, GDPR...) buộc truyền thông phải tuân thủ. Đây là một trong 3 chiều tương tác của Tam giác Dependency.'
+  },
+
+  /* ── CASE STUDY TRUMP 2016 ── */
+  {
+    tag:'Case Study', color:'#7a3e2e',
+    q:'Trong Case Study Trump 2016, nhóm Người nhận (Receiver) chính là ai?',
+    opts:['A. Toàn bộ cử tri Mỹ trên 18 tuổi','B. Cử tri da trắng tại vùng Rust Belt (Michigan, Pennsylvania, Wisconsin) bị bỏ quên bởi truyền thông chính thống','C. Giới trí thức và học giả người Mỹ','D. Cộng đồng Latino và African-American'], ans:1,
+    explain:'Rust Belt = vành đai công nghiệp cũ đang suy thoái. Cử tri ở đây cảm thấy bị bỏ quên, mất việc làm, không được đại diện. Sự đồng nhất Source–Receiver theo lý thuyết SMCRE đạt cực đại khi Trump — "outsider ghét hệ thống" — nói đúng ngôn ngữ của họ.'
+  },
+  {
+    tag:'Case Study', color:'#7a3e2e',
+    q:'Bài học PR số 1 từ "Drain the Swamp" là "Symmetry là chìa khóa". Điều này có nghĩa là gì?',
+    opts:['A. Thông điệp phải đối xứng về chiều dài — không quá ngắn, không quá dài','B. Thông điệp đạt hiệu quả cao nhất khi đặc điểm của Nguồn và Người nhận tương đồng','C. Chiến dịch phải dùng tỷ lệ bằng nhau cho tất cả các kênh','D. Phải đăng bài đều đặn, đối xứng theo lịch tuần'], ans:1,
+    explain:'Trump "nói tiếng" của cử tri Rust Belt — cùng sự bức xúc, cùng cảm giác bị phản bội bởi "hệ thống". Khi Source và Receiver có đặc điểm tương đồng (thái độ, văn hóa, hệ thống giá trị), thông điệp truyền đi với fidelity gần như tuyệt đối.'
+  },
+  {
+    tag:'Case Study', color:'#7a3e2e',
+    q:'"Drain the Swamp" chứa đủ 3 tầng ROI trong thiết kế thông điệp. Tầng nào kết nối trực tiếp với tâm lý bức xúc của cử tri?',
+    opts:['A. Recognition — nhận dạng','B. Orientation — định hướng lập trường','C. Understanding — thấu hiểu cảm xúc và bức xúc','D. Cả 3 tầng không thể tách rời nhau'], ans:3,
+    explain:'Cả 3 tầng đồng thời hoạt động: Recognition (3 từ dễ nhớ), Orientation (rõ lập trường chống "swamp" = hệ thống tham nhũng), Understanding (tôi hiểu bạn đang bức xúc điều gì). Sức mạnh nằm ở việc đánh đồng thời cả 3.'
+  },
+  {
+    tag:'Case Study', color:'#7a3e2e',
+    q:'Trong Case Study, Facebook Groups kín tạo ra "Echo Chamber". Điều này có lợi và hại như thế nào cho PR?',
+    opts:['A. Chỉ có lợi — khuếch đại thông điệp hiệu quả mà không tốn chi phí','B. Chỉ có hại — tạo ra thông tin sai lệch lan tràn','C. Có lợi cho chiến dịch ngắn hạn (khuếch đại) nhưng có hại dài hạn (phân cực, mất đối thoại), đặt ra câu hỏi đạo đức','D. Trung tính — Echo Chamber chỉ phản ánh ý kiến đã có sẵn'], ans:2,
+    explain:'Đây là bài học đạo đức PR: Echo Chamber khuếch đại thông điệp cực kỳ hiệu quả trong ngắn hạn (đúng nhóm mục tiêu, chi phí thấp), nhưng về dài hạn tạo ra phân cực xã hội, làm suy yếu đối thoại công cộng và lan tràn thông tin không kiểm chứng.'
+  },
+  {
+    tag:'Case Study', color:'#7a3e2e',
+    q:'Chiến thắng bầu cử của Trump năm 2016 là minh chứng cho yếu tố nào trong SMCRE?',
+    opts:['A. Source (Nguồn) — vì Trump có kinh nghiệm chính trị lâu năm','B. Message (Thông điệp) — vì slogan dài và chi tiết','C. Effect (Hiệu quả) — chiến thắng bầu cử là kết quả đo lường được của toàn bộ chiến dịch truyền thông','D. Channel (Kênh) — vì TV là kênh quyết định'], ans:2,
+    explain:'E trong SMCRE = Effect = thay đổi hành vi (đây: hành vi bỏ phiếu). Chiến thắng bầu cử là đỉnh cao của hiệu quả truyền thông — thay đổi hành vi của hàng triệu người nhận cùng một lúc.'
+  },
+
+  /* ── TỔNG HỢP & ỨNG DỤNG ── */
+  {
+    tag:'Tổng hợp', color:'#047857',
+    q:'Khi kết hợp SMCRE + Dependency, bước nào cần làm ĐẦU TIÊN khi lên kế hoạch chiến dịch PR?',
+    opts:['A. Viết nội dung thông điệp sáng tạo','B. Nghiên cứu Người nhận (SMCRE) và xác định kênh họ phụ thuộc nhất (Dependency)','C. Đặt KPI và ngân sách','D. Chọn KOL nổi tiếng nhất ngành'], ans:1,
+    explain:'Cả SMCRE (Symmetry) và Dependency đều bắt đầu từ việc hiểu sâu đối tượng. Ai họ là? Họ cần gì? Họ phụ thuộc kênh nào? Khi đã có câu trả lời, Source, Message, Channel mới được thiết kế để khớp — không phải ngược lại.'
+  },
+  {
+    tag:'Tổng hợp', color:'#047857',
+    q:'Chiến dịch Biti\'s "Đi để trở về" thành công vang dội. Yếu tố SMCRE nào quyết định nhất?',
+    opts:['A. Ngân sách sản xuất MV cao cấp','B. Symmetry hoàn hảo giữa thông điệp cảm xúc (nhớ nhà) và nhóm người trẻ xa nhà — kênh YouTube/Facebook họ phụ thuộc','C. Ca sĩ nổi tiếng duy nhất quyết định thành công','D. Thời điểm ra mắt dịp Tết'], ans:1,
+    explain:'Biti\'s hiểu sâu Receiver (người trẻ xa nhà, cảm xúc dâng cao dịp Tết), Message chạm đúng nỗi nhớ, kênh YouTube/Facebook là nơi nhóm này tiêu thụ nội dung cảm xúc. Đây là SMCRE + Dependency hoạt động hoàn hảo trong thực tiễn Việt Nam.'
+  },
+  {
+    tag:'Tổng hợp', color:'#047857',
+    q:'Một chiến dịch dừng ở mức "awareness" (nhận thức) mà không thúc đẩy được hành vi mua. Theo SMCRE, nguyên nhân khả năng cao nhất là gì?',
+    opts:['A. Nguồn chưa đủ uy tín','B. Thông điệp chưa đạt tầng Understanding hoặc chưa đủ Symmetry để kết nối với nhu cầu thực sự của người nhận','C. Kênh có quá ít người dùng','D. Hiệu quả không thể đo lường được'], ans:1,
+    explain:'Awareness = đạt tầng Recognition. Nhưng để chuyển đổi thành hành vi, thông điệp cần leo lên tầng Understanding — hiểu tại sao điều này quan trọng với TÔI cụ thể. Thiếu Symmetry (không đủ phù hợp với bối cảnh cá nhân) khiến nhận thức không chuyển thành hành động.'
+  },
+  {
+    tag:'Tổng hợp', color:'#047857',
+    q:'Nhà PR muốn biến khán giả thành "trạm tiếp sóng" theo Dependency. Chiến lược theo SMCRE là gì?',
+    opts:['A. Trả tiền cho tất cả KOL đăng bài cùng ngày','B. Thiết kế Message đơn giản + cảm xúc cao (Symmetry) + kênh phụ thuộc (Dependency) + cơ chế chia sẻ dễ (Effect lan truyền)','C. Tạo nội dung gây sốc, tranh cãi','D. Tối ưu SEO để tăng lượt tìm kiếm organic'], ans:1,
+    explain:'Trạm tiếp sóng = người dùng tự nguyện chia sẻ. Muốn vậy: thông điệp phải resonance (Symmetry + Understanding), phân phối qua kênh họ đang "sống" (Dependency), và cơ chế chia sẻ phải không có ma sát — 1 tap, 1 click. Effect tự nhân lên.'
+  },
+  {
+    tag:'Tổng hợp', color:'#047857',
+    q:'Nhiễu tâm lý (định kiến) và Echo Chamber — chúng liên quan như thế nào?',
+    opts:['A. Không liên quan — hoạt động ở tầng lý thuyết khác nhau','B. Echo Chamber là "nhiễu tâm lý được thuật toán công nghiệp hóa" — khuếch đại định kiến sẵn có và triệt tiêu phản biện','C. Echo Chamber triệt tiêu nhiễu tâm lý bằng cách lọc thông tin','D. Chỉ liên quan đến truyền thông chính trị, không ứng dụng được trong PR thương hiệu'], ans:1,
+    explain:'Nhiễu tâm lý = định kiến cá nhân làm méo thông điệp. Echo Chamber = thuật toán scale định kiến đó lên cộng đồng. Kết quả: hàng triệu người cùng bị một loại nhiễu tâm lý đồng nhất — đây là thứ vũ khí nguy hiểm nhất của truyền thông hiện đại.'
+  },
+  {
+    tag:'Tổng hợp', color:'#047857',
+    q:'Khi thiết kế chiến dịch PR cho thương hiệu nước giải khát nhắm Gen Z Việt Nam, kênh phụ thuộc (Dependency) nào phù hợp nhất?',
+    opts:['A. Báo in và tạp chí thời trang','B. Quảng cáo OOH (billboard, pano ngoài trời)','C. TikTok và Instagram Reels — nơi Gen Z tiêu thụ nội dung cảm xúc, xu hướng và review bạn bè','D. Email marketing và website thương hiệu'], ans:2,
+    explain:'Theo Dependency, kênh hiệu quả = kênh nhóm mục tiêu phụ thuộc để lấy thông tin và ra quyết định. Gen Z Việt Nam 2024 phụ thuộc TikTok/Instagram cho xu hướng, bạn bè review, và content giải trí. Billboard và email thường bị "nhiễu" bởi thói quen lướt nhanh.'
+  },
+  {
+    tag:'Tổng hợp', color:'#047857',
+    q:'Theo PRX, điều gì phân biệt "PR hiệu quả" với "thao túng truyền thông" theo góc độ đạo đức?',
+    opts:['A. Ngân sách sử dụng — thao túng luôn dùng tiền nhiều hơn','B. PR hiệu quả = thuyết phục dựa trên thông tin trung thực + tôn trọng quyền tự quyết của công chúng; thao túng = lợi dụng thiên kiến, tạo thông tin sai, triệt tiêu phản biện','C. Không có ranh giới — mọi PR đều là thao túng ở mức độ nào đó','D. Ranh giới là sự chấp thuận của cơ quan quản lý nhà nước'], ans:1,
+    explain:'Ranh giới đạo đức PR: (1) Thông tin có trung thực không? (2) Có tôn trọng quyền tiếp cận thông tin đa chiều của công chúng không? (3) Có cố tình tạo/khuếch đại nhiễu để ngăn phản biện không? Case Study Trump cho thấy kỹ thuật SMCRE + Echo Chamber có thể bị lạm dụng để phân cực xã hội nguy hiểm.'
+  },
+  {
+    tag:'Tổng hợp', color:'#047857',
+    q:'Mô hình PRX sử dụng phương pháp "Case-study hóa" (biến mỗi kỹ năng thành câu chuyện thực tế). Điều này dựa trên insight học tập nào?',
+    opts:['A. Người học PR thích đọc lý thuyết hàn lâm trước khi thực hành','B. Dân PR ghi nhớ qua ví dụ thực tế nhanh hơn khái niệm trừu tượng — kể chuyện tận dụng đúng tư duy nghề','C. Case study tiết kiệm thời gian giảng dạy hơn bài giảng lý thuyết','D. Lý thuyết truyền thông quá phức tạp để dạy trực tiếp'], ans:1,
+    explain:'Đây là insight chiến lược của PRX từ phần Nội dung: "Dân PR thích kể chuyện và nghe chuyện — họ ghi nhớ qua ví dụ thực tế (Vinamilk, Coca-Cola, Biti\'s...) nhanh hơn khái niệm học thuật." Biến app từ "nơi học lý thuyết" thành "kho câu chuyện nghề".'
+  },
+  {
+    tag:'Tổng hợp', color:'#047857',
+    q:'Khi Effect dừng ở nhận thức mà không tạo ra hành vi, nhà PR cần kiểm tra đồng thời điều gì theo SMCRE + Dependency?',
+    opts:['A. Chỉ kiểm tra ngân sách và tần suất','B. Message (hiểu sâu chưa?), Symmetry (phù hợp nhu cầu hành động?), và kênh phụ thuộc (đủ tin cậy để kích hoạt hành vi?)','C. Thay Source mới có uy tín hơn','D. Dừng chiến dịch và thiết kế lại hoàn toàn'], ans:1,
+    explain:'Checklist chuyển đổi Awareness → Action: (1) SMCRE: Message có đạt tầng Understanding chưa? Symmetry có đủ cá nhân hóa không? (2) Dependency: kênh hiện tại có đủ độ tin cậy với nhóm mục tiêu để họ hành động không? Đây là framework chẩn đoán trước khi "đổ thêm tiền vào kênh".'
+  },
+];
+
+/* ── State ── */
+let qzState = {
+  pool: [],        // shuffled question indices
+  poolIdx: 0,      // current position in pool
+  total: 0,
+  correct: 0,
+  wrong: 0,
+  streak: 0,
+  bestStreak: 0,
+  answered: false,
+  started: false,
+};
+
+function qzShuffle(arr) {
+  for(let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+function qzRefillPool() {
+  let indices = QUIZ_BANK.map((_,i) => i);
+  qzShuffle(indices);
+  // Avoid repeating the last question when refilling
+  if(qzState.pool.length > 0) {
+    let last = qzState.pool[qzState.pool.length - 1];
+    if(indices[0] === last) {
+      let swap = Math.floor(Math.random() * (indices.length - 1)) + 1;
+      [indices[0], indices[swap]] = [indices[swap], indices[0]];
+    }
+  }
+  qzState.pool = [...qzState.pool, ...indices];
+}
+
+function startInfiniteQuiz() {
+  if(qzState.started) {
+    // Already started — just render current question
+    qzRenderQuestion();
+    return;
+  }
+  qzState = { pool:[], poolIdx:0, total:0, correct:0, wrong:0, streak:0, bestStreak:0, answered:false, started:true };
+  qzRefillPool();
+  qzRenderQuestion();
+}
+
+function qzCurrentIdx() {
+  if(qzState.poolIdx >= qzState.pool.length - 5) qzRefillPool();
+  return qzState.pool[qzState.poolIdx];
+}
+
+function qzRenderQuestion() {
+  let qi = qzCurrentIdx();
+  let q = QUIZ_BANK[qi];
+  qzState.answered = false;
+
+  // Update header color
+  document.getElementById('qz-card-header').style.background = `linear-gradient(135deg, ${q.color}cc, ${q.color})`;
+  document.getElementById('qz-tag').textContent = q.tag;
+  document.getElementById('qz-num-label').textContent = 'Câu #' + (qzState.total + 1);
+  document.getElementById('qz-question').textContent = q.q;
+
+  // Options
+  let optHtml = '';
+  let letters = ['A','B','C','D'];
+  q.opts.forEach(function(opt, i) {
+    optHtml += `
+      <button id="qz-opt-${i}" onclick="qzAnswer(${i})"
+        style="width:100%;text-align:left;padding:12px 16px;border-radius:10px;border:1.5px solid var(--border);background:var(--card);color:var(--text);font-size:14px;font-family:'Helvetica Rounded Bold',sans-serif;cursor:pointer;transition:all .18s;line-height:1.45;"
+        onmouseover="if(!window._qzLocked)this.style.borderColor='${q.color}';this.style.background='${q.color}18'"
+        onmouseout="if(!window._qzLocked&&!this.dataset.chosen)this.style.borderColor='var(--border)';this.style.background='var(--card)'"
+      >${opt}</button>`;
+  });
+  document.getElementById('qz-options').innerHTML = optHtml;
+  document.getElementById('qz-explain').style.display = 'none';
+  document.getElementById('qz-next-wrap').style.display = 'none';
+  document.getElementById('qz-milestone').style.display = 'none';
+  window._qzLocked = false;
+}
+
+function qzAnswer(chosen) {
+  if(window._qzLocked) return;
+  window._qzLocked = true;
+  qzState.answered = true;
+
+  let qi = qzCurrentIdx();
+  let q = QUIZ_BANK[qi];
+  let correct = (chosen === q.ans);
+
+  // Style buttons
+  let letters = ['A','B','C','D'];
+  q.opts.forEach(function(_, i) {
+    let btn = document.getElementById('qz-opt-' + i);
+    if(!btn) return;
+    btn.style.cursor = 'default';
+    if(i === q.ans) {
+      btn.style.background = '#d1fae5';
+      btn.style.borderColor = '#10b981';
+      btn.style.color = '#065f46';
+    } else if(i === chosen && !correct) {
+      btn.style.background = '#fee2e2';
+      btn.style.borderColor = '#ef4444';
+      btn.style.color = '#991b1b';
+    } else {
+      btn.style.opacity = '0.5';
+    }
+    btn.dataset.chosen = i === chosen ? '1' : '';
+  });
+
+  // Update stats
+  qzState.total++;
+  if(correct) {
+    qzState.correct++;
+    qzState.streak++;
+    if(qzState.streak > qzState.bestStreak) qzState.bestStreak = qzState.streak;
+  } else {
+    qzState.wrong++;
+    qzState.streak = 0;
+  }
+  qzUpdateStats();
+
+  // Show explanation
+  let explainEl = document.getElementById('qz-explain');
+  explainEl.style.display = 'block';
+  explainEl.style.background = correct ? '#d1fae5' : '#fee2e2';
+  explainEl.style.borderLeft = '4px solid ' + (correct ? '#10b981' : '#ef4444');
+  explainEl.style.borderRadius = '0 10px 10px 0';
+  explainEl.innerHTML = (correct ? '<b style="color:#065f46">✅ Chính xác!</b> ' : '<b style="color:#991b1b">❌ Chưa đúng.</b> ') + q.explain;
+
+  // Milestone check
+  qzCheckMilestone();
+
+  // Show next button with streak hint
+  let nextWrap = document.getElementById('qz-next-wrap');
+  nextWrap.style.display = 'block';
+  let streakHint = qzState.streak >= 3 ? ` 🔥 ${qzState.streak} streak!` : '';
+  document.getElementById('qz-next-btn').innerHTML = 'Câu tiếp theo →' + streakHint;
+}
+
+function quizNext() {
+  qzState.poolIdx++;
+  qzRenderQuestion();
+}
+
+function qzUpdateStats() {
+  document.getElementById('qz-total').textContent = qzState.total;
+  document.getElementById('qz-correct').textContent = qzState.correct;
+  document.getElementById('qz-wrong').textContent = qzState.wrong;
+  document.getElementById('qz-streak').textContent = qzState.streak;
+  let pct = qzState.total > 0 ? Math.round(qzState.correct / qzState.total * 100) : 0;
+  document.getElementById('qz-acc-bar').style.width = pct + '%';
+  document.getElementById('qz-acc-bar').style.background = pct >= 80 ? 'linear-gradient(90deg,#10b981,#4DD9AC)' : pct >= 60 ? 'linear-gradient(90deg,#f59e0b,#fbbf24)' : 'linear-gradient(90deg,#ef4444,#f87171)';
+  document.getElementById('qz-acc-pct').textContent = pct + '%';
+  document.getElementById('qz-acc-pct').style.color = pct >= 80 ? '#047857' : pct >= 60 ? '#92400e' : '#991b1b';
+}
+
+function qzCheckMilestone() {
+  let el = document.getElementById('qz-milestone');
+  let icon = document.getElementById('qz-milestone-icon');
+  let text = document.getElementById('qz-milestone-text');
+  let msg = null;
+
+  if(qzState.streak === 5)  { msg = '🔥 Streak 5! Bạn đang bất khả chiến bại!'; }
+  else if(qzState.streak === 10) { msg = '⚡ Streak 10! Thiên tài PR đây rồi!'; }
+  else if(qzState.streak === 20) { msg = '🏆 Streak 20! Huyền thoại SMCRE!'; }
+  else if(qzState.total === 10)  { msg = '🎯 10 câu hoàn thành! Độ chính xác: ' + Math.round(qzState.correct/qzState.total*100) + '%'; }
+  else if(qzState.total === 25)  { msg = '🌟 25 câu! Bạn đã thành thạo lý thuyết cơ bản!'; }
+  else if(qzState.total === 50)  { msg = '🚀 50 câu! PRX Master đây rồi!'; }
+  else if(qzState.total === 100) { msg = '💎 100 câu! Bạn là huyền thoại của PRX!'; }
+
+  if(msg) {
+    el.style.display = 'block';
+    text.textContent = msg;
+    setTimeout(() => { el.style.display = 'none'; }, 3500);
+  }
+}
+
+window.startInfiniteQuiz = startInfiniteQuiz;
+window.quizNext = quizNext;
+window.qzAnswer = qzAnswer;
 </script>
 
 <div class="page" id="page-mkt-course">
