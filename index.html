@@ -881,6 +881,326 @@ body.dark-mode .asb-points { color: #7ececa; }
   border-radius: 10px;
   margin-top: 5px;
 }
+
+/* ════════════════════════════════════════
+   PR — DARK MODE FIXES FOR HARDCODED COLORS
+════════════════════════════════════════ */
+
+/* Bảng SMCR: ô items nền kem #fdf6f0 */
+.smcr-item-box {
+  border: 1.5px solid #c4a086;
+  border-radius: 8px;
+  padding: 10px 12px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text);
+  background: #fdf6f0;
+  text-transform: uppercase;
+  letter-spacing: .3px;
+}
+body.dark-mode .smcr-item-box {
+  background: rgba(196,160,134,.1);
+  border-color: rgba(196,160,134,.4);
+  color: var(--text);
+}
+
+/* Bảng SMCR: thead nền #f8f9fa */
+.pr-table-head {
+  background: #f8f9fa;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+body.dark-mode .pr-table-head {
+  background: rgba(255,255,255,.05);
+}
+
+/* Context box bài tập: nền nâu nhạt */
+.pr-context-box {
+  background: linear-gradient(135deg,rgba(122,62,46,.08),rgba(160,90,62,.05));
+  border: 1px solid rgba(122,62,46,.2);
+  border-radius: 10px;
+  padding: 16px 18px;
+  margin-bottom: 22px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+body.dark-mode .pr-context-box {
+  background: linear-gradient(135deg,rgba(122,62,46,.18),rgba(160,90,62,.12));
+  border-color: rgba(196,160,134,.3);
+}
+
+/* Label "Bối cảnh" màu nâu đỏ */
+.pr-context-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #7a3e2e;
+  text-transform: uppercase;
+  letter-spacing: .8px;
+  margin-bottom: 4px;
+}
+body.dark-mode .pr-context-label { color: #e8aa8a; }
+
+/* Nút "Quay lại danh sách bài" màu cứng #376a68 */
+.pr-back-btn {
+  padding: 10px 20px;
+  background: #376a68;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all .2s;
+}
+body.dark-mode .pr-back-btn {
+  background: rgba(77,217,172,.18);
+  border: 1.5px solid rgba(77,217,172,.35);
+  color: #4DD9AC;
+}
+.pr-back-btn:hover { opacity: .85; }
+
+/* Badge màu nâu #c97c30 (Tự luận badge) */
+.pr-essay-badge {
+  background: rgba(244,162,97,.12);
+  color: #c97c30;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+}
+body.dark-mode .pr-essay-badge {
+  background: rgba(244,162,97,.2);
+  color: #f4b96a;
+}
+
+/* Badge MCQ Bài 4 xanh dương #0369a1 */
+.pr-badge-blue {
+  background: rgba(14,165,233,.1);
+  color: #0369a1;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+}
+body.dark-mode .pr-badge-blue {
+  background: rgba(14,165,233,.2);
+  color: #38bdf8;
+}
+
+/* Badge MCQ Bài 5 xanh lá #047857 */
+.pr-badge-green {
+  background: rgba(16,185,129,.1);
+  color: #047857;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+}
+body.dark-mode .pr-badge-green {
+  background: rgba(16,185,129,.2);
+  color: #34d399;
+}
+
+/* Phân tích SOURCE: màu nâu đỏ #7a3e2e */
+.pr-analysis-source-title {
+  font-weight: 800;
+  font-size: 14px;
+  color: #7a3e2e;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+}
+body.dark-mode .pr-analysis-source-title { color: #e8aa8a; }
+
+/* Phân tích MESSAGE: màu cam #c97c30 */
+.pr-analysis-msg-title {
+  font-weight: 800;
+  font-size: 14px;
+  color: #c97c30;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+}
+body.dark-mode .pr-analysis-msg-title { color: #f4b96a; }
+
+/* Exercise header badge: badge nâu đỏ case study */
+.ef-badge-casestudy {
+  background: rgba(122,62,46,.12);
+  color: #7a3e2e;
+}
+body.dark-mode .ef-badge-casestudy {
+  background: rgba(122,62,46,.25);
+  color: #e8aa8a;
+}
+
+/* SMCRE badge "CHÍNH TRỊ & TRUYỀN THÔNG" */
+.ef-badge-primary-text {
+  background: rgba(45,95,93,.08);
+  color: var(--primary);
+}
+body.dark-mode .ef-badge-primary-text {
+  background: rgba(126,206,202,.12);
+  color: #7ececa;
+}
+
+/* Headings in exercise 4 (blue) and exercise 5 (green) */
+.pr-heading-blue { color: #0369a1; }
+body.dark-mode .pr-heading-blue { color: #38bdf8; }
+
+.pr-heading-green { color: #047857; }
+body.dark-mode .pr-heading-green { color: #34d399; }
+
+/* Context label override for blue/green variants */
+body.dark-mode .pr-context-label[style*="#0369a1"] { color: #38bdf8 !important; }
+body.dark-mode .pr-context-label[style*="#047857"] { color: #34d399 !important; }
+
+/* SMCR model header labels (SOURCE, MESSAGE, CHANNEL, RECEIVER) */
+.smcr-header-label {
+  background: #7a3e2e;
+  color: #fff;
+  padding: 11px 8px;
+  border-radius: 8px;
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+body.dark-mode .smcr-header-label {
+  background: #5c2d20;
+  border: 1px solid rgba(196,160,134,.3);
+}
+
+/* Result box after exercise completion */
+.pr-result-box {
+  margin-top: 24px;
+  padding: 22px;
+  border-radius: 10px;
+  background: #e8f5e9;
+  border: 1px solid #4caf50;
+}
+body.dark-mode .pr-result-box {
+  background: rgba(76,175,80,.1);
+  border-color: rgba(76,175,80,.4);
+}
+
+.pr-result-heading {
+  color: #2e7d32;
+  margin-bottom: 12px;
+  font-size: 17px;
+}
+body.dark-mode .pr-result-heading { color: #81c784; }
+
+.pr-result-btn {
+  padding: 9px 18px;
+  background: #2e7d32;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all .2s;
+}
+body.dark-mode .pr-result-btn {
+  background: rgba(76,175,80,.2);
+  border: 1.5px solid rgba(76,175,80,.5);
+  color: #81c784;
+}
+.pr-result-btn:hover { opacity: .85; }
+
+/* ── Result box color variants ── */
+.pr-result-box-orange { background: #fff3e0; border-color: #ff9800; }
+body.dark-mode .pr-result-box-orange { background: rgba(255,152,0,.1); border-color: rgba(255,152,0,.4); }
+.pr-result-heading-orange { color: #e65100; margin-bottom: 12px; font-size: 17px; }
+body.dark-mode .pr-result-heading-orange { color: #ffb74d; }
+.pr-result-btn-orange { padding:9px 18px; background:#e65100; color:#fff; border:none; border-radius:7px; cursor:pointer; font-weight:600; transition:all .2s; }
+body.dark-mode .pr-result-btn-orange { background:rgba(230,81,0,.2); border:1.5px solid rgba(230,81,0,.5); color:#ffb74d; }
+
+.pr-result-box-purple { background: #f3e8ff; border-color: #9f5fff; }
+body.dark-mode .pr-result-box-purple { background: rgba(124,58,237,.1); border-color: rgba(124,58,237,.4); }
+.pr-result-heading-purple { color: #5b21b6; margin-bottom: 12px; font-size: 17px; }
+body.dark-mode .pr-result-heading-purple { color: #c084fc; }
+.pr-result-btn-purple { padding:9px 18px; background:#5b21b6; color:#fff; border:none; border-radius:7px; cursor:pointer; font-weight:600; transition:all .2s; }
+body.dark-mode .pr-result-btn-purple { background:rgba(91,33,182,.2); border:1.5px solid rgba(91,33,182,.5); color:#c084fc; }
+
+.pr-result-box-blue { background: #e0f2fe; border-color: #7dd3fc; }
+body.dark-mode .pr-result-box-blue { background: rgba(14,165,233,.1); border-color: rgba(14,165,233,.4); }
+.pr-result-btn-blue { padding:9px 18px; background:#0369a1; color:#fff; border:none; border-radius:7px; cursor:pointer; font-weight:600; transition:all .2s; }
+body.dark-mode .pr-result-btn-blue { background:rgba(3,105,161,.2); border:1.5px solid rgba(14,165,233,.5); color:#38bdf8; }
+
+.pr-result-box-green2 { background: #d1fae5; border-color: #6ee7b7; }
+body.dark-mode .pr-result-box-green2 { background: rgba(16,185,129,.1); border-color: rgba(16,185,129,.4); }
+.pr-result-btn-green2 { padding:9px 18px; background:#047857; color:#fff; border:none; border-radius:7px; cursor:pointer; font-weight:600; transition:all .2s; }
+body.dark-mode .pr-result-btn-green2 { background:rgba(4,120,87,.2); border:1.5px solid rgba(16,185,129,.5); color:#34d399; }
+
+/* ── Quiz Vô Tận: Milestone badge ── */
+.pr-quiz-milestone {
+  text-align: center;
+  margin-top: 18px;
+  padding: 18px;
+  background: linear-gradient(135deg, #fef3c7, #fde68a);
+  border-radius: 14px;
+  border: 1.5px solid #f59e0b;
+  animation: fadeIn .4s ease;
+}
+body.dark-mode .pr-quiz-milestone {
+  background: linear-gradient(135deg, rgba(245,158,11,.15), rgba(253,230,138,.1));
+  border-color: rgba(245,158,11,.4);
+}
+.pr-quiz-milestone-text {
+  font-family: 'Helvetica Rounded Bold', sans-serif;
+  font-size: 16px;
+  color: #92400e;
+  margin: 0;
+  font-weight: 700;
+}
+body.dark-mode .pr-quiz-milestone-text { color: #fcd34d; }
+
+/* Context label red (Bài 2) */
+.pr-context-label-red { color: #c92a2a; }
+body.dark-mode .pr-context-label-red { color: #fc8181; }
+
+/* Exercise headings orange (Bài 2) */
+.pr-heading-orange { color: #e76f51; }
+body.dark-mode .pr-heading-orange { color: #fb9678; }
+
+/* CHANNEL analysis title (Facebook blue #1877f2) */
+.pr-analysis-ch-title {
+  font-weight: 800;
+  font-size: 14px;
+  color: #1877f2;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+}
+body.dark-mode .pr-analysis-ch-title { color: #60a5fa; }
+
+/* ── Phân tích chi tiết: icon circles ── */
+.pr-icon-source,.pr-icon-msg,.pr-icon-ch,.pr-icon-recv {
+  width: 44px; height: 44px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; flex-shrink: 0;
+}
+.pr-icon-source { background: #7a3e2e; }
+body.dark-mode .pr-icon-source { background: #5c2d20; }
+.pr-icon-msg { background: #c97c30; }
+body.dark-mode .pr-icon-msg { background: #7a4a18; }
+.pr-icon-ch { background: #1877f2; }
+body.dark-mode .pr-icon-ch { background: #1554b4; }
+.pr-icon-recv { background: #2D5F5D; }
+body.dark-mode .pr-icon-recv { background: #1a3f3e; }
+
+/* exercise-frame casestudy brown border */
+.ef-casestudy-border { border-color: #c4a086 !important; }
+body.dark-mode .ef-casestudy-border { border-color: rgba(196,160,134,.45) !important; }
+.pr-heading-purple { color: #7c3aed; }
+body.dark-mode .pr-heading-purple { color: #c084fc; }
+
+/* ── Quiz scoreboard stat numbers ── */
+#qz-correct { font-family:'Helvetica Rounded Bold',sans-serif; font-size:26px; font-weight:900; color:#a5f3a8; line-height:1; }
+#qz-wrong   { font-family:'Helvetica Rounded Bold',sans-serif; font-size:26px; font-weight:900; color:#fca5a5; line-height:1; }
+#qz-streak  { font-family:'Helvetica Rounded Bold',sans-serif; font-size:26px; font-weight:900; color:#fde68a; line-height:1; }
 </style>
 </head>
 <body>
@@ -1487,7 +1807,7 @@ body.auth-page #globalHeader { display: none; }
 
     <div class="pr-section visible" id="pr-casestudy">
       <div class="lesson-list">
-        <div class="exercise-frame" style="border-color:#c4a086;" onclick="switchPrTab('casestudy-detail',null)" >
+        <div class="exercise-frame ef-casestudy-border" onclick="switchPrTab('casestudy-detail',null)">
           <div class="ef-header">
             <div class="ef-num" style="background:linear-gradient(135deg,#7a3e2e,#a05a3e);box-shadow:0 3px 10px rgba(122,62,46,.3);">1</div>
             <div class="ef-info">
@@ -1495,8 +1815,8 @@ body.auth-page #globalHeader { display: none; }
               <p>Phân tích ứng dụng mô hình SMCR trong chiến dịch truyền thông chính trị gây chấn động nhất thế kỷ 21</p>
             </div>
             <div class="ef-status-badge">
-              <span class="ef-badge" style="background:rgba(122,62,46,.12);color:#7a3e2e;">📋 Case Study</span>
-              <span class="ef-badge" style="background:rgba(45,95,93,.08);color:var(--primary);">CHÍNH TRỊ & TRUYỀN THÔNG</span>
+              <span class="ef-badge" class="ef-badge ef-badge-casestudy">📋 Case Study</span>
+              <span class="ef-badge" class="ef-badge ef-badge-primary-text">CHÍNH TRỊ & TRUYỀN THÔNG</span>
             </div>
           </div>
           <div class="ef-actions">
@@ -1533,7 +1853,7 @@ body.auth-page #globalHeader { display: none; }
         <!-- Header row -->
         <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:0;">
           <div style="text-align:center;">
-            <div style="background:#7a3e2e;color:#fff;padding:11px 8px;border-radius:8px;font-weight:800;font-size:13px;letter-spacing:1px;">SOURCE</div>
+            <div class="smcr-header-label">SOURCE</div>
             <div style="height:32px;display:flex;align-items:center;justify-content:center;">
               <div style="display:flex;align-items:center;gap:4px;color:var(--text2);">
                 <div style="width:40px;height:2px;background:var(--text2);"></div>
@@ -1543,7 +1863,7 @@ body.auth-page #globalHeader { display: none; }
             </div>
           </div>
           <div style="text-align:center;">
-            <div style="background:#7a3e2e;color:#fff;padding:11px 8px;border-radius:8px;font-weight:800;font-size:13px;letter-spacing:1px;">MESSAGE</div>
+            <div class="smcr-header-label">MESSAGE</div>
             <div style="height:32px;display:flex;align-items:center;justify-content:center;">
               <div style="display:flex;align-items:center;gap:4px;color:var(--text2);">
                 <div style="width:40px;height:2px;background:var(--text2);"></div>
@@ -1553,7 +1873,7 @@ body.auth-page #globalHeader { display: none; }
             </div>
           </div>
           <div style="text-align:center;">
-            <div style="background:#7a3e2e;color:#fff;padding:11px 8px;border-radius:8px;font-weight:800;font-size:13px;letter-spacing:1px;">CHANNEL</div>
+            <div class="smcr-header-label">CHANNEL</div>
             <div style="height:32px;display:flex;align-items:center;justify-content:center;">
               <div style="display:flex;align-items:center;gap:4px;color:var(--text2);">
                 <div style="width:40px;height:2px;background:var(--text2);"></div>
@@ -1563,7 +1883,7 @@ body.auth-page #globalHeader { display: none; }
             </div>
           </div>
           <div style="text-align:center;">
-            <div style="background:#7a3e2e;color:#fff;padding:11px 8px;border-radius:8px;font-weight:800;font-size:13px;letter-spacing:1px;">RECEIVER</div>
+            <div class="smcr-header-label">RECEIVER</div>
             <div style="height:32px;"></div>
           </div>
         </div>
@@ -1580,28 +1900,28 @@ body.auth-page #globalHeader { display: none; }
         <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;">
           <!-- SOURCE items -->
           <div style="display:flex;flex-direction:column;gap:10px;">
-            <div style="border:1.5px solid #c4a086;border-radius:8px;padding:10px 12px;text-align:center;font-size:12px;font-weight:700;color:var(--text);background:#fdf6f0;text-transform:uppercase;letter-spacing:.3px;">Donald Trump</div>
-            <div style="border:1.5px solid #c4a086;border-radius:8px;padding:10px 12px;text-align:center;font-size:12px;font-weight:700;color:var(--text);background:#fdf6f0;text-transform:uppercase;letter-spacing:.3px;">Fox News</div>
-            <div style="border:1.5px solid #c4a086;border-radius:8px;padding:10px 12px;text-align:center;font-size:12px;font-weight:700;color:var(--text);background:#fdf6f0;text-transform:uppercase;letter-spacing:.3px;">Conservative<br>News Sites</div>
-            <div style="border:1.5px solid #c4a086;border-radius:8px;padding:10px 12px;text-align:center;font-size:12px;font-weight:700;color:var(--text);background:#fdf6f0;text-transform:uppercase;letter-spacing:.3px;">Facebook Groups</div>
+            <div class="smcr-item-box">Donald Trump</div>
+            <div class="smcr-item-box">Fox News</div>
+            <div class="smcr-item-box">Conservative<br>News Sites</div>
+            <div class="smcr-item-box">Facebook Groups</div>
           </div>
           <!-- MESSAGE items -->
           <div style="display:flex;flex-direction:column;gap:10px;">
-            <div style="border:1.5px solid #c4a086;border-radius:8px;padding:10px 12px;text-align:center;font-size:12px;font-weight:700;color:var(--text);background:#fdf6f0;text-transform:uppercase;letter-spacing:.3px;">"Drain the Swamp"</div>
-            <div style="border:1.5px solid #c4a086;border-radius:8px;padding:10px 12px;text-align:center;font-size:12px;font-weight:700;color:var(--text);background:#fdf6f0;text-transform:uppercase;letter-spacing:.3px;">Understanding</div>
-            <div style="border:1.5px solid #c4a086;border-radius:8px;padding:10px 12px;text-align:center;font-size:12px;font-weight:700;color:var(--text);background:#fdf6f0;text-transform:uppercase;letter-spacing:.3px;">Orientation</div>
-            <div style="border:1.5px solid #c4a086;border-radius:8px;padding:10px 12px;text-align:center;font-size:12px;font-weight:700;color:var(--text);background:#fdf6f0;text-transform:uppercase;letter-spacing:.3px;">Recognition</div>
+            <div class="smcr-item-box">"Drain the Swamp"</div>
+            <div class="smcr-item-box">Understanding</div>
+            <div class="smcr-item-box">Orientation</div>
+            <div class="smcr-item-box">Recognition</div>
           </div>
           <!-- CHANNEL items -->
           <div style="display:flex;flex-direction:column;gap:10px;">
-            <div style="border:1.5px solid #c4a086;border-radius:8px;padding:10px 12px;text-align:center;font-size:12px;font-weight:700;color:var(--text);background:#fdf6f0;text-transform:uppercase;letter-spacing:.3px;">Facebook</div>
-            <div style="border:1.5px solid #c4a086;border-radius:8px;padding:10px 12px;text-align:center;font-size:12px;font-weight:700;color:var(--text);background:#fdf6f0;text-transform:uppercase;letter-spacing:.3px;">Private Closed Groups</div>
-            <div style="border:1.5px solid #c4a086;border-radius:8px;padding:10px 12px;text-align:center;font-size:12px;font-weight:700;color:var(--text);background:#fdf6f0;text-transform:uppercase;letter-spacing:.3px;">Create an<br>"Echo Chamber" Effect</div>
+            <div class="smcr-item-box">Facebook</div>
+            <div class="smcr-item-box">Private Closed Groups</div>
+            <div class="smcr-item-box">Create an<br>"Echo Chamber" Effect</div>
           </div>
           <!-- RECEIVER items -->
           <div style="display:flex;flex-direction:column;gap:10px;">
-            <div style="border:1.5px solid #c4a086;border-radius:8px;padding:10px 12px;text-align:center;font-size:12px;font-weight:700;color:var(--text);background:#fdf6f0;text-transform:uppercase;letter-spacing:.3px;">White Voters</div>
-            <div style="border:1.5px solid #c4a086;border-radius:8px;padding:10px 12px;text-align:center;font-size:12px;font-weight:700;color:var(--text);background:#fdf6f0;text-transform:uppercase;letter-spacing:.3px;">Rust Belt</div>
+            <div class="smcr-item-box">White Voters</div>
+            <div class="smcr-item-box">Rust Belt</div>
           </div>
         </div>
       </div>
@@ -1612,34 +1932,34 @@ body.auth-page #globalHeader { display: none; }
 
         <!-- SOURCE -->
         <div style="display:flex;gap:14px;margin-bottom:20px;padding:16px;background:var(--bg);border-radius:10px;border-left:4px solid #7a3e2e;">
-          <div style="width:44px;height:44px;background:#7a3e2e;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;">🎙️</div>
+          <div class="pr-icon-source">🎙️</div>
           <div>
-            <h4 style="font-weight:800;font-size:14px;color:#7a3e2e;margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px;">Source — Nguồn phát</h4>
+            <h4 class="pr-analysis-source-title">Source — Nguồn phát</h4>
             <p style="font-size:13.5px;color:var(--text);line-height:1.65;margin:0;">Trump đóng vai trò nguồn chính, nhưng hệ sinh thái truyền thông bảo thủ (Fox News, Breitbart, các nhóm Facebook) khuếch đại thông điệp với tốc độ chưa từng có. Uy tín "outsider không thuộc hệ thống" chính là lợi thế cạnh tranh khác biệt của nguồn.</p>
           </div>
         </div>
 
         <!-- MESSAGE -->
         <div style="display:flex;gap:14px;margin-bottom:20px;padding:16px;background:var(--bg);border-radius:10px;border-left:4px solid #c97c30;">
-          <div style="width:44px;height:44px;background:#c97c30;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;">💬</div>
+          <div class="pr-icon-msg">💬</div>
           <div>
-            <h4 style="font-weight:800;font-size:14px;color:#c97c30;margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px;">Message — Thông điệp</h4>
+            <h4 class="pr-analysis-msg-title">Message — Thông điệp</h4>
             <p style="font-size:13.5px;color:var(--text);line-height:1.65;margin:0;">"Drain the Swamp" là thông điệp 3 từ nhưng chứa đủ 3 tầng: <strong>nhận diện</strong> (Recognition) — tôi thấy vấn đề; <strong>định hướng</strong> (Orientation) — đây là giải pháp; <strong>thấu hiểu</strong> (Understanding) — tôi hiểu bạn đang bức xúc điều gì. Sức mạnh nằm ở tính đơn giản, dễ nhớ, dễ lan truyền.</p>
           </div>
         </div>
 
         <!-- CHANNEL -->
         <div style="display:flex;gap:14px;margin-bottom:20px;padding:16px;background:var(--bg);border-radius:10px;border-left:4px solid #1877f2;">
-          <div style="width:44px;height:44px;background:#1877f2;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;">📡</div>
+          <div class="pr-icon-ch">📡</div>
           <div>
-            <h4 style="font-weight:800;font-size:14px;color:#1877f2;margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px;">Channel — Kênh truyền thông</h4>
+            <h4 class="pr-analysis-ch-title">Channel — Kênh truyền thông</h4>
             <p style="font-size:13.5px;color:var(--text);line-height:1.65;margin:0;">Facebook Groups kín tạo ra "Echo Chamber" — buồng vang — nơi người dùng chỉ nghe những gì họ đã tin. Thuật toán Facebook ưu tiên nội dung cảm xúc mạnh, vô tình tiếp tay khuếch đại thông điệp bảo thủ đến đúng nhóm cử tri mục tiêu một cách tự động.</p>
           </div>
         </div>
 
         <!-- RECEIVER -->
         <div style="display:flex;gap:14px;padding:16px;background:var(--bg);border-radius:10px;border-left:4px solid #2D5F5D;">
-          <div style="width:44px;height:44px;background:#2D5F5D;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;">👥</div>
+          <div class="pr-icon-recv">👥</div>
           <div>
             <h4 style="font-weight:800;font-size:14px;color:var(--primary);margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px;">Receiver — Người nhận</h4>
             <p style="font-size:13.5px;color:var(--text);line-height:1.65;margin:0;">Cử tri da trắng tại "Rust Belt" (Vành đai Rỉ sét — các bang công nghiệp cũ như Michigan, Pennsylvania, Wisconsin) là đối tượng bị bỏ quên bởi truyền thông chính thống. Sự đồng nhất về đặc điểm giữa Nguồn và Người nhận — theo đúng lý thuyết SMCR — tạo ra hiệu quả lan truyền tối đa.</p>
@@ -1692,7 +2012,7 @@ body.auth-page #globalHeader { display: none; }
 
           <table style="width: 100%; border-collapse: collapse; margin-bottom: 28px; font-size: 14px;">
             <thead>
-              <tr style="background: #f8f9fa; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+              <tr class="pr-table-head">
                 <th style="padding: 16px; border-right: 1px solid var(--border); text-align: left; width: 22%; color: var(--text);">Thành phần</th>
                 <th style="padding: 16px; border-right: 1px solid var(--border); text-align: left; width: 38%; color: var(--text);">Các yếu tố tác động</th>
                 <th style="padding: 16px; text-align: left; width: 40%; color: var(--text);">Vai trò chiến lược</th>
@@ -1777,7 +2097,7 @@ body.auth-page #globalHeader { display: none; }
             </div>
           </div>
           <div style="display: flex; gap: 10px;">
-            <button style="padding: 10px 20px; background: #376a68; color: #fff; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 13px;" onclick="switchPrTab('curriculum', null)">← Quay lại danh sách bài</button>
+            <button class="pr-back-btn" onclick="switchPrTab('curriculum', null)">← Quay lại danh sách bài</button>
             <button style="padding: 10px 20px; background: var(--accent); color: #fff; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 13px;" onclick="switchPrTab('crisis-game', document.querySelectorAll('.pr-tab')[1]); updateExSelectionBadges();">🚀 Làm bài tập thực chiến →</button>
           </div>
         </div>
@@ -1805,7 +2125,7 @@ body.auth-page #globalHeader { display: none; }
             <div style="display:flex;align-items:center;justify-content:space-between;">
               <div style="display:flex;gap:6px;flex-wrap:wrap;">
                 <span style="background:rgba(45,95,93,.1);color:var(--primary);padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;">10 MCQ</span>
-                <span style="background:rgba(244,162,97,.12);color:#c97c30;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;">2 Tự luận</span>
+                <span class="pr-essay-badge">2 Tự luận</span>
               </div>
               <span id="ex1-badge" style="font-size:12px;color:var(--text2);font-weight:600;">⬜ Chưa làm</span>
             </div>
@@ -1822,7 +2142,7 @@ body.auth-page #globalHeader { display: none; }
             <div style="display:flex;align-items:center;justify-content:space-between;">
               <div style="display:flex;gap:6px;flex-wrap:wrap;">
                 <span style="background:rgba(231,111,81,.1);color:#e76f51;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;">10 MCQ</span>
-                <span style="background:rgba(244,162,97,.12);color:#c97c30;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;">2 Tự luận</span>
+                <span class="pr-essay-badge">2 Tự luận</span>
               </div>
               <span id="ex2-badge" style="font-size:12px;color:var(--text2);font-weight:600;">⬜ Chưa làm</span>
             </div>
@@ -1839,7 +2159,7 @@ body.auth-page #globalHeader { display: none; }
             <div style="display:flex;align-items:center;justify-content:space-between;">
               <div style="display:flex;gap:6px;flex-wrap:wrap;">
                 <span style="background:rgba(124,58,237,.1);color:#7c3aed;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;">10 MCQ</span>
-                <span style="background:rgba(244,162,97,.12);color:#c97c30;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;">2 Tự luận</span>
+                <span class="pr-essay-badge">2 Tự luận</span>
               </div>
               <span id="ex3-badge" style="font-size:12px;color:var(--text2);font-weight:600;">⬜ Chưa làm</span>
             </div>
@@ -1855,8 +2175,8 @@ body.auth-page #globalHeader { display: none; }
             <p style="font-size:12.5px;color:var(--text2);line-height:1.5;margin-bottom:14px;">Phân tích mối quan hệ Xã hội – Truyền thông – Khán giả qua lăng kính Case Study Trump 2016 và thực tiễn mạng xã hội.</p>
             <div style="display:flex;align-items:center;justify-content:space-between;">
               <div style="display:flex;gap:6px;flex-wrap:wrap;">
-                <span style="background:rgba(14,165,233,.1);color:#0369a1;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;">10 MCQ</span>
-                <span style="background:rgba(244,162,97,.12);color:#c97c30;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;">2 Tự luận</span>
+                <span class="pr-badge-blue">10 MCQ</span>
+                <span class="pr-essay-badge">2 Tự luận</span>
               </div>
               <span id="ex4-badge" style="font-size:12px;color:var(--text2);font-weight:600;">⬜ Chưa làm</span>
             </div>
@@ -1872,8 +2192,8 @@ body.auth-page #globalHeader { display: none; }
             <p style="font-size:12.5px;color:var(--text2);line-height:1.5;margin-bottom:14px;">Tích hợp toàn bộ kiến thức SMCRE và Dependency để xây dựng chiến lược PR thực chiến trong môi trường số.</p>
             <div style="display:flex;align-items:center;justify-content:space-between;">
               <div style="display:flex;gap:6px;flex-wrap:wrap;">
-                <span style="background:rgba(16,185,129,.1);color:#047857;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;">10 MCQ</span>
-                <span style="background:rgba(244,162,97,.12);color:#c97c30;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;">2 Tự luận</span>
+                <span class="pr-badge-green">10 MCQ</span>
+                <span class="pr-essay-badge">2 Tự luận</span>
               </div>
               <span id="ex5-badge" style="font-size:12px;color:var(--text2);font-weight:600;">⬜ Chưa làm</span>
             </div>
@@ -1896,10 +2216,10 @@ body.auth-page #globalHeader { display: none; }
         <div style="padding:28px;color:var(--text);">
 
           <!-- Context box -->
-          <div style="background:linear-gradient(135deg,rgba(122,62,46,.08),rgba(160,90,62,.05));border:1px solid rgba(122,62,46,.2);border-radius:10px;padding:16px 18px;margin-bottom:22px;display:flex;gap:12px;align-items:flex-start;">
+          <div class="pr-context-box">
             <span style="font-size:22px;flex-shrink:0;">🗳️</span>
             <div>
-              <p style="font-size:12px;font-weight:700;color:#7a3e2e;text-transform:uppercase;letter-spacing:.8px;margin-bottom:4px;">Bối cảnh Case Study</p>
+              <p class="pr-context-label">Bối cảnh Case Study</p>
               <p style="font-size:13px;color:var(--text);line-height:1.6;margin:0;">Trong chiến dịch "Drain the Swamp" 2016, <strong>Donald Trump</strong> đóng vai trò <strong>Nguồn (Source)</strong> chính, cùng hệ sinh thái Fox News và Facebook Groups khuếch đại. Thông điệp 3 từ đơn giản nhưng chứa đủ 3 tầng: Recognition – Orientation – Understanding.</p>
             </div>
           </div>
@@ -1997,11 +2317,11 @@ body.auth-page #globalHeader { display: none; }
             <button onclick="submitExercise(1)" style="padding:12px 28px;background:var(--gradient);color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-family:'Helvetica Rounded Bold',sans-serif;box-shadow:0 4px 14px rgba(45,95,93,.3);">📤 Nộp bài</button>
             <button onclick="switchPrTab('crisis-game',null);clearExInterval(1);" style="padding:12px 20px;background:var(--bg);color:var(--text);border:1.5px solid var(--border);border-radius:8px;font-weight:600;cursor:pointer;">← Chọn bài khác</button>
           </div>
-          <div id="ex1Result" style="display:none;margin-top:24px;padding:22px;border-radius:10px;background:#e8f5e9;border:1px solid #4caf50;">
-            <h3 style="color:#2e7d32;margin-bottom:12px;font-size:17px;">📊 Kết quả đánh giá</h3>
+          <div id="ex1Result" class="pr-result-box" style="display:none;">
+            <h3 class="pr-result-heading">📊 Kết quả đánh giá</h3>
             <p id="ex1Feedback" style="font-size:14px;line-height:1.7;"></p>
             <div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap;">
-              <button onclick="switchPrTab('curriculum',null)" style="padding:9px 18px;background:#2e7d32;color:#fff;border:none;border-radius:7px;cursor:pointer;font-weight:600;">📚 Xem danh sách bài</button>
+              <button onclick="switchPrTab('curriculum',null)" class="pr-result-btn">📚 Xem danh sách bài</button>
               <button onclick="startExercise(1)" style="padding:9px 18px;background:var(--card);color:var(--text);border:1.5px solid var(--border);border-radius:7px;cursor:pointer;font-weight:600;">🔄 Làm lại</button>
             </div>
           </div>
@@ -2025,12 +2345,12 @@ body.auth-page #globalHeader { display: none; }
           <div style="background:linear-gradient(135deg,rgba(231,111,81,.08),rgba(201,42,42,.05));border:1px solid rgba(231,111,81,.2);border-radius:10px;padding:16px 18px;margin-bottom:22px;display:flex;gap:12px;align-items:flex-start;">
             <span style="font-size:22px;flex-shrink:0;">📡</span>
             <div>
-              <p style="font-size:12px;font-weight:700;color:#c92a2a;text-transform:uppercase;letter-spacing:.8px;margin-bottom:4px;">Bối cảnh Case Study</p>
+              <p class="pr-context-label pr-context-label-red">Bối cảnh Case Study</p>
               <p style="font-size:13px;color:var(--text);line-height:1.6;margin:0;">Thay vì truyền thông chính thống, chiến dịch Trump 2016 chọn <strong>Facebook, Private Closed Groups</strong> làm kênh chủ đạo — tạo ra "Echo Chamber" (buồng vang) khóa chặt cử tri <strong>Rust Belt</strong> (white voters) trong vòng thông tin đồng thuận. Thuật toán Facebook vô tình khuếch đại thông điệp bảo thủ một cách tự động.</p>
             </div>
           </div>
 
-          <h3 style="margin-bottom:16px;color:#e76f51;font-size:16px;">Phần 1: Trắc nghiệm (80 điểm — 10 câu)</h3>
+          <h3 class="pr-heading-orange">Phần 1: Trắc nghiệm (80 điểm — 10 câu)</h3>
 
           <div class="mcq-question" style="background:var(--bg);border-radius:10px;padding:18px;margin-bottom:16px;border:1px solid var(--border);">
             <p style="margin-bottom:12px;font-weight:600;line-height:1.5;"><span style="background:#e76f51;color:#fff;padding:2px 10px;border-radius:20px;font-size:12px;margin-right:8px;">Câu 1</span> Trong mô hình SMCRE, hiệu quả truyền thông đạt cao nhất khi có 'sự đối xứng' giữa Nguồn và Người nhận. Điều gì trong Case Study Trump 2016 thể hiện rõ nhất nguyên tắc này?</p>
@@ -2123,11 +2443,11 @@ body.auth-page #globalHeader { display: none; }
             <button onclick="submitExercise(2)" style="padding:12px 28px;background:linear-gradient(135deg,#e76f51,#c92a2a);color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-family:'Helvetica Rounded Bold',sans-serif;box-shadow:0 4px 14px rgba(231,111,81,.3);">📤 Nộp bài</button>
             <button onclick="switchPrTab('crisis-game',null);clearExInterval(2);" style="padding:12px 20px;background:var(--bg);color:var(--text);border:1.5px solid var(--border);border-radius:8px;font-weight:600;cursor:pointer;">← Chọn bài khác</button>
           </div>
-          <div id="ex2Result" style="display:none;margin-top:24px;padding:22px;border-radius:10px;background:#fff3e0;border:1px solid #ff9800;">
-            <h3 style="color:#e65100;margin-bottom:12px;font-size:17px;">📊 Kết quả đánh giá</h3>
+          <div id="ex2Result" class="pr-result-box pr-result-box-orange" style="display:none;">
+            <h3 class="pr-result-heading pr-result-heading-orange">📊 Kết quả đánh giá</h3>
             <p id="ex2Feedback" style="font-size:14px;line-height:1.7;"></p>
             <div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap;">
-              <button onclick="switchPrTab('curriculum',null)" style="padding:9px 18px;background:#e65100;color:#fff;border:none;border-radius:7px;cursor:pointer;font-weight:600;">📚 Xem danh sách bài</button>
+              <button onclick="switchPrTab('curriculum',null)" class="pr-result-btn pr-result-btn-orange">📚 Xem danh sách bài</button>
               <button onclick="startExercise(2)" style="padding:9px 18px;background:var(--card);color:var(--text);border:1.5px solid var(--border);border-radius:7px;cursor:pointer;font-weight:600;">🔄 Làm lại</button>
             </div>
           </div>
@@ -2156,7 +2476,7 @@ body.auth-page #globalHeader { display: none; }
             </div>
           </div>
 
-          <h3 style="margin-bottom:16px;color:#7c3aed;font-size:16px;">Phần 1: Trắc nghiệm (80 điểm — 10 câu)</h3>
+          <h3 class="pr-heading-purple">Phần 1: Trắc nghiệm (80 điểm — 10 câu)</h3>
 
           <div class="mcq-question" style="background:var(--bg);border-radius:10px;padding:18px;margin-bottom:16px;border:1px solid var(--border);">
             <p style="margin-bottom:12px;font-weight:600;line-height:1.5;"><span style="background:#7c3aed;color:#fff;padding:2px 10px;border-radius:20px;font-size:12px;margin-right:8px;">Câu 1</span> Nhìn vào Case Study Trump 2016: việc chiến dịch dùng Facebook Groups kín để <strong>loại bỏ hoàn toàn thông tin phản biện</strong> khỏi feed của cử tri Rust Belt — theo lý thuyết SMCRE, đây là ví dụ về điều gì?</p>
@@ -2249,11 +2569,11 @@ body.auth-page #globalHeader { display: none; }
             <button onclick="submitExercise(3)" style="padding:12px 28px;background:linear-gradient(135deg,#7c3aed,#4f46e5);color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-family:'Helvetica Rounded Bold',sans-serif;box-shadow:0 4px 14px rgba(124,58,237,.3);">📤 Nộp bài</button>
             <button onclick="switchPrTab('crisis-game',null);clearExInterval(3);" style="padding:12px 20px;background:var(--bg);color:var(--text);border:1.5px solid var(--border);border-radius:8px;font-weight:600;cursor:pointer;">← Chọn bài khác</button>
           </div>
-          <div id="ex3Result" style="display:none;margin-top:24px;padding:22px;border-radius:10px;background:#f3e8ff;border:1px solid #9f5fff;">
-            <h3 style="color:#5b21b6;margin-bottom:12px;font-size:17px;">📊 Kết quả đánh giá</h3>
+          <div id="ex3Result" class="pr-result-box pr-result-box-purple" style="display:none;">
+            <h3 class="pr-result-heading pr-result-heading-purple">📊 Kết quả đánh giá</h3>
             <p id="ex3Feedback" style="font-size:14px;line-height:1.7;"></p>
             <div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap;">
-              <button onclick="switchPrTab('curriculum',null)" style="padding:9px 18px;background:#5b21b6;color:#fff;border:none;border-radius:7px;cursor:pointer;font-weight:600;">📚 Xem danh sách bài</button>
+              <button onclick="switchPrTab('curriculum',null)" class="pr-result-btn pr-result-btn-purple">📚 Xem danh sách bài</button>
               <button onclick="startExercise(3)" style="padding:9px 18px;background:var(--card);color:var(--text);border:1.5px solid var(--border);border-radius:7px;cursor:pointer;font-weight:600;">🔄 Làm lại</button>
             </div>
           </div>
@@ -2276,12 +2596,12 @@ body.auth-page #globalHeader { display: none; }
           <div style="background:linear-gradient(135deg,rgba(14,165,233,.08),rgba(3,105,161,.05));border:1px solid rgba(14,165,233,.25);border-radius:10px;padding:16px 18px;margin-bottom:22px;display:flex;gap:12px;align-items:flex-start;">
             <span style="font-size:22px;flex-shrink:0;">🌐</span>
             <div>
-              <p style="font-size:12px;font-weight:700;color:#0369a1;text-transform:uppercase;letter-spacing:.8px;margin-bottom:4px;">Bối cảnh Lý thuyết</p>
+              <p class="pr-context-label" style="color:#0369a1;">Bối cảnh Lý thuyết</p>
               <p style="font-size:13px;color:var(--text);line-height:1.6;margin:0;">Lý thuyết Dependency (Ball-Rokeach & DeFleur, 1976) chứng minh: <strong>Xã hội – Truyền thông – Khán giả</strong> tạo thành "Tam giác tương tác" không thể tách rời. Trong Case Study Trump 2016, Facebook Groups trở thành trung tâm của mối quan hệ phụ thuộc này — khán giả phụ thuộc vào kênh để ra quyết định bầu cử, còn kênh phụ thuộc vào sự tương tác để tồn tại.</p>
             </div>
           </div>
 
-          <h3 style="margin-bottom:16px;color:#0369a1;font-size:16px;">Phần 1: Trắc nghiệm (80 điểm — 10 câu)</h3>
+          <h3 class="pr-heading-blue" style="margin-bottom:16px;font-size:16px;">Phần 1: Trắc nghiệm (80 điểm — 10 câu)</h3>
 
           <div class="mcq-question" style="background:var(--bg);border-radius:10px;padding:18px;margin-bottom:16px;border:1px solid var(--border);">
             <p style="margin-bottom:12px;font-weight:600;line-height:1.5;"><span style="background:#0369a1;color:#fff;padding:2px 10px;border-radius:20px;font-size:12px;margin-right:8px;">Câu 1</span> Theo lý thuyết Dependency, điều gì xảy ra khi xã hội trải qua biến động lớn (như bầu cử tranh cãi, dịch bệnh, thiên tai)?</p>
@@ -2363,7 +2683,7 @@ body.auth-page #globalHeader { display: none; }
             <label style="display:flex;align-items:center;gap:8px;padding:9px 12px;border-radius:8px;cursor:pointer;border:1.5px solid var(--border);background:var(--card);transition:all .18s;" onmouseover="this.style.borderColor='#0ea5e9'" onmouseout="this.style.borderColor='var(--border)'"><input type="radio" name="ex4q10" value="D" style="accent-color:#0ea5e9"> <b>D.</b> Tạo ra nội dung gây tranh cãi để tăng độ lan truyền tự nhiên</label>
           </div>
 
-          <h3 style="margin-bottom:16px;color:#0369a1;font-size:16px;">Phần 2: Tự luận (20 điểm — 2 câu)</h3>
+          <h3 class="pr-heading-blue" style="margin-bottom:16px;font-size:16px;">Phần 2: Tự luận (20 điểm — 2 câu)</h3>
 
           <div style="background:rgba(14,165,233,.07);border-left:4px solid #0ea5e9;padding:14px 16px;border-radius:0 8px 8px 0;margin-bottom:12px;">
             <p style="font-weight:600;font-size:14px;margin-bottom:4px;">📝 Câu 1 – Vẽ và phân tích Tam giác Dependency trong Case Study Trump 2016</p>
@@ -2381,11 +2701,11 @@ body.auth-page #globalHeader { display: none; }
             <button onclick="submitExercise(4)" style="padding:12px 28px;background:linear-gradient(135deg,#0369a1,#0ea5e9);color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-family:'Helvetica Rounded Bold',sans-serif;box-shadow:0 4px 14px rgba(14,165,233,.3);">📤 Nộp bài</button>
             <button onclick="switchPrTab('crisis-game',null);clearExInterval(4);" style="padding:12px 20px;background:var(--bg);color:var(--text);border:1.5px solid var(--border);border-radius:8px;font-weight:600;cursor:pointer;">← Chọn bài khác</button>
           </div>
-          <div id="ex4Result" style="display:none;margin-top:24px;padding:22px;border-radius:10px;background:#e0f2fe;border:1px solid #7dd3fc;">
-            <h3 style="color:#0369a1;margin-bottom:12px;font-size:17px;">📊 Kết quả đánh giá</h3>
+          <div id="ex4Result" class="pr-result-box pr-result-box-blue" style="display:none;">
+            <h3 style="font-size:17px;" class="pr-heading-blue">📊 Kết quả đánh giá</h3>
             <p id="ex4Feedback" style="font-size:14px;line-height:1.7;"></p>
             <div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap;">
-              <button onclick="switchPrTab('curriculum',null)" style="padding:9px 18px;background:#0369a1;color:#fff;border:none;border-radius:7px;cursor:pointer;font-weight:600;">📚 Xem danh sách bài</button>
+              <button onclick="switchPrTab('curriculum',null)" class="pr-result-btn pr-result-btn-blue">📚 Xem danh sách bài</button>
               <button onclick="startExercise(4)" style="padding:9px 18px;background:var(--card);color:var(--text);border:1.5px solid var(--border);border-radius:7px;cursor:pointer;font-weight:600;">🔄 Làm lại</button>
             </div>
           </div>
@@ -2408,12 +2728,12 @@ body.auth-page #globalHeader { display: none; }
           <div style="background:linear-gradient(135deg,rgba(16,185,129,.08),rgba(4,120,87,.05));border:1px solid rgba(16,185,129,.25);border-radius:10px;padding:16px 18px;margin-bottom:22px;display:flex;gap:12px;align-items:flex-start;">
             <span style="font-size:22px;flex-shrink:0;">🏆</span>
             <div>
-              <p style="font-size:12px;font-weight:700;color:#047857;text-transform:uppercase;letter-spacing:.8px;margin-bottom:4px;">Bài tập Tổng hợp</p>
+              <p class="pr-context-label" style="color:#047857;">Bài tập Tổng hợp</p>
               <p style="font-size:13px;color:var(--text);line-height:1.6;margin:0;">Bài này tích hợp đồng thời <strong>SMCRE</strong> (Nguồn → Thông điệp → Kênh → Người nhận → Hiệu quả) và <strong>Dependency Theory</strong> (Tam giác Xã hội – Truyền thông – Khán giả). Bối cảnh: Case Study "Drain the Swamp" và tình huống PR thực chiến trong môi trường số Việt Nam.</p>
             </div>
           </div>
 
-          <h3 style="margin-bottom:16px;color:#047857;font-size:16px;">Phần 1: Trắc nghiệm (80 điểm — 10 câu)</h3>
+          <h3 class="pr-heading-green" style="margin-bottom:16px;font-size:16px;">Phần 1: Trắc nghiệm (80 điểm — 10 câu)</h3>
 
           <div class="mcq-question" style="background:var(--bg);border-radius:10px;padding:18px;margin-bottom:16px;border:1px solid var(--border);">
             <p style="margin-bottom:12px;font-weight:600;line-height:1.5;"><span style="background:#047857;color:#fff;padding:2px 10px;border-radius:20px;font-size:12px;margin-right:8px;">Câu 1</span> Khi kết hợp SMCRE và Dependency Theory, yếu tố <strong>Kênh (C)</strong> trong SMCRE liên kết với Dependency Theory như thế nào?</p>
@@ -2495,7 +2815,7 @@ body.auth-page #globalHeader { display: none; }
             <label style="display:flex;align-items:center;gap:8px;padding:9px 12px;border-radius:8px;cursor:pointer;border:1.5px solid var(--border);background:var(--card);transition:all .18s;" onmouseover="this.style.borderColor='#10b981'" onmouseout="this.style.borderColor='var(--border)'"><input type="radio" name="ex5q10" value="D" style="accent-color:#10b981"> <b>D.</b> Chờ thêm thời gian vì hành vi thay đổi chậm hơn nhận thức trong mọi trường hợp</label>
           </div>
 
-          <h3 style="margin-bottom:16px;color:#047857;font-size:16px;">Phần 2: Tự luận (20 điểm — 2 câu)</h3>
+          <h3 class="pr-heading-green" style="margin-bottom:16px;font-size:16px;">Phần 2: Tự luận (20 điểm — 2 câu)</h3>
 
           <div style="background:rgba(16,185,129,.07);border-left:4px solid #10b981;padding:14px 16px;border-radius:0 8px 8px 0;margin-bottom:12px;">
             <p style="font-weight:600;font-size:14px;margin-bottom:4px;">📝 Câu 1 – Thiết kế chiến dịch PR tổng hợp sử dụng SMCRE + Dependency</p>
@@ -2513,11 +2833,11 @@ body.auth-page #globalHeader { display: none; }
             <button onclick="submitExercise(5)" style="padding:12px 28px;background:linear-gradient(135deg,#047857,#10b981);color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-family:'Helvetica Rounded Bold',sans-serif;box-shadow:0 4px 14px rgba(16,185,129,.3);">📤 Nộp bài</button>
             <button onclick="switchPrTab('crisis-game',null);clearExInterval(5);" style="padding:12px 20px;background:var(--bg);color:var(--text);border:1.5px solid var(--border);border-radius:8px;font-weight:600;cursor:pointer;">← Chọn bài khác</button>
           </div>
-          <div id="ex5Result" style="display:none;margin-top:24px;padding:22px;border-radius:10px;background:#d1fae5;border:1px solid #6ee7b7;">
-            <h3 style="color:#047857;margin-bottom:12px;font-size:17px;">📊 Kết quả đánh giá</h3>
+          <div id="ex5Result" class="pr-result-box pr-result-box-green2" style="display:none;">
+            <h3 style="font-size:17px;" class="pr-heading-green">📊 Kết quả đánh giá</h3>
             <p id="ex5Feedback" style="font-size:14px;line-height:1.7;"></p>
             <div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap;">
-              <button onclick="switchPrTab('curriculum',null)" style="padding:9px 18px;background:#047857;color:#fff;border:none;border-radius:7px;cursor:pointer;font-weight:600;">📚 Xem danh sách bài</button>
+              <button onclick="switchPrTab('curriculum',null)" class="pr-result-btn pr-result-btn-green2">📚 Xem danh sách bài</button>
               <button onclick="startExercise(5)" style="padding:9px 18px;background:var(--card);color:var(--text);border:1.5px solid var(--border);border-radius:7px;cursor:pointer;font-weight:600;">🔄 Làm lại</button>
             </div>
           </div>
@@ -2545,15 +2865,15 @@ body.auth-page #globalHeader { display: none; }
             <div style="font-size:11px;opacity:.75;margin-top:2px;">Đã trả lời</div>
           </div>
           <div style="background:rgba(76,175,80,.25);border-radius:10px;padding:12px 8px;text-align:center;backdrop-filter:blur(4px);">
-            <div id="qz-correct" style="font-family:'Helvetica Rounded Bold',sans-serif;font-size:26px;font-weight:900;color:#a5f3a8;line-height:1;">0</div>
+            <div id="qz-correct">0</div>
             <div style="font-size:11px;opacity:.75;margin-top:2px;">Đúng</div>
           </div>
           <div style="background:rgba(231,111,81,.25);border-radius:10px;padding:12px 8px;text-align:center;backdrop-filter:blur(4px);">
-            <div id="qz-wrong" style="font-family:'Helvetica Rounded Bold',sans-serif;font-size:26px;font-weight:900;color:#fca5a5;line-height:1;">0</div>
+            <div id="qz-wrong">0</div>
             <div style="font-size:11px;opacity:.75;margin-top:2px;">Sai</div>
           </div>
           <div style="background:rgba(244,162,97,.25);border-radius:10px;padding:12px 8px;text-align:center;backdrop-filter:blur(4px);">
-            <div id="qz-streak" style="font-family:'Helvetica Rounded Bold',sans-serif;font-size:26px;font-weight:900;color:#fde68a;line-height:1;">0</div>
+            <div id="qz-streak">0</div>
             <div style="font-size:11px;opacity:.75;margin-top:2px;">🔥 Streak</div>
           </div>
         </div>
@@ -2591,9 +2911,9 @@ body.auth-page #globalHeader { display: none; }
       </div>
 
       <!-- Milestone badge -->
-      <div id="qz-milestone" style="display:none;text-align:center;margin-top:18px;padding:18px;background:linear-gradient(135deg,#fef3c7,#fde68a);border-radius:14px;border:1.5px solid #f59e0b;animation:fadeIn .4s ease;">
+      <div id="qz-milestone" class="pr-quiz-milestone" style="display:none;">
         <div style="font-size:36px;margin-bottom:6px;" id="qz-milestone-icon">🏆</div>
-        <p id="qz-milestone-text" style="font-family:'Helvetica Rounded Bold',sans-serif;font-size:16px;color:#92400e;margin:0;font-weight:700;"></p>
+        <p id="qz-milestone-text" class="pr-quiz-milestone-text"></p>
       </div>
     </div>
 
@@ -3130,18 +3450,19 @@ function qzAnswer(chosen) {
 
   // Style buttons
   let letters = ['A','B','C','D'];
+  const isDarkMode = document.body.classList.contains('dark-mode');
   q.opts.forEach(function(_, i) {
     let btn = document.getElementById('qz-opt-' + i);
     if(!btn) return;
     btn.style.cursor = 'default';
     if(i === q.ans) {
-      btn.style.background = '#d1fae5';
+      btn.style.background = isDarkMode ? 'rgba(16,185,129,.18)' : '#d1fae5';
       btn.style.borderColor = '#10b981';
-      btn.style.color = '#065f46';
+      btn.style.color = isDarkMode ? '#6ee7b7' : '#065f46';
     } else if(i === chosen && !correct) {
-      btn.style.background = '#fee2e2';
+      btn.style.background = isDarkMode ? 'rgba(239,68,68,.18)' : '#fee2e2';
       btn.style.borderColor = '#ef4444';
-      btn.style.color = '#991b1b';
+      btn.style.color = isDarkMode ? '#fca5a5' : '#991b1b';
     } else {
       btn.style.opacity = '0.5';
     }
@@ -3162,11 +3483,16 @@ function qzAnswer(chosen) {
 
   // Show explanation
   let explainEl = document.getElementById('qz-explain');
+  const isDark = document.body.classList.contains('dark-mode');
   explainEl.style.display = 'block';
-  explainEl.style.background = correct ? '#d1fae5' : '#fee2e2';
+  explainEl.style.background = correct
+    ? (isDark ? 'rgba(16,185,129,.12)' : '#d1fae5')
+    : (isDark ? 'rgba(239,68,68,.12)' : '#fee2e2');
   explainEl.style.borderLeft = '4px solid ' + (correct ? '#10b981' : '#ef4444');
   explainEl.style.borderRadius = '0 10px 10px 0';
-  explainEl.innerHTML = (correct ? '<b style="color:#065f46">✅ Chính xác!</b> ' : '<b style="color:#991b1b">❌ Chưa đúng.</b> ') + q.explain;
+  const cOk = isDark ? '#6ee7b7' : '#065f46';
+  const cErr = isDark ? '#fca5a5' : '#991b1b';
+  explainEl.innerHTML = (correct ? `<b style="color:${cOk}">✅ Chính xác!</b> ` : `<b style="color:${cErr}">❌ Chưa đúng.</b> `) + q.explain;
 
   // Milestone check
   qzCheckMilestone();
@@ -3192,7 +3518,8 @@ function qzUpdateStats() {
   document.getElementById('qz-acc-bar').style.width = pct + '%';
   document.getElementById('qz-acc-bar').style.background = pct >= 80 ? 'linear-gradient(90deg,#10b981,#4DD9AC)' : pct >= 60 ? 'linear-gradient(90deg,#f59e0b,#fbbf24)' : 'linear-gradient(90deg,#ef4444,#f87171)';
   document.getElementById('qz-acc-pct').textContent = pct + '%';
-  document.getElementById('qz-acc-pct').style.color = pct >= 80 ? '#047857' : pct >= 60 ? '#92400e' : '#991b1b';
+  const dark = document.body.classList.contains('dark-mode');
+  document.getElementById('qz-acc-pct').style.color = pct >= 80 ? (dark ? '#34d399' : '#047857') : pct >= 60 ? (dark ? '#fcd34d' : '#92400e') : (dark ? '#fca5a5' : '#991b1b');
 }
 
 function qzCheckMilestone() {
