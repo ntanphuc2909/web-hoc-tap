@@ -1863,12 +1863,12 @@ body.auth-page #globalHeader { display: none; }
 
   <div class="pr-hero">
     <h1>📣 Public Relations</h1>
-    <p>Học PR qua bài viết thực tế — không nhàm, không chán!</p>
+    <p data-i18n="prHeroP">Học PR qua bài viết thực tế — không nhàm, không chán!</p>
     <div class="pr-tabs">
-      <button class="pr-tab active" onclick="switchPrTab('casestudy',this)">📋 Case Study</button>
-      <button class="pr-tab" onclick="switchPrTab('curriculum',this)">📚 Nội dung</button>
-      <button class="pr-tab" onclick="switchPrTab('crisis-game',this)">🎮 Bài tập thực chiến</button>
-      <button class="pr-tab" onclick="switchPrTab('quiz-infinite',this);startInfiniteQuiz();">⚡ Quiz Vô tận</button>
+      <button class="pr-tab active" onclick="switchPrTab('casestudy',this)" data-i18n="prTab0">📋 Case Study</button>
+      <button class="pr-tab" onclick="switchPrTab('curriculum',this)" data-i18n="prTab1">📚 Nội dung</button>
+      <button class="pr-tab" onclick="switchPrTab('crisis-game',this)" data-i18n="prTab2">🎮 Bài tập thực chiến</button>
+      <button class="pr-tab" onclick="switchPrTab('quiz-infinite',this);startInfiniteQuiz();" data-i18n="prTab3">⚡ Quiz Vô tận</button>
     </div>
   </div>
 
@@ -1880,16 +1880,16 @@ body.auth-page #globalHeader { display: none; }
           <div class="ef-header">
             <div class="ef-num" style="background:linear-gradient(135deg,#7a3e2e,#a05a3e);box-shadow:0 3px 10px rgba(122,62,46,.3);">1</div>
             <div class="ef-info">
-              <h4>Chiến dịch "Drain the Swamp" — Donald Trump 2016</h4>
-              <p>Phân tích ứng dụng mô hình SMCR trong chiến dịch truyền thông chính trị gây chấn động nhất thế kỷ 21</p>
+              <h4 data-i18n="prCs1Title">Chiến dịch "Drain the Swamp" — Donald Trump 2016</h4>
+              <p data-i18n="prCs1Desc">Phân tích ứng dụng mô hình SMCR trong chiến dịch truyền thông chính trị gây chấn động nhất thế kỷ 21</p>
             </div>
             <div class="ef-status-badge">
               <span class="ef-badge" class="ef-badge ef-badge-casestudy">📋 Case Study</span>
-              <span class="ef-badge" class="ef-badge ef-badge-primary-text">CHÍNH TRỊ & TRUYỀN THÔNG</span>
+              <span class="ef-badge" class="ef-badge ef-badge-primary-text" data-i18n="prCs1Badge">CHÍNH TRỊ & TRUYỀN THÔNG</span>
             </div>
           </div>
           <div class="ef-actions">
-            <button class="ef-btn ef-btn-start" onclick="switchPrTab('casestudy-detail',null)">📋 Xem Case Study</button>
+            <button class="ef-btn ef-btn-start" onclick="switchPrTab('casestudy-detail',null)" data-i18n="prCsBtn">📋 Xem Case Study</button>
           </div>
         </div>
 
@@ -1897,16 +1897,16 @@ body.auth-page #globalHeader { display: none; }
           <div class="ef-header">
             <div class="ef-num" style="background:linear-gradient(135deg,#8c2f52,#c0587e);box-shadow:0 3px 10px rgba(140,47,82,.3);">2</div>
             <div class="ef-info">
-              <h4>Chiến dịch "We Care For Her" — Roche Việt Nam 2025</h4>
-              <p>Báo cáo chi tiết chiến dịch truyền thông y tế theo mô hình ROPES: nâng cao nhận thức tầm soát ung thư vú tại Việt Nam</p>
+              <h4 data-i18n="prCs2Title">Chiến dịch "We Care For Her" — Roche Việt Nam 2025</h4>
+              <p data-i18n="prCs2Desc">Báo cáo chi tiết chiến dịch truyền thông y tế theo mô hình ROPES: nâng cao nhận thức tầm soát ung thư vú tại Việt Nam</p>
             </div>
             <div class="ef-status-badge">
               <span class="ef-badge" class="ef-badge ef-badge-casestudy">📋 Case Study</span>
-              <span class="ef-badge" class="ef-badge ef-badge-primary-text">Y TẾ & CỘNG ĐỒNG</span>
+              <span class="ef-badge" class="ef-badge ef-badge-primary-text" data-i18n="prCs2Badge">Y TẾ & CỘNG ĐỒNG</span>
             </div>
           </div>
           <div class="ef-actions">
-            <button class="ef-btn ef-btn-start" onclick="event.stopPropagation();switchPrTab('casestudy-detail-2',null)" style="background:linear-gradient(135deg,#8c2f52,#c0587e);">📋 Xem Case Study</button>
+            <button class="ef-btn ef-btn-start" onclick="event.stopPropagation();switchPrTab('casestudy-detail-2',null)" style="background:linear-gradient(135deg,#8c2f52,#c0587e);" data-i18n="prCsBtn">📋 Xem Case Study</button>
           </div>
         </div>
       </div>
@@ -1915,7 +1915,7 @@ body.auth-page #globalHeader { display: none; }
     <div class="pr-section" id="pr-casestudy-detail">
       <!-- ══ BACK BUTTON ══ -->
       <div style="margin-bottom:18px;">
-        <button onclick="switchPrTab('casestudy',null)" style="padding:9px 18px;background:var(--card);color:var(--text);border:1.5px solid var(--border);border-radius:8px;font-weight:600;cursor:pointer;font-size:13px;font-family:'Helvetica Rounded Bold',sans-serif;display:inline-flex;align-items:center;gap:6px;transition:all .2s;" onmouseover="this.style.borderColor='var(--primary)'" onmouseout="this.style.borderColor='var(--border)'">← Quay lại Case Study</button>
+        <button onclick="switchPrTab('casestudy',null)" style="padding:9px 18px;background:var(--card);color:var(--text);border:1.5px solid var(--border);border-radius:8px;font-weight:600;cursor:pointer;font-size:13px;font-family:'Helvetica Rounded Bold',sans-serif;display:inline-flex;align-items:center;gap:6px;transition:all .2s;" onmouseover="this.style.borderColor='var(--primary)'" onmouseout="this.style.borderColor='var(--border)'" data-i18n="prBackCs">← Quay lại Case Study</button>
       </div>
       <!-- ══ CASE STUDY HEADER ══ -->
       <div style="background:linear-gradient(135deg,#3b1f1a 0%,#7a3e2e 60%,#a05a3e 100%);border-radius:16px;padding:32px 28px 24px;color:#fff;margin-bottom:28px;position:relative;overflow:hidden;">
@@ -2229,7 +2229,7 @@ body.auth-page #globalHeader { display: none; }
       <!-- ══ ĐIỀU HƯỚNG ══ -->
       <div style="display:flex;gap:12px;flex-wrap:wrap;">
         <button onclick="switchPrTab('curriculum',null)" style="padding:11px 24px;background:var(--gradient);color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-family:'Helvetica Rounded Bold',sans-serif;font-size:14px;">📚 Đọc Nội dung lý thuyết →</button>
-        <button onclick="switchPrTab('crisis-game',null);updateExSelectionBadges();" style="padding:11px 24px;background:linear-gradient(135deg,#F4A261,#E76F51);color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-family:'Helvetica Rounded Bold',sans-serif;font-size:14px;">🎮 Làm bài tập thực chiến →</button>
+        <button onclick="switchPrTab('crisis-game',null);updateExSelectionBadges();" style="padding:11px 24px;background:linear-gradient(135deg,#F4A261,#E76F51);color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-family:'Helvetica Rounded Bold',sans-serif;font-size:14px;" data-i18n="prGoExercise">🎮 Làm bài tập thực chiến →</button>
       </div>
     </div>
 
@@ -2239,7 +2239,7 @@ body.auth-page #globalHeader { display: none; }
     <div class="pr-section" id="pr-casestudy-detail-2">
       <!-- Back button -->
       <div style="margin-bottom:18px;">
-        <button onclick="switchPrTab('casestudy',null)" style="padding:9px 18px;background:var(--card);color:var(--text);border:1.5px solid var(--border);border-radius:8px;font-weight:600;cursor:pointer;font-size:13px;font-family:'Helvetica Rounded Bold',sans-serif;display:inline-flex;align-items:center;gap:6px;transition:all .2s;" onmouseover="this.style.borderColor='#c0587e'" onmouseout="this.style.borderColor='var(--border)'">← Quay lại Case Study</button>
+        <button onclick="switchPrTab('casestudy',null)" style="padding:9px 18px;background:var(--card);color:var(--text);border:1.5px solid var(--border);border-radius:8px;font-weight:600;cursor:pointer;font-size:13px;font-family:'Helvetica Rounded Bold',sans-serif;display:inline-flex;align-items:center;gap:6px;transition:all .2s;" onmouseover="this.style.borderColor='#c0587e'" onmouseout="this.style.borderColor='var(--border)'" data-i18n="prBackCs">← Quay lại Case Study</button>
       </div>
 
       <!-- Header banner -->
@@ -2561,7 +2561,7 @@ body.auth-page #globalHeader { display: none; }
       <div style="display:flex;gap:12px;flex-wrap:wrap;">
         <button onclick="switchPrTab('casestudy',null)" style="padding:11px 24px;background:var(--card);color:var(--text);border:1.5px solid var(--border);border-radius:8px;font-weight:700;cursor:pointer;font-family:'Helvetica Rounded Bold',sans-serif;font-size:14px;">← Quay lại danh sách</button>
         <button onclick="switchPrTab('curriculum',null)" style="padding:11px 24px;background:var(--gradient);color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-family:'Helvetica Rounded Bold',sans-serif;font-size:14px;">📚 Đọc Nội dung lý thuyết →</button>
-        <button onclick="switchPrTab('crisis-game',null);updateExSelectionBadges();" style="padding:11px 24px;background:linear-gradient(135deg,#F4A261,#E76F51);color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-family:'Helvetica Rounded Bold',sans-serif;font-size:14px;">🎮 Làm bài tập thực chiến →</button>
+        <button onclick="switchPrTab('crisis-game',null);updateExSelectionBadges();" style="padding:11px 24px;background:linear-gradient(135deg,#F4A261,#E76F51);color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-family:'Helvetica Rounded Bold',sans-serif;font-size:14px;" data-i18n="prGoExercise">🎮 Làm bài tập thực chiến →</button>
       </div>
     </div>
 
@@ -2670,7 +2670,7 @@ body.auth-page #globalHeader { display: none; }
           </div>
           <div style="display: flex; gap: 10px;">
             <button class="pr-back-btn" onclick="switchPrTab('curriculum', null)">← Quay lại danh sách bài</button>
-            <button style="padding: 10px 20px; background: var(--accent); color: #fff; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 13px;" onclick="switchPrTab('crisis-game', document.querySelectorAll('.pr-tab')[1]); updateExSelectionBadges();">🚀 Làm bài tập thực chiến →</button>
+            <button style="padding: 10px 20px; background: var(--accent); color: #fff; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 13px;" onclick="switchPrTab('crisis-game', document.querySelectorAll('.pr-tab')[1]); updateExSelectionBadges();" data-i18n="prGoExercise2">🚀 Làm bài tập thực chiến →</button>
           </div>
         </div>
       </div>
@@ -2883,7 +2883,7 @@ body.auth-page #globalHeader { display: none; }
 
           <div style="display:flex;gap:10px;flex-wrap:wrap;">
             <button class="pr-back-btn" onclick="switchPrTab('curriculum', null)">← Quay lại danh sách bài</button>
-            <button onclick="switchPrTab('crisis-game', document.querySelectorAll('.pr-tab')[1]); updateExSelectionBadges();" style="padding:10px 22px;background:linear-gradient(135deg,#c0587e,#8b1a4a);color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-size:13px;font-family:'Helvetica Rounded Bold',sans-serif;">🚀 Đến bài tập thực chiến →</button>
+            <button onclick="switchPrTab('crisis-game', document.querySelectorAll('.pr-tab')[1]); updateExSelectionBadges();" style="padding:10px 22px;background:linear-gradient(135deg,#c0587e,#8b1a4a);color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-size:13px;font-family:'Helvetica Rounded Bold',sans-serif;" data-i18n="prGoExercise2">🚀 Đến bài tập thực chiến →</button>
           </div>
         </div>
       </div>
@@ -2894,8 +2894,8 @@ body.auth-page #globalHeader { display: none; }
       <div style="margin-bottom: 24px;">
         <div style="background: linear-gradient(135deg,#1e4544,#2D5F5D); border-radius: 14px; padding: 28px 28px 20px; color:#fff; margin-bottom:24px; position:relative; overflow:hidden;">
           <div style="position:absolute;top:-30px;right:-30px;width:160px;height:160px;background:radial-gradient(circle,rgba(77,217,172,.18) 0%,transparent 70%);border-radius:50%;pointer-events:none;"></div>
-          <h2 style="font-family:'Helvetica Rounded Bold',sans-serif;font-size:22px;margin-bottom:8px;position:relative;">🎯 Bài tập thực chiến SMCRE</h2>
-          <p style="font-size:13.5px;opacity:.85;position:relative;">Chọn 1 trong 3 bài tập bên dưới để bắt đầu. Mỗi bài gồm <strong>10 câu trắc nghiệm (80 điểm)</strong> và <strong>2 câu tự luận (20 điểm)</strong>.</p>
+          <h2 style="font-family:'Helvetica Rounded Bold',sans-serif;font-size:22px;margin-bottom:8px;position:relative;" data-i18n="prCgTitle">🎯 Bài tập thực chiến SMCRE</h2>
+          <p style="font-size:13.5px;opacity:.85;position:relative;" data-i18n="prCgDesc">Chọn 1 trong 3 bài tập bên dưới để bắt đầu. Mỗi bài gồm <strong>10 câu trắc nghiệm (80 điểm)</strong> và <strong>2 câu tự luận (20 điểm)</strong>.</p>
         </div>
 
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;">
@@ -2905,14 +2905,14 @@ body.auth-page #globalHeader { display: none; }
                onmouseout="this.style.borderColor='var(--border)';this.style.transform='';this.style.boxShadow='0 3px 14px rgba(0,0,0,.06)';"
                onclick="startExercise(1)">
             <div style="width:48px;height:48px;background:linear-gradient(135deg,#2D5F5D,#4DD9AC);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:14px;box-shadow:0 4px 12px rgba(45,95,93,.3);">📡</div>
-            <h4 style="font-family:'Helvetica Rounded Bold',sans-serif;font-size:15px;color:var(--text);margin-bottom:6px;">Bài 1: Nguồn & Thông điệp trong SMCRE</h4>
-            <p style="font-size:12.5px;color:var(--text2);line-height:1.5;margin-bottom:14px;">Phân tích chiến lược Nguồn và Thông điệp qua lăng kính Case Study "Drain the Swamp" 2016.</p>
+            <h4 style="font-family:'Helvetica Rounded Bold',sans-serif;font-size:15px;color:var(--text);margin-bottom:6px;" data-i18n="prEx1Title">Bài 1: Nguồn & Thông điệp trong SMCRE</h4>
+            <p style="font-size:12.5px;color:var(--text2);line-height:1.5;margin-bottom:14px;" data-i18n="prEx1Desc" data-i18n="prEx1Desc">Phân tích chiến lược Nguồn và Thông điệp qua lăng kính Case Study "Drain the Swamp" 2016.</p>
             <div style="display:flex;align-items:center;justify-content:space-between;">
               <div style="display:flex;gap:6px;flex-wrap:wrap;">
                 <span style="background:rgba(45,95,93,.1);color:var(--primary);padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;">10 MCQ</span>
-                <span class="pr-essay-badge">2 Tự luận</span>
+                <span class="pr-essay-badge" data-i18n="prEssayBadge" data-i18n="prEssayBadge">2 Tự luận</span>
               </div>
-              <span id="ex1-badge" style="font-size:12px;color:var(--text2);font-weight:600;">⬜ Chưa làm</span>
+              <span id="ex1-badge" style="font-size:12px;color:var(--text2);font-weight:600;" class="ex-not-done-badge" data-i18n="prExNotDone" data-i18n="prExNotDone">⬜ Chưa làm</span>
             </div>
           </div>
 
@@ -2922,14 +2922,14 @@ body.auth-page #globalHeader { display: none; }
                onmouseout="this.style.borderColor='var(--border)';this.style.transform='';this.style.boxShadow='0 3px 14px rgba(0,0,0,.06)';"
                onclick="startExercise(2)">
             <div style="width:48px;height:48px;background:linear-gradient(135deg,#e76f51,#c92a2a);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:14px;box-shadow:0 4px 12px rgba(231,111,81,.3);">🔗</div>
-            <h4 style="font-family:'Helvetica Rounded Bold',sans-serif;font-size:15px;color:var(--text);margin-bottom:6px;">Bài 2: Kênh, Người nhận & Echo Chamber</h4>
-            <p style="font-size:12.5px;color:var(--text2);line-height:1.5;margin-bottom:14px;">Phân tích chiến lược Kênh Facebook Groups và hiệu ứng Echo Chamber trong Case Study Trump 2016.</p>
+            <h4 style="font-family:'Helvetica Rounded Bold',sans-serif;font-size:15px;color:var(--text);margin-bottom:6px;" data-i18n="prEx2Title">Bài 2: Kênh, Người nhận & Echo Chamber</h4>
+            <p style="font-size:12.5px;color:var(--text2);line-height:1.5;margin-bottom:14px;" data-i18n="prEx2Desc" data-i18n="prEx2Desc">Phân tích chiến lược Kênh Facebook Groups và hiệu ứng Echo Chamber trong Case Study Trump 2016.</p>
             <div style="display:flex;align-items:center;justify-content:space-between;">
               <div style="display:flex;gap:6px;flex-wrap:wrap;">
                 <span style="background:rgba(231,111,81,.1);color:#e76f51;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;">10 MCQ</span>
-                <span class="pr-essay-badge">2 Tự luận</span>
+                <span class="pr-essay-badge" data-i18n="prEssayBadge">2 Tự luận</span>
               </div>
-              <span id="ex2-badge" style="font-size:12px;color:var(--text2);font-weight:600;">⬜ Chưa làm</span>
+              <span id="ex2-badge" style="font-size:12px;color:var(--text2);font-weight:600;" data-i18n="prExNotDone">⬜ Chưa làm</span>
             </div>
           </div>
 
@@ -2939,14 +2939,14 @@ body.auth-page #globalHeader { display: none; }
                onmouseout="this.style.borderColor='var(--border)';this.style.transform='';this.style.boxShadow='0 3px 14px rgba(0,0,0,.06)';"
                onclick="startExercise(3)">
             <div style="width:48px;height:48px;background:linear-gradient(135deg,#7c3aed,#4f46e5);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:14px;box-shadow:0 4px 12px rgba(124,58,237,.3);">🔊</div>
-            <h4 style="font-family:'Helvetica Rounded Bold',sans-serif;font-size:15px;color:var(--text);margin-bottom:6px;">Bài 3: Nhiễu, Fidelity & Symmetry</h4>
-            <p style="font-size:12.5px;color:var(--text2);line-height:1.5;margin-bottom:14px;">Ứng dụng lý thuyết Nhiễu và Symmetry để phân tích và phản biện Case Study thực chiến.</p>
+            <h4 style="font-family:'Helvetica Rounded Bold',sans-serif;font-size:15px;color:var(--text);margin-bottom:6px;" data-i18n="prEx3Title">Bài 3: Nhiễu, Fidelity & Symmetry</h4>
+            <p style="font-size:12.5px;color:var(--text2);line-height:1.5;margin-bottom:14px;" data-i18n="prEx3Desc" data-i18n="prEx3Desc">Ứng dụng lý thuyết Nhiễu và Symmetry để phân tích và phản biện Case Study thực chiến.</p>
             <div style="display:flex;align-items:center;justify-content:space-between;">
               <div style="display:flex;gap:6px;flex-wrap:wrap;">
                 <span style="background:rgba(124,58,237,.1);color:#7c3aed;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;">10 MCQ</span>
-                <span class="pr-essay-badge">2 Tự luận</span>
+                <span class="pr-essay-badge" data-i18n="prEssayBadge">2 Tự luận</span>
               </div>
-              <span id="ex3-badge" style="font-size:12px;color:var(--text2);font-weight:600;">⬜ Chưa làm</span>
+              <span id="ex3-badge" style="font-size:12px;color:var(--text2);font-weight:600;" data-i18n="prExNotDone">⬜ Chưa làm</span>
             </div>
           </div>
 
@@ -2956,14 +2956,14 @@ body.auth-page #globalHeader { display: none; }
                onmouseout="this.style.borderColor='var(--border)';this.style.transform='';this.style.boxShadow='0 3px 14px rgba(0,0,0,.06)';"
                onclick="startExercise(4)">
             <div style="width:48px;height:48px;background:linear-gradient(135deg,#0ea5e9,#0369a1);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:14px;box-shadow:0 4px 12px rgba(14,165,233,.3);">🔗</div>
-            <h4 style="font-family:'Helvetica Rounded Bold',sans-serif;font-size:15px;color:var(--text);margin-bottom:6px;">Bài 4: Lý thuyết Dependency & Tam giác Tương tác</h4>
-            <p style="font-size:12.5px;color:var(--text2);line-height:1.5;margin-bottom:14px;">Phân tích mối quan hệ Xã hội – Truyền thông – Khán giả qua lăng kính Case Study Trump 2016 và thực tiễn mạng xã hội.</p>
+            <h4 style="font-family:'Helvetica Rounded Bold',sans-serif;font-size:15px;color:var(--text);margin-bottom:6px;" data-i18n="prEx4Title">Bài 4: Lý thuyết Dependency & Tam giác Tương tác</h4>
+            <p style="font-size:12.5px;color:var(--text2);line-height:1.5;margin-bottom:14px;" data-i18n="prEx4Desc" data-i18n="prEx4Desc">Phân tích mối quan hệ Xã hội – Truyền thông – Khán giả qua lăng kính Case Study Trump 2016 và thực tiễn mạng xã hội.</p>
             <div style="display:flex;align-items:center;justify-content:space-between;">
               <div style="display:flex;gap:6px;flex-wrap:wrap;">
                 <span class="pr-badge-blue">10 MCQ</span>
-                <span class="pr-essay-badge">2 Tự luận</span>
+                <span class="pr-essay-badge" data-i18n="prEssayBadge">2 Tự luận</span>
               </div>
-              <span id="ex4-badge" style="font-size:12px;color:var(--text2);font-weight:600;">⬜ Chưa làm</span>
+              <span id="ex4-badge" style="font-size:12px;color:var(--text2);font-weight:600;" data-i18n="prExNotDone">⬜ Chưa làm</span>
             </div>
           </div>
 
@@ -2973,14 +2973,14 @@ body.auth-page #globalHeader { display: none; }
                onmouseout="this.style.borderColor='var(--border)';this.style.transform='';this.style.boxShadow='0 3px 14px rgba(0,0,0,.06)';"
                onclick="startExercise(5)">
             <div style="width:48px;height:48px;background:linear-gradient(135deg,#10b981,#047857);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:14px;box-shadow:0 4px 12px rgba(16,185,129,.3);">🎯</div>
-            <h4 style="font-family:'Helvetica Rounded Bold',sans-serif;font-size:15px;color:var(--text);margin-bottom:6px;">Bài 5: Ứng dụng Tổng hợp SMCRE + Dependency</h4>
-            <p style="font-size:12.5px;color:var(--text2);line-height:1.5;margin-bottom:14px;">Tích hợp toàn bộ kiến thức SMCRE và Dependency để xây dựng chiến lược PR thực chiến trong môi trường số.</p>
+            <h4 style="font-family:'Helvetica Rounded Bold',sans-serif;font-size:15px;color:var(--text);margin-bottom:6px;" data-i18n="prEx5Title">Bài 5: Ứng dụng Tổng hợp SMCRE + Dependency</h4>
+            <p style="font-size:12.5px;color:var(--text2);line-height:1.5;margin-bottom:14px;" data-i18n="prEx5Desc" data-i18n="prEx5Desc">Tích hợp toàn bộ kiến thức SMCRE và Dependency để xây dựng chiến lược PR thực chiến trong môi trường số.</p>
             <div style="display:flex;align-items:center;justify-content:space-between;">
               <div style="display:flex;gap:6px;flex-wrap:wrap;">
                 <span class="pr-badge-green">10 MCQ</span>
-                <span class="pr-essay-badge">2 Tự luận</span>
+                <span class="pr-essay-badge" data-i18n="prEssayBadge">2 Tự luận</span>
               </div>
-              <span id="ex5-badge" style="font-size:12px;color:var(--text2);font-weight:600;">⬜ Chưa làm</span>
+              <span id="ex5-badge" style="font-size:12px;color:var(--text2);font-weight:600;" data-i18n="prExNotDone">⬜ Chưa làm</span>
             </div>
           </div>
 
@@ -3639,23 +3639,23 @@ body.auth-page #globalHeader { display: none; }
         <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px;position:relative;">
           <div style="width:52px;height:52px;background:rgba(255,255,255,.15);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0;backdrop-filter:blur(4px);">⚡</div>
           <div>
-            <h2 style="font-family:'Helvetica Rounded Bold',sans-serif;font-size:22px;margin:0 0 4px;">Quiz Vô Tận — Không Điểm Dừng</h2>
-            <p style="font-size:13px;opacity:.8;margin:0;">Câu hỏi xáo ngẫu nhiên từ toàn bộ nội dung SMCRE · Dependency · Case Study · Lý thuyết</p>
+            <h2 style="font-family:'Helvetica Rounded Bold',sans-serif;font-size:22px;margin:0 0 4px;" data-i18n="prQzTitle">Quiz Vô Tận — Không Điểm Dừng</h2>
+            <p style="font-size:13px;opacity:.8;margin:0;" data-i18n="prQzDesc">Câu hỏi xáo ngẫu nhiên từ toàn bộ nội dung SMCRE · Dependency · Case Study · Lý thuyết</p>
           </div>
         </div>
         <!-- Live scoreboard -->
         <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;position:relative;">
           <div style="background:rgba(255,255,255,.12);border-radius:10px;padding:12px 8px;text-align:center;backdrop-filter:blur(4px);">
             <div id="qz-total" style="font-family:'Helvetica Rounded Bold',sans-serif;font-size:26px;font-weight:900;line-height:1;">0</div>
-            <div style="font-size:11px;opacity:.75;margin-top:2px;">Đã trả lời</div>
+            <div style="font-size:11px;opacity:.75;margin-top:2px;" data-i18n="prQzAnswered">Đã trả lời</div>
           </div>
           <div style="background:rgba(76,175,80,.25);border-radius:10px;padding:12px 8px;text-align:center;backdrop-filter:blur(4px);">
             <div id="qz-correct">0</div>
-            <div style="font-size:11px;opacity:.75;margin-top:2px;">Đúng</div>
+            <div style="font-size:11px;opacity:.75;margin-top:2px;" data-i18n="prQzCorrect">Đúng</div>
           </div>
           <div style="background:rgba(231,111,81,.25);border-radius:10px;padding:12px 8px;text-align:center;backdrop-filter:blur(4px);">
             <div id="qz-wrong">0</div>
-            <div style="font-size:11px;opacity:.75;margin-top:2px;">Sai</div>
+            <div style="font-size:11px;opacity:.75;margin-top:2px;" data-i18n="prQzWrong">Sai</div>
           </div>
           <div style="background:rgba(244,162,97,.25);border-radius:10px;padding:12px 8px;text-align:center;backdrop-filter:blur(4px);">
             <div id="qz-streak">0</div>
@@ -3666,7 +3666,7 @@ body.auth-page #globalHeader { display: none; }
 
       <!-- Accuracy bar -->
       <div style="background:var(--card);border-radius:12px;padding:14px 18px;margin-bottom:18px;border:1px solid var(--border);display:flex;align-items:center;gap:14px;">
-        <span style="font-size:13px;font-weight:700;color:var(--text);white-space:nowrap;">Độ chính xác</span>
+        <span style="font-size:13px;font-weight:700;color:var(--text);white-space:nowrap;" data-i18n="prQzAccuracy">Độ chính xác</span>
         <div style="flex:1;height:10px;background:var(--border);border-radius:5px;overflow:hidden;">
           <div id="qz-acc-bar" style="height:100%;width:0%;background:linear-gradient(90deg,#10b981,#4DD9AC);border-radius:5px;transition:width .5s ease;"></div>
         </div>
@@ -3689,7 +3689,7 @@ body.auth-page #globalHeader { display: none; }
         <div id="qz-explain" style="display:none;margin:0 18px 18px;padding:14px 16px;border-radius:10px;font-size:13.5px;line-height:1.65;"></div>
         <!-- Next button -->
         <div id="qz-next-wrap" style="display:none;padding:0 18px 20px;">
-          <button id="qz-next-btn" onclick="quizNext()" style="width:100%;padding:13px;background:linear-gradient(135deg,#1e3a5f,#0ea5e9);color:#fff;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Helvetica Rounded Bold',sans-serif;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:8px;">
+          <button id="qz-next-btn" onclick="quizNext()" style="width:100%;padding:13px;background:linear-gradient(135deg,#1e3a5f,#0ea5e9);color:#fff;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Helvetica Rounded Bold',sans-serif;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:8px;" data-i18n="prQzNext">
             Câu tiếp theo →
           </button>
         </div>
@@ -4529,7 +4529,21 @@ var I18N = {
     cpCurLbl:'Mật khẩu hiện tại *',cpCurErr:'Mật khẩu hiện tại không đúng',cpNewLbl:'Mật khẩu mới *',cpNewErr:'Mật khẩu phải có ít nhất 8 ký tự',cpConLbl:'Xác nhận mật khẩu mới *',cpConErr:'Mật khẩu không khớp',cpConOk:'✓ Mật khẩu khớp',cpSaveBtn:'✅ Cập nhật',
     strengthWeak:'⚠️ Yếu',strengthMed:'👍 Trung bình',strengthStrong:'💪 Mạnh',confirmLogout:'Bạn có chắc muốn đăng xuất?',
     errFill:'❌ Vui lòng điền đầy đủ thông tin!',errPwdShort:'❌ Mật khẩu phải ít nhất 8 ký tự!',errPwdMatch:'❌ Mật khẩu xác nhận không khớp!',errTerms:'❌ Vui lòng đồng ý điều khoản!',errFpFill:'❌ Vui lòng nhập email!',errNameEmpty:'❌ Họ và tên không được trống!',loginRequired:'⚠️ Vui lòng đăng nhập!',
-    headerHome:'Trang chủ',headerSettings:'⚙️ Cài đặt',searchPlaceholder:'Tìm kiếm nội dung PR...',headerLogin:'Đăng nhập',headerRegister:'Đăng ký'
+    headerHome:'Trang chủ',headerSettings:'⚙️ Cài đặt',searchPlaceholder:'Tìm kiếm nội dung PR...',headerLogin:'Đăng nhập',headerRegister:'Đăng ký',
+    prHeroP:'Học PR qua bài viết thực tế — không nhàm, không chán!',
+    prTab0:'📋 Case Study',prTab1:'📚 Nội dung',prTab2:'🎮 Bài tập thực chiến',prTab3:'⚡ Quiz Vô tận',
+    prCs1Title:'Chiến dịch "Drain the Swamp" — Donald Trump 2016',prCs1Desc:'Phân tích ứng dụng mô hình SMCR trong chiến dịch truyền thông chính trị gây chấn động nhất thế kỷ 21',prCs1Badge:'CHÍNH TRỊ & TRUYỀN THÔNG',
+    prCs2Title:'Chiến dịch "We Care For Her" — Roche Việt Nam 2025',prCs2Desc:'Báo cáo chi tiết chiến dịch truyền thông y tế theo mô hình ROPES: nâng cao nhận thức tầm soát ung thư vú tại Việt Nam',prCs2Badge:'Y TẾ & CỘNG ĐỒNG',
+    prCsBtn:'📋 Xem Case Study',prBackCs:'← Quay lại Case Study',prGoExercise:'🎮 Làm bài tập thực chiến →',prGoExercise2:'🚀 Đến bài tập thực chiến →',
+    prCgTitle:'🎯 Bài tập thực chiến SMCRE',prCgDesc:'Chọn 1 trong 5 bài tập bên dưới để bắt đầu. Mỗi bài gồm 10 câu trắc nghiệm (80 điểm) và 2 câu tự luận (20 điểm).',
+    prEx1Title:'Bài 1: Nguồn & Thông điệp trong SMCRE',prEx1Desc:'Phân tích chiến lược Nguồn và Thông điệp qua lăng kính Case Study "Drain the Swamp" 2016.',
+    prEx2Title:'Bài 2: Kênh, Người nhận & Echo Chamber',prEx2Desc:'Phân tích chiến lược Kênh Facebook Groups và hiệu ứng Echo Chamber trong Case Study Trump 2016.',
+    prEx3Title:'Bài 3: Nhiễu, Fidelity & Symmetry',prEx3Desc:'Ứng dụng lý thuyết Nhiễu và Symmetry để phân tích và phản biện Case Study thực chiến.',
+    prEx4Title:'Bài 4: Lý thuyết Dependency & Tam giác Tương tác',prEx4Desc:'Phân tích mối quan hệ Xã hội – Truyền thông – Khán giả qua lăng kính Case Study Trump 2016 và thực tiễn mạng xã hội.',
+    prEx5Title:'Bài 5: Ứng dụng Tổng hợp SMCRE + Dependency',prEx5Desc:'Tích hợp toàn bộ kiến thức SMCRE và Dependency để xây dựng chiến lược PR thực chiến trong môi trường số.',
+    prExNotDone:'⬜ Chưa làm',prEssayBadge:'2 Tự luận',
+    prQzTitle:'Quiz Vô Tận — Không Điểm Dừng',prQzDesc:'Câu hỏi xáo ngẫu nhiên từ toàn bộ nội dung SMCRE · Dependency · Case Study · Lý thuyết',
+    prQzAnswered:'Đã trả lời',prQzCorrect:'Đúng',prQzWrong:'Sai',prQzAccuracy:'Độ chính xác',prQzNext:'Câu tiếp theo →'
   },
   en: {
     navHome:'🏠 Home',navProfile:'👤 Profile',navSettings:'⚙️ Settings',navChangePwd:'🔑 Change Password',navLogout:'🚪 Logout',navLogin:'Login',navRegister:'Register',
@@ -4566,7 +4580,21 @@ var I18N = {
     cpCurLbl:'Current password *',cpCurErr:'Current password is incorrect',cpNewLbl:'New password *',cpNewErr:'Password must be at least 8 characters',cpConLbl:'Confirm new password *',cpConErr:'Passwords do not match',cpConOk:'✓ Passwords match',cpSaveBtn:'✅ Update',
     strengthWeak:'⚠️ Weak',strengthMed:'👍 Medium',strengthStrong:'💪 Strong',confirmLogout:'Are you sure you want to logout?',
     errFill:'❌ Please fill in all required fields!',errPwdShort:'❌ Password must be at least 8 characters!',errPwdMatch:'❌ Passwords do not match!',errTerms:'❌ Please agree to the terms!',errFpFill:'❌ Please enter your email!',errNameEmpty:'❌ Full name cannot be empty!',loginRequired:'⚠️ Please login first!',
-    headerHome:'Home',headerSettings:'⚙️ Settings',searchPlaceholder:'Search PR content...',headerLogin:'Login',headerRegister:'Sign up'
+    headerHome:'Home',headerSettings:'⚙️ Settings',searchPlaceholder:'Search PR content...',headerLogin:'Login',headerRegister:'Sign up',
+    prHeroP:'Learn PR through real-world articles — practical, engaging, never boring!',
+    prTab0:'📋 Case Study',prTab1:'📚 Curriculum',prTab2:'🎮 Practical Exercises',prTab3:'⚡ Infinite Quiz',
+    prCs1Title:'Campaign "Drain the Swamp" — Donald Trump 2016',prCs1Desc:'Analyzing the SMCR model in the most impactful political communication campaign of the 21st century',prCs1Badge:'POLITICS & MEDIA',
+    prCs2Title:'Campaign "We Care For Her" — Roche Vietnam 2025',prCs2Desc:'Detailed report of a healthcare communication campaign using the ROPES model to raise breast cancer screening awareness in Vietnam',prCs2Badge:'HEALTHCARE & COMMUNITY',
+    prCsBtn:'📋 View Case Study',prBackCs:'← Back to Case Studies',prGoExercise:'🎮 Go to Exercises →',prGoExercise2:'🚀 Go to Exercises →',
+    prCgTitle:'🎯 Practical SMCRE Exercises',prCgDesc:'Choose 1 of 5 exercises below. Each includes 10 multiple-choice questions (80 pts) and 2 essay questions (20 pts).',
+    prEx1Title:'Exercise 1: Source & Message in SMCRE',prEx1Desc:'Analyze Source and Message strategies through the "Drain the Swamp" 2016 Case Study.',
+    prEx2Title:'Exercise 2: Channel, Receiver & Echo Chamber',prEx2Desc:'Analyze Facebook Groups channel strategy and the Echo Chamber effect in the Trump 2016 Case Study.',
+    prEx3Title:'Exercise 3: Noise, Fidelity & Symmetry',prEx3Desc:'Apply Noise and Symmetry theory to analyze and critique real-world case studies.',
+    prEx4Title:'Exercise 4: Dependency Theory & Interaction Triangle',prEx4Desc:'Analyze the Society–Media–Audience relationship through the Trump 2016 Case Study and social media reality.',
+    prEx5Title:'Exercise 5: Integrated Application — SMCRE + Dependency',prEx5Desc:'Integrate all SMCRE and Dependency knowledge to build a practical PR strategy in the digital environment.',
+    prExNotDone:'⬜ Not started',prEssayBadge:'2 Essays',
+    prQzTitle:'Infinite Quiz — Never Stop',prQzDesc:'Randomized questions from all SMCRE · Dependency · Case Study · Theory content',
+    prQzAnswered:'Answered',prQzCorrect:'Correct',prQzWrong:'Wrong',prQzAccuracy:'Accuracy',prQzNext:'Next question →'
   }
 };
 
@@ -4800,7 +4828,7 @@ function renderPrCurriculum() {
     
     var statusBadge = isDone 
       ? '<span class="ef-badge ef-badge-done">✅ Đã hoàn thành</span>'
-      : (ex.available ? '<span class="ef-badge ef-badge-todo">⬜ Chưa làm</span>' : '<span class="ef-badge ef-badge-todo">🔜 Sắp ra mắt</span>');
+      : (ex.available ? '<span class="ef-badge ef-badge-todo" data-i18n="prExNotDone">⬜ Chưa làm</span>' : '<span class="ef-badge ef-badge-todo">🔜 Sắp ra mắt</span>');
     
     var statsRow = isDone ? `
       <div class="ef-stats-row">
@@ -5240,6 +5268,7 @@ function setLang(lang) {
   }
 
   if(document.getElementById('page-profile').classList.contains('active')) renderProfile();
+  if(document.getElementById('page-pr-course').classList.contains('active')) updateExSelectionBadges && updateExSelectionBadges();
 }
 
 let unsubscribeReviews = null;
