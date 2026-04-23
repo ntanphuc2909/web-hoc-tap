@@ -2228,7 +2228,7 @@ body.auth-page #globalHeader { display: none; }
 
       <!-- ══ ĐIỀU HƯỚNG ══ -->
       <div style="display:flex;gap:12px;flex-wrap:wrap;">
-        <button onclick="switchPrTab('curriculum',null)" style="padding:11px 24px;background:var(--gradient);color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-family:'Helvetica Rounded Bold',sans-serif;font-size:14px;" data-i18n="prReadCurriculum">📚 Đọc Nội dung lý thuyết →</button>
+        <button onclick="switchPrTab('curriculum',null)" style="padding:11px 24px;background:var(--gradient);color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-family:'Helvetica Rounded Bold',sans-serif;font-size:14px;">📚 Đọc Nội dung lý thuyết →</button>
         <button onclick="switchPrTab('crisis-game',null);updateExSelectionBadges();" style="padding:11px 24px;background:linear-gradient(135deg,#F4A261,#E76F51);color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-family:'Helvetica Rounded Bold',sans-serif;font-size:14px;" data-i18n="prGoExercise">🎮 Làm bài tập thực chiến →</button>
       </div>
     </div>
@@ -2559,8 +2559,8 @@ body.auth-page #globalHeader { display: none; }
 
       <!-- Navigation -->
       <div style="display:flex;gap:12px;flex-wrap:wrap;">
-        <button onclick="switchPrTab('casestudy',null)" style="padding:11px 24px;background:var(--card);color:var(--text);border:1.5px solid var(--border);border-radius:8px;font-weight:700;cursor:pointer;font-family:'Helvetica Rounded Bold',sans-serif;font-size:14px;" data-i18n="prBackList">← Quay lại danh sách</button>
-        <button onclick="switchPrTab('curriculum',null)" style="padding:11px 24px;background:var(--gradient);color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-family:'Helvetica Rounded Bold',sans-serif;font-size:14px;" data-i18n="prReadCurriculum">📚 Đọc Nội dung lý thuyết →</button>
+        <button onclick="switchPrTab('casestudy',null)" style="padding:11px 24px;background:var(--card);color:var(--text);border:1.5px solid var(--border);border-radius:8px;font-weight:700;cursor:pointer;font-family:'Helvetica Rounded Bold',sans-serif;font-size:14px;">← Quay lại danh sách</button>
+        <button onclick="switchPrTab('curriculum',null)" style="padding:11px 24px;background:var(--gradient);color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-family:'Helvetica Rounded Bold',sans-serif;font-size:14px;">📚 Đọc Nội dung lý thuyết →</button>
         <button onclick="switchPrTab('crisis-game',null);updateExSelectionBadges();" style="padding:11px 24px;background:linear-gradient(135deg,#F4A261,#E76F51);color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-family:'Helvetica Rounded Bold',sans-serif;font-size:14px;" data-i18n="prGoExercise">🎮 Làm bài tập thực chiến →</button>
       </div>
     </div>
@@ -2669,7 +2669,7 @@ body.auth-page #globalHeader { display: none; }
             </div>
           </div>
           <div style="display: flex; gap: 10px;">
-            <button class="pr-back-btn" onclick="switchPrTab('curriculum', null)" data-i18n="prBackListLesson">← Quay lại danh sách bài</button>
+            <button class="pr-back-btn" onclick="switchPrTab('curriculum', null)">← Quay lại danh sách bài</button>
             <button style="padding: 10px 20px; background: var(--accent); color: #fff; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 13px;" onclick="switchPrTab('crisis-game', document.querySelectorAll('.pr-tab')[1]); updateExSelectionBadges();" data-i18n="prGoExercise2">🚀 Làm bài tập thực chiến →</button>
           </div>
         </div>
@@ -2882,7 +2882,7 @@ body.auth-page #globalHeader { display: none; }
           </div>
 
           <div style="display:flex;gap:10px;flex-wrap:wrap;">
-            <button class="pr-back-btn" onclick="switchPrTab('curriculum', null)" data-i18n="prBackListLesson">← Quay lại danh sách bài</button>
+            <button class="pr-back-btn" onclick="switchPrTab('curriculum', null)">← Quay lại danh sách bài</button>
             <button onclick="switchPrTab('crisis-game', document.querySelectorAll('.pr-tab')[1]); updateExSelectionBadges();" style="padding:10px 22px;background:linear-gradient(135deg,#c0587e,#8b1a4a);color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-size:13px;font-family:'Helvetica Rounded Bold',sans-serif;" data-i18n="prGoExercise2">🚀 Đến bài tập thực chiến →</button>
           </div>
         </div>
@@ -3099,15 +3099,15 @@ body.auth-page #globalHeader { display: none; }
           <textarea id="ex1Text2" placeholder="Chia sẻ quan điểm phản biện của bạn..." style="width:100%;height:120px;padding:14px;border:2px solid var(--border);border-radius:8px;font-family:inherit;font-size:14px;resize:vertical;margin-bottom:24px;background:var(--card);color:var(--text);transition:border-color .2s;" onfocus="this.style.borderColor='var(--secondary)'" onblur="this.style.borderColor='var(--border)'"></textarea>
 
           <div style="display:flex;gap:10px;flex-wrap:wrap;">
-            <button data-i18n="prSubmitEx" onclick="submitExercise(1)" style="padding:12px 28px;background:var(--gradient);color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-family:'Helvetica Rounded Bold',sans-serif;box-shadow:0 4px 14px rgba(45,95,93,.3);">📤 Nộp bài</button>
-            <button onclick="switchPrTab('crisis-game',null);clearExInterval(1);" style="padding:12px 20px;background:var(--bg);color:var(--text);border:1.5px solid var(--border);border-radius:8px;font-weight:600;cursor:pointer;" data-i18n="prChooseOther">← Chọn bài khác</button>
+            <button onclick="submitExercise(1)" style="padding:12px 28px;background:var(--gradient);color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-family:'Helvetica Rounded Bold',sans-serif;box-shadow:0 4px 14px rgba(45,95,93,.3);">📤 Nộp bài</button>
+            <button onclick="switchPrTab('crisis-game',null);clearExInterval(1);" style="padding:12px 20px;background:var(--bg);color:var(--text);border:1.5px solid var(--border);border-radius:8px;font-weight:600;cursor:pointer;">← Chọn bài khác</button>
           </div>
           <div id="ex1Result" class="pr-result-box" style="display:none;">
-            <h3 class="pr-result-heading" data-i18n="exResultTitle">📊 Kết quả đánh giá</h3>
+            <h3 class="pr-result-heading">📊 Kết quả đánh giá</h3>
             <p id="ex1Feedback" style="font-size:14px;line-height:1.7;"></p>
             <div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap;">
-              <button onclick="switchPrTab('curriculum',null)" class="pr-result-btn" data-i18n="prViewList">📚 Xem danh sách bài</button>
-              <button onclick="startExercise(1)" style="padding:9px 18px;background:var(--card);color:var(--text);border:1.5px solid var(--border);border-radius:7px;cursor:pointer;font-weight:600;" data-i18n="prRedoEx">🔄 Làm lại</button>
+              <button onclick="switchPrTab('curriculum',null)" class="pr-result-btn">📚 Xem danh sách bài</button>
+              <button onclick="startExercise(1)" style="padding:9px 18px;background:var(--card);color:var(--text);border:1.5px solid var(--border);border-radius:7px;cursor:pointer;font-weight:600;">🔄 Làm lại</button>
             </div>
           </div>
         </div>
@@ -3225,15 +3225,15 @@ body.auth-page #globalHeader { display: none; }
           <textarea id="ex2Text2" placeholder="Chia sẻ trải nghiệm cá nhân về Echo Chamber..." style="width:100%;height:120px;padding:14px;border:2px solid var(--border);border-radius:8px;font-family:inherit;font-size:14px;resize:vertical;margin-bottom:24px;background:var(--card);color:var(--text);transition:border-color .2s;" onfocus="this.style.borderColor='var(--secondary)'" onblur="this.style.borderColor='var(--border)'"></textarea>
 
           <div style="display:flex;gap:10px;flex-wrap:wrap;">
-            <button data-i18n="prSubmitEx" onclick="submitExercise(2)" style="padding:12px 28px;background:linear-gradient(135deg,#e76f51,#c92a2a);color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-family:'Helvetica Rounded Bold',sans-serif;box-shadow:0 4px 14px rgba(231,111,81,.3);">📤 Nộp bài</button>
-            <button onclick="switchPrTab('crisis-game',null);clearExInterval(2);" style="padding:12px 20px;background:var(--bg);color:var(--text);border:1.5px solid var(--border);border-radius:8px;font-weight:600;cursor:pointer;" data-i18n="prChooseOther">← Chọn bài khác</button>
+            <button onclick="submitExercise(2)" style="padding:12px 28px;background:linear-gradient(135deg,#e76f51,#c92a2a);color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-family:'Helvetica Rounded Bold',sans-serif;box-shadow:0 4px 14px rgba(231,111,81,.3);">📤 Nộp bài</button>
+            <button onclick="switchPrTab('crisis-game',null);clearExInterval(2);" style="padding:12px 20px;background:var(--bg);color:var(--text);border:1.5px solid var(--border);border-radius:8px;font-weight:600;cursor:pointer;">← Chọn bài khác</button>
           </div>
           <div id="ex2Result" class="pr-result-box pr-result-box-orange" style="display:none;">
             <h3 class="pr-result-heading pr-result-heading-orange">📊 Kết quả đánh giá</h3>
             <p id="ex2Feedback" style="font-size:14px;line-height:1.7;"></p>
             <div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap;">
-              <button onclick="switchPrTab('curriculum',null)" class="pr-result-btn pr-result-btn-orange" data-i18n="prViewList">📚 Xem danh sách bài</button>
-              <button onclick="startExercise(2)" style="padding:9px 18px;background:var(--card);color:var(--text);border:1.5px solid var(--border);border-radius:7px;cursor:pointer;font-weight:600;" data-i18n="prRedoEx">🔄 Làm lại</button>
+              <button onclick="switchPrTab('curriculum',null)" class="pr-result-btn pr-result-btn-orange">📚 Xem danh sách bài</button>
+              <button onclick="startExercise(2)" style="padding:9px 18px;background:var(--card);color:var(--text);border:1.5px solid var(--border);border-radius:7px;cursor:pointer;font-weight:600;">🔄 Làm lại</button>
             </div>
           </div>
         </div>
@@ -3351,15 +3351,15 @@ body.auth-page #globalHeader { display: none; }
           <textarea id="ex3Text2" placeholder="Chia sẻ bài học PR lớn nhất bạn rút ra từ Case Study..." style="width:100%;height:120px;padding:14px;border:2px solid var(--border);border-radius:8px;font-family:inherit;font-size:14px;resize:vertical;margin-bottom:24px;background:var(--card);color:var(--text);transition:border-color .2s;" onfocus="this.style.borderColor='var(--secondary)'" onblur="this.style.borderColor='var(--border)'"></textarea>
 
           <div style="display:flex;gap:10px;flex-wrap:wrap;">
-            <button data-i18n="prSubmitEx" onclick="submitExercise(3)" style="padding:12px 28px;background:linear-gradient(135deg,#7c3aed,#4f46e5);color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-family:'Helvetica Rounded Bold',sans-serif;box-shadow:0 4px 14px rgba(124,58,237,.3);">📤 Nộp bài</button>
-            <button onclick="switchPrTab('crisis-game',null);clearExInterval(3);" style="padding:12px 20px;background:var(--bg);color:var(--text);border:1.5px solid var(--border);border-radius:8px;font-weight:600;cursor:pointer;" data-i18n="prChooseOther">← Chọn bài khác</button>
+            <button onclick="submitExercise(3)" style="padding:12px 28px;background:linear-gradient(135deg,#7c3aed,#4f46e5);color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-family:'Helvetica Rounded Bold',sans-serif;box-shadow:0 4px 14px rgba(124,58,237,.3);">📤 Nộp bài</button>
+            <button onclick="switchPrTab('crisis-game',null);clearExInterval(3);" style="padding:12px 20px;background:var(--bg);color:var(--text);border:1.5px solid var(--border);border-radius:8px;font-weight:600;cursor:pointer;">← Chọn bài khác</button>
           </div>
           <div id="ex3Result" class="pr-result-box pr-result-box-purple" style="display:none;">
             <h3 class="pr-result-heading pr-result-heading-purple">📊 Kết quả đánh giá</h3>
             <p id="ex3Feedback" style="font-size:14px;line-height:1.7;"></p>
             <div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap;">
-              <button onclick="switchPrTab('curriculum',null)" class="pr-result-btn pr-result-btn-purple" data-i18n="prViewList">📚 Xem danh sách bài</button>
-              <button onclick="startExercise(3)" style="padding:9px 18px;background:var(--card);color:var(--text);border:1.5px solid var(--border);border-radius:7px;cursor:pointer;font-weight:600;" data-i18n="prRedoEx">🔄 Làm lại</button>
+              <button onclick="switchPrTab('curriculum',null)" class="pr-result-btn pr-result-btn-purple">📚 Xem danh sách bài</button>
+              <button onclick="startExercise(3)" style="padding:9px 18px;background:var(--card);color:var(--text);border:1.5px solid var(--border);border-radius:7px;cursor:pointer;font-weight:600;">🔄 Làm lại</button>
             </div>
           </div>
         </div>
@@ -3483,15 +3483,15 @@ body.auth-page #globalHeader { display: none; }
           <textarea id="ex4Text2" placeholder="Ứng dụng Dependency Theory cho chiến dịch nước giải khát Gen Z..." style="width:100%;height:120px;padding:14px;border:2px solid var(--border);border-radius:8px;font-family:inherit;font-size:14px;resize:vertical;margin-bottom:24px;background:var(--card);color:var(--text);transition:border-color .2s;" onfocus="this.style.borderColor='var(--secondary)'" onblur="this.style.borderColor='var(--border)'"></textarea>
 
           <div style="display:flex;gap:10px;flex-wrap:wrap;">
-            <button data-i18n="prSubmitEx" onclick="submitExercise(4)" style="padding:12px 28px;background:linear-gradient(135deg,#0369a1,#0ea5e9);color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-family:'Helvetica Rounded Bold',sans-serif;box-shadow:0 4px 14px rgba(14,165,233,.3);">📤 Nộp bài</button>
-            <button onclick="switchPrTab('crisis-game',null);clearExInterval(4);" style="padding:12px 20px;background:var(--bg);color:var(--text);border:1.5px solid var(--border);border-radius:8px;font-weight:600;cursor:pointer;" data-i18n="prChooseOther">← Chọn bài khác</button>
+            <button onclick="submitExercise(4)" style="padding:12px 28px;background:linear-gradient(135deg,#0369a1,#0ea5e9);color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-family:'Helvetica Rounded Bold',sans-serif;box-shadow:0 4px 14px rgba(14,165,233,.3);">📤 Nộp bài</button>
+            <button onclick="switchPrTab('crisis-game',null);clearExInterval(4);" style="padding:12px 20px;background:var(--bg);color:var(--text);border:1.5px solid var(--border);border-radius:8px;font-weight:600;cursor:pointer;">← Chọn bài khác</button>
           </div>
           <div id="ex4Result" class="pr-result-box pr-result-box-blue" style="display:none;">
             <h3 style="font-size:17px;" class="pr-heading-blue">📊 Kết quả đánh giá</h3>
             <p id="ex4Feedback" style="font-size:14px;line-height:1.7;"></p>
             <div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap;">
-              <button onclick="switchPrTab('curriculum',null)" class="pr-result-btn pr-result-btn-blue" data-i18n="prViewList">📚 Xem danh sách bài</button>
-              <button onclick="startExercise(4)" style="padding:9px 18px;background:var(--card);color:var(--text);border:1.5px solid var(--border);border-radius:7px;cursor:pointer;font-weight:600;" data-i18n="prRedoEx">🔄 Làm lại</button>
+              <button onclick="switchPrTab('curriculum',null)" class="pr-result-btn pr-result-btn-blue">📚 Xem danh sách bài</button>
+              <button onclick="startExercise(4)" style="padding:9px 18px;background:var(--card);color:var(--text);border:1.5px solid var(--border);border-radius:7px;cursor:pointer;font-weight:600;">🔄 Làm lại</button>
             </div>
           </div>
         </div>
@@ -3615,15 +3615,15 @@ body.auth-page #globalHeader { display: none; }
           <textarea id="ex5Text2" placeholder="Phản biện về đạo đức nghề PR và ranh giới giữa thuyết phục và thao túng..." style="width:100%;height:130px;padding:14px;border:2px solid var(--border);border-radius:8px;font-family:inherit;font-size:14px;resize:vertical;margin-bottom:24px;background:var(--card);color:var(--text);transition:border-color .2s;" onfocus="this.style.borderColor='var(--secondary)'" onblur="this.style.borderColor='var(--border)'"></textarea>
 
           <div style="display:flex;gap:10px;flex-wrap:wrap;">
-            <button data-i18n="prSubmitEx" onclick="submitExercise(5)" style="padding:12px 28px;background:linear-gradient(135deg,#047857,#10b981);color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-family:'Helvetica Rounded Bold',sans-serif;box-shadow:0 4px 14px rgba(16,185,129,.3);">📤 Nộp bài</button>
-            <button onclick="switchPrTab('crisis-game',null);clearExInterval(5);" style="padding:12px 20px;background:var(--bg);color:var(--text);border:1.5px solid var(--border);border-radius:8px;font-weight:600;cursor:pointer;" data-i18n="prChooseOther">← Chọn bài khác</button>
+            <button onclick="submitExercise(5)" style="padding:12px 28px;background:linear-gradient(135deg,#047857,#10b981);color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-family:'Helvetica Rounded Bold',sans-serif;box-shadow:0 4px 14px rgba(16,185,129,.3);">📤 Nộp bài</button>
+            <button onclick="switchPrTab('crisis-game',null);clearExInterval(5);" style="padding:12px 20px;background:var(--bg);color:var(--text);border:1.5px solid var(--border);border-radius:8px;font-weight:600;cursor:pointer;">← Chọn bài khác</button>
           </div>
           <div id="ex5Result" class="pr-result-box pr-result-box-green2" style="display:none;">
             <h3 style="font-size:17px;" class="pr-heading-green">📊 Kết quả đánh giá</h3>
             <p id="ex5Feedback" style="font-size:14px;line-height:1.7;"></p>
             <div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap;">
-              <button onclick="switchPrTab('curriculum',null)" class="pr-result-btn pr-result-btn-green2" data-i18n="prViewList">📚 Xem danh sách bài</button>
-              <button onclick="startExercise(5)" style="padding:9px 18px;background:var(--card);color:var(--text);border:1.5px solid var(--border);border-radius:7px;cursor:pointer;font-weight:600;" data-i18n="prRedoEx">🔄 Làm lại</button>
+              <button onclick="switchPrTab('curriculum',null)" class="pr-result-btn pr-result-btn-green2">📚 Xem danh sách bài</button>
+              <button onclick="startExercise(5)" style="padding:9px 18px;background:var(--card);color:var(--text);border:1.5px solid var(--border);border-radius:7px;cursor:pointer;font-weight:600;">🔄 Làm lại</button>
             </div>
           </div>
         </div>
@@ -3780,7 +3780,7 @@ function updateExSelectionBadges() {
     if(!el) return;
     var r = scores[cfg.id];
     if(r) {
-      el.innerHTML = '✅ ' + r.bestScore + '/' + r.maxScore + ' ' + t('prCurrPointsUnit');
+      el.innerHTML = '✅ ' + r.bestScore + '/' + r.maxScore + ' điểm';
       el.style.color = '#2D5F5D';
     }
   });
@@ -3838,21 +3838,21 @@ function submitExercise(num, isTimeout) {
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;">
       <div style="background:rgba(255,255,255,.6);border-radius:8px;padding:12px;text-align:center;">
         <div style="font-size:22px;font-weight:900;color:var(--primary);">${mcqScore}/80</div>
-        <div style="font-size:11px;color:var(--text2);font-weight:600;">${t('exMCQ')}</div>
-        <div style="font-size:12px;margin-top:2px;">${correct}/10 ${t('exCorrectOf')}</div>
+        <div style="font-size:11px;color:var(--text2);font-weight:600;">Trắc nghiệm</div>
+        <div style="font-size:12px;margin-top:2px;">${correct}/10 câu đúng</div>
       </div>
       <div style="background:rgba(255,255,255,.6);border-radius:8px;padding:12px;text-align:center;">
         <div style="font-size:22px;font-weight:900;color:var(--accent);">${textScore}/20</div>
-        <div style="font-size:11px;color:var(--text2);font-weight:600;">${t('exEssay')}</div>
+        <div style="font-size:11px;color:var(--text2);font-weight:600;">Tự luận</div>
       </div>
     </div>
-    <div style="text-align:center;font-size:28px;font-weight:900;color:var(--primary);margin-bottom:8px;">${medal} ${totalScore}/100 ${t('prCurrPointsUnit')}</div>
+    <div style="text-align:center;font-size:28px;font-weight:900;color:var(--primary);margin-bottom:8px;">${medal} ${totalScore}/100 điểm</div>
     <hr style="border:none;border-top:1px solid rgba(0,0,0,.1);margin:12px 0;">
-    <details style="margin-bottom:10px;"><summary style="cursor:pointer;font-size:13px;font-weight:700;color:var(--primary);">📋 ${t('exDetailsLabel')} (${correct}/10 ${t('exCorrectOf')})</summary>
+    <details style="margin-bottom:10px;"><summary style="cursor:pointer;font-size:13px;font-weight:700;color:var(--primary);">📋 Chi tiết trắc nghiệm (${correct}/10 đúng)</summary>
       <div style="margin-top:8px;padding:10px;background:rgba(0,0,0,.04);border-radius:8px;">${mcqFbHtml}</div>
     </details>
-    <p style="font-size:13px;margin-bottom:6px;"><b>${t('exEssayQ1')} (${score1}/10):</b> ${tf1}</p>
-    <p style="font-size:13px;"><b>${t('exEssayQ2')} (${score2}/10):</b> ${tf2}</p>
+    <p style="font-size:13px;margin-bottom:6px;"><b>Tự luận câu 1 (${score1}/10):</b> ${tf1}</p>
+    <p style="font-size:13px;"><b>Tự luận câu 2 (${score2}/10):</b> ${tf2}</p>
   `;
   document.getElementById('ex'+num+'Feedback').innerHTML = html;
   document.getElementById('ex'+num+'Result').style.display = 'block';
@@ -4544,17 +4544,15 @@ var I18N = {
     prExNotDone:'⬜ Chưa làm',prEssayBadge:'2 Tự luận',
     prQzTitle:'Quiz Vô Tận — Không Điểm Dừng',prQzDesc:'Câu hỏi xáo ngẫu nhiên từ toàn bộ nội dung SMCRE · Dependency · Case Study · Lý thuyết',
     prQzAnswered:'Đã trả lời',prQzCorrect:'Đúng',prQzWrong:'Sai',prQzAccuracy:'Độ chính xác',prQzNext:'Câu tiếp theo →',
-    prReadCurriculum:'📚 Đọc Nội dung lý thuyết →',
-    prBackList:'← Quay lại danh sách',prBackListLesson:'← Quay lại danh sách bài',
-    prChooseOther:'← Chọn bài khác',prViewList:'📚 Xem danh sách bài',prRedoEx:'🔄 Làm lại',prSubmitEx:'📤 Nộp bài',
-    prCurrCompleted:'✅ Đã hoàn thành',prCurrComingSoon:'🔜 Sắp ra mắt',
-    prCurrHighest:'🏆 Cao nhất:',prCurrPointsUnit:'điểm',prCurrCorrectOf:'câu đúng',prCurrTimesUnit:'lần làm',
-    prCurrScore:'Điểm',prCurrReview:'👁 Xem lại bài',prCurrRedo:'🔄 Xem lại',prCurrStart:'🚀 Bắt đầu xem bài',
-    achCalcTitle:'🏆 Máy tính điểm thành tựu',achCalcSub:'Tổng hợp kết quả tất cả bài tập đã hoàn thành',
-    achCalcTotalLbl:'điểm tổng',achCalcCompletedLbl:'Bài đã hoàn thành',achCalcAttemptsLbl:'Tổng lần làm',achCalcAvgLbl:'Điểm TB / bài',
-    achEmptyMsg:'Bạn chưa hoàn thành bài tập nào.<br>Hãy bắt đầu học ngay!',achDateLbl:'📅 Hoàn thành:',
-    exResultTitle:'📊 Kết quả đánh giá',exMCQ:'Trắc nghiệm',exEssay:'Tự luận',
-    exCorrectOf:'câu đúng',exDetailsLabel:'Chi tiết trắc nghiệm',exEssayQ1:'Tự luận câu 1',exEssayQ2:'Tự luận câu 2'
+    prTypeTheory:'📖 Lý thuyết',prTypePractice:'🎯 Thực chiến',
+    prCurrL1Name:'Mô hình truyền thông SMCRE',prCurrL1Desc:'Kiến trúc tương tác và hiệu quả thông tin',
+    prCurrL2Name:'Lý thuyết Mô hình ROPES',prCurrL2Desc:'Research → Objective → Programming → Evaluation → Stewardship — Khung quy trình 5 bước lập kế hoạch chiến dịch PR toàn diện',
+    prCurrEx1Desc:'10 MCQ + 2 tự luận phân tích Case Study "Drain the Swamp" qua lăng kính Nguồn và Thông điệp',
+    prCurrEx2Desc:'10 MCQ + 2 tự luận phân tích chiến lược Kênh Facebook Groups và hiệu ứng Echo Chamber',
+    prCurrEx3Desc:'10 MCQ + 2 tự luận ứng dụng lý thuyết Nhiễu và Symmetry để phân tích và phản biện Case Study',
+    prExDone:'Đã hoàn thành',prExSoon:'Sắp ra mắt',
+    prStatBest:'Cao nhất',prStatPts:'điểm',prStatCorrect:'câu đúng',prStatAttempts:'lần làm',prStatScore:'Điểm',
+    prBtnReview:'Xem lại bài',prBtnRedo:'Xem lại',prBtnStart:'Bắt đầu xem bài'
   },
   en: {
     navHome:'🏠 Home',navProfile:'👤 Profile',navSettings:'⚙️ Settings',navChangePwd:'🔑 Change Password',navLogout:'🚪 Logout',navLogin:'Login',navRegister:'Register',
@@ -4606,17 +4604,15 @@ var I18N = {
     prExNotDone:'⬜ Not started',prEssayBadge:'2 Essays',
     prQzTitle:'Infinite Quiz — Never Stop',prQzDesc:'Randomized questions from all SMCRE · Dependency · Case Study · Theory content',
     prQzAnswered:'Answered',prQzCorrect:'Correct',prQzWrong:'Wrong',prQzAccuracy:'Accuracy',prQzNext:'Next question →',
-    prReadCurriculum:'📚 Read Theory Content →',
-    prBackList:'← Back to list',prBackListLesson:'← Back to lesson list',
-    prChooseOther:'← Choose another exercise',prViewList:'📚 View lesson list',prRedoEx:'🔄 Redo',prSubmitEx:'📤 Submit',
-    prCurrCompleted:'✅ Completed',prCurrComingSoon:'🔜 Coming soon',
-    prCurrHighest:'🏆 Best:',prCurrPointsUnit:'points',prCurrCorrectOf:'correct',prCurrTimesUnit:'attempts',
-    prCurrScore:'Score',prCurrReview:'👁 Review',prCurrRedo:'🔄 Redo',prCurrStart:'🚀 Start',
-    achCalcTitle:'🏆 Achievement Score Calculator',achCalcSub:'Summary of all completed exercises',
-    achCalcTotalLbl:'total points',achCalcCompletedLbl:'Completed exercises',achCalcAttemptsLbl:'Total attempts',achCalcAvgLbl:'Avg. score / exercise',
-    achEmptyMsg:'You haven\'t completed any exercises yet.<br>Start learning now!',achDateLbl:'📅 Completed:',
-    exResultTitle:'📊 Results',exMCQ:'Multiple choice',exEssay:'Essay',
-    exCorrectOf:'correct',exDetailsLabel:'Multiple-choice details',exEssayQ1:'Essay Q1',exEssayQ2:'Essay Q2'
+    prTypeTheory:'📖 Theory',prTypePractice:'🎯 Practical',
+    prCurrL1Name:'SMCRE Communication Model',prCurrL1Desc:'Interaction architecture and information effectiveness',
+    prCurrL2Name:'ROPES Model Theory',prCurrL2Desc:'Research → Objective → Programming → Evaluation → Stewardship — A 5-step framework for comprehensive PR campaign planning',
+    prCurrEx1Desc:'10 MCQ + 2 essays analyzing the "Drain the Swamp" Case Study through the lens of Source and Message',
+    prCurrEx2Desc:'10 MCQ + 2 essays analyzing Facebook Groups channel strategy and the Echo Chamber effect',
+    prCurrEx3Desc:'10 MCQ + 2 essays applying Noise and Symmetry theory to analyze and critique real-world case studies',
+    prExDone:'Completed',prExSoon:'Coming soon',
+    prStatBest:'Best',prStatPts:'pts',prStatCorrect:'correct',prStatAttempts:'attempts',prStatScore:'Score',
+    prBtnReview:'Review lesson',prBtnRedo:'Redo',prBtnStart:'Start lesson'
   }
 };
 
@@ -4830,45 +4826,57 @@ function getTotalStats() {
 /* ═══════════════════════════════
    PR CURRICULUM RENDER
 ═══════════════════════════════ */
-var prExercises = [
-  { id: 'pr-smcr', num: 1, name: 'Mô hình truyền thông SMCRE', desc: 'Kiến trúc tương tác và hiệu quả thông tin', type: '📖 Lý thuyết', maxScore: 100, action: "switchPrTab('smcr-article',null)", available: true },
-  { id: 'pr-ropes', num: 2, name: 'Lý thuyết Mô hình ROPES', desc: 'Research → Objective → Programming → Evaluation → Stewardship — Khung quy trình 5 bước lập kế hoạch chiến dịch PR toàn diện', type: '📖 Lý thuyết', maxScore: 100, action: "switchPrTab('ropes-article',null)", available: true },
-  { id: 'pr-smcre-1', num: 3, name: 'Bài 1: Nguồn & Thông điệp trong SMCRE', desc: '10 MCQ + 2 tự luận phân tích Case Study "Drain the Swamp" qua lăng kính Nguồn và Thông điệp', type: '🎯 Thực chiến', maxScore: 100, action: "startExercise(1)", available: true },
-  { id: 'pr-dependency-1', num: 3, name: 'Bài 2: Kênh, Người nhận & Echo Chamber', desc: '10 MCQ + 2 tự luận phân tích chiến lược Kênh Facebook Groups và hiệu ứng Echo Chamber', type: '🎯 Thực chiến', maxScore: 100, action: "startExercise(2)", available: true },
-  { id: 'pr-noise-1', num: 4, name: 'Bài 3: Nhiễu, Fidelity & Symmetry', desc: '10 MCQ + 2 tự luận ứng dụng lý thuyết Nhiễu và Symmetry để phân tích và phản biện Case Study', type: '🎯 Thực chiến', maxScore: 100, action: "startExercise(3)", available: true }
+var prExercisesData = [
+  { id: 'pr-smcr',        num: 1, nameKey: 'prCurrL1Name', descKey: 'prCurrL1Desc', typeKey: 'prTypeTheory', maxScore: 100, action: "switchPrTab('smcr-article',null)", available: true },
+  { id: 'pr-ropes',       num: 2, nameKey: 'prCurrL2Name', descKey: 'prCurrL2Desc', typeKey: 'prTypeTheory', maxScore: 100, action: "switchPrTab('ropes-article',null)", available: true },
+  { id: 'pr-smcre-1',     num: 3, nameKey: 'prEx1Title',   descKey: 'prCurrEx1Desc', typeKey: 'prTypePractice', maxScore: 100, action: "startExercise(1)", available: true },
+  { id: 'pr-dependency-1',num: 3, nameKey: 'prEx2Title',   descKey: 'prCurrEx2Desc', typeKey: 'prTypePractice', maxScore: 100, action: "startExercise(2)", available: true },
+  { id: 'pr-noise-1',     num: 4, nameKey: 'prEx3Title',   descKey: 'prCurrEx3Desc', typeKey: 'prTypePractice', maxScore: 100, action: "startExercise(3)", available: true }
 ];
+
+function getPrExercises() {
+  return prExercisesData.map(function(ex) {
+    return Object.assign({}, ex, {
+      name: t(ex.nameKey),
+      desc: t(ex.descKey),
+      type: t(ex.typeKey)
+    });
+  });
+}
+
+var prExercises = prExercisesData; // kept for backward compat, use getPrExercises() in renders
 
 function renderPrCurriculum() {
   var scores = getExerciseScores();
   var container = document.getElementById('prCurriculumList');
   if(!container) return;
   
-  container.innerHTML = prExercises.filter(function(ex){ return ex.type !== '🎯 Thực chiến'; }).map(function(ex) {
+  container.innerHTML = getPrExercises().filter(function(ex){ return ex.typeKey !== 'prTypePractice'; }).map(function(ex) {
     var result = scores[ex.id];
     var isDone = !!result;
     var pct = isDone ? Math.round((result.bestScore / ex.maxScore) * 100) : 0;
     
     var statusBadge = isDone 
-      ? '<span class="ef-badge ef-badge-done">' + t('prCurrCompleted') + '</span>'
-      : (ex.available ? '<span class="ef-badge ef-badge-todo">' + t('prExNotDone') + '</span>' : '<span class="ef-badge ef-badge-todo">' + t('prCurrComingSoon') + '</span>');
+      ? `<span class="ef-badge ef-badge-done">✅ ${t('prExDone')}</span>`
+      : (ex.available ? `<span class="ef-badge ef-badge-todo">⬜ ${t('prExNotDone')}</span>` : `<span class="ef-badge ef-badge-todo">🔜 ${t('prExSoon')}</span>`);
     
     var statsRow = isDone ? `
       <div class="ef-stats-row">
-        <span class="ef-stat-pill score">${t('prCurrHighest')} ${result.bestScore}/${ex.maxScore} ${t('prCurrPointsUnit')}</span>
-        <span class="ef-stat-pill">✅ ${result.correct}/${result.total} ${t('prCurrCorrectOf')}</span>
-        <span class="ef-stat-pill">🔄 ${result.attempts} ${t('prCurrTimesUnit')}</span>
+        <span class="ef-stat-pill score">🏆 ${t('prStatBest')}: ${result.bestScore}/${ex.maxScore} ${t('prStatPts')}</span>
+        <span class="ef-stat-pill">✅ ${result.correct}/${result.total} ${t('prStatCorrect')}</span>
+        <span class="ef-stat-pill">🔄 ${result.attempts} ${t('prStatAttempts')}</span>
         <span class="ef-stat-pill">📅 ${result.completedAt}</span>
       </div>
       <div class="ef-score-bar-wrap">
-        <div class="ef-score-bar-label"><span>${t('prCurrScore')}</span><span>${pct}%</span></div>
+        <div class="ef-score-bar-label"><span>${t('prStatScore')}</span><span>${pct}%</span></div>
         <div class="ef-score-bar"><div class="ef-score-fill" style="width:${pct}%"></div></div>
       </div>` : '';
     
     var actions = ex.available ? `
       <div class="ef-actions">
-        ${isDone ? `<button class="ef-btn ef-btn-review" onclick="${ex.action}">${t('prCurrReview')}</button>
-                    <button class="ef-btn ef-btn-redo" onclick="${ex.action}">${t('prCurrRedo')}</button>` 
-                 : `<button class="ef-btn ef-btn-start" onclick="${ex.action}">${t('prCurrStart')}</button>`}
+        ${isDone ? `<button class="ef-btn ef-btn-review" onclick="${ex.action}">👁 ${t('prBtnReview')}</button>
+                    <button class="ef-btn ef-btn-redo" onclick="${ex.action}">🔄 ${t('prBtnRedo')}</button>` 
+                 : `<button class="ef-btn ef-btn-start" onclick="${ex.action}">🚀 ${t('prBtnStart')}</button>`}
       </div>` : '';
     
     return `<div class="exercise-frame ${isDone ? 'ef-done' : ''}">
@@ -4895,20 +4903,20 @@ function renderAchievements() {
   var stats = getTotalStats();
   
   var calcHtml = `<div class="score-calc">
-    <div class="sc-title">${t('achCalcTitle')}</div>
-    <div class="sc-sub">${t('achCalcSub')}</div>
+    <div class="sc-title">🏆 Máy tính điểm thành tựu</div>
+    <div class="sc-sub">Tổng hợp kết quả tất cả bài tập đã hoàn thành</div>
     <div class="sc-total score-pop">${stats.totalPoints}</div>
-    <div style="text-align:center;font-size:13px;opacity:.75;margin-bottom:4px;">${t('achCalcTotalLbl')}</div>
+    <div style="text-align:center;font-size:13px;opacity:.75;margin-bottom:4px;">điểm tổng</div>
     <div class="sc-grid">
-      <div class="sc-box"><div class="sc-num">${stats.totalCompleted}</div><div class="sc-lbl">${t('achCalcCompletedLbl')}</div></div>
-      <div class="sc-box"><div class="sc-num">${stats.totalAttempts}</div><div class="sc-lbl">${t('achCalcAttemptsLbl')}</div></div>
-      <div class="sc-box"><div class="sc-num">${stats.totalCompleted > 0 ? Math.round(stats.totalPoints/stats.totalCompleted) : 0}</div><div class="sc-lbl">${t('achCalcAvgLbl')}</div></div>
+      <div class="sc-box"><div class="sc-num">${stats.totalCompleted}</div><div class="sc-lbl">Bài đã hoàn thành</div></div>
+      <div class="sc-box"><div class="sc-num">${stats.totalAttempts}</div><div class="sc-lbl">Tổng lần làm</div></div>
+      <div class="sc-box"><div class="sc-num">${stats.totalCompleted > 0 ? Math.round(stats.totalPoints/stats.totalCompleted) : 0}</div><div class="sc-lbl">Điểm TB / bài</div></div>
     </div>
   </div>`;
   
   var achieveHtml = '';
   if(list.length === 0) {
-    achieveHtml = `<div class="achieve-empty"><div class="ae-icon">🎯</div><p>${t('achEmptyMsg')}</p></div>`;
+    achieveHtml = `<div class="achieve-empty"><div class="ae-icon">🎯</div><p>Bạn chưa hoàn thành bài tập nào.<br>Hãy bắt đầu học ngay!</p></div>`;
   } else {
     achieveHtml = '<div class="achieve-list">' + list.map(function(r) {
       var pct = Math.round((r.bestScore / r.maxScore) * 100);
@@ -4918,13 +4926,13 @@ function renderAchievements() {
         <div class="achieve-icon ${iconCls}">${icon}</div>
         <div class="achieve-info">
           <h4>${r.name}</h4>
-          <p>${r.type} · ${r.correct}/${r.total} ${t('prCurrCorrectOf')} · ${r.attempts} ${t('prCurrTimesUnit')}</p>
-          <div class="achieve-date">${t('achDateLbl')} ${r.completedAt}</div>
+          <p>${r.type} · ${r.correct}/${r.total} câu đúng · ${r.attempts} lần làm</p>
+          <div class="achieve-date">📅 Hoàn thành: ${r.completedAt}</div>
           <div class="achieve-score-bar" style="margin-top:6px;"><div class="achieve-score-fill" style="width:${pct}%"></div></div>
         </div>
         <div class="achieve-score-badge">
           <div class="asb-points">${r.bestScore}</div>
-          <div class="asb-lbl">/ ${r.maxScore} ${t('prCurrPointsUnit')}</div>
+          <div class="asb-lbl">/ ${r.maxScore} điểm</div>
           <div class="ef-new-score-badge">${pct}%</div>
         </div>
       </div>`;
@@ -5292,12 +5300,7 @@ function setLang(lang) {
   if(document.getElementById('page-profile').classList.contains('active')) renderProfile();
   if(document.getElementById('page-pr-course').classList.contains('active')) {
     updateExSelectionBadges && updateExSelectionBadges();
-    renderPrCurriculum && renderPrCurriculum();
-    renderAchievements && renderAchievements();
-  }
-  // Refresh achievement content on profile page
-  if(document.getElementById('page-profile').classList.contains('active')) {
-    renderAchievements && renderAchievements();
+    renderPrCurriculum();
   }
 }
 
