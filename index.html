@@ -1279,15 +1279,15 @@ body.dark-mode .pr-heading-purple { color: #c084fc; }
     </div>
     <button class="menu-toggle-btn" id="menuToggle"><span></span><span></span><span></span></button>
     <nav class="home-nav-links">
-      <a class="hnl-item" onclick="showPage('page-home')">Trang chủ</a>
+      <a class="hnl-item" onclick="showPage('page-home')" data-i18n="headerHome">Trang chủ</a>
       <a class="hnl-item" onclick="showPage('page-pr-course')">📣 Public Relations</a>
     </nav>
     <div class="home-search">
-      <input type="text" id="searchInput" placeholder="Tìm kiếm nội dung PR...">
+      <input type="text" id="searchInput" data-i18n-placeholder="searchPlaceholder" placeholder="Tìm kiếm nội dung PR...">
       <button class="home-search-btn" onclick="doSearch()">🔍</button>
     </div>
     <div class="home-right">
-      <button class="header-settings-btn" onclick="showPage('page-settings')">⚙️ Cài đặt</button>
+      <button class="header-settings-btn" onclick="showPage('page-settings')" data-i18n="headerSettings">⚙️ Cài đặt</button>
       <div class="home-divider"></div>
       <div class="home-auth" id="homeAuthArea"></div>
     </div>
@@ -1312,7 +1312,7 @@ body.dark-mode .pr-heading-purple { color: #c084fc; }
   </nav>
   <div class="sm-bottom-box" id="smBottomBox" style="display:none;">
     <div class="sm-bottom-label">⚙️ Hệ thống</div>
-    <a class="sm-bottom-item" onclick="closeMenu();showPage('page-settings')"><span class="sbi-icon">⚙️</span><span>Cài đặt</span><span class="sbi-arrow">›</span></a>
+    <a class="sm-bottom-item" onclick="closeMenu();showPage('page-settings')"><span class="sbi-icon">⚙️</span><span data-i18n="headerSettings">Cài đặt</span><span class="sbi-arrow">›</span></a>
     <a class="sm-bottom-item sm-logout-item" onclick="closeMenu();doLogout()"><span class="sbi-icon">🚪</span><span data-i18n="navLogout">Đăng xuất</span><span class="sbi-arrow">›</span></a>
   </div>
   <div class="sm-footer" id="smFooterGuest">
@@ -3962,7 +3962,8 @@ var I18N = {
     cpH1:'🔑 Đổi mật khẩu',cpSub:'Bảo vệ tài khoản với mật khẩu mạnh',cpTipsTitle:'🔐 Mật khẩu mạnh nên có:',cpT1:'Ít nhất 8 ký tự',cpT2:'Chữ hoa và chữ thường',cpT3:'Số và ký tự đặc biệt',cpT4:'Không dùng thông tin cá nhân',
     cpCurLbl:'Mật khẩu hiện tại *',cpCurErr:'Mật khẩu hiện tại không đúng',cpNewLbl:'Mật khẩu mới *',cpNewErr:'Mật khẩu phải có ít nhất 8 ký tự',cpConLbl:'Xác nhận mật khẩu mới *',cpConErr:'Mật khẩu không khớp',cpConOk:'✓ Mật khẩu khớp',cpSaveBtn:'✅ Cập nhật',
     strengthWeak:'⚠️ Yếu',strengthMed:'👍 Trung bình',strengthStrong:'💪 Mạnh',confirmLogout:'Bạn có chắc muốn đăng xuất?',
-    errFill:'❌ Vui lòng điền đầy đủ thông tin!',errPwdShort:'❌ Mật khẩu phải ít nhất 8 ký tự!',errPwdMatch:'❌ Mật khẩu xác nhận không khớp!',errTerms:'❌ Vui lòng đồng ý điều khoản!',errFpFill:'❌ Vui lòng nhập email!',errNameEmpty:'❌ Họ và tên không được trống!',loginRequired:'⚠️ Vui lòng đăng nhập!'
+    errFill:'❌ Vui lòng điền đầy đủ thông tin!',errPwdShort:'❌ Mật khẩu phải ít nhất 8 ký tự!',errPwdMatch:'❌ Mật khẩu xác nhận không khớp!',errTerms:'❌ Vui lòng đồng ý điều khoản!',errFpFill:'❌ Vui lòng nhập email!',errNameEmpty:'❌ Họ và tên không được trống!',loginRequired:'⚠️ Vui lòng đăng nhập!',
+    headerHome:'Trang chủ',headerSettings:'⚙️ Cài đặt',searchPlaceholder:'Tìm kiếm nội dung PR...',headerLogin:'Đăng nhập',headerRegister:'Đăng ký'
   },
   en: {
     navHome:'🏠 Home',navProfile:'👤 Profile',navSettings:'⚙️ Settings',navChangePwd:'🔑 Change Password',navLogout:'🚪 Logout',navLogin:'Login',navRegister:'Register',
@@ -3998,7 +3999,8 @@ var I18N = {
     cpH1:'🔑 Change Password',cpSub:'Protect your account with a strong password',cpTipsTitle:'🔐 A strong password should have:',cpT1:'At least 8 characters',cpT2:'Uppercase and lowercase letters',cpT3:'Numbers and special characters',cpT4:'No personal information',
     cpCurLbl:'Current password *',cpCurErr:'Current password is incorrect',cpNewLbl:'New password *',cpNewErr:'Password must be at least 8 characters',cpConLbl:'Confirm new password *',cpConErr:'Passwords do not match',cpConOk:'✓ Passwords match',cpSaveBtn:'✅ Update',
     strengthWeak:'⚠️ Weak',strengthMed:'👍 Medium',strengthStrong:'💪 Strong',confirmLogout:'Are you sure you want to logout?',
-    errFill:'❌ Please fill in all required fields!',errPwdShort:'❌ Password must be at least 8 characters!',errPwdMatch:'❌ Passwords do not match!',errTerms:'❌ Please agree to the terms!',errFpFill:'❌ Please enter your email!',errNameEmpty:'❌ Full name cannot be empty!',loginRequired:'⚠️ Please login first!'
+    errFill:'❌ Please fill in all required fields!',errPwdShort:'❌ Password must be at least 8 characters!',errPwdMatch:'❌ Passwords do not match!',errTerms:'❌ Please agree to the terms!',errFpFill:'❌ Please enter your email!',errNameEmpty:'❌ Full name cannot be empty!',loginRequired:'⚠️ Please login first!',
+    headerHome:'Home',headerSettings:'⚙️ Settings',searchPlaceholder:'Search PR content...',headerLogin:'Login',headerRegister:'Sign up'
   }
 };
 
@@ -4498,7 +4500,7 @@ auth.onAuthStateChanged((user) => {
     }
   } else {
     currentUserData = null;
-    authArea.innerHTML = '<button class="btn-hlogin" onclick="showPage(\'page-login\')">Đăng nhập</button><button class="btn-hreg" onclick="showPage(\'page-register\')">Đăng ký</button>';
+    authArea.innerHTML = `<button class="btn-hlogin" onclick="showPage('page-login')">${t('headerLogin')}</button><button class="btn-hreg" onclick="showPage('page-register')">${t('headerRegister')}</button>`;
     userBar.style.display = 'none';
     
     if(smLogin) smLogin.style.display = 'flex';
@@ -4652,11 +4654,23 @@ function setLang(lang) {
       else el.innerText = I18N[lang][key];
     }
   });
+
+  // Handle placeholder-only elements
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el) {
+    var key = el.getAttribute('data-i18n-placeholder');
+    if(I18N[lang] && I18N[lang][key]) el.placeholder = I18N[lang][key];
+  });
   
   document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
     var key = el.getAttribute('data-i18n-html');
     if(I18N[lang] && I18N[lang][key]) el.innerHTML = I18N[lang][key];
   });
+
+  // Refresh auth area buttons if guest
+  var authArea = document.getElementById('homeAuthArea');
+  if(authArea && !auth.currentUser) {
+    authArea.innerHTML = `<button class="btn-hlogin" onclick="showPage('page-login')">${t('headerLogin')}</button><button class="btn-hreg" onclick="showPage('page-register')">${t('headerRegister')}</button>`;
+  }
 
   if(document.getElementById('page-profile').classList.contains('active')) renderProfile();
 }
