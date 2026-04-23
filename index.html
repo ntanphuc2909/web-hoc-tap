@@ -1259,6 +1259,10 @@ body.dark-mode .pr-icon-recv { background: #1a3f3e; }
 /* exercise-frame casestudy brown border */
 .ef-casestudy-border { border-color: #c4a086 !important; }
 body.dark-mode .ef-casestudy-border { border-color: rgba(196,160,134,.45) !important; }
+/* ROPES diagram dark mode */
+body.dark-mode .ropes-cell { background: rgba(140,47,82,.2) !important; color: var(--text) !important; }
+body.dark-mode .ropes-cell div { color: var(--text2) !important; }
+body.dark-mode .ropes-cell .ropes-label { color: #e090b0 !important; }
 .pr-heading-purple { color: #7c3aed; }
 body.dark-mode .pr-heading-purple { color: #c084fc; }
 
@@ -1888,6 +1892,23 @@ body.auth-page #globalHeader { display: none; }
             <button class="ef-btn ef-btn-start" onclick="switchPrTab('casestudy-detail',null)">📋 Xem Case Study</button>
           </div>
         </div>
+
+        <div class="exercise-frame ef-casestudy-border" onclick="switchPrTab('casestudy-detail-2',null)" style="border-color:#b05c7a !important;">
+          <div class="ef-header">
+            <div class="ef-num" style="background:linear-gradient(135deg,#8c2f52,#c0587e);box-shadow:0 3px 10px rgba(140,47,82,.3);">2</div>
+            <div class="ef-info">
+              <h4>Chiến dịch "We Care For Her" — Roche Việt Nam 2025</h4>
+              <p>Báo cáo chi tiết chiến dịch truyền thông y tế theo mô hình ROPES: nâng cao nhận thức tầm soát ung thư vú tại Việt Nam</p>
+            </div>
+            <div class="ef-status-badge">
+              <span class="ef-badge" class="ef-badge ef-badge-casestudy">📋 Case Study</span>
+              <span class="ef-badge" class="ef-badge ef-badge-primary-text">Y TẾ & CỘNG ĐỒNG</span>
+            </div>
+          </div>
+          <div class="ef-actions">
+            <button class="ef-btn ef-btn-start" onclick="event.stopPropagation();switchPrTab('casestudy-detail-2',null)" style="background:linear-gradient(135deg,#8c2f52,#c0587e);">📋 Xem Case Study</button>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -2207,6 +2228,338 @@ body.auth-page #globalHeader { display: none; }
 
       <!-- ══ ĐIỀU HƯỚNG ══ -->
       <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <button onclick="switchPrTab('curriculum',null)" style="padding:11px 24px;background:var(--gradient);color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-family:'Helvetica Rounded Bold',sans-serif;font-size:14px;">📚 Đọc Nội dung lý thuyết →</button>
+        <button onclick="switchPrTab('crisis-game',null);updateExSelectionBadges();" style="padding:11px 24px;background:linear-gradient(135deg,#F4A261,#E76F51);color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-family:'Helvetica Rounded Bold',sans-serif;font-size:14px;">🎮 Làm bài tập thực chiến →</button>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════
+         CASE STUDY 2 — WE CARE FOR HER
+    ══════════════════════════════════════════ -->
+    <div class="pr-section" id="pr-casestudy-detail-2">
+      <!-- Back button -->
+      <div style="margin-bottom:18px;">
+        <button onclick="switchPrTab('casestudy',null)" style="padding:9px 18px;background:var(--card);color:var(--text);border:1.5px solid var(--border);border-radius:8px;font-weight:600;cursor:pointer;font-size:13px;font-family:'Helvetica Rounded Bold',sans-serif;display:inline-flex;align-items:center;gap:6px;transition:all .2s;" onmouseover="this.style.borderColor='#c0587e'" onmouseout="this.style.borderColor='var(--border)'">← Quay lại Case Study</button>
+      </div>
+
+      <!-- Header banner -->
+      <div style="background:linear-gradient(135deg,#5c1a35 0%,#8c2f52 55%,#c0587e 100%);border-radius:16px;padding:32px 28px 24px;color:#fff;margin-bottom:28px;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:-40px;right:-40px;width:220px;height:220px;background:radial-gradient(circle,rgba(255,255,255,.1) 0%,transparent 70%);border-radius:50%;pointer-events:none;"></div>
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px;">
+          <div style="width:52px;height:52px;background:rgba(255,255,255,.15);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0;">🎗️</div>
+          <div>
+            <span style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;opacity:.7;display:block;margin-bottom:4px;">CASE STUDY · Y TẾ & CỘNG ĐỒNG</span>
+            <h2 style="font-family:'Helvetica Rounded Bold',sans-serif;font-size:22px;margin:0;">Chiến dịch "We Care For Her" — Roche Việt Nam 2025</h2>
+          </div>
+        </div>
+        <p style="font-size:14px;opacity:.88;line-height:1.6;margin:0;">Báo cáo chi tiết chiến dịch truyền thông y tế ứng dụng mô hình <strong>ROPES</strong> nhằm nâng cao nhận thức tầm soát ung thư vú, phá vỡ rào cản tâm lý "ung thư là dấu chấm hết" tại Việt Nam.</p>
+      </div>
+
+      <!-- Content card -->
+      <div style="background:var(--card);border-radius:14px;border:1px solid var(--border);padding:36px 32px;margin-bottom:28px;box-shadow:0 4px 18px rgba(0,0,0,.07);font-size:14.5px;line-height:1.75;color:var(--text);">
+
+        <!-- ── 1. NGHIÊN CỨU ── -->
+        <h2 style="font-family:'Helvetica Rounded Bold',sans-serif;font-size:20px;color:var(--text);margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid var(--border);">1. Nghiên cứu (Research)</h2>
+
+        <h3 style="font-size:16px;font-weight:700;color:var(--text);margin-bottom:8px;">Phân tích bối cảnh (Situation Analysis)</h3>
+        <p style="margin-bottom:16px;">Chiến dịch "We Care For Her" do Roche khởi xướng từ năm 2013 với cột mốc quan trọng là sự kiện khánh thành tại Hà Nội (14/12) và TP.HCM (15/12). Sau hơn một thập kỷ, chiến dịch cần một bước chuyển mình chiến lược để đối phó với thực trạng y tế ngày càng phức tạp.</p>
+
+        <h4 style="font-size:15px;font-weight:700;color:var(--text);margin-bottom:8px;">Dữ liệu thực trạng y tế (GLOBOCAN 2020)</h4>
+        <ul style="padding-left:22px;margin-bottom:16px;">
+          <li style="margin-bottom:8px;">Toàn cầu: Ung thư vú đứng đầu về tỷ lệ mắc mới với 2,26 triệu ca và khiến 685.000 người tử vong hàng năm.</li>
+          <li style="margin-bottom:8px;">Việt Nam: Ghi nhận 21.555 ca mắc mới, chiếm 25,8% tổng số ca ung thư ở nữ giới.</li>
+          <li>Cơ hội chiến lược: Tỷ lệ chữa khỏi đạt trên 90% nếu phát hiện sớm. Tuy nhiên, rào cản tâm lý "ung thư là dấu chấm hết" vẫn đang ngăn cản phụ nữ đi tầm soát.</li>
+        </ul>
+
+        <h4 style="font-size:15px;font-weight:700;color:var(--text);margin-bottom:8px;">Phân tích điểm yếu (Weaknesses)</h4>
+        <p style="margin-bottom:10px;">Để tối ưu hóa hiệu quả, chiến dịch cần khắc phục 4 điểm yếu cốt lõi từ các giai đoạn trước:</p>
+        <ol style="padding-left:22px;margin-bottom:24px;">
+          <li style="margin-bottom:8px;"><strong>Thông điệp thiếu sức nặng:</strong> Chưa tạo được sự thức tỉnh đủ lớn để thay đổi hành vi tầm soát định kỳ.</li>
+          <li style="margin-bottom:8px;"><strong>Hợp tác đối tác hạn chế:</strong> Sự thiếu vắng các KOLs có trải nghiệm thực chứng làm giảm tính thuyết phục của chiến dịch.</li>
+          <li style="margin-bottom:8px;"><strong>Nội dung chung chung:</strong> Chưa phân hóa thông điệp cho các nhóm tiểu phân khúc (nhóm thu nhập thấp, ít công nghệ).</li>
+          <li><strong>Thiếu tính cá nhân hóa &amp; Insight:</strong> Chưa đánh trúng tâm lý "chủ quan". Chiến dịch mới cần nhấn mạnh: "Ai cũng có thể trở thành bệnh nhân ung thư" để phá bỏ rào cản "bệnh tật trừ mình ra".</li>
+        </ol>
+
+        <!-- ── 2. MỤC TIÊU ── -->
+        <h2 style="font-family:'Helvetica Rounded Bold',sans-serif;font-size:20px;color:var(--text);margin:28px 0 14px;padding-bottom:10px;border-bottom:2px solid var(--border);">2. Mục tiêu (Objectives)</h2>
+
+        <h3 style="font-size:16px;font-weight:700;color:var(--text);margin-bottom:6px;">2.1. Mục tiêu Thông tin (Informational)</h3>
+        <p style="margin-bottom:16px;">Khẳng định sự đồng hành chiến lược giữa Roche, Bộ Y tế và Quỹ Ngày mai tươi sáng trong dự án "Chung tay vì người phụ nữ tôi yêu".</p>
+
+        <h3 style="font-size:16px;font-weight:700;color:var(--text);margin-bottom:6px;">2.2. Mục tiêu Động lực (Motivational)</h3>
+        <ul style="padding-left:22px;margin-bottom:16px;">
+          <li style="margin-bottom:8px;">Nâng cao nhận thức cho nhóm đối tượng khó tiếp cận: Phụ nữ nội trợ, thu nhập thấp, ít cập nhật công nghệ.</li>
+          <li style="margin-bottom:8px;">Thúc đẩy sự cân bằng giữa trách nhiệm gia đình và việc chăm sóc bản thân.</li>
+          <li>Tái định nghĩa tư duy cộng đồng:
+            <ul style="padding-left:20px;margin-top:6px;">
+              <li style="margin-bottom:6px;">Ung thư vú không đồng nghĩa với cái chết hay không thể cứu chữa. Phát hiện sớm giúp đạt tỷ lệ phục hồi 90%.</li>
+              <li>Chuyển đổi góc nhìn từ "nạn nhân cần sự thương hại" sang "người phụ nữ mạnh mẽ, sống có mục đích".</li>
+            </ul>
+          </li>
+        </ul>
+
+        <h3 style="font-size:16px;font-weight:700;color:var(--text);margin-bottom:6px;">2.3. Mục tiêu Uy tín (Reputational)</h3>
+        <p style="margin-bottom:24px;">Xây dựng hình ảnh Roche là đơn vị dẫn đầu trong các giải pháp y tế bền vững, không chỉ cung cấp thuốc mà còn cung cấp hy vọng và sự bảo vệ cho phụ nữ Việt Nam.</p>
+
+        <!-- ── 3. LẬP CHƯƠNG TRÌNH ── -->
+        <h2 style="font-family:'Helvetica Rounded Bold',sans-serif;font-size:20px;color:var(--text);margin:28px 0 14px;padding-bottom:10px;border-bottom:2px solid var(--border);">3. Lập chương trình (Programming)</h2>
+
+        <h3 style="font-size:16px;font-weight:700;color:var(--text);margin-bottom:6px;">3.1. Đối tượng mục tiêu (Target Audience)</h3>
+        <ul style="padding-left:22px;margin-bottom:16px;">
+          <li style="margin-bottom:8px;"><strong>Chính:</strong> Phụ nữ 35–55 tuổi. Đặc điểm: Nội trợ, ưu tiên gia đình, thu nhập thấp, tâm lý ngại đi khám vì sợ tốn kém hoặc sợ phát hiện bệnh.</li>
+          <li><strong>Phụ:</strong> Gen Z và Nam giới. Vai trò: "Người thúc đẩy" (Influencers gia đình), trực tiếp đưa mẹ/vợ đi tầm soát.</li>
+        </ul>
+
+        <h3 style="font-size:16px;font-weight:700;color:var(--text);margin-bottom:6px;">3.2. Thông điệp chủ chốt (Key Message)</h3>
+        <div style="background:var(--bg);border-left:4px solid #c0587e;border-radius:8px;padding:14px 18px;margin-bottom:16px;font-style:italic;font-size:15px;font-weight:700;color:var(--text);">"Vì mỗi người phụ nữ đều xứng đáng có một ngày mai."</div>
+
+        <h3 style="font-size:16px;font-weight:700;color:var(--text);margin-bottom:8px;">3.3. Chiến lược (Strategy)</h3>
+        <ul style="padding-left:22px;margin-bottom:16px;">
+          <li style="margin-bottom:10px;"><strong>Tính xác thực (Authenticity):</strong> Sử dụng câu chuyện thực tế của Diva Hồng Nhung — người đã trực tiếp trải qua 3 đợt xạ trị. Đây là minh chứng sống động nhất cho việc ung thư không thể dập tắt được niềm đam mê và nhan sắc nếu được điều trị đúng cách.</li>
+          <li><strong>Giảm thiểu nỗi sợ (Fear Appeal Management):</strong> Kết hợp giữa cảm xúc của nghệ sĩ và dữ liệu khoa học từ bác sĩ để biến nỗi sợ thành hành động tầm soát (CTA).</li>
+        </ul>
+
+        <h3 style="font-size:16px;font-weight:700;color:var(--text);margin-bottom:10px;">3.4. Biện pháp thực thi (Tactics)</h3>
+
+        <!-- Phase table -->
+        <div style="overflow-x:auto;margin-bottom:20px;">
+          <table style="width:100%;border-collapse:collapse;font-size:13.5px;">
+            <thead>
+              <tr style="background:linear-gradient(135deg,#8c2f52,#c0587e);color:#fff;">
+                <th style="padding:12px 14px;text-align:left;border-radius:8px 0 0 0;">Giai Đoạn</th>
+                <th style="padding:12px 14px;text-align:left;">Kích Hoạt (Trigger)</th>
+                <th style="padding:12px 14px;text-align:left;">Tương Tác (Engage)</th>
+                <th style="padding:12px 14px;text-align:left;">Lan Tỏa (Amplification)</th>
+                <th style="padding:12px 14px;text-align:left;border-radius:0 8px 0 0;">Tổng thể (Overall)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:12px 14px;font-weight:700;color:var(--text);">Trọng tâm</td>
+                <td style="padding:12px 14px;">Tạo sự chú ý</td>
+                <td style="padding:12px 14px;">Thúc đẩy sự tham gia</td>
+                <td style="padding:12px 14px;">Mở rộng tầm ảnh hưởng</td>
+                <td style="padding:12px 14px;">Củng cố và duy trì</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border);background:var(--bg);">
+                <td style="padding:12px 14px;font-weight:700;color:var(--text);">Cảm Xúc</td>
+                <td style="padding:12px 14px;">Khơi mào cảm xúc mạnh mẽ</td>
+                <td style="padding:12px 14px;">Hành động yêu thương là chăm sóc</td>
+                <td style="padding:12px 14px;">Cộng hưởng rộng rãi trong cộng đồng</td>
+                <td style="padding:12px 14px;">Để lại tác động cảm xúc lâu dài</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:12px 14px;font-weight:700;color:var(--text);">Mục Tiêu Chính</td>
+                <td style="padding:12px 14px;">Kết nối cảm xúc ngay từ lần chạm đầu</td>
+                <td style="padding:12px 14px;">Xây dựng sự gắn kết cá nhân</td>
+                <td style="padding:12px 14px;">Khuếch tán và tạo hiệu ứng lan truyền</td>
+                <td style="padding:12px 14px;">Duy trì và củng cố giá trị dài hạn</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Giai đoạn 1 -->
+        <div style="background:var(--bg);border-radius:10px;border-left:4px solid #c0587e;padding:16px 18px;margin-bottom:14px;">
+          <p style="font-weight:700;font-size:14px;color:var(--text);margin-bottom:8px;">📍 Giai đoạn Kích hoạt (6/2025 – 7/2025)</p>
+          <p style="margin-bottom:6px;"><strong>Mục tiêu:</strong> Tiếp cận hơn 1,5 triệu người; Talkshow đạt 500.000 lượt xem; 90% phản hồi tích cực.</p>
+          <p style="margin-bottom:6px;"><strong>Hoạt động:</strong> Talkshow "Have a Sip" với Diva Hồng Nhung.</p>
+          <p style="margin-bottom:6px;"><strong>Kênh truyền thông:</strong> TikTok, Facebook, Instagram (cắt clip ngắn cho Reels); YouTube (phiên bản đầy đủ); Quảng cáo trực tiếp tại các chợ, khu công nghiệp, trạm dừng xe buýt.</p>
+          <p style="margin:0;"><strong>Nội dung:</strong> Diva Hồng Nhung chia sẻ hành trình 3 đợt xạ trị, đưa ra lời khuyên "Bất kỳ ai cũng có thể là bệnh nhân ung thư". Sự tham gia của bác sĩ để giải đáp chuyên môn, giảm bớt nỗi sợ với lời kêu gọi: "Tầm soát càng sớm càng tốt – tỷ lệ chữa khỏi lên đến 90%".</p>
+        </div>
+
+        <!-- Giai đoạn 2 -->
+        <div style="background:var(--bg);border-radius:10px;border-left:4px solid #8c2f52;padding:16px 18px;margin-bottom:14px;">
+          <p style="font-weight:700;font-size:14px;color:var(--text);margin-bottom:8px;">📍 Giai đoạn Tương tác (7/2025 – 8/2025)</p>
+          <p style="margin-bottom:6px;"><strong>Hoạt động:</strong> Phim ngắn cảm động "Sống Trọn"; Video ngắn Gen Z đồng hành cùng mẹ đi tầm soát.</p>
+          <p style="margin-bottom:6px;"><strong>Người có ảnh hưởng (Influencers):</strong> Thạch Trang, Bé Đàng, Tina Thảo Thi, Tin Nguyễn.</p>
+          <p style="margin-bottom:6px;"><strong>Mục tiêu:</strong> Đạt 500.000 lượt xem video; tạo thảo luận mạnh mẽ quanh câu chuyện của Hồng Nhung; kết nối thế hệ Gen Z và Gen X; thúc đẩy Gen Z bảo vệ mẹ bằng hành động thực tế; tiếp cận hơn 1 triệu người dùng Gen Z qua hashtag.</p>
+          <p style="margin-bottom:6px;"><strong>Nội dung:</strong> Nhịp cảm xúc từ Cuộc sống bận rộn → Cảm xúc → Hành động → Lan tỏa yêu thương. Hiển thị thông tin chiến dịch và mã QR code để đăng ký tầm soát ở cuối video.</p>
+          <p style="margin-bottom:6px;"><strong>Hashtag:</strong> #MeCoMetKhong, #WeCareForHer.</p>
+          <p style="margin:0;"><strong>Lợi ích cho người tham gia:</strong> Voucher tầm soát miễn phí; giảm giá 30% chụp nhũ ảnh tại các bệnh viện đối tác; các phòng khám lưu động phục vụ vùng sâu vùng xa.</p>
+        </div>
+
+        <!-- Giai đoạn 3 -->
+        <div style="background:var(--bg);border-radius:10px;border-left:4px solid #5c1a35;padding:16px 18px;margin-bottom:24px;">
+          <p style="font-weight:700;font-size:14px;color:var(--text);margin-bottom:8px;">📍 Giai đoạn Lan tỏa (10/2025 – Tháng nhận thức về Ung thư vú)</p>
+          <p style="margin-bottom:6px;"><strong>Hoạt động:</strong> Triển lãm nghệ thuật đa giác quan "Still Here" (lấy cảm hứng từ triển lãm Van Gogh), tái hiện hành trình chiến đấu với bệnh tật của phụ nữ.</p>
+          <p style="margin-bottom:6px;"><strong>Kênh offline:</strong> Phối hợp với Sun Life Việt Nam tổ chức tại De La Sol; phát poster tại bệnh viện, phòng khám, trạm xe buýt.</p>
+          <p style="margin:0;"><strong>Kênh online:</strong> Ra mắt teaser video định dạng dọc (30–60 giây) và bộ ảnh nghệ thuật.</p>
+        </div>
+
+        <!-- ── 4. ĐÁNH GIÁ ── -->
+        <h2 style="font-family:'Helvetica Rounded Bold',sans-serif;font-size:20px;color:var(--text);margin:28px 0 14px;padding-bottom:10px;border-bottom:2px solid var(--border);">4. Đánh giá (Evaluation)</h2>
+        <p style="margin-bottom:14px;">Chiến dịch không chỉ đạt được các con số về mặt hiển thị mà còn giải quyết triệt để các điểm yếu ban đầu:</p>
+        <ul style="padding-left:22px;margin-bottom:24px;">
+          <li style="margin-bottom:8px;">Đạt <strong>1.500.000+ lượt tiếp cận</strong>. Thông điệp "Ai cũng có thể mắc bệnh" đã thay đổi tâm lý chủ quan của nhóm phụ nữ nội trợ.</li>
+          <li style="margin-bottom:8px;"><strong>1.000.000+ Gen Z</strong> tham gia, biến thế hệ trẻ thành đội ngũ tư vấn viên tâm lý ngay trong gia đình (giải quyết vấn đề thiếu cá nhân hóa).</li>
+          <li>Câu chuyện 3 lần xạ trị của Diva Hồng Nhung giúp tỷ lệ thảo luận tích cực đạt <strong>90%</strong>, phá vỡ sự khô khan của các chiến dịch y tế truyền thống.</li>
+        </ul>
+
+        <!-- ── 5. QUẢN TRỊ & LỘ TRÌNH ── -->
+        <h2 style="font-family:'Helvetica Rounded Bold',sans-serif;font-size:20px;color:var(--text);margin:28px 0 14px;padding-bottom:10px;border-bottom:2px solid var(--border);">5. Quản trị và Lộ trình thực hiện (Stewardship)</h2>
+
+        <h3 style="font-size:16px;font-weight:700;color:var(--text);margin-bottom:8px;">5.1. Tiến độ thực hiện (Timetable)</h3>
+        <p style="margin-bottom:12px;">Lộ trình được thiết kế đảm bảo công tác chuẩn bị hậu cần kỹ lưỡng trước khi bùng nổ truyền thông:</p>
+        <ul style="padding-left:22px;margin-bottom:16px;">
+          <li style="margin-bottom:10px;"><strong>Tháng 7 – 8/2025 (Chuẩn bị &amp; Tiền trạm):</strong>
+            <ul style="padding-left:20px;margin-top:6px;">
+              <li style="margin-bottom:4px;">Hoàn tất khảo sát địa điểm triển lãm và booth.</li>
+              <li style="margin-bottom:4px;">Sản xuất nội dung Talkshow và Phim ngắn.</li>
+              <li>Tổ chức lễ khởi động (Kick-off) nội bộ và với đối tác.</li>
+            </ul>
+          </li>
+          <li style="margin-bottom:10px;"><strong>Tháng 9 – 10/2025 (Bùng nổ truyền thông):</strong>
+            <ul style="padding-left:20px;margin-top:6px;">
+              <li style="margin-bottom:4px;">Chạy quảng cáo đa nền tảng (Social, TV, Newspaper).</li>
+              <li style="margin-bottom:4px;">Triển khai triển lãm "Still Here" và chiến dịch hashtag trên TikTok.</li>
+              <li>Tuyển dụng và đào tạo tình nguyện viên cho các trạm y tế.</li>
+            </ul>
+          </li>
+          <li style="margin-bottom:10px;"><strong>Tháng 11 – 12/2025 (Thực thi tại hiện trường):</strong>
+            <ul style="padding-left:20px;margin-top:6px;">
+              <li style="margin-bottom:4px;">Vận hành các booth tại bệnh viện và trung tâm cộng đồng.</li>
+              <li>Tổ chức hội thảo chia sẻ kinh nghiệm thực tế giữa bệnh nhân và người tầm soát.</li>
+            </ul>
+          </li>
+          <li><strong>Tháng 1/2026 (Tổng kết &amp; Duy trì):</strong>
+            <ul style="padding-left:20px;margin-top:6px;">
+              <li style="margin-bottom:4px;">Đo lường KPIs cuối cùng.</li>
+              <li>Sự kiện tri ân và kết nối mạng lưới "Ngày mai tươi sáng".</li>
+            </ul>
+          </li>
+        </ul>
+
+        <h3 style="font-size:16px;font-weight:700;color:var(--text);margin-bottom:8px;">5.2. Duy trì các hoạt động (Ongoing activities)</h3>
+        <p style="margin-bottom:10px;">Để đảm bảo tính bền vững, chiến dịch sẽ tiếp tục duy trì:</p>
+        <ul style="padding-left:22px;margin-bottom:0;">
+          <li style="margin-bottom:6px;">Mạng lưới xe tầm soát lưu động tại các khu công nghiệp vào mỗi quý.</li>
+          <li style="margin-bottom:6px;">Cộng đồng hỗ trợ tâm lý trực tuyến cho bệnh nhân ung thư vú mới.</li>
+          <li>Duy trì cổng thông tin đăng ký tầm soát trực tuyến và QR code tại các bệnh viện đối tác.</li>
+        </ul>
+
+      </div>
+
+      <!-- ROPES PROCESS DIAGRAM -->
+      <div style="background:var(--card);border-radius:14px;border:1px solid var(--border);padding:32px 28px;margin-bottom:28px;box-shadow:0 4px 18px rgba(0,0,0,.07);">
+        <h3 style="font-family:'Helvetica Rounded Bold',sans-serif;font-size:20px;color:#c0587e;margin-bottom:24px;">ROPES Process</h3>
+        <div style="overflow-x:auto;">
+          <div style="display:flex;gap:0;align-items:flex-start;min-width:700px;">
+
+            <!-- Research -->
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;">
+              <div style="background:#8c2f52;color:#fff;border-radius:8px;padding:8px 14px;font-weight:700;font-size:13px;text-align:center;width:100%;margin-bottom:10px;">Research</div>
+              <div style="background:#e8d5dc;border-radius:8px;padding:12px;width:100%;font-size:12.5px;color:#3a1a26;">
+                <div style="font-weight:700;color:#8c2f52;margin-bottom:6px;">Situation analysis</div>
+                <div>• Awareness thấp</div>
+                <div>• Taboo "ung thư vú"</div>
+                <div>• Trì hoãn tầm soát</div>
+              </div>
+            </div>
+
+            <div style="padding-top:14px;color:#8c2f52;font-size:18px;font-weight:700;flex-shrink:0;margin:0 4px;">→</div>
+
+            <!-- Objective -->
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;">
+              <div style="background:#8c2f52;color:#fff;border-radius:8px;padding:8px 14px;font-weight:700;font-size:13px;text-align:center;width:100%;margin-bottom:10px;">Objective</div>
+              <div style="display:flex;flex-direction:column;gap:6px;width:100%;">
+                <div style="background:#e8d5dc;border-radius:8px;padding:10px;font-size:12px;color:#3a1a26;">
+                  <div style="font-weight:700;color:#8c2f52;margin-bottom:4px;">Informational</div>
+                  <div>• Awareness ↑</div>
+                  <div>• &gt;90% chữa khỏi</div>
+                  <div>• Roche + Bộ Y Tế</div>
+                </div>
+                <div style="background:#e8d5dc;border-radius:8px;padding:10px;font-size:12px;color:#3a1a26;">
+                  <div style="font-weight:700;color:#8c2f52;margin-bottom:4px;">Motivational</div>
+                  <div>• Thay đổi nhận thức</div>
+                  <div>• Ung thư ≠ án tử</div>
+                  <div>• Đi tầm soát</div>
+                </div>
+                <div style="background:#e8d5dc;border-radius:8px;padding:10px;font-size:12px;color:#3a1a26;">
+                  <div style="font-weight:700;color:#8c2f52;margin-bottom:4px;">Reputational</div>
+                  <div>• Roche = vì phụ nữ</div>
+                  <div>• CSR / uy tín</div>
+                </div>
+              </div>
+            </div>
+
+            <div style="padding-top:14px;color:#8c2f52;font-size:18px;font-weight:700;flex-shrink:0;margin:0 4px;">→</div>
+
+            <!-- Programming -->
+            <div style="flex:1.3;display:flex;flex-direction:column;align-items:center;">
+              <div style="background:#8c2f52;color:#fff;border-radius:8px;padding:8px 14px;font-weight:700;font-size:13px;text-align:center;width:100%;margin-bottom:10px;">Programming</div>
+              <div style="display:flex;flex-direction:column;gap:6px;width:100%;">
+                <div style="background:#e8d5dc;border-radius:8px;padding:10px;font-size:12px;color:#3a1a26;">
+                  <div style="font-weight:700;color:#8c2f52;margin-bottom:4px;">Target audience</div>
+                  <div>• Nữ 35–55</div>
+                  <div>• Gen Z + nam</div>
+                </div>
+                <div style="background:#e8d5dc;border-radius:8px;padding:10px;font-size:12px;color:#3a1a26;">
+                  <div style="font-weight:700;color:#8c2f52;margin-bottom:4px;">Key message</div>
+                  <div>Deserves a tomorrow</div>
+                </div>
+                <div style="background:#e8d5dc;border-radius:8px;padding:10px;font-size:12px;color:#3a1a26;">
+                  <div style="font-weight:700;color:#8c2f52;margin-bottom:4px;">Strategy</div>
+                  <div>• Story thật</div>
+                  <div>• Emotion → Action</div>
+                </div>
+                <div style="background:#e8d5dc;border-radius:8px;padding:10px;font-size:12px;color:#3a1a26;">
+                  <div style="font-weight:700;color:#8c2f52;margin-bottom:4px;">Tactics</div>
+                  <div>• Talkshow</div>
+                  <div>• Phim</div>
+                  <div>• KOL + hashtag</div>
+                  <div>• QR screening</div>
+                  <div>• Exhibition</div>
+                </div>
+                <div style="background:#e8d5dc;border-radius:8px;padding:10px;font-size:12px;color:#3a1a26;">
+                  <div style="font-weight:700;color:#8c2f52;margin-bottom:4px;">Budget</div>
+                  <div>• 1.5M + KOL</div>
+                </div>
+              </div>
+            </div>
+
+            <div style="padding-top:14px;color:#8c2f52;font-size:18px;font-weight:700;flex-shrink:0;margin:0 4px;">→</div>
+
+            <!-- Evaluation -->
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;">
+              <div style="background:#8c2f52;color:#fff;border-radius:8px;padding:8px 14px;font-weight:700;font-size:13px;text-align:center;width:100%;margin-bottom:10px;">Evaluation</div>
+              <div style="display:flex;flex-direction:column;gap:6px;width:100%;">
+                <div style="background:#e8d5dc;border-radius:8px;padding:10px;font-size:12px;color:#3a1a26;">
+                  <div style="font-weight:700;color:#8c2f52;margin-bottom:4px;">Measurement</div>
+                  <div>• Reach 1.5M+</div>
+                  <div>• Gen Z 1M+</div>
+                  <div>• Positive 90%</div>
+                </div>
+                <div style="background:#e8d5dc;border-radius:8px;padding:10px;font-size:12px;color:#3a1a26;">
+                  <div style="font-weight:700;color:#8c2f52;margin-bottom:4px;">Evaluation</div>
+                  <div>• Reach 1.5M+</div>
+                  <div>• Gen Z 1M+</div>
+                  <div>• Positive 90%</div>
+                  <div>• Screening ↑</div>
+                </div>
+              </div>
+            </div>
+
+            <div style="padding-top:14px;color:#8c2f52;font-size:18px;font-weight:700;flex-shrink:0;margin:0 4px;">→</div>
+
+            <!-- Stewardship -->
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;">
+              <div style="background:#8c2f52;color:#fff;border-radius:8px;padding:8px 14px;font-weight:700;font-size:13px;text-align:center;width:100%;margin-bottom:10px;">Stewardship</div>
+              <div style="background:#e8d5dc;border-radius:8px;padding:12px;width:100%;font-size:12px;color:#3a1a26;">
+                <div style="font-weight:700;color:#8c2f52;margin-bottom:6px;">Ongoing activities</div>
+                <div>• Mobile screening</div>
+                <div>• Workshop</div>
+                <div>• Online support</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <button onclick="switchPrTab('casestudy',null)" style="padding:11px 24px;background:var(--card);color:var(--text);border:1.5px solid var(--border);border-radius:8px;font-weight:700;cursor:pointer;font-family:'Helvetica Rounded Bold',sans-serif;font-size:14px;">← Quay lại danh sách</button>
         <button onclick="switchPrTab('curriculum',null)" style="padding:11px 24px;background:var(--gradient);color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-family:'Helvetica Rounded Bold',sans-serif;font-size:14px;">📚 Đọc Nội dung lý thuyết →</button>
         <button onclick="switchPrTab('crisis-game',null);updateExSelectionBadges();" style="padding:11px 24px;background:linear-gradient(135deg,#F4A261,#E76F51);color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-family:'Helvetica Rounded Bold',sans-serif;font-size:14px;">🎮 Làm bài tập thực chiến →</button>
       </div>
@@ -3150,7 +3503,7 @@ function switchPrTab(id, btn) {
   document.querySelectorAll('.pr-tab').forEach(t => t.classList.remove('active'));
   if (btn) btn.classList.add('active');
   else {
-    var map = {casestudy:0, 'casestudy-detail':0, curriculum:1, 'smcr-article':1, 'crisis-game':2, 'exercise-1':2, 'exercise-2':2, 'exercise-3':2, 'exercise-4':2, 'exercise-5':2, 'quiz-infinite':3};
+    var map = {casestudy:0, 'casestudy-detail':0, 'casestudy-detail-2':0, curriculum:1, 'smcr-article':1, 'crisis-game':2, 'exercise-1':2, 'exercise-2':2, 'exercise-3':2, 'exercise-4':2, 'exercise-5':2, 'quiz-infinite':3};
     var tabs = document.querySelectorAll('.pr-tab');
     if (tabs[map[id]] !== undefined) tabs[map[id]].classList.add('active');
   }
