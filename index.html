@@ -417,7 +417,17 @@ body.dark-mode .slide-menu{background:#0d1020;}
 .sec-title.anim-up::after{width:56px;}
 
 /* Page transition */
-.page.active{animation:fadeUpIn .32s cubic-bezier(.23,1,.32,1) both;}
+.page.active{display:block;}
+@keyframes pageEnter{
+  from{opacity:0;transform:translateY(22px) scale(.98);}
+  to{opacity:1;transform:translateY(0) scale(1);}
+}
+@keyframes pageExit{
+  from{opacity:1;transform:translateY(0) scale(1);}
+  to{opacity:0;transform:translateY(-14px) scale(.97);}
+}
+.page-enter{animation:pageEnter .42s cubic-bezier(.23,1,.32,1) both;}
+.page-exit{display:block!important;animation:pageExit .22s cubic-bezier(.23,1,.32,1) both;pointer-events:none;}
 
 /* Dept banner icon float on hover */
 @keyframes iconFloat{0%,100%{transform:translateY(0) scale(1);}50%{transform:translateY(-10px) scale(1.1);}}
@@ -4812,41 +4822,45 @@ function showPage(pageId, pushState = true) {
     pageId = 'page-login';
   }
 
-  document.querySelectorAll('.page').forEach(function(p) { p.classList.remove('active'); });
-  let targetPage = document.getElementById(pageId);
-  if(targetPage) {
-    targetPage.classList.add('active');
-  } else {
-    pageId = 'page-home';
-    document.getElementById(pageId).classList.add('active');
-  }
-  
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  const currentPage = document.querySelector('.page.active');
+  const targetPage = document.getElementById(pageId) || document.getElementById('page-home');
+  const resolvedPageId = targetPage.id;
 
-  var authPages = ['page-login','page-register','page-forgot','page-reset-password'];
+  const authPages = ['page-login','page-register','page-forgot','page-reset-password'];
   var globalHeader = document.getElementById('globalHeader');
-  if(globalHeader) {
-    if(authPages.includes(pageId)) {
-      globalHeader.style.display = 'none';
-    } else {
-      globalHeader.style.display = '';
+
+  function _doSwitch() {
+    document.querySelectorAll('.page').forEach(function(p) { p.classList.remove('active'); });
+    targetPage.classList.add('active');
+    targetPage.style.animation = 'none';
+    targetPage.offsetHeight; // reflow
+    targetPage.style.animation = '';
+    targetPage.classList.add('page-enter');
+    setTimeout(() => targetPage.classList.remove('page-enter'), 500);
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    if(globalHeader) {
+      globalHeader.style.display = authPages.includes(resolvedPageId) ? 'none' : '';
     }
+
+    if (pushState) {
+      history.pushState({ page: resolvedPageId }, '', '#' + resolvedPageId);
+    }
+
+    if (resolvedPageId === 'page-profile') { renderProfile(); renderAchievements(); updateProfileStats(); }
+    if (resolvedPageId === 'page-pr-course') { renderPrCurriculum(); }
+    if (resolvedPageId === 'page-all-reviews') { initRealtimeReviews(); }
   }
 
-  if (pushState) {
-    history.pushState({ page: pageId }, '', '#' + pageId);
-  }
-
-  if (pageId === 'page-profile') {
-    renderProfile();
-    renderAchievements();
-    updateProfileStats();
-  }
-  if (pageId === 'page-pr-course') {
-    renderPrCurriculum();
-  }
-  if (pageId === 'page-all-reviews') {
-    initRealtimeReviews();
+  if (currentPage && currentPage !== targetPage) {
+    currentPage.classList.add('page-exit');
+    setTimeout(function() {
+      currentPage.classList.remove('page-exit');
+      _doSwitch();
+    }, 220);
+  } else {
+    _doSwitch();
   }
 }
 
