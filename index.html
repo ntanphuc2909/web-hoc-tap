@@ -279,7 +279,118 @@ body.dark-mode .slide-menu{background:#0d1020;}
 .btn-cta-out{padding:14px 32px;background:transparent;color:#fff;border:2px solid rgba(255,255,255,.6);border-radius:50px;font-size:15px;font-weight:600;cursor:pointer;font-family:'Helvetica Rounded Bold', sans-serif;transition:all .25s;}
 .btn-cta-out:hover{background:rgba(255,255,255,.12);}
 
-/* SECTIONS */
+/* ════════════════════════════════════════
+   GLOBAL INTERACTION EFFECTS
+════════════════════════════════════════ */
+
+/* Ripple effect on click */
+@keyframes ripple{0%{transform:scale(0);opacity:.5;}100%{transform:scale(4);opacity:0;}}
+.ripple-fx{position:relative;overflow:hidden;}
+.ripple-fx .ripple-circle{position:absolute;border-radius:50%;background:rgba(255,255,255,.35);pointer-events:none;animation:ripple .55s linear;}
+
+/* Pulse glow on active buttons */
+@keyframes pulseGlow{0%,100%{box-shadow:0 0 0 0 rgba(77,217,172,.4);}50%{box-shadow:0 0 0 8px rgba(77,217,172,.0);}}
+
+/* Bounce on click */
+@keyframes clickBounce{0%{transform:scale(1);}40%{transform:scale(.93);}70%{transform:scale(1.04);}100%{transform:scale(1);}}
+.click-bounce:active{animation:clickBounce .28s ease;}
+
+/* Hero CTA buttons */
+.btn-cta{position:relative;overflow:hidden;}
+.btn-cta::after{content:'';position:absolute;inset:0;background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.3) 50%,transparent 70%);transform:translateX(-100%);transition:transform .5s;}
+.btn-cta:hover::after{transform:translateX(100%);}
+.btn-cta:active{transform:scale(.96)!important;}
+.btn-cta-out:hover{background:rgba(255,255,255,.18);border-color:#fff;transform:translateY(-2px);box-shadow:0 8px 24px rgba(255,255,255,.15);}
+.btn-cta-out:active{transform:scale(.96);}
+
+/* Cards tilt & glow */
+.feat-card{cursor:default;transition:all .35s cubic-bezier(.23,1,.32,1);}
+.feat-card:hover{transform:translateY(-10px) scale(1.02);box-shadow:0 20px 48px rgba(45,95,93,.18);}
+.feat-card:hover .feat-icon{transform:scale(1.15) rotate(-6deg);transition:transform .4s cubic-bezier(.23,1,.32,1);}
+.feat-icon{transition:transform .4s cubic-bezier(.23,1,.32,1);}
+
+/* Dept cards */
+.dept-card{transition:all .35s cubic-bezier(.23,1,.32,1);}
+.dept-card:hover{transform:translateY(-8px) scale(1.01);box-shadow:0 20px 50px rgba(0,0,0,.18);}
+.dept-btn{position:relative;overflow:hidden;}
+.dept-btn::after{content:'';position:absolute;inset:0;background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.25) 50%,transparent 70%);transform:translateX(-100%);transition:transform .45s;}
+.dept-btn:hover::after{transform:translateX(100%);}
+.dept-btn:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(45,95,93,.35)!important;opacity:1!important;}
+.dept-btn:active{transform:scale(.95);}
+
+/* Review cards */
+.review-card{transition:all .3s cubic-bezier(.23,1,.32,1);}
+.review-card:hover{transform:translateY(-5px);box-shadow:0 12px 32px rgba(0,0,0,.12);border-color:var(--primary);}
+
+/* btn-main (login/register) */
+.btn-main{position:relative;overflow:hidden;}
+.btn-main::after{content:'';position:absolute;inset:0;background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.2) 50%,transparent 70%);transform:translateX(-100%);transition:transform .5s;}
+.btn-main:hover::after{transform:translateX(100%);}
+
+/* Google button */
+.btn-google:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.12);}
+.btn-google:active{transform:scale(.97);}
+
+/* Input fields */
+.form-group input:focus,.form-group select:focus,.efg input:focus,.efg select:focus,.efg textarea:focus{transform:scale(1.01);}
+.form-group input,.form-group select,.efg input,.efg select,.efg textarea{transition:all .25s cubic-bezier(.23,1,.32,1);}
+
+/* Links */
+.link-row a,.forgot-link{position:relative;}
+.link-row a::after,.forgot-link::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1.5px;background:currentColor;transition:width .25s;}
+.link-row a:hover::after,.forgot-link:hover::after{width:100%;}
+
+/* Theme buttons */
+.theme-btn{transition:all .25s cubic-bezier(.23,1,.32,1);}
+.theme-btn:hover{transform:rotate(20deg) scale(1.1);border-color:var(--primary);box-shadow:0 4px 12px rgba(45,95,93,.2);}
+.theme-btn:active{transform:rotate(20deg) scale(.95);}
+
+/* Logo hover */
+.home-logo:hover .home-logo-text{opacity:.8;transform:translateX(2px);}
+.home-logo-text{transition:all .2s;}
+.logo:hover .logo-sm{transform:scale(1.08) rotate(8deg);}
+.logo-sm{transition:transform .3s cubic-bezier(.23,1,.32,1);}
+
+/* nav-btn logout */
+.nav-logout{transition:all .25s;}
+.nav-logout:hover{transform:translateY(-2px);box-shadow:0 4px 14px rgba(231,111,81,.3);}
+.nav-logout:active{transform:scale(.95);}
+
+/* Header nav links (inner pages) */
+.header-nav a{transition:all .2s cubic-bezier(.23,1,.32,1);}
+.header-nav a:hover{transform:translateY(-1px);}
+
+/* btn-sm */
+.btn-sm{transition:all .22s cubic-bezier(.23,1,.32,1);}
+.btn-sm:hover{transform:translateY(-2px);box-shadow:0 5px 14px rgba(0,0,0,.15);}
+.btn-sm:active{transform:scale(.95);}
+
+/* Search button */
+.home-search-btn:active{transform:scale(.9);}
+
+/* Login/Register buttons */
+.btn-hlogin{transition:all .25s cubic-bezier(.23,1,.32,1);}
+.btn-hlogin:hover{transform:translateY(-2px);}
+.btn-hlogin:active{transform:scale(.95);}
+.btn-hreg:active{transform:scale(.95);}
+
+/* Pedit, sm-cta */
+.pedit-btn{transition:all .22s;}
+.pedit-btn:hover{transform:translateY(-2px);box-shadow:0 5px 14px rgba(45,95,93,.3);}
+.pedit-btn:active{transform:scale(.95);}
+.sm-cta{transition:all .22s;}
+.sm-cta:hover{opacity:.88;transform:translateY(-1px);}
+.sm-cta-sec:hover{border-color:rgba(255,255,255,.4);color:#fff;transform:translateY(-1px);}
+
+/* Menu toggle */
+.menu-toggle-btn:active{transform:scale(.9);}
+
+/* Mascot float + pointer interaction */
+.hero-mascot{cursor:pointer;}
+.hero-mascot:hover img{animation:mascotWiggle .5s ease;}
+@keyframes mascotWiggle{0%,100%{transform:rotate(0);}20%{transform:rotate(-6deg);}40%{transform:rotate(6deg);}60%{transform:rotate(-4deg);}80%{transform:rotate(4deg);}}
+
+
 .section{max-width:1200px;margin:0 auto;padding:64px 32px;}
 .sec-title{font-family:'Helvetica Rounded Bold', sans-serif;font-size:36px;color:var(--text);margin-bottom:12px;text-align:center;}
 .sec-sub{color:var(--text2);font-size:16px;text-align:center;margin-bottom:48px;}
@@ -5422,8 +5533,21 @@ function submitReview() {
   });
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-  initRealtimeStats();
+
+// ── RIPPLE EFFECT ──
+document.addEventListener('click', function(e) {
+  const el = e.target.closest('.btn-main,.btn-cta,.btn-cta-out,.btn-google,.dept-btn,.btn-sm,.btn-hlogin,.btn-hreg,.btn-hreg,.nav-btn,.pedit-btn,.sm-cta,.hnl-item');
+  if (!el) return;
+  el.classList.add('ripple-fx');
+  const circle = document.createElement('span');
+  circle.classList.add('ripple-circle');
+  const rect = el.getBoundingClientRect();
+  const size = Math.max(rect.width, rect.height);
+  circle.style.cssText = `width:${size}px;height:${size}px;left:${e.clientX-rect.left-size/2}px;top:${e.clientY-rect.top-size/2}px;`;
+  el.appendChild(circle);
+  setTimeout(() => circle.remove(), 600);
+});
+
 
   const savedTheme = localStorage.getItem('prx_theme');
   if(savedTheme === 'dark') document.body.classList.add('dark-mode');
