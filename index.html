@@ -193,10 +193,13 @@ body.dark-mode .hnl-drop-menu{background:#0d1020;border-color:rgba(255,255,255,.
 .sm-logout-item:hover{background:rgba(231,111,81,.12);color:#E76F51;}
 .sbi-icon{font-size:16px;flex-shrink:0;}
 .sbi-arrow{margin-left:auto;color:rgba(255,255,255,.3);font-size:16px;}
-.home-logo{display:flex;align-items:center;flex-shrink:0;margin-right:10px;cursor:pointer;}
+.home-logo{display:flex;align-items:center;gap:10px;flex-shrink:0;margin-right:10px;cursor:pointer;}
 .home-logo-pill{transition:transform .35s cubic-bezier(.23,1,.32,1),filter .3s;}
-.home-logo-pill:hover{transform:scale(1.07) translateY(-2px);filter:drop-shadow(0 6px 18px rgba(244,196,48,.35));}
-.home-logo-pill:active{transform:scale(.97);}
+.home-logo-pill:hover{transform:scale(1.05);filter:drop-shadow(0 4px 14px rgba(244,196,48,.4));}
+.home-logo-pill:active{transform:scale(.96);}
+.home-logo-name{display:flex;flex-direction:column;line-height:1.1;}
+.home-logo-name span:first-child{font-family:'Helvetica Rounded Bold',Arial Rounded MT Bold,sans-serif;font-size:18px;font-weight:900;color:#fff;letter-spacing:.5px;}
+.home-logo-name span:last-child{font-size:9px;color:rgba(255,255,255,.55);letter-spacing:2.5px;font-family:sans-serif;}
 @keyframes petalBobLogo{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
 .logo-petal-g{animation:petalBobLogo 2.8s ease-in-out infinite;}
 .menu-toggle-btn{display:flex;flex-direction:column;gap:5px;align-items:center;justify-content:center;cursor:pointer;width:42px;height:42px;background:rgba(77,217,172,.12);border:1.5px solid rgba(77,217,172,.4);border-radius:50%;transition:all .25s;flex-shrink:0;margin:0 10px;}
@@ -1473,25 +1476,27 @@ body.dark-mode .pr-heading-purple { color: #c084fc; }
 <header class="home-big-header" id="globalHeader" style="position:fixed;top:0;left:0;right:0;z-index:1001;display:none;">
   <div class="home-hc">
     <div class="home-logo" onclick="showPage('page-home')">
-      <svg class="home-logo-pill" width="148" height="44" viewBox="0 0 160 72" xmlns="http://www.w3.org/2000/svg">
-        <rect x="0" y="0" width="160" height="72" rx="36" fill="#1A4645"/>
-        <g class="logo-petal-g" transform="translate(36,36)">
-          <ellipse cx="0" cy="-14" rx="7" ry="9" fill="#F4C430"/>
-          <ellipse cx="0" cy="-14" rx="7" ry="9" fill="#F4C430" transform="rotate(60,0,0)"/>
-          <ellipse cx="0" cy="-14" rx="7" ry="9" fill="#F4C430" transform="rotate(120,0,0)"/>
-          <ellipse cx="0" cy="-14" rx="7" ry="9" fill="#F4C430" transform="rotate(180,0,0)"/>
-          <ellipse cx="0" cy="-14" rx="7" ry="9" fill="#F4C430" transform="rotate(240,0,0)"/>
-          <ellipse cx="0" cy="-14" rx="7" ry="9" fill="#F4C430" transform="rotate(300,0,0)"/>
-          <ellipse cx="0" cy="0" rx="8.5" ry="8" fill="#fff"/>
-          <circle cx="-2.8" cy="-1" r="1.4" fill="#1A4645"/>
-          <circle cx="2.8" cy="-1" r="1.4" fill="#1A4645"/>
-          <path d="M-2.5 2 Q0 4.5 2.5 2" stroke="#1A4645" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+      <svg class="home-logo-pill" width="46" height="46" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="36" cy="36" r="36" fill="#1A4645"/>
+        <g class="logo-petal-g" transform="translate(36,33)">
+          <ellipse cx="0" cy="-13" rx="6.5" ry="8.5" fill="#F4C430"/>
+          <ellipse cx="0" cy="-13" rx="6.5" ry="8.5" fill="#F4C430" transform="rotate(60,0,0)"/>
+          <ellipse cx="0" cy="-13" rx="6.5" ry="8.5" fill="#F4C430" transform="rotate(120,0,0)"/>
+          <ellipse cx="0" cy="-13" rx="6.5" ry="8.5" fill="#F4C430" transform="rotate(180,0,0)"/>
+          <ellipse cx="0" cy="-13" rx="6.5" ry="8.5" fill="#F4C430" transform="rotate(240,0,0)"/>
+          <ellipse cx="0" cy="-13" rx="6.5" ry="8.5" fill="#F4C430" transform="rotate(300,0,0)"/>
+          <ellipse cx="0" cy="0" rx="8" ry="7.5" fill="#fff"/>
+          <circle cx="-2.6" cy="-1" r="1.3" fill="#1A4645"/>
+          <circle cx="2.6" cy="-1" r="1.3" fill="#1A4645"/>
+          <path d="M-2.3 2 Q0 4.2 2.3 2" stroke="#1A4645" stroke-width="1.1" fill="none" stroke-linecap="round"/>
         </g>
-        <rect x="30" y="55" width="5" height="11" rx="2.5" fill="#1A4B8C"/>
-        <rect x="38" y="55" width="5" height="11" rx="2.5" fill="#1A4B8C"/>
-        <text x="82" y="33" font-family="'Helvetica Rounded Bold',Arial Rounded MT Bold,sans-serif" font-size="24" font-weight="900" fill="#fff">PR<tspan fill="#F4A261">X</tspan></text>
-        <text x="82" y="50" font-family="sans-serif" font-size="8.5" fill="rgba(255,255,255,.65)" letter-spacing="2">EXPERIENCE</text>
+        <rect x="29" y="52" width="5" height="12" rx="2.5" fill="#1A4B8C"/>
+        <rect x="38" y="52" width="5" height="12" rx="2.5" fill="#1A4B8C"/>
       </svg>
+      <div class="home-logo-name">
+        <span>PR<span style="color:#F4A261;">X</span></span>
+        <span>EXPERIENCE</span>
+      </div>
     </div>
     <button class="menu-toggle-btn" id="menuToggle"><span></span><span></span><span></span></button>
     <nav class="home-nav-links">
