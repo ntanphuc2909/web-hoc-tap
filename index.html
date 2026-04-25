@@ -4818,8 +4818,17 @@ window.addEventListener('popstate', function(e) {
 
 function initRoute() {
   var hash = location.hash.substring(1);
-  if (hash) {
+  var authOnlyPages = ['page-login','page-register','page-forgot','page-reset-password'];
+  if (hash && !authOnlyPages.includes(hash)) {
     showPage(hash, false);
+  } else if (hash && authOnlyPages.includes(hash)) {
+    // nếu URL bị kẹt ở trang auth mà không phải reset password thì về home
+    var urlParams = new URLSearchParams(window.location.search);
+    if(urlParams.get('mode') === 'resetPassword') {
+      showPage(hash, false);
+    } else {
+      showPage('page-home', false);
+    }
   } else {
     showPage('page-home', false);
   }
@@ -5536,7 +5545,7 @@ function submitReview() {
 
 // ── RIPPLE EFFECT ──
 document.addEventListener('click', function(e) {
-  const el = e.target.closest('.btn-main,.btn-cta,.btn-cta-out,.btn-google,.dept-btn,.btn-sm,.btn-hlogin,.btn-hreg,.btn-hreg,.nav-btn,.pedit-btn,.sm-cta,.hnl-item');
+  const el = e.target.closest('.btn-main,.btn-cta,.btn-cta-out,.btn-google,.dept-btn,.btn-sm,.btn-hlogin,.btn-hreg,.nav-btn,.pedit-btn,.sm-cta,.hnl-item');
   if (!el) return;
   el.classList.add('ripple-fx');
   const circle = document.createElement('span');
@@ -5548,6 +5557,8 @@ document.addEventListener('click', function(e) {
   setTimeout(() => circle.remove(), 600);
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+  initRealtimeStats();
 
   const savedTheme = localStorage.getItem('prx_theme');
   if(savedTheme === 'dark') document.body.classList.add('dark-mode');
