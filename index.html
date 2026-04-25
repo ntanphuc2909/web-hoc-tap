@@ -241,7 +241,12 @@ body.dark-mode .slide-menu{background:#0d1020;}
 .hero-land{background:var(--gradient);position:relative;overflow:hidden;padding:60px 40px 80px; z-index: 1;}
 .hero-land::before{content:'';position:absolute;top:-50%;right:-5%;width:500px;height:500px;background:radial-gradient(circle,rgba(244,162,97,.15) 0%,transparent 70%);border-radius:50%;animation:floatAnim 18s ease-in-out infinite;}
 @keyframes floatAnim{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(-20px,25px) scale(1.08);}}
-.hero-content{max-width:1200px;margin:0 auto;position:relative;z-index:1;}
+.hero-content{max-width:1200px;margin:0 auto;position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:40px;}
+.hero-text{flex:1;}
+.hero-mascot{flex-shrink:0;width:320px;display:flex;align-items:flex-end;justify-content:flex-end;animation:floatMascot 4s ease-in-out infinite;}
+.hero-mascot img{width:100%;height:auto;filter:drop-shadow(0 20px 40px rgba(0,0,0,0.3));}
+@keyframes floatMascot{0%,100%{transform:translateY(0);}50%{transform:translateY(-16px);}}
+@media(max-width:768px){.hero-content{flex-direction:column;}.hero-mascot{width:220px;margin:0 auto;}}
 .hero-land h1{font-family:'Helvetica Rounded Bold', sans-serif;font-size:58px;color:#fff;margin-bottom:18px;line-height:1.2;animation:fadeUp .8s ease .2s both;}
 .hero-land p{font-size:19px;color:rgba(255,255,255,.9);max-width:560px;margin-bottom:28px;line-height:1.7;animation:fadeUp .8s ease .4s both;}
 @keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
@@ -1571,11 +1576,16 @@ body.auth-page #globalHeader { display: none; }
       <img src="z7673677338583_4c44f8411415381a5c0f2ab71346a677.jpg" alt="background phone">
     </div>
     <div class="hero-content">
-      <h1 data-i18n-html="heroH1">Khởi đầu sự nghiệp<br>của bạn ngay hôm nay</h1>
-      <p data-i18n="heroP">Khám phá và phát triển kỹ năng Public Relations chuyên nghiệp cùng PR Experience</p>
-      <div class="hero-btns">
-        <button class="btn-cta" onclick="scrollToId('dept-section')" data-i18n="heroExplore">🚀 Khám phá ngay</button>
-        <button class="btn-cta-out" onclick="scrollToId('why-section')" data-i18n="heroLearn">📖 Tìm hiểu thêm</button>
+      <div class="hero-text">
+        <h1 data-i18n-html="heroH1">Khởi đầu sự nghiệp<br>của bạn ngay hôm nay</h1>
+        <p data-i18n="heroP">Khám phá và phát triển kỹ năng Public Relations chuyên nghiệp cùng PR Experience</p>
+        <div class="hero-btns">
+          <button class="btn-cta" onclick="scrollToId('dept-section')" data-i18n="heroExplore">🚀 Khám phá ngay</button>
+          <button class="btn-cta-out" onclick="scrollToId('why-section')" data-i18n="heroLearn">📖 Tìm hiểu thêm</button>
+        </div>
+      </div>
+      <div class="hero-mascot">
+        <img src="https://raw.githubusercontent.com/ntanphuc2909/web-hoc-tap/main/linhvat.PNG" alt="PR Experience Mascot">
       </div>
     </div>
   </section>
