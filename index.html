@@ -35,10 +35,183 @@ a{text-decoration:none; cursor: pointer;}
   from{opacity:1;}
   to{opacity:0;}
 }
+@keyframes tipPop{
+  from{opacity:0;transform:translateX(-50%) translateY(8px) scale(.85);}
+  to{opacity:1;transform:translateX(-50%) translateY(0) scale(1);}
+}
 
 /* ════════════════════════════════════════
-   AUTH PAGES
+   GLOBAL INTERACTION EFFECTS
 ════════════════════════════════════════ */
+
+/* Tất cả button */
+button, .btn-main, .btn-google, .btn-cta, .btn-cta-out, .nav-btn,
+.btn-hlogin, .btn-hreg, .dept-btn, .ef-btn, .sm-cta, .sm-cta-sec,
+.header-settings-btn, .theme-btn, .theme-btn-auth, .nav-btn,
+[class*="btn-"], input[type="submit"], input[type="button"] {
+  transition: all .22s cubic-bezier(.23,1,.32,1) !important;
+  position: relative;
+  overflow: hidden;
+}
+button:not(:disabled):hover, .btn-main:hover, .btn-cta:hover,
+.dept-btn:hover, .ef-btn:hover, .nav-btn:hover,
+.btn-hlogin:hover, .btn-hreg:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+}
+button:not(:disabled):active, [class*="btn-"]:active {
+  transform: translateY(0px) scale(.97) !important;
+  filter: brightness(.96) !important;
+  transition-duration: .08s !important;
+}
+
+/* Ripple effect khi click */
+button::after, [class*="btn-"]::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0);
+  border-radius: inherit;
+  transition: background .4s;
+  pointer-events: none;
+}
+button:active::after, [class*="btn-"]:active::after {
+  background: rgba(255,255,255,.18);
+  transition: none;
+}
+
+/* Cards */
+.feat-card, .dept-card, .review-card, .case-card,
+[class*="-card"]:not(.auth-card):not(.auth-right) {
+  transition: transform .3s cubic-bezier(.23,1,.32,1),
+              box-shadow .3s cubic-bezier(.23,1,.32,1) !important;
+  cursor: default;
+}
+.feat-card:hover, .dept-card:hover, .review-card:hover {
+  transform: translateY(-6px) scale(1.01) !important;
+  box-shadow: 0 18px 48px rgba(0,0,0,.14) !important;
+}
+
+/* Nav links */
+.header-nav a, .hnl-item, .sm-nav a, .sm-bottom-item,
+.hnl-drop-item, .sm-sub-item, .link-row a, .forgot-link {
+  transition: all .2s cubic-bezier(.23,1,.32,1) !important;
+}
+.header-nav a:hover, .hnl-item:hover, .sm-nav a:hover {
+  letter-spacing: .3px;
+}
+
+/* Inputs & selects */
+.form-group input, .form-group select, textarea {
+  transition: border-color .25s, box-shadow .25s, transform .2s !important;
+}
+.form-group input:focus, .form-group select:focus, textarea:focus {
+  transform: scale(1.01);
+}
+
+/* Logo */
+.logo, .home-logo, .logo-sm, .home-logo-circle, .logo-circle {
+  transition: transform .35s cubic-bezier(.23,1,.32,1) !important;
+}
+.logo:hover, .home-logo:hover {
+  transform: scale(1.05) !important;
+}
+
+/* Theme / icon buttons */
+.theme-btn:hover {
+  transform: rotate(20deg) scale(1.15) !important;
+  border-color: var(--primary) !important;
+}
+.menu-toggle-btn {
+  transition: all .25s cubic-bezier(.23,1,.32,1) !important;
+}
+.menu-toggle-btn:hover {
+  transform: scale(1.1) !important;
+}
+
+/* Mascot */
+#mascot-flower, .hero-land img[alt="Mascot"] {
+  transition: transform .35s cubic-bezier(.23,1,.32,1),
+              filter .3s ease !important;
+  pointer-events: auto !important;
+  cursor: pointer !important;
+}
+#mascot-flower:hover, .hero-land img[alt="Mascot"]:hover {
+  transform: translateY(-16px) scale(1.12) rotate(-4deg) !important;
+  filter: drop-shadow(0 16px 28px rgba(0,0,0,.35)) brightness(1.08) !important;
+  animation-play-state: paused !important;
+}
+#mascot-flower:active, .hero-land img[alt="Mascot"]:active {
+  transform: scale(.94) rotate(6deg) !important;
+  transition-duration: .1s !important;
+}
+
+/* Dropdown items */
+.hnl-drop-item {
+  transition: background .18s, transform .18s !important;
+}
+.hnl-drop-item:hover {
+  transform: translateX(4px) !important;
+}
+
+/* Stat / info boxes */
+[class*="stat-"], [class*="-stat"], .hub-btns button {
+  transition: all .25s cubic-bezier(.23,1,.32,1) !important;
+}
+
+/* Badges & pills */
+[class*="badge"], [class*="-badge"] {
+  transition: transform .2s, filter .2s !important;
+}
+[class*="badge"]:hover, [class*="-badge"]:hover {
+  transform: scale(1.06) !important;
+  filter: brightness(1.1) !important;
+}
+
+/* Checkboxes / radio labels */
+.terms-row label, .remember-me, label[style*="cursor:pointer"],
+label[style*="cursor: pointer"] {
+  transition: background .18s, border-color .18s, transform .15s !important;
+}
+label[style*="cursor:pointer"]:hover,
+label[style*="cursor: pointer"]:hover {
+  transform: translateX(3px) !important;
+}
+
+/* Social / icon buttons */
+.btn-google:hover {
+  transform: translateY(-2px) scale(1.02) !important;
+}
+
+/* Slide menu overlay */
+.overlay { transition: background .35s ease !important; }
+
+/* Search button */
+.home-search-btn {
+  transition: transform .22s cubic-bezier(.23,1,.32,1),
+              box-shadow .22s !important;
+}
+.home-search-btn:hover {
+  transform: scale(1.15) !important;
+}
+
+/* Progress bars */
+[class*="progress"], [class*="-bar"], .strength-fill {
+  transition: width .5s cubic-bezier(.23,1,.32,1) !important;
+}
+
+/* Scroll-reveal: fade-in khi scroll vào viewport */
+.sect-reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .55s cubic-bezier(.23,1,.32,1),
+              transform .55s cubic-bezier(.23,1,.32,1);
+}
+.sect-reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .auth-bg{background:var(--gradient);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;}
 .auth-card{background:var(--card);border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,.3);overflow:hidden;max-width:920px;width:100%;display:grid;grid-template-columns:1fr 1fr;animation:fadeIn .5s ease;}
 body.dark-mode .auth-card{box-shadow:0 20px 60px rgba(0,0,0,.6);}
@@ -5418,8 +5591,44 @@ function submitReview() {
   });
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-  initRealtimeStats();
+// ── SCROLL REVEAL ──
+(function(){
+  const targets = document.querySelectorAll(
+    '.feat-card,.dept-card,.review-card,.section,.why-inner,.feat-icon,'+
+    '.dept-body,.hub-inner,[class*="-card"]:not(.auth-card)'
+  );
+  targets.forEach(el => el.classList.add('sect-reveal'));
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if(e.isIntersecting){
+        setTimeout(() => e.target.classList.add('revealed'), i * 60);
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  targets.forEach(el => io.observe(el));
+})();
+
+// ── MASCOT CLICK EASTER EGG ──
+(function(){
+  const mascot = document.querySelector('.hero-land img[alt="Mascot"]');
+  if(!mascot) return;
+  let clicks = 0;
+  const msgs = ['👋 Xin chào!','🌸 Học PR thôi nào!','✨ Bạn thật giỏi!','🚀 Cố lên!','💛 Tớ yêu bạn!'];
+  mascot.addEventListener('click', function(){
+    const tip = document.createElement('div');
+    tip.textContent = msgs[clicks % msgs.length];
+    tip.style.cssText = `position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);
+      background:#fff;color:#2D5F5D;padding:7px 16px;border-radius:20px;font-size:13px;font-weight:700;
+      white-space:nowrap;box-shadow:0 4px 14px rgba(0,0,0,.18);pointer-events:none;
+      animation:tipPop .35s cubic-bezier(.23,1,.32,1) both;z-index:10;`;
+    this.parentElement.style.position = 'relative';
+    this.parentElement.appendChild(tip);
+    setTimeout(() => tip.remove(), 1800);
+    clicks++;
+  });
+})();
+
 
   const savedTheme = localStorage.getItem('prx_theme');
   if(savedTheme === 'dark') document.body.classList.add('dark-mode');
