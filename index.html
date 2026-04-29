@@ -5416,5 +5416,29 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 </script>
+
+<!-- Mascot bông hoa góc dưới phải -->
+<img 
+  src="https://raw.githubusercontent.com/ntanphuc2909/web-hoc-tap/main/linhvat.PNG" 
+  id="mascot-flower"
+  alt="Mascot"
+  style="
+    position: fixed;
+    bottom: 0;
+    right: 20px;
+    width: 130px;
+    z-index: 9999;
+    pointer-events: none;
+    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.25));
+    animation: mascotBounce 3s ease-in-out infinite;
+  "
+/>
+<style>
+@keyframes mascotBounce {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+</style>
+
 </body>
 </html>
