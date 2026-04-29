@@ -25,19 +25,10 @@ body{font-family: 'Helvetica Rounded Bold', sans-serif; background:var(--bg);col
 a{text-decoration:none; cursor: pointer;}
 .page{display:none;min-height:100vh;}
 .page.active{display:block;}
-.page.page-enter{animation:pageEnter .35s cubic-bezier(.23,1,.32,1) both;}
-.page.page-exit{animation:pageExit .2s ease forwards;}
-@keyframes pageEnter{
-  from{opacity:0;transform:translateY(18px);}
-  to{opacity:1;transform:translateY(0);}
-}
-@keyframes pageExit{
-  from{opacity:1;}
-  to{opacity:0;}
-}
 
-
-
+/* ════════════════════════════════════════
+   AUTH PAGES
+════════════════════════════════════════ */
 .auth-bg{background:var(--gradient);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;}
 .auth-card{background:var(--card);border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,.3);overflow:hidden;max-width:920px;width:100%;display:grid;grid-template-columns:1fr 1fr;animation:fadeIn .5s ease;}
 body.dark-mode .auth-card{box-shadow:0 20px 60px rgba(0,0,0,.6);}
@@ -144,35 +135,6 @@ body.dark-mode .home-big-header{background:#0d1020;}
 @media(max-width:768px){.home-nav-links{display:none;}}
 .hnl-item{color:rgba(255,255,255,.78);font-size:13px;font-weight:500;padding:7px 13px;border-radius:8px;cursor:pointer;transition:all .2s;white-space:nowrap;user-select:none;}
 .hnl-item:hover,.hnl-item.hnl-active{background:rgba(255,255,255,.1);color:#fff;}
-
-/* Nút nổi bật */
-.hnl-highlight {
-  border: 1.5px solid rgba(255,255,255,.22);
-  background: rgba(255,255,255,.07);
-  color: #fff !important;
-  font-weight: 600 !important;
-  padding: 7px 16px;
-  backdrop-filter: blur(6px);
-  box-shadow: 0 2px 10px rgba(0,0,0,.18), inset 0 1px 0 rgba(255,255,255,.1);
-}
-.hnl-highlight:hover {
-  background: rgba(255,255,255,.16) !important;
-  border-color: rgba(255,255,255,.45) !important;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.15) !important;
-}
-.hnl-highlight-pr {
-  border-color: rgba(244,162,97,.55) !important;
-  background: rgba(244,162,97,.12) !important;
-  color: #F4A261 !important;
-  box-shadow: 0 2px 12px rgba(244,162,97,.2), inset 0 1px 0 rgba(255,255,255,.08);
-}
-.hnl-highlight-pr:hover {
-  background: rgba(244,162,97,.22) !important;
-  border-color: #F4A261 !important;
-  box-shadow: 0 6px 22px rgba(244,162,97,.35) !important;
-  color: #fff !important;
-}
 /* Dropdown */
 .hnl-dropdown{position:relative;}
 .hnl-drop-trigger{display:flex;align-items:center;gap:2px;}
@@ -209,7 +171,7 @@ body.dark-mode .hnl-drop-menu{background:#0d1020;border-color:rgba(255,255,255,.
 .sbi-icon{font-size:16px;flex-shrink:0;}
 .sbi-arrow{margin-left:auto;color:rgba(255,255,255,.3);font-size:16px;}
 .home-logo{display:flex;align-items:center;gap:12px;flex-shrink:0;margin-right:10px;cursor:pointer;}
-.home-logo-circle{width:44px;height:44px;background:var(--gradient);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Helvetica Rounded Bold', sans-serif;font-weight:900;font-size:15px;color:#fff;transition:transform .3s;overflow:visible;}
+.home-logo-circle{width:44px;height:44px;background:var(--gradient);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Helvetica Rounded Bold', sans-serif;font-weight:900;font-size:16px;color:#fff;transition:transform .3s;}
 .home-logo-circle:hover{transform:rotate(360deg) scale(1.1);}
 .home-logo-text{font-family:'Helvetica Rounded Bold', sans-serif;font-size:15px;font-weight:700;color:#fff;line-height:1.3;}
 .menu-toggle-btn{display:flex;flex-direction:column;gap:5px;align-items:center;justify-content:center;cursor:pointer;width:42px;height:42px;background:rgba(77,217,172,.12);border:1.5px solid rgba(77,217,172,.4);border-radius:50%;transition:all .25s;flex-shrink:0;margin:0 10px;}
@@ -279,7 +241,6 @@ body.dark-mode .slide-menu{background:#0d1020;}
 .hero-land{background:var(--gradient);position:relative;overflow:hidden;padding:60px 40px 80px; z-index: 1;}
 .hero-land::before{content:'';position:absolute;top:-50%;right:-5%;width:500px;height:500px;background:radial-gradient(circle,rgba(244,162,97,.15) 0%,transparent 70%);border-radius:50%;animation:floatAnim 18s ease-in-out infinite;}
 @keyframes floatAnim{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(-20px,25px) scale(1.08);}}
-@keyframes mascotBounce{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
 .hero-content{max-width:1200px;margin:0 auto;position:relative;z-index:1;}
 .hero-land h1{font-family:'Helvetica Rounded Bold', sans-serif;font-size:58px;color:#fff;margin-bottom:18px;line-height:1.2;animation:fadeUp .8s ease .2s both;}
 .hero-land p{font-size:19px;color:rgba(255,255,255,.9);max-width:560px;margin-bottom:28px;line-height:1.7;animation:fadeUp .8s ease .4s both;}
@@ -1317,13 +1278,13 @@ body.dark-mode .pr-heading-purple { color: #c084fc; }
 <header class="home-big-header" id="globalHeader" style="position:fixed;top:0;left:0;right:0;z-index:1001;display:none;">
   <div class="home-hc">
     <div class="home-logo" onclick="showPage('page-home')">
-      <div class="home-logo-circle" style="font-size:14px;letter-spacing:-0.5px;">PR<span style="color:#F4A261;font-size:11px;vertical-align:super;line-height:0;">x</span></div>
-      <div class="home-logo-text" style="line-height:1.2;">PR<span style="color:#F4A261;font-size:11px;vertical-align:super;line-height:0;">x</span><br><span style="font-size:10px;letter-spacing:2px;font-weight:500;opacity:0.85;">EXPERIENCE</span></div>
+      <div class="home-logo-circle">PRX</div>
+      <div class="home-logo-text">PR<br>Experience</div>
     </div>
     <button class="menu-toggle-btn" id="menuToggle"><span></span><span></span><span></span></button>
     <nav class="home-nav-links">
-      <a class="hnl-item hnl-highlight" onclick="showPage('page-home')" data-i18n="headerHome">Trang chủ</a>
-      <a class="hnl-item hnl-highlight hnl-highlight-pr" onclick="showPage('page-pr-course')">📣 Public Relations</a>
+      <a class="hnl-item" onclick="showPage('page-home')" data-i18n="headerHome">Trang chủ</a>
+      <a class="hnl-item" onclick="showPage('page-pr-course')">📣 Public Relations</a>
     </nav>
     <div class="home-search">
       <input type="text" id="searchInput" data-i18n-placeholder="searchPlaceholder" placeholder="Tìm kiếm nội dung PR...">
@@ -1617,12 +1578,6 @@ body.auth-page #globalHeader { display: none; }
         <button class="btn-cta-out" onclick="scrollToId('why-section')" data-i18n="heroLearn">📖 Tìm hiểu thêm</button>
       </div>
     </div>
-    <!-- Mascot bông hoa góc phải hero -->
-    <img 
-      src="https://raw.githubusercontent.com/ntanphuc2909/web-hoc-tap/main/linhvat.PNG"
-      alt="Mascot"
-      style="position:absolute;bottom:0;left:62%;width:220px;pointer-events:none;filter:drop-shadow(0 6px 18px rgba(0,0,0,0.3));animation:mascotBounce 3s ease-in-out infinite;z-index:2;"
-    />
   </section>
   <div id="homeUserBar" style="display:none;">
     <div class="home-user-bar">
@@ -4669,19 +4624,15 @@ function showPage(pageId, pushState = true) {
     pageId = 'page-login';
   }
 
-  document.querySelectorAll('.page').forEach(function(p) {
-    p.classList.remove('active', 'page-enter', 'page-exit');
-  });
-
+  document.querySelectorAll('.page').forEach(function(p) { p.classList.remove('active'); });
   let targetPage = document.getElementById(pageId);
-  if (!targetPage) {
+  if(targetPage) {
+    targetPage.classList.add('active');
+  } else {
     pageId = 'page-home';
-    targetPage = document.getElementById(pageId);
+    document.getElementById(pageId).classList.add('active');
   }
-
-  targetPage.classList.add('active', 'page-enter');
-  setTimeout(() => targetPage.classList.remove('page-enter'), 400);
-
+  
   window.scrollTo({ top: 0, behavior: 'smooth' });
 
   var authPages = ['page-login','page-register','page-forgot','page-reset-password'];
@@ -5438,6 +5389,9 @@ function submitReview() {
   });
 }
 
+document.addEventListener('DOMContentLoaded', function() {
+  initRealtimeStats();
+
   const savedTheme = localStorage.getItem('prx_theme');
   if(savedTheme === 'dark') document.body.classList.add('dark-mode');
   updateThemeBtns();
@@ -5462,6 +5416,5 @@ function submitReview() {
   }
 });
 </script>
-
 </body>
 </html>
