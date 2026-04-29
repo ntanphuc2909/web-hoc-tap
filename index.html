@@ -4669,43 +4669,35 @@ function showPage(pageId, pushState = true) {
     pageId = 'page-login';
   }
 
-  const currentPage = document.querySelector('.page.active');
-  const targetPage = document.getElementById(pageId) || document.getElementById('page-home');
-  const resolvedId = targetPage.id;
+  document.querySelectorAll('.page').forEach(function(p) {
+    p.classList.remove('active', 'page-enter', 'page-exit');
+  });
+
+  let targetPage = document.getElementById(pageId);
+  if (!targetPage) {
+    pageId = 'page-home';
+    targetPage = document.getElementById(pageId);
+  }
+
+  targetPage.classList.add('active', 'page-enter');
+  setTimeout(() => targetPage.classList.remove('page-enter'), 400);
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 
   var authPages = ['page-login','page-register','page-forgot','page-reset-password'];
   var globalHeader = document.getElementById('globalHeader');
   if(globalHeader) {
-    if(authPages.includes(resolvedId)) {
+    if(authPages.includes(pageId)) {
       globalHeader.style.display = 'none';
     } else {
       globalHeader.style.display = '';
     }
   }
 
-  if (currentPage && currentPage !== targetPage) {
-    currentPage.classList.add('page-exit');
-    setTimeout(() => {
-      currentPage.classList.remove('active', 'page-exit');
-      targetPage.classList.add('active', 'page-enter');
-      setTimeout(() => targetPage.classList.remove('page-enter'), 400);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      _afterShowPage(resolvedId);
-    }, 180);
-  } else {
-    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    targetPage.classList.add('active', 'page-enter');
-    setTimeout(() => targetPage.classList.remove('page-enter'), 400);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    _afterShowPage(resolvedId);
-  }
-
   if (pushState) {
-    history.pushState({ page: resolvedId }, '', '#' + resolvedId);
+    history.pushState({ page: pageId }, '', '#' + pageId);
   }
-}
 
-function _afterShowPage(pageId) {
   if (pageId === 'page-profile') {
     renderProfile();
     renderAchievements();
