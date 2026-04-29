@@ -318,6 +318,35 @@ body.dark-mode .home-big-header{background:#0d1020;}
 @media(max-width:768px){.home-nav-links{display:none;}}
 .hnl-item{color:rgba(255,255,255,.78);font-size:13px;font-weight:500;padding:7px 13px;border-radius:8px;cursor:pointer;transition:all .2s;white-space:nowrap;user-select:none;}
 .hnl-item:hover,.hnl-item.hnl-active{background:rgba(255,255,255,.1);color:#fff;}
+
+/* Nút nổi bật */
+.hnl-highlight {
+  border: 1.5px solid rgba(255,255,255,.22);
+  background: rgba(255,255,255,.07);
+  color: #fff !important;
+  font-weight: 600 !important;
+  padding: 7px 16px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 2px 10px rgba(0,0,0,.18), inset 0 1px 0 rgba(255,255,255,.1);
+}
+.hnl-highlight:hover {
+  background: rgba(255,255,255,.16) !important;
+  border-color: rgba(255,255,255,.45) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.15) !important;
+}
+.hnl-highlight-pr {
+  border-color: rgba(244,162,97,.55) !important;
+  background: rgba(244,162,97,.12) !important;
+  color: #F4A261 !important;
+  box-shadow: 0 2px 12px rgba(244,162,97,.2), inset 0 1px 0 rgba(255,255,255,.08);
+}
+.hnl-highlight-pr:hover {
+  background: rgba(244,162,97,.22) !important;
+  border-color: #F4A261 !important;
+  box-shadow: 0 6px 22px rgba(244,162,97,.35) !important;
+  color: #fff !important;
+}
 /* Dropdown */
 .hnl-dropdown{position:relative;}
 .hnl-drop-trigger{display:flex;align-items:center;gap:2px;}
@@ -1467,8 +1496,8 @@ body.dark-mode .pr-heading-purple { color: #c084fc; }
     </div>
     <button class="menu-toggle-btn" id="menuToggle"><span></span><span></span><span></span></button>
     <nav class="home-nav-links">
-      <a class="hnl-item" onclick="showPage('page-home')" data-i18n="headerHome">Trang chủ</a>
-      <a class="hnl-item" onclick="showPage('page-pr-course')">📣 Public Relations</a>
+      <a class="hnl-item hnl-highlight" onclick="showPage('page-home')" data-i18n="headerHome">Trang chủ</a>
+      <a class="hnl-item hnl-highlight hnl-highlight-pr" onclick="showPage('page-pr-course')">📣 Public Relations</a>
     </nav>
     <div class="home-search">
       <input type="text" id="searchInput" data-i18n-placeholder="searchPlaceholder" placeholder="Tìm kiếm nội dung PR...">
