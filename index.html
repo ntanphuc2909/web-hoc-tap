@@ -81,8 +81,7 @@ button:active::after, [class*="btn-"]:active::after {
 }
 
 /* Cards */
-.feat-card, .dept-card, .review-card, .case-card,
-[class*="-card"]:not(.auth-card):not(.auth-right) {
+.feat-card, .dept-card, .review-card, .case-card {
   transition: transform .3s cubic-bezier(.23,1,.32,1),
               box-shadow .3s cubic-bezier(.23,1,.32,1) !important;
   cursor: default;
@@ -5623,8 +5622,7 @@ function submitReview() {
 // ── SCROLL REVEAL ──
 (function(){
   const targets = document.querySelectorAll(
-    '.feat-card,.dept-card,.review-card,.section,.why-inner,.feat-icon,'+
-    '.dept-body,.hub-inner,[class*="-card"]:not(.auth-card)'
+    '.feat-card,.dept-card,.review-card,.why-inner,.feat-icon,.dept-body,.hub-inner'
   );
   targets.forEach(el => el.classList.add('sect-reveal'));
   const io = new IntersectionObserver((entries) => {
