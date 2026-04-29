@@ -25,6 +25,16 @@ body{font-family: 'Helvetica Rounded Bold', sans-serif; background:var(--bg);col
 a{text-decoration:none; cursor: pointer;}
 .page{display:none;min-height:100vh;}
 .page.active{display:block;}
+.page.page-enter{animation:pageEnter .35s cubic-bezier(.23,1,.32,1) both;}
+.page.page-exit{animation:pageExit .2s ease forwards;}
+@keyframes pageEnter{
+  from{opacity:0;transform:translateY(18px);}
+  to{opacity:1;transform:translateY(0);}
+}
+@keyframes pageExit{
+  from{opacity:1;}
+  to{opacity:0;}
+}
 
 /* ════════════════════════════════════════
    AUTH PAGES
@@ -4631,31 +4641,43 @@ function showPage(pageId, pushState = true) {
     pageId = 'page-login';
   }
 
-  document.querySelectorAll('.page').forEach(function(p) { p.classList.remove('active'); });
-  let targetPage = document.getElementById(pageId);
-  if(targetPage) {
-    targetPage.classList.add('active');
-  } else {
-    pageId = 'page-home';
-    document.getElementById(pageId).classList.add('active');
-  }
-  
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  const currentPage = document.querySelector('.page.active');
+  const targetPage = document.getElementById(pageId) || document.getElementById('page-home');
+  const resolvedId = targetPage.id;
 
   var authPages = ['page-login','page-register','page-forgot','page-reset-password'];
   var globalHeader = document.getElementById('globalHeader');
   if(globalHeader) {
-    if(authPages.includes(pageId)) {
+    if(authPages.includes(resolvedId)) {
       globalHeader.style.display = 'none';
     } else {
       globalHeader.style.display = '';
     }
   }
 
-  if (pushState) {
-    history.pushState({ page: pageId }, '', '#' + pageId);
+  if (currentPage && currentPage !== targetPage) {
+    currentPage.classList.add('page-exit');
+    setTimeout(() => {
+      currentPage.classList.remove('active', 'page-exit');
+      targetPage.classList.add('active', 'page-enter');
+      setTimeout(() => targetPage.classList.remove('page-enter'), 400);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      _afterShowPage(resolvedId);
+    }, 180);
+  } else {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    targetPage.classList.add('active', 'page-enter');
+    setTimeout(() => targetPage.classList.remove('page-enter'), 400);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    _afterShowPage(resolvedId);
   }
 
+  if (pushState) {
+    history.pushState({ page: resolvedId }, '', '#' + resolvedId);
+  }
+}
+
+function _afterShowPage(pageId) {
   if (pageId === 'page-profile') {
     renderProfile();
     renderAchievements();
